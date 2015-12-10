@@ -31,7 +31,16 @@ public class ServerVerticle extends AbstractVerticle {
     // throwing as we are casting it to int. This is what we want.
     final int port = config().getInteger(ConfigConstants.HTTP_PORT);
     LOG.info("Http server starting on port {}", port);
-    httpServer.requestHandler(router::accept).listen(port);
+    httpServer.requestHandler(router::accept).listen(port, result -> {
+      if (result.succeeded()) {
+        LOG.info("HTTP Server started successfully");
+      } else {
+        // Can't do much here, Need to Abort. However, trying to exit may have us blocked on other threads that we may have spawned, so we need to use
+        // brute force here
+        LOG.error("Not able to start HTTP Server", result.cause());
+        Runtime.getRuntime().halt(1);
+      }
+    });
 
   }
 
