@@ -7,7 +7,7 @@
         </layout>
     </appender>
 
-    <appender name="FILE" class="ch.qos.logback.core.RollingFileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>nucleus-server.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
