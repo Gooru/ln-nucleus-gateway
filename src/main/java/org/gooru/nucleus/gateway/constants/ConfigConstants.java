@@ -7,5 +7,6 @@ package org.gooru.nucleus.gateway.constants;
 public class ConfigConstants {
 
   public static final String HTTP_PORT = "http.port";
+  public static final String METRICS_PERIODICITY = "metrics.periodicity.seconds";
 
 }
