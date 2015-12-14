@@ -13,3 +13,16 @@ TODO
 To understand build related stuff, take a look at **BUILD_README.md**.
 
 
+How to do stuff
+---------------
+
+**Add new configuration**
+* First add the key as constant in ConfigConstants.java
+* Update the nucleus-server.json to provide a sample value
+
+**Add new HTTP handler**
+* If the HTTP end point is going to be inline, then skip to next point. Otherwise, add a constant to MessagebusEndpoints.java
+* Add new route to RouteConstants.java
+* Apply the handle to specified route. If there is a need for separate delivery options, provide it
+* Handler should be able to handle the reply as well as error condition
+
