@@ -1,6 +1,7 @@
 package org.gooru.nucleus.gateway.bootstrap;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.json.JsonObject;
@@ -31,8 +32,9 @@ public class ServerVerticle extends AbstractVerticle {
 
     final MetricsService metricsService = MetricsService.create(vertx);
     final Router router = Router.router(vertx);
+    final long mbusTimeout = config().getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
-    initializeRoutes(router, metricsService);
+    initializeRoutes(router, metricsService, mbusTimeout);
     final int metricsPeriodicity = config().getInteger(ConfigConstants.METRICS_PERIODICITY);
     initializeMetrics(metricsService, metricsPeriodicity);
 
@@ -62,18 +64,19 @@ public class ServerVerticle extends AbstractVerticle {
     });
   }
 
-  private void initializeRoutes(Router router, MetricsService metricsService) {
+  private void initializeRoutes(Router router, MetricsService metricsService, long mbusTimeout) {
 
     EventBus eb = vertx.eventBus();
 
     intializeInternalRoutes(router, metricsService);
     
     router.route("/").handler(routingContext -> {
-      eb.send(MessagebusEndpoints.MBEP_RESOURCE, "ping!", reply -> {
+      eb.send(MessagebusEndpoints.MBEP_RESOURCE, "ping!", new DeliveryOptions().setSendTimeout(mbusTimeout), reply -> {
         if (reply.succeeded()) {
           routingContext.response().end(reply.result().body().toString());
         } else {
-          LOG.info("No reply");
+          LOG.error("Not able to send message", reply.cause());
+          routingContext.response().setStatusCode(500).end();
         }
       });
     });
