@@ -6,7 +6,7 @@ import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
-import io.vertx.groovy.ext.web.handler.BodyHandler;
+import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.dropwizard.MetricsService;
 
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
@@ -70,11 +70,10 @@ public class ServerVerticle extends AbstractVerticle {
   private void initializeRoutes(Router router, MetricsService metricsService, long mbusTimeout) {
 
     EventBus eb = vertx.eventBus();
-
+    router.route().handler(BodyHandler.create());
     intializeInternalRoutes(router, metricsService);
-
     
-    router.route(RouteConstants.EP_RESOURCE_GET).handler(routingContext -> {
+    router.get(RouteConstants.EP_RESOURCE_GET).handler(routingContext -> {
       String resourceId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader("mb.operation", "resource.get")
               .addHeader(RouteConstants.ID_RESOURCE, resourceId);
@@ -89,8 +88,8 @@ public class ServerVerticle extends AbstractVerticle {
       });
     });
     
-    router.route(RouteConstants.EP_RESOURCE_CREATE).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader("mb.operation", "resource.get");
+    router.post(RouteConstants.EP_RESOURCE_CREATE).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader("mb.operation", "resource.create");
       eb.send(MessagebusEndpoints.MBEP_RESOURCE, routingContext.getBodyAsJson(), options, reply -> {
         if (reply.succeeded()) {
           // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions
@@ -103,10 +102,9 @@ public class ServerVerticle extends AbstractVerticle {
     });
     
     
-    router.route(RouteConstants.EP_RESOURCE_UPDATE).handler(routingContext -> {
+    router.put(RouteConstants.EP_RESOURCE_UPDATE).handler(routingContext -> {
       
     });
-    
     
     
     // TODO : This needs to be removed in production code
@@ -122,7 +120,7 @@ public class ServerVerticle extends AbstractVerticle {
     });
 
   }
-
+  
   private void intializeInternalRoutes(Router router, MetricsService metricsService) {
     router.route("/banner").handler(routingContext -> {
       JsonObject result = new JsonObject().put("Organisation", "gooru.org").put("Product", "nucleus").put("purpose", "api")
