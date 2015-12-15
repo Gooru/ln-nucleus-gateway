@@ -1,6 +1,7 @@
 package org.gooru.nucleus.gateway.routes;
 
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
+import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,7 @@ class RouteMetricsConfigurator implements RouteConfigurator {
 
     vertx.setPeriodic(metricsPeriodicitySeconds*1000, t -> {
       JsonObject metrics = metricsService.getMetricsSnapshot(vertx);
-      vertx.eventBus().publish("metrics", metrics);
+      vertx.eventBus().publish(MessagebusEndpoints.MBEP_METRICS, metrics);
     });
   }
 
