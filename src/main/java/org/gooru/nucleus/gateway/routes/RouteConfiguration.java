@@ -12,7 +12,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
   
   @Override
   public Iterator<RouteConfigurator> iterator() {
-    Iterator<RouteConfigurator> iterator = new Iterator() {
+    Iterator<RouteConfigurator> iterator = new Iterator<RouteConfigurator>() {
 
       @Override
       public boolean hasNext() {
@@ -20,7 +20,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
       }
 
       @Override
-      public Object next() {
+      public RouteConfigurator next() {
         return internalIterator.next();
       }
       
