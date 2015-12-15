@@ -6,10 +6,12 @@ import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
+import io.vertx.groovy.ext.web.handler.BodyHandler;
 import io.vertx.ext.dropwizard.MetricsService;
 
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
+import org.gooru.nucleus.gateway.constants.RouteConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +34,7 @@ public class ServerVerticle extends AbstractVerticle {
 
     final MetricsService metricsService = MetricsService.create(vertx);
     final Router router = Router.router(vertx);
+
     final long mbusTimeout = config().getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
     initializeRoutes(router, metricsService, mbusTimeout);
@@ -69,7 +72,44 @@ public class ServerVerticle extends AbstractVerticle {
     EventBus eb = vertx.eventBus();
 
     intializeInternalRoutes(router, metricsService);
+
     
+    router.route(RouteConstants.EP_RESOURCE_GET).handler(routingContext -> {
+      String resourceId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader("mb.operation", "resource.get")
+              .addHeader(RouteConstants.ID_RESOURCE, resourceId);
+      eb.send(MessagebusEndpoints.MBEP_RESOURCE, new JsonObject(), options, reply -> {
+        if (reply.succeeded()) {
+          // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions
+          routingContext.response().end(reply.result().body().toString());
+        } else {
+          LOG.error("Not able to send message", reply.cause());
+          routingContext.response().setStatusCode(500).end();
+        }
+      });
+    });
+    
+    router.route(RouteConstants.EP_RESOURCE_CREATE).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader("mb.operation", "resource.get");
+      eb.send(MessagebusEndpoints.MBEP_RESOURCE, routingContext.getBodyAsJson(), options, reply -> {
+        if (reply.succeeded()) {
+          // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions
+          routingContext.response().end(reply.result().body().toString());
+        } else {
+          LOG.error("Not able to send message", reply.cause());
+          routingContext.response().setStatusCode(500).end();
+        }
+      });      
+    });
+    
+    
+    router.route(RouteConstants.EP_RESOURCE_UPDATE).handler(routingContext -> {
+      
+    });
+    
+    
+    
+    // TODO : This needs to be removed in production code
     router.route("/").handler(routingContext -> {
       eb.send(MessagebusEndpoints.MBEP_RESOURCE, "ping!", new DeliveryOptions().setSendTimeout(mbusTimeout), reply -> {
         if (reply.succeeded()) {
