@@ -23,6 +23,9 @@ How to do stuff
 **Add new HTTP handler**
 * If the HTTP end point is going to be inline, then skip to next point. Otherwise, add a constant to MessagebusEndpoints.java
 * Add new route to RouteConstants.java
+* If this route belongs to one of existing Route Configurator, add it there, provide handler and you are done. 
+* Else create a new RouteConfigurator for that configuration
+* Provide its implementation
 * Apply the handle to specified route. If there is a need for separate delivery options, provide it
-* Handler should be able to handle the reply as well as error condition
-
+* Register the RouteConfigurator in RouteConfiguration
+* That is it
