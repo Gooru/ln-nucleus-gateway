@@ -22,20 +22,27 @@ class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
     }
     // TODO: Move hard coded strings out
     JsonObject jsonObject = (JsonObject)message.body();
-    return jsonObject.getJsonObject("prefs");
+    return jsonObject.getJsonObject(MessageConstants.MSG_KEY_PREFS);
   }
 
   public AuthPrefsMessageBusJsonResponseHolder(Message<Object> message) {
     this.message = message;
-    if (message == null) {
-      isAuthorized = false;
-    } else {
-      
+    if (message != null) {
       String result = message.headers().get(MessageConstants.MSG_OP_STATUS);
       if (result != null && result.equalsIgnoreCase(MessageConstants.MSG_OP_STATUS_SUCCESS)) {
         isAuthorized =  true;
       }
     }
+  }
+
+  @Override
+  public boolean isAnonymous() {
+    JsonObject jsonObject = (JsonObject)message.body();
+    String userId = jsonObject.getString(MessageConstants.MSG_USER_ID);
+    if (userId != null && !userId.isEmpty() && !userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS)) {
+      return false;
+    }
+    return true;
   }
   
 }

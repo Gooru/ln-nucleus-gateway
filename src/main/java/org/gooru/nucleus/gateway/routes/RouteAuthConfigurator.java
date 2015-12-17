@@ -10,6 +10,7 @@ import org.gooru.nucleus.gateway.responses.auth.AuthPrefsResponseHolderBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.netty.handler.codec.http.HttpMethod;
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
@@ -42,10 +43,18 @@ public class RouteAuthConfigurator implements RouteConfigurator {
         eBus.send(MessagebusEndpoints.MBEP_AUTH, null, options, reply -> {
           if (reply.succeeded()) {
             AuthPrefsResponseHolder responseHolder = new AuthPrefsResponseHolderBuilder(reply.result()).build();
+            // Message header would indicate whether the auth was successful or not. In addition, successful auth may have been
+            // for anonymous user. We allow only GET request for anonymous user (since we do not support head, trace, options etc so far)
             if (responseHolder.isAuthorized()) {
-              JsonObject prefs = responseHolder.getPreferences();
-              routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
-              routingContext.next();
+              if(!routingContext.request().method().equals(HttpMethod.GET) && responseHolder.isAnonymous()) {
+                routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
+                .end();                
+              } else {                
+                JsonObject prefs = responseHolder.getPreferences();
+                routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
+                routingContext.next();
+              }
             } else {
               routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
               .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
