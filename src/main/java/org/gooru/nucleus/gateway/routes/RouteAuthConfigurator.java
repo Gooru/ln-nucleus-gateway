@@ -47,8 +47,8 @@ public class RouteAuthConfigurator implements RouteConfigurator {
             // for anonymous user. We allow only GET request for anonymous user (since we do not support head, trace, options etc so far)
             if (responseHolder.isAuthorized()) {
               if(!routingContext.request().method().equals(HttpMethod.GET) && responseHolder.isAnonymous()) {
-                routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
+                routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
+                .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage())
                 .end();                
               } else {                
                 JsonObject prefs = responseHolder.getPreferences();

@@ -1,7 +1,5 @@
 package org.gooru.nucleus.gateway.responses;
 
-import org.gooru.nucleus.gateway.constants.MessageConstants;
-
 /**
  * This package contains the machinery required to deal with the responses. There are two different kind of responses:
  * 1. The responses which are coming from Message Bus which are to be used to continue the flow of program
