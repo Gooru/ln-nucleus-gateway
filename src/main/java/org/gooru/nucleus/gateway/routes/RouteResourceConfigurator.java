@@ -3,6 +3,8 @@ package org.gooru.nucleus.gateway.routes;
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
 import org.gooru.nucleus.gateway.constants.RouteConstants;
+import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformer;
+import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,11 +28,12 @@ class RouteResourceConfigurator implements RouteConfigurator {
     
     router.get(RouteConstants.EP_RESOURCE_GET).handler(routingContext -> {
       String resourceId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader("mb.operation", "resource.get")
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader("mb.operation", "resource.get")
               .addHeader(RouteConstants.ID_RESOURCE, resourceId);
       eb.send(MessagebusEndpoints.MBEP_RESOURCE, new JsonObject(), options, reply -> {
         if (reply.succeeded()) {
           // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions
+          ResponseTransformer transformer = new ResponseTransformerBuilder().build(reply.result());
           routingContext.response().end(reply.result().body().toString());
         } else {
           LOG.error("Not able to send message", reply.cause());
@@ -40,7 +43,7 @@ class RouteResourceConfigurator implements RouteConfigurator {
     });
     
     router.post(RouteConstants.EP_RESOURCE_CREATE).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader("mb.operation", "resource.create");
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader("mb.operation", "resource.create");
       eb.send(MessagebusEndpoints.MBEP_RESOURCE, routingContext.getBodyAsJson(), options, reply -> {
         if (reply.succeeded()) {
           // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions

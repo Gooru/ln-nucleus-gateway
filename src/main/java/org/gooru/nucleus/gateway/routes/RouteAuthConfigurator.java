@@ -37,7 +37,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
           .end();
       } else {        
         // If the session token is present, we send it to Message Bus for validation
-        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
+        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_AUTH_WITH_PREFS)
                 .addHeader(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
         eBus.send(MessagebusEndpoints.MBEP_AUTH, null, options, reply -> {
