@@ -46,7 +46,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
             // Message header would indicate whether the auth was successful or not. In addition, successful auth may have been
             // for anonymous user. We allow only GET request for anonymous user (since we do not support head, trace, options etc so far)
             if (responseHolder.isAuthorized()) {
-              if(!routingContext.request().method().equals(HttpMethod.GET) && responseHolder.isAnonymous()) {
+              if(!routingContext.request().method().name().equals(HttpMethod.GET.name()) && responseHolder.isAnonymous()) {
                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                 .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage())
                 .end();                
