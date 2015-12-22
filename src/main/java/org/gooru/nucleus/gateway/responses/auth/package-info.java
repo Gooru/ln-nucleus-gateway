@@ -11,4 +11,25 @@ package org.gooru.nucleus.gateway.responses.auth;
  * etc. The anonymous user is allowed to do GET operations. 
  * In future, there is a possibility that we may provide a registry here which can map permissibility 
  * of operation with respect to token coming auth module.
+ * 
+ * ---------------------|
+ * Message Headers      |
+ * ---------------------|
+ *                      |
+ * Message Body         |
+ *                      |
+ * ---------------------|
+ * 
+ * If header contains header named MessageConstants.MSG_OP_STATUS with header value MessageConstants.MSG_OP_STATUS_SUCCESS
+ * then request is successful and user is considered authorized.
+ * 
+ * The message body is JSON and should contain at least following key values, others may be present as well
+ * 
+ * key: MessageConstants.MSG_KEY_PREFS
+ * value: user preferences for taxonomy subjects and its mapping to framework. The value is Json object
+ * 
+ * key: MessageConstants.MSG_USER_ID
+ * value: user id of the user. In case of anonymous user we just check the value to be MessageConstants.MSG_USER_ANONYMOUS. The value 
+ *    is string
+ * 
  */
