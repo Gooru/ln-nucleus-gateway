@@ -27,7 +27,7 @@ package org.gooru.nucleus.gateway.responses.transformers;
  * value: Status code which needs to be sent as Http status code. Type is int.
  * 
  * key: MessageConstants.MSG_HTTP_HEADERS
- * value: Http headers that need to be sent. Type is Json Array of Json object which contains key as header names and values as header values.
+ * value: Http headers that need to be sent. Type is Json object which contains key as header names and values as header values.
  *     The keys and values should be string.
  * 
  * key: MessageConstants.MSG_HTTP_BODY

@@ -3,8 +3,7 @@ package org.gooru.nucleus.gateway.routes;
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
 import org.gooru.nucleus.gateway.constants.RouteConstants;
-import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformer;
-import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformerBuilder;
+import org.gooru.nucleus.gateway.responses.writers.ResponseWriterBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,9 +31,7 @@ class RouteResourceConfigurator implements RouteConfigurator {
               .addHeader(RouteConstants.ID_RESOURCE, resourceId);
       eb.send(MessagebusEndpoints.MBEP_RESOURCE, new JsonObject(), options, reply -> {
         if (reply.succeeded()) {
-          // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions
-          ResponseTransformer transformer = new ResponseTransformerBuilder().build(reply.result());
-          routingContext.response().end(reply.result().body().toString());
+          new ResponseWriterBuilder(routingContext, reply).build().writeResponse();
         } else {
           LOG.error("Not able to send message", reply.cause());
           routingContext.response().setStatusCode(500).end();
