@@ -13,6 +13,7 @@ import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext;
 
 class RouteResourceConfigurator implements RouteConfigurator {
 
@@ -30,7 +31,7 @@ class RouteResourceConfigurator implements RouteConfigurator {
       String resourceId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RES_GET)
               .addHeader(RouteConstants.ID_RESOURCE, resourceId);
-      eb.send(MessagebusEndpoints.MBEP_RESOURCE, new JsonObject(), options, reply -> {
+      eb.send(MessagebusEndpoints.MBEP_RESOURCE, getBodyForMessage(routingContext), options, reply -> {
         if (reply.succeeded()) {
           new ResponseWriterBuilder(routingContext, reply).build().writeResponse();
         } else {
@@ -42,7 +43,7 @@ class RouteResourceConfigurator implements RouteConfigurator {
     
     router.post(RouteConstants.EP_RESOURCE_CREATE).handler(routingContext -> {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RES_CREATE);
-      eb.send(MessagebusEndpoints.MBEP_RESOURCE, routingContext.getBodyAsJson(), options, reply -> {
+      eb.send(MessagebusEndpoints.MBEP_RESOURCE, getBodyForMessage(routingContext), options, reply -> {
         if (reply.succeeded()) {
           // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions
           routingContext.response().end(reply.result().body().toString());
@@ -57,6 +58,17 @@ class RouteResourceConfigurator implements RouteConfigurator {
     router.put(RouteConstants.EP_RESOURCE_UPDATE).handler(routingContext -> {
       
     });
+  }
+  
+  private JsonObject getBodyForMessage(RoutingContext routingContext) {
+    JsonObject result = new JsonObject();
+    JsonObject httpBody = routingContext.getBodyAsJson();
+    if (httpBody != null) {
+      result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
+    }
+    result.put(MessageConstants.MSG_KEY_PREFS, (JsonObject)routingContext.get(MessageConstants.MSG_KEY_PREFS));
+    result.put(MessageConstants.MSG_USER_ID, (String)routingContext.get(MessageConstants.MSG_USER_ID));
+    return result;
   }
 
 }
