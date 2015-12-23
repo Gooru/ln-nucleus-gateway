@@ -1,6 +1,7 @@
 package org.gooru.nucleus.gateway.routes;
 
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
+import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
 import org.gooru.nucleus.gateway.constants.RouteConstants;
 import org.gooru.nucleus.gateway.responses.writers.ResponseWriterBuilder;
@@ -27,7 +28,7 @@ class RouteResourceConfigurator implements RouteConfigurator {
     
     router.get(RouteConstants.EP_RESOURCE_GET).handler(routingContext -> {
       String resourceId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader("mb.operation", "resource.get")
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RES_GET)
               .addHeader(RouteConstants.ID_RESOURCE, resourceId);
       eb.send(MessagebusEndpoints.MBEP_RESOURCE, new JsonObject(), options, reply -> {
         if (reply.succeeded()) {
@@ -40,7 +41,7 @@ class RouteResourceConfigurator implements RouteConfigurator {
     });
     
     router.post(RouteConstants.EP_RESOURCE_CREATE).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader("mb.operation", "resource.create");
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RES_CREATE);
       eb.send(MessagebusEndpoints.MBEP_RESOURCE, routingContext.getBodyAsJson(), options, reply -> {
         if (reply.succeeded()) {
           // TODO: Even if we got a response, we need to render it correctly as we may have to send the errors or exceptions
