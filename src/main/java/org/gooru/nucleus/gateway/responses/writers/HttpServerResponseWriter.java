@@ -37,7 +37,7 @@ class HttpServerResponseWriter implements ResponseWriter {
       }
     }
     // Then it is turn of the body to be set and ending the response
-    final String responseBody = transformer.transformedBody().toString(); 
+    final String responseBody = transformer.transformedBody() != null ? transformer.transformedBody().toString() : null; 
     if (responseBody != null) {
       response.end(responseBody);
     } else {            
