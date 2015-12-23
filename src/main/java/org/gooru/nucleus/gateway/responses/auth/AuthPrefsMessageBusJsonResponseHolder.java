@@ -52,5 +52,12 @@ class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
       return false;
     }
     return true;
+  }
+
+  @Override
+  public String getUser() {
+    JsonObject jsonObject = (JsonObject)message.body();
+    String userId = jsonObject.getString(MessageConstants.MSG_USER_ID);
+    return userId;
   }  
 }

@@ -53,6 +53,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
               } else {                
                 JsonObject prefs = responseHolder.getPreferences();
                 routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
+                routingContext.put(MessageConstants.MSG_USER_ID, responseHolder.getUser());
                 routingContext.next();
               }
             } else {
