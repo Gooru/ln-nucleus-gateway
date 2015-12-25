@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
+import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
@@ -62,7 +63,10 @@ class RouteResourceConfigurator implements RouteConfigurator {
   
   private JsonObject getBodyForMessage(RoutingContext routingContext) {
     JsonObject result = new JsonObject();
-    JsonObject httpBody = routingContext.getBodyAsJson();
+    JsonObject httpBody = null;
+    if (!routingContext.request().method().name().equals(HttpMethod.GET.name())) {
+      httpBody = routingContext.getBodyAsJson();      
+    }
     if (httpBody != null) {
       result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
     }
