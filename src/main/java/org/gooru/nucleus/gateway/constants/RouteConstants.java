@@ -405,9 +405,9 @@ public class RouteConstants {
 
   // List 21st Century Skills =
   // /api/nucleus/{version}/taxonomy/21-century-skills
-  public static final String EP_21_CENTURY_SKILLS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_CEN21SKILLS;
+  public static final String EP_21_CENTURY_SKILLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_CEN21SKILLS;
 
   // List Grades = /api/nucleus/{version}/taxonomy/grades
-  public static final String EP_GRADES_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_GRADES;
+  public static final String EP_GRADES_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_GRADES;
 
 }
