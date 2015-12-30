@@ -2,6 +2,7 @@ package org.gooru.nucleus.gateway.responses.writers;
 
 import java.util.Map;
 
+import org.gooru.nucleus.gateway.constants.HttpConstants;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformer;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformerBuilder;
 import org.slf4j.Logger;
@@ -33,12 +34,16 @@ class HttpServerResponseWriter implements ResponseWriter {
     Map <String, String> headers = transformer.transformedHeaders();
     if (headers != null && !headers.isEmpty()) {            
       for (String headerName : headers.keySet()) {
-        response.putHeader(headerName, headers.get(headerName));
+        // Never accept content-length from others, we do that
+        if (!headerName.equalsIgnoreCase(HttpConstants.HEADER_CONTENT_LENGTH)) {
+          response.putHeader(headerName, headers.get(headerName));
+        }
       }
     }
     // Then it is turn of the body to be set and ending the response
     final String responseBody = ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ? transformer.transformedBody().toString() : null;
     if (responseBody != null) {
+      response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH, Integer.toString(responseBody.length()));
       response.end(responseBody);
     } else {            
       response.end();
