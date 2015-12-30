@@ -386,10 +386,10 @@ public class RouteConstants {
    * 
    */
   // List Depth of Knowledge = /api/nucleus/{version}/taxonomy/dok
-  public static final String EP_DOK_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + RES_DOK;
+  public static final String EP_DOK_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_DOK;
 
   // List Educational Use = /api/nucleus/{version}/lookups/educational-use
-  public static final String EP_EDUCATIONAL_USE_LIST = API_BASE_ROUTE + OP_LOOKUP + RES_EDUCATIONAL_USE;
+  public static final String EP_EDUCATIONAL_USE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_EDUCATIONAL_USE;
 
   // List Access Hazards = /api/nucleus/{version}/lookups/access-hazards
   public static final String EP_ACCESS_HAZARDS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_ACCESS_HAZARDS;
@@ -398,16 +398,16 @@ public class RouteConstants {
   public static final String EP_READING_LEVELS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_READING_LEVELS;
 
   // List Advertisement Status in Content = /api/nucleus/{version}/lookups/ads
-  public static final String EP_AD_STATUS_LIST = API_BASE_ROUTE + OP_LOOKUP + RES_ADS;
+  public static final String EP_AD_STATUS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_ADS;
 
   // List Media Features = /api/nucleus/{version}/lookups/media-features
   public static final String EP_MEDIA_FEATURES_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_MEDIA_FEATURES;
 
   // List 21st Century Skills =
-  // /api/nucleus/{version}/taxonomy/21-century-skills
+  // /api/nucleus/{version}/lookups/21-century-skills
   public static final String EP_21_CENTURY_SKILLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_CEN21SKILLS;
 
-  // List Grades = /api/nucleus/{version}/taxonomy/grades
+  // List Grades = /api/nucleus/{version}/lookups/grades
   public static final String EP_GRADES_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_GRADES;
 
 }
