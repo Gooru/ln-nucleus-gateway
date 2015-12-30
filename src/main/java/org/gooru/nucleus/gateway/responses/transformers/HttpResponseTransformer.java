@@ -41,16 +41,19 @@ class HttpResponseTransformer implements ResponseTransformer {
 
   @Override
   public JsonObject transformedBody() {
+    transform();
     return this.httpBody;
   }
 
   @Override
   public Map<String, String> transformedHeaders() {
+    transform();
     return this.headers;
   }
 
   @Override
   public int transformedStatus() {
+    transform();
     return this.httpStatus;
   }
 
@@ -62,15 +65,15 @@ class HttpResponseTransformer implements ResponseTransformer {
     
     // Then initialize the headers
     processHeaders(messageBody);
-    
+    JsonObject httpBodyContainer = messageBody.getJsonObject(MessageConstants.MSG_HTTP_BODY);
     // Now delegate the body handling
     String result = message.headers().get(MessageConstants.MSG_OP_STATUS);
     if (result != null && result.equalsIgnoreCase(MessageConstants.MSG_OP_STATUS_SUCCESS)) {
-      processSuccessTransformation(messageBody);
+      processSuccessTransformation(httpBodyContainer);
     } else if (result != null && result.equalsIgnoreCase(MessageConstants.MSG_OP_STATUS_ERROR)) {
-      processErrorTransformation(messageBody);
+      processErrorTransformation(httpBodyContainer);
     } else if (result != null && result.equalsIgnoreCase(MessageConstants.MSG_OP_STATUS_VALIDATION_ERROR)) {
-      processValidationErrorTransformation(messageBody);
+      processValidationErrorTransformation(httpBodyContainer);
     } else {
       LOG.error("Invalid or incorrect message header passed on for operation");
       throw new IllegalStateException("Invalid or incorrect message header passed on for operation");
