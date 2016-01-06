@@ -54,6 +54,8 @@ public class RouteConstants {
   public static final String RES_MEDIA_FEATURES = "media-features";
   public static final String RES_CEN21SKILLS = "21-century-skills";
   public static final String RES_GRADES = "grades";
+  public static final String RES_MOMENTS = "moments";
+  public static final String RES_AUDIENCE = "audience";
   public static final String SEP = "/";
   public static final String COLON = ":";
 
@@ -385,8 +387,8 @@ public class RouteConstants {
    * String EP_
    * 
    */
-  // List Depth of Knowledge = /api/nucleus/{version}/taxonomy/dok
-  public static final String EP_DOK_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_DOK;
+  // List Depth of Knowledge = /api/nucleus/{version}/lookup/dok
+  public static final String EP_DOK_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_DOK;
 
   // List Educational Use = /api/nucleus/{version}/lookups/educational-use
   public static final String EP_EDUCATIONAL_USE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_EDUCATIONAL_USE;
@@ -409,5 +411,11 @@ public class RouteConstants {
 
   // List Grades = /api/nucleus/{version}/lookups/grades
   public static final String EP_GRADES_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_GRADES;
+
+  // List moments of learning = /api.nucleus/{version}/lookup/moments
+  public static final String EP_MOMENTS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_MOMENTS;
+
+  // List Audience = /api/nucleus/{version}/lookups/audience
+  public static final String EP_AUDIENCE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_AUDIENCE;
 
 }

@@ -34,5 +34,8 @@ public class MessageConstants {
   public static final String MSG_OP_LKUP_MEDIA_FEATURES = "media.features";
   public static final String MSG_OP_LKUP_GRADE = "grades";
   public static final String MSG_OP_LKUP_21_CEN_SKILLS = "21.cen.skills";
+  public static final String MSG_OP_LKUP_AUDIENCE = "audience";
+  public static final String MSG_OP_LKUP_MOMENTS = "moments";
+  public static final String MSG_OP_LKUP_DOK = "dok";
 
 }

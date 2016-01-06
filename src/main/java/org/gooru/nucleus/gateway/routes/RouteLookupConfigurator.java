@@ -86,6 +86,31 @@ class RouteLookupConfigurator implements RouteConfigurator {
       });
     });
 
+
+    router.get(RouteConstants.EP_DOK_LIST).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_DOK);
+      eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOG);
+      });
+    });
+
+
+    router.get(RouteConstants.EP_MOMENTS_LIST).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_MOMENTS);
+      eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOG);
+      });
+    });
+
+    router.get(RouteConstants.EP_AUDIENCE_LIST).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_AUDIENCE);
+      eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOG);
+      });
+    });
   }
 
 }
