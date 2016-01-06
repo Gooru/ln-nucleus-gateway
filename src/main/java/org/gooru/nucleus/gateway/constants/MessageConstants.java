@@ -38,4 +38,14 @@ public class MessageConstants {
   public static final String MSG_OP_LKUP_MOMENTS = "moments";
   public static final String MSG_OP_LKUP_DOK = "dok";
 
+  public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
+  public static final String MSG_OP_ASSESSMENT_CREATE = "assessment.create";
+  public static final String MSG_OP_ASSESSMENT_UPDATE = "assessment.update";
+  public static final String MSG_OP_ASSESSMENT_DELETE = "assessment.delete";
+  public static final String MSG_OP_ASSESSMENT_COLLABORATOR_GET = "assessment.collaborator.get";
+  public static final String MSG_OP_ASSESSMENT_COLLABORATOR_UPDATE = "assessment.collaborator.update";
+  public static final String MSG_OP_ASSESSMENT_REMOVE_QUESTION = "assessment.question.remove";
+  public static final String MSG_OP_ASSESSMENT_COPY_QUESTION = "assessment.question.copy";
+  public static final String MSG_OP_ASSESSMENT_ADD_QUESTION = "assessment.question.add";
+  public static final String MSG_OP_ASSESSMENT_QUESTION_REORDER = "assessment.question.reorder";
 }

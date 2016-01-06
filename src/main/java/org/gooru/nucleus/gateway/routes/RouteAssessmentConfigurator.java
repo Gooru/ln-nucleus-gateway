@@ -27,28 +27,106 @@ public class RouteAssessmentConfigurator implements RouteConfigurator {
 
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
-    router.get(RouteConstants.EP_ASSESSMENT_GET).handler(routingContext -> {});
+    router.get(RouteConstants.EP_ASSESSMENT_GET).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_GET)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
 
-    router.post(RouteConstants.EP_ASSESSMENT_CREATE).handler(routingContext -> {});
+    });
 
-    router.put(RouteConstants.EP_ASSESSMENT_UPDATE).handler(routingContext -> {});
+    router.post(RouteConstants.EP_ASSESSMENT_CREATE).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_CREATE);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
 
-    router.delete(RouteConstants.EP_ASSESSMENT_DELETE).handler(routingContext -> {});
+    });
 
-    router.post(RouteConstants.EP_ASSESSMENT_ADD_QUESTION).handler(routingContext -> {});
+    router.put(RouteConstants.EP_ASSESSMENT_UPDATE).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_UPDATE)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+    });
 
-    router.delete(RouteConstants.EP_ASSESSMENT_REMOVE_QUESTION).handler(routingContext -> {});
+    router.delete(RouteConstants.EP_ASSESSMENT_DELETE).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_DELETE)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+
+    });
+
+    router.post(RouteConstants.EP_ASSESSMENT_ADD_QUESTION).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_ADD_QUESTION)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+
+    });
+
+    router.delete(RouteConstants.EP_ASSESSMENT_REMOVE_QUESTION).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      String questionId = routingContext.request().getParam(RouteConstants.ID_QUESTION);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_REMOVE_QUESTION)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId).addHeader(RouteConstants.ID_QUESTION, questionId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+
+    });
 
     // TODO: Validate the method types
-    router.put(RouteConstants.EP_ASSESSMENT_COPY_QUESTION).handler(routingContext -> {});
+    router.put(RouteConstants.EP_ASSESSMENT_COPY_QUESTION).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_COPY_QUESTION)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+
+    });
 
     // TODO: Validate the method type
-    router.put(RouteConstants.EP_ASSESSMENT_QUESTION_REORDER).handler(routingContext -> {});
+    router.put(RouteConstants.EP_ASSESSMENT_QUESTION_REORDER).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_QUESTION_REORDER)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+
+    });
 
     // TODO: Validate the method type
-    router.put(RouteConstants.EP_ASSESSMENT_COLLABORATORS_UPDATE).handler(routingContext -> {});
+    router.put(RouteConstants.EP_ASSESSMENT_COLLABORATORS_UPDATE).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_COLLABORATOR_UPDATE)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
 
-    router.get(RouteConstants.EP_ASSESSMENT_COLLABORATORS_GET).handler(routingContext -> {});
+    });
+
+    router.get(RouteConstants.EP_ASSESSMENT_COLLABORATORS_GET).handler(routingContext -> {
+      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_COLLABORATOR_GET)
+                                                     .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+
+    });
 
 
 
