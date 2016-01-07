@@ -85,7 +85,6 @@ public class RouteAssessmentConfigurator implements RouteConfigurator {
 
     });
 
-    // TODO: Validate the method types
     router.put(RouteConstants.EP_ASSESSMENT_COPY_QUESTION).handler(routingContext -> {
       String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_COPY_QUESTION)
@@ -96,7 +95,6 @@ public class RouteAssessmentConfigurator implements RouteConfigurator {
 
     });
 
-    // TODO: Validate the method type
     router.put(RouteConstants.EP_ASSESSMENT_QUESTION_REORDER).handler(routingContext -> {
       String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_QUESTION_REORDER)
@@ -107,7 +105,6 @@ public class RouteAssessmentConfigurator implements RouteConfigurator {
 
     });
 
-    // TODO: Validate the method type
     router.put(RouteConstants.EP_ASSESSMENT_COLLABORATORS_UPDATE).handler(routingContext -> {
       String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout*1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_COLLABORATOR_UPDATE)
