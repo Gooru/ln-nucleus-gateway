@@ -39,15 +39,6 @@ public class RouteQuestionConfigurator implements RouteConfigurator {
       });
     });
 
-    router.post(RouteConstants.EP_QUESTION_CREATE).handler(routingContext -> {
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_CREATE);
-      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
-    });
-
-
     router.put(RouteConstants.EP_QUESTION_UPDATE).handler(routingContext -> {
       String resourceId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
       DeliveryOptions options =
@@ -57,6 +48,16 @@ public class RouteQuestionConfigurator implements RouteConfigurator {
         new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
       });
     });
+
+    router.post(RouteConstants.EP_QUESTION_CREATE).handler(routingContext -> {
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_CREATE);
+      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
+        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
+      });
+    });
+
+
   }
 
 }
