@@ -15,9 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by ashish on 6/1/16.
+ * Created by ashish on 11/1/16.
  */
-public class RouteCourseConfigurator implements RouteConfigurator {
+public class RouteUnitConfigurator implements RouteConfigurator {
 
   public static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
 
@@ -28,73 +28,57 @@ public class RouteCourseConfigurator implements RouteConfigurator {
 
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
-    router.get(RouteConstants.EP_COURSE_GET).handler(routingContext -> {
+    router.get(RouteConstants.EP_UNIT_GET).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_GET)
-                             .addHeader(RouteConstants.ID_COURSE, courseId);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_GET)
+                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
         new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
       });
     });
 
-    router.put(RouteConstants.EP_COURSE_UPDATE).handler(routingContext -> {
+    router.put(RouteConstants.EP_UNIT_UPDATE).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_UPDATE)
-                             .addHeader(RouteConstants.ID_COURSE, courseId);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_UPDATE)
+                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
         new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
       });
     });
 
-    router.delete(RouteConstants.EP_COURSE_DELETE).handler(routingContext -> {
+    router.delete(RouteConstants.EP_UNIT_DELETE).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_DELETE)
-                             .addHeader(RouteConstants.ID_COURSE, courseId);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_DELETE)
+                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
         new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
       });
     });
 
-    router.post(RouteConstants.EP_COURSE_CREATE).handler(routingContext -> {
+    router.post(RouteConstants.EP_UNIT_CREATE).handler(routingContext -> {
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_CREATE);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CREATE);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
         new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
       });
     });
 
-
-    router.get(RouteConstants.EP_COURSE_COLLABORATOR_GET).handler(routingContext -> {
+    router.put(RouteConstants.EP_UNIT_CONTENT_REORDER).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
+
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_COLLABORATOR_GET)
-                             .addHeader(RouteConstants.ID_COURSE, courseId);
-      eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
-    });
-
-    router.put(RouteConstants.EP_COURSE_COLLABORATOR_UPDATE).handler(routingContext -> {
-      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_COLLABORATOR_UPDATE)
-                             .addHeader(RouteConstants.ID_COURSE, courseId);
-      eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
-    });
-
-    router.put(RouteConstants.EP_COURSE_CONTENT_REORDER).handler(routingContext -> {
-      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_CONTENT_REORDER)
-                             .addHeader(RouteConstants.ID_COURSE, courseId);
+                             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CONTENT_REORDER)
+                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
         new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
       });
