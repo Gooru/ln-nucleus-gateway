@@ -65,8 +65,30 @@ public class MessageConstants {
   public static final String MSG_OP_COLLECTION_RESOURCE_COPY = "collection.resource.copy";
   public static final String MSG_OP_COLLECTION_RESOURCE_REMOVE = "collection.resource.remove";
   public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
-
+  // Question Operations
   public static final String MSG_OP_QUESTION_GET = "question.get";
   public static final String MSG_OP_QUESTION_CREATE = "question.create";
   public static final String MSG_OP_QUESTION_UPDATE = "question.update";
+  // Course Operations
+  public static final String MSG_OP_COURSE_GET = "course.get";
+  public static final String MSG_OP_COURSE_CREATE = "course.create";
+  public static final String MSG_OP_COURSE_UPDATE = "course.update";
+  public static final String MSG_OP_COURSE_DELETE = "course.delete";
+  public static final String MSG_OP_COURSE_COLLABORATOR_GET = "course.collaborator.get";
+  public static final String MSG_OP_COURSE_COLLABORATOR_UPDATE = "course.collaborator.update";
+  public static final String MSG_OP_COURSE_CONTENT_REORDER = "course.content.reorder";
+  public static final String MSG_OP_COURSE_COPY = "course.copy";
+  public static final String MSG_OP_UNIT_GET = "unit.get";
+  public static final String MSG_OP_UNIT_CREATE = "unit.create";
+  public static final String MSG_OP_UNIT_UPDATE = "unit.update";
+  public static final String MSG_OP_UNIT_DELETE = "unit.delete";
+  public static final String MSG_OP_UNIT_CONTENT_REORDER = "unit.content.reorder";
+  public static final String MSG_OP_UNIT_COPY = "unit.copy";
+  public static final String MSG_OP_LESSON_GET = "lesson.get";
+  public static final String MSG_OP_LESSON_CREATE = "lesson.create";
+  public static final String MSG_OP_LESSON_UPDATE = "lesson.update";
+  public static final String MSG_OP_LESSON_DELETE = "lesson.delete";
+  public static final String MSG_OP_LESSON_CONTENT_REORDER = "lesson.content.reorder";
+  public static final String MSG_OP_LESSON_COPY = "lesson.copy";
+
 }
