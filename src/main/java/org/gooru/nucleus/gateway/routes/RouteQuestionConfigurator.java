@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RouteQuestionConfigurator implements RouteConfigurator {
 
-  static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
@@ -34,9 +34,8 @@ public class RouteQuestionConfigurator implements RouteConfigurator {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_GET)
                              .addHeader(RouteConstants.ID_QUESTION, resourceId);
-      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.put(RouteConstants.EP_QUESTION_UPDATE).handler(routingContext -> {
@@ -44,17 +43,15 @@ public class RouteQuestionConfigurator implements RouteConfigurator {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_UPDATE)
                              .addHeader(RouteConstants.ID_QUESTION, resourceId);
-      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.post(RouteConstants.EP_QUESTION_CREATE).handler(routingContext -> {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_CREATE);
-      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
 

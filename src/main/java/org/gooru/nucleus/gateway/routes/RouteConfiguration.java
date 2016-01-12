@@ -7,32 +7,13 @@ import java.util.List;
 
 public class RouteConfiguration implements Iterable<RouteConfigurator> {
 
-  private List<RouteConfigurator> configurators = null;
-  private Iterator<RouteConfigurator> internalIterator;
-  
-  @Override
-  public Iterator<RouteConfigurator> iterator() {
-    Iterator<RouteConfigurator> iterator = new Iterator<RouteConfigurator>() {
+  private final Iterator<RouteConfigurator> internalIterator;
 
-      @Override
-      public boolean hasNext() {
-        return internalIterator.hasNext();
-      }
-
-      @Override
-      public RouteConfigurator next() {
-        return internalIterator.next();
-      }
-      
-    };
-    return iterator;
-  }
-  
   public RouteConfiguration() {
-    configurators = new ArrayList<RouteConfigurator>();
+    List<RouteConfigurator> configurators = new ArrayList<>();
     // First the global handler to enable to body reading etc
     configurators.add(new RouteGlobalConfigurator());
-    
+
     // For rest of handlers, Auth should always be first one
     configurators.add(new RouteAuthConfigurator());
     configurators.add(new RouteInternalConfigurator());
@@ -47,6 +28,23 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteLessonConfigurator());
     configurators.add(new RouteTaxonomyConfigurator());
     internalIterator = configurators.iterator();
+  }
+
+  @Override
+  public Iterator<RouteConfigurator> iterator() {
+    return new Iterator<RouteConfigurator>() {
+
+      @Override
+      public boolean hasNext() {
+        return internalIterator.hasNext();
+      }
+
+      @Override
+      public RouteConfigurator next() {
+        return internalIterator.next();
+      }
+
+    };
   }
 
 

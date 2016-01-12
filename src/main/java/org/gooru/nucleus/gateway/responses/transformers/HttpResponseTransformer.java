@@ -1,19 +1,18 @@
 package org.gooru.nucleus.gateway.responses.transformers;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import io.vertx.core.eventbus.Message;
+import io.vertx.core.json.JsonObject;
 import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.vertx.core.eventbus.Message;
-import io.vertx.core.json.JsonObject;
+import java.util.HashMap;
+import java.util.Map;
 
 class HttpResponseTransformer implements ResponseTransformer {
 
-  static final Logger LOG = LoggerFactory.getLogger(ResponseTransformer.class);
-  private Message<Object> message;
+  private static final Logger LOG = LoggerFactory.getLogger(ResponseTransformer.class);
+  private final Message<Object> message;
   private boolean transformed = false;
   private Map<String, String> headers;
   private int httpStatus;
@@ -30,7 +29,7 @@ class HttpResponseTransformer implements ResponseTransformer {
       throw new IllegalArgumentException("Message body should be JsonObject");
     }
   }
-  
+
   @Override
   public void transform() {
     if (!this.transformed) {
@@ -58,11 +57,11 @@ class HttpResponseTransformer implements ResponseTransformer {
   }
 
   private void processTransformation() {
-    JsonObject messageBody = (JsonObject)message.body();
-    
+    JsonObject messageBody = (JsonObject) message.body();
+
     // First initialize the http status
     this.httpStatus = messageBody.getInteger(MessageConstants.MSG_HTTP_STATUS);
-    
+
     // Then initialize the headers
     processHeaders(messageBody);
     JsonObject httpBodyContainer = messageBody.getJsonObject(MessageConstants.MSG_HTTP_BODY);
@@ -87,7 +86,7 @@ class HttpResponseTransformer implements ResponseTransformer {
     this.headers = new HashMap<>();
     if (jsonHeaders != null && !jsonHeaders.isEmpty()) {
       Map<String, Object> headerMap = jsonHeaders.getMap();
-      for(String headerName : headerMap.keySet()) {
+      for (String headerName : headerMap.keySet()) {
         this.headers.put(headerName, headerMap.get(headerName).toString());
       }
     }
@@ -104,7 +103,6 @@ class HttpResponseTransformer implements ResponseTransformer {
   private void processSuccessTransformation(JsonObject messageBody) {
     this.httpBody = messageBody.getJsonObject(MessageConstants.MSG_HTTP_RESPONSE);
   }
-
 
 
 }

@@ -5,7 +5,6 @@ package org.gooru.nucleus.gateway.constants;
  * It contains the definition for the "Message Bus End Points" which are addresses on which the consumers are listening.
  * Note that these definitions are for gateway, and each end point would be defined in their own component as well. This means that
  * if there is any change here, there must be a corresponding change in the consumer as well.
- *
  */
 public class MessagebusEndpoints {
   public static final String MBEP_RESOURCE = "org.gooru.nucleus.message.bus.resource";
@@ -22,8 +21,8 @@ public class MessagebusEndpoints {
   public static final String MBEP_UPLOAD = "org.gooru.nucleus.message.bus.upload";
   public static final String MBEP_EVENT = "org.gooru.nucleus.message.bus.publisher.event";
   public static final String MBEP_JOB = "org.gooru.nucleus.message.bus.job";
-  
-  
+
+
   public static final String MBEP_PREFS = "org.gooru.nucleus.message.bus.prefs";
   public static final String MBEP_CONTENT_FLAG = "org.gooru.nucleus.message.bus.content.flag";
   public static final String MBEP_CONTENT_PUBLISH = "org.gooru.nucleus.message.bus.content.publish";

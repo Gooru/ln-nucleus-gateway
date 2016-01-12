@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 public class RouteCollectionConfigurator implements RouteConfigurator {
 
 
-  static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
@@ -33,18 +33,16 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_GET)
                              .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
     router.post(RouteConstants.EP_COLLECTION_CREATE).handler(routingContext -> {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_CREATE);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -53,9 +51,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_UPDATE)
                              .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.delete(RouteConstants.EP_COLLECTION_DELETE).handler(routingContext -> {
@@ -63,9 +60,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_DELETE)
                              .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -74,9 +70,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_QUESTION_ADD)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -87,9 +82,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_QUESTION_REMOVE)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId)
                                                      .addHeader(RouteConstants.ID_QUESTION, questionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -100,9 +94,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_QUESTION_UPDATE)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId)
                                                      .addHeader(RouteConstants.ID_QUESTION, questionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
     router.put(RouteConstants.EP_COLLECTION_QUESTION_COPY).handler(routingContext -> {
@@ -110,9 +103,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_QUESTION_COPY)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -121,9 +113,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_RESOURCE_ADD)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -134,9 +125,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_RESOURCE_REMOVE)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId)
                                                      .addHeader(RouteConstants.ID_RESOURCE, resourceId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -147,9 +137,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_RESOURCE_UPDATE)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId)
                                                      .addHeader(RouteConstants.ID_RESOURCE, resourceId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -159,9 +148,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_RESOURCE_COPY)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -171,9 +159,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_CONTENT_REORDER)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -182,9 +169,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
         MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_UPDATE)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
@@ -193,9 +179,8 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_GET)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options, reply -> {
-        new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER);
-      });
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 

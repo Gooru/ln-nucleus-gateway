@@ -1,22 +1,21 @@
 package org.gooru.nucleus.gateway.responses.auth;
 
+import io.vertx.core.eventbus.Message;
+import io.vertx.core.json.JsonObject;
 import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.vertx.core.eventbus.Message;
-import io.vertx.core.json.JsonObject;
-
 class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
 
-  private Message<Object> message;
+  private static final Logger LOG = LoggerFactory.getLogger(AuthPrefsResponseHolder.class);
+  private final Message<Object> message;
   private boolean isAuthorized = false;
-  static final Logger LOG = LoggerFactory.getLogger(AuthPrefsResponseHolder.class);
 
   public AuthPrefsMessageBusJsonResponseHolder(Message<Object> message) {
     this.message = message;
-    LOG.debug("Received response from Auth End point : {}", message.body().toString());
     if (message != null) {
+      LOG.debug("Received response from Auth End point : {}", message.body().toString());
       if (!(message.body() instanceof JsonObject)) {
         LOG.error("Message body is NOT JsonObject");
         throw new IllegalArgumentException("Message body should be initialized with JsonObject");
@@ -24,11 +23,11 @@ class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
       String result = message.headers().get(MessageConstants.MSG_OP_STATUS);
       LOG.debug("Received header from Auth response : {}", result);
       if (result != null && result.equalsIgnoreCase(MessageConstants.MSG_OP_STATUS_SUCCESS)) {
-        isAuthorized =  true;
+        isAuthorized = true;
       }
     }
   }
-  
+
   @Override
   public boolean isAuthorized() {
     return isAuthorized;
@@ -36,28 +35,24 @@ class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
 
   @Override
   public JsonObject getPreferences() {
-    if (!isAuthorized) {      
+    if (!isAuthorized) {
       return null;
     }
-    JsonObject jsonObject = (JsonObject)message.body();
+    JsonObject jsonObject = (JsonObject) message.body();
     return jsonObject.getJsonObject(MessageConstants.MSG_KEY_PREFS);
-    
+
   }
 
   @Override
   public boolean isAnonymous() {
-    JsonObject jsonObject = (JsonObject)message.body();
+    JsonObject jsonObject = (JsonObject) message.body();
     String userId = jsonObject.getString(MessageConstants.MSG_USER_ID);
-    if (userId != null && !userId.isEmpty() && !userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS)) {
-      return false;
-    }
-    return true;
+    return !(userId != null && !userId.isEmpty() && !userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS));
   }
 
   @Override
   public String getUser() {
-    JsonObject jsonObject = (JsonObject)message.body();
-    String userId = jsonObject.getString(MessageConstants.MSG_USER_ID);
-    return userId;
-  }  
+    JsonObject jsonObject = (JsonObject) message.body();
+    return jsonObject.getString(MessageConstants.MSG_USER_ID);
+  }
 }
