@@ -28,6 +28,18 @@ public class RouteUnitConfigurator implements RouteConfigurator {
 
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
+    router.put(RouteConstants.EP_UNIT_CONTENT_REORDER).handler(routingContext -> {
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
+
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CONTENT_REORDER)
+                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
+      eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+
     router.get(RouteConstants.EP_UNIT_GET).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
       String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
@@ -63,18 +75,6 @@ public class RouteUnitConfigurator implements RouteConfigurator {
 
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CREATE);
-      eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-    });
-
-    router.put(RouteConstants.EP_UNIT_CONTENT_REORDER).handler(routingContext -> {
-      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
-      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
-
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CONTENT_REORDER)
-                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });

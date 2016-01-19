@@ -28,6 +28,19 @@ public class RouteLessonConfigurator implements RouteConfigurator {
 
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
+    router.put(RouteConstants.EP_LESSON_CONTENT_REORDER).handler(routingContext -> {
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
+      String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
+
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_GET)
+                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                             .addHeader(RouteConstants.ID_LESSON, lessonId);
+      eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+
     router.get(RouteConstants.EP_LESSON_GET).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
       String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
@@ -69,19 +82,6 @@ public class RouteLessonConfigurator implements RouteConfigurator {
 
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CREATE);
-      eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-    });
-
-    router.put(RouteConstants.EP_LESSON_CONTENT_REORDER).handler(routingContext -> {
-      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
-      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
-      String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
-
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_GET)
-                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                             .addHeader(RouteConstants.ID_LESSON, lessonId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
