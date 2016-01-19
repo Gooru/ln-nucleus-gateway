@@ -180,7 +180,7 @@ public class RouteConstants {
   // Copy an Existing Question to Assessment =
   // /api/nucleus/{version}/assessments/{assessment-id}/questions
   public static final String EP_ASSESSMENT_QUESTION_COPY =
-    API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_ASSESSMENTS;
+    API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_ASSESSMENTS + SEP + ENTITY_QUESTIONS;
   // Reorder Questions in Assessments =
   // /api/nucleus/{version}/assessments/{assessment-id}/questions/order
   public static final String EP_ASSESSMENT_QUESTION_REORDER =

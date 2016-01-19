@@ -27,48 +27,31 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
     final EventBus eb = vertx.eventBus();
 
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
-
-    router.get(RouteConstants.EP_COLLECTION_GET).handler(routingContext -> {
-      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_GET)
-                             .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-
-    });
-
-    router.post(RouteConstants.EP_COLLECTION_CREATE).handler(routingContext -> {
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_CREATE);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-
-    });
-
-    router.put(RouteConstants.EP_COLLECTION_UPDATE).handler(routingContext -> {
-      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_UPDATE)
-                             .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-    });
-
-    router.delete(RouteConstants.EP_COLLECTION_DELETE).handler(routingContext -> {
-      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_DELETE)
-                             .addHeader(RouteConstants.ID_COLLECTION, collectionId);
-      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-
-    });
-
-    router.post(RouteConstants.EP_COLLECTION_QUESTION_ADD).handler(routingContext -> {
+    router.put(RouteConstants.EP_COLLECTION_CONTENT_REORDER).handler(routingContext -> {
       String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_QUESTION_ADD)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_CONTENT_REORDER)
+                                                     .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+
+    });
+
+
+    router.put(RouteConstants.EP_COLLECTION_COLLABORATORS_UPDATE).handler(routingContext -> {
+      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+        MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_UPDATE)
+                                                     .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+
+    });
+
+    router.get(RouteConstants.EP_COLLECTION_COLLABORATORS_GET).handler(routingContext -> {
+      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_GET)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
       eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
@@ -98,6 +81,7 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
+
     router.put(RouteConstants.EP_COLLECTION_QUESTION_COPY).handler(routingContext -> {
       String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
@@ -108,10 +92,10 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
 
     });
 
-    router.post(RouteConstants.EP_COLLECTION_RESOURCE_ADD).handler(routingContext -> {
+    router.post(RouteConstants.EP_COLLECTION_QUESTION_ADD).handler(routingContext -> {
       String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_RESOURCE_ADD)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_QUESTION_ADD)
                                                      .addHeader(RouteConstants.ID_COLLECTION, collectionId);
       eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
@@ -142,6 +126,16 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
 
     });
 
+    router.post(RouteConstants.EP_COLLECTION_RESOURCE_ADD).handler(routingContext -> {
+      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_RESOURCE_ADD)
+                                                     .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+
+    });
+
 
     router.put(RouteConstants.EP_COLLECTION_RESOURCE_COPY).handler(routingContext -> {
       String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
@@ -153,32 +147,38 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
 
     });
 
-
-    router.put(RouteConstants.EP_COLLECTION_CONTENT_REORDER).handler(routingContext -> {
+    router.put(RouteConstants.EP_COLLECTION_UPDATE).handler(routingContext -> {
       String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_CONTENT_REORDER)
-                                                     .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_UPDATE)
+                             .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+      eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+
+    router.delete(RouteConstants.EP_COLLECTION_DELETE).handler(routingContext -> {
+      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_DELETE)
+                             .addHeader(RouteConstants.ID_COLLECTION, collectionId);
       eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
-    router.put(RouteConstants.EP_COLLECTION_COLLABORATORS_UPDATE).handler(routingContext -> {
+    router.get(RouteConstants.EP_COLLECTION_GET).handler(routingContext -> {
       String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
-        MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_UPDATE)
-                                                     .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_GET)
+                             .addHeader(RouteConstants.ID_COLLECTION, collectionId);
       eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
     });
 
-    router.get(RouteConstants.EP_COLLECTION_COLLABORATORS_GET).handler(routingContext -> {
-      String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_GET)
-                                                     .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+    router.post(RouteConstants.EP_COLLECTION_CREATE).handler(routingContext -> {
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_CREATE);
       eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
