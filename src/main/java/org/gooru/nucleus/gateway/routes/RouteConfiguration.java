@@ -23,7 +23,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteAssessmentConfigurator());
     configurators.add(new RouteClassConfigurator());
     configurators.add(new RouteCollectionConfigurator());
-    // Order may be important for CUL 
+    // Order may be important for CUL
     configurators.add(new RouteLessonConfigurator());
     configurators.add(new RouteUnitConfigurator());
     configurators.add(new RouteCourseConfigurator());
