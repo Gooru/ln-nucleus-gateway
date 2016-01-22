@@ -32,10 +32,9 @@ public class RouteUnitConfigurator implements RouteConfigurator {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
       String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
 
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CONTENT_REORDER)
-                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CONTENT_REORDER)
+                                                     .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
@@ -74,7 +73,8 @@ public class RouteUnitConfigurator implements RouteConfigurator {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
 
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CREATE);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_UNIT_CREATE)
+                             .addHeader(RouteConstants.ID_COURSE, courseId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });

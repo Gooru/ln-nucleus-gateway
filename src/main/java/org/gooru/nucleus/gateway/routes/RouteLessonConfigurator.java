@@ -33,10 +33,10 @@ public class RouteLessonConfigurator implements RouteConfigurator {
       String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
       String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
 
-      DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_GET)
-                             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                             .addHeader(RouteConstants.ID_LESSON, lessonId);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CONTENT_REORDER)
+                                                     .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                                                     .addHeader(RouteConstants.ID_LESSON, lessonId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
@@ -58,7 +58,7 @@ public class RouteLessonConfigurator implements RouteConfigurator {
       String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
       String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_GET)
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_UPDATE)
                              .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
                              .addHeader(RouteConstants.ID_LESSON, lessonId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
@@ -70,7 +70,7 @@ public class RouteLessonConfigurator implements RouteConfigurator {
       String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
       String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_GET)
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_DELETE)
                              .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
                              .addHeader(RouteConstants.ID_LESSON, lessonId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
@@ -79,9 +79,11 @@ public class RouteLessonConfigurator implements RouteConfigurator {
 
     router.post(RouteConstants.EP_LESSON_CREATE).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
 
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CREATE);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CREATE)
+                             .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_COURSE, courseId);
       eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
