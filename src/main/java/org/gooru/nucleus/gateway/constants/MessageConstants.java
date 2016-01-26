@@ -25,6 +25,7 @@ public class MessageConstants {
   public static final String MSG_OP_RES_GET = "resource.get";
   public static final String MSG_OP_RES_CREATE = "resource.create";
   public static final String MSG_OP_RES_UPDATE = "resource.update";
+  public static final String MSG_OP_RES_DELETE = "resource.delete";
 
   // Lookup Operations
   public static final String MSG_OP_LKUP_ACCESS_HAZARDS = "access.hazards";
@@ -69,6 +70,7 @@ public class MessageConstants {
   public static final String MSG_OP_QUESTION_GET = "question.get";
   public static final String MSG_OP_QUESTION_CREATE = "question.create";
   public static final String MSG_OP_QUESTION_UPDATE = "question.update";
+  public static final String MSG_OP_QUESTION_DELETE = "question.delete";
   // Course Operations
   public static final String MSG_OP_COURSE_GET = "course.get";
   public static final String MSG_OP_COURSE_CREATE = "course.create";

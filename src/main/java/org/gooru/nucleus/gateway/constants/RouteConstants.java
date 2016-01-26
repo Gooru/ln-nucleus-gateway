@@ -146,11 +146,15 @@ public class RouteConstants {
   private static final String COLON = ":";
   // Get Resource By Id = /api/nucleus/{version}/resources/{resource-id}
   public static final String EP_RESOURCE_GET = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
+  // Delete Resource By Id = /api/nucleus/{version}/resources/{resource-id}
+  public static final String EP_RESOURCE_DELETE = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
   // Update an existing Resource =
   // /api/nucleus/{version}/resources/{resource-id}
   public static final String EP_RESOURCE_UPDATE = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
   // Get Question By Id = /api/nucleus/{version}/questions/{question-id}
   public static final String EP_QUESTION_GET = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
+  // Delete question = /api/nucleus/{version}/questions/{question-id}
+  public static final String EP_QUESTION_DELETE = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
   // Update an existing Question =
   // /api/nucleus/{version}/questions/{question-id}
   public static final String EP_QUESTION_UPDATE = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;

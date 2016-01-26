@@ -29,20 +29,28 @@ public class RouteQuestionConfigurator implements RouteConfigurator {
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
 
+    router.delete(RouteConstants.EP_QUESTION_DELETE).handler(routingContext -> {
+      String questionId = routingContext.request().getParam(RouteConstants.ID_QUESTION);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_DELETE)
+                             .addHeader(RouteConstants.ID_QUESTION, questionId);
+      eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
     router.get(RouteConstants.EP_QUESTION_GET).handler(routingContext -> {
-      String resourceId = routingContext.request().getParam(RouteConstants.ID_QUESTION);
+      String questionId = routingContext.request().getParam(RouteConstants.ID_QUESTION);
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_GET)
-                             .addHeader(RouteConstants.ID_QUESTION, resourceId);
+                             .addHeader(RouteConstants.ID_QUESTION, questionId);
       eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.put(RouteConstants.EP_QUESTION_UPDATE).handler(routingContext -> {
-      String resourceId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
+      String questionId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_UPDATE)
-                             .addHeader(RouteConstants.ID_QUESTION, resourceId);
+                             .addHeader(RouteConstants.ID_QUESTION, questionId);
       eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
