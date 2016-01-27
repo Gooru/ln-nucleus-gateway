@@ -43,28 +43,17 @@ public class MessageConstants {
   public static final String MSG_OP_ASSESSMENT_CREATE = "assessment.create";
   public static final String MSG_OP_ASSESSMENT_UPDATE = "assessment.update";
   public static final String MSG_OP_ASSESSMENT_DELETE = "assessment.delete";
-  public static final String MSG_OP_ASSESSMENT_COLLABORATOR_GET = "assessment.collaborator.get";
   public static final String MSG_OP_ASSESSMENT_COLLABORATOR_UPDATE = "assessment.collaborator.update";
-  public static final String MSG_OP_ASSESSMENT_QUESTION_REMOVE = "assessment.question.remove";
-  public static final String MSG_OP_ASSESSMENT_QUESTION_UPDATE = "assessment.question.update";
   public static final String MSG_OP_ASSESSMENT_QUESTION_ADD = "assessment.question.add";
   public static final String MSG_OP_ASSESSMENT_QUESTION_REORDER = "assessment.question.reorder";
-  public static final String MSG_OP_ASSESSMENT_QUESTION_COPY = "assessment.question.copy";
   // Collection Operations
   public static final String MSG_OP_COLLECTION_GET = "collection.get";
   public static final String MSG_OP_COLLECTION_CREATE = "collection.create";
   public static final String MSG_OP_COLLECTION_UPDATE = "collection.update";
   public static final String MSG_OP_COLLECTION_DELETE = "collection.delete";
-  public static final String MSG_OP_COLLECTION_COLLABORATOR_GET = "collection.collaborator.get.";
   public static final String MSG_OP_COLLECTION_COLLABORATOR_UPDATE = "collection..collaborator.update";
-  public static final String MSG_OP_COLLECTION_QUESTION_REMOVE = "collection.question.remove";
   public static final String MSG_OP_COLLECTION_QUESTION_ADD = "collection.question.add";
-  public static final String MSG_OP_COLLECTION_QUESTION_UPDATE = "collection.question.update";
-  public static final String MSG_OP_COLLECTION_QUESTION_COPY = "collection.question.copy";
   public static final String MSG_OP_COLLECTION_CONTENT_REORDER = "collection.question.reorder";
-  public static final String MSG_OP_COLLECTION_RESOURCE_UPDATE = "collection.resource.update";
-  public static final String MSG_OP_COLLECTION_RESOURCE_COPY = "collection.resource.copy";
-  public static final String MSG_OP_COLLECTION_RESOURCE_REMOVE = "collection.resource.remove";
   public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
   // Question Operations
   public static final String MSG_OP_QUESTION_GET = "question.get";
@@ -76,21 +65,20 @@ public class MessageConstants {
   public static final String MSG_OP_COURSE_CREATE = "course.create";
   public static final String MSG_OP_COURSE_UPDATE = "course.update";
   public static final String MSG_OP_COURSE_DELETE = "course.delete";
-  public static final String MSG_OP_COURSE_COLLABORATOR_GET = "course.collaborator.get";
   public static final String MSG_OP_COURSE_COLLABORATOR_UPDATE = "course.collaborator.update";
   public static final String MSG_OP_COURSE_CONTENT_REORDER = "course.content.reorder";
-  public static final String MSG_OP_COURSE_COPY = "course.copy";
+  public static final String MSG_OP_COURSE_MOVE_UNIT = "course.move.unit";
   public static final String MSG_OP_UNIT_GET = "unit.get";
   public static final String MSG_OP_UNIT_CREATE = "unit.create";
   public static final String MSG_OP_UNIT_UPDATE = "unit.update";
   public static final String MSG_OP_UNIT_DELETE = "unit.delete";
   public static final String MSG_OP_UNIT_CONTENT_REORDER = "unit.content.reorder";
-  public static final String MSG_OP_UNIT_COPY = "unit.copy";
+  public static final String MSG_OP_UNIT_MOVE_LESSON = "unit.move.lesson";
   public static final String MSG_OP_LESSON_GET = "lesson.get";
   public static final String MSG_OP_LESSON_CREATE = "lesson.create";
   public static final String MSG_OP_LESSON_UPDATE = "lesson.update";
   public static final String MSG_OP_LESSON_DELETE = "lesson.delete";
   public static final String MSG_OP_LESSON_CONTENT_REORDER = "lesson.content.reorder";
-  public static final String MSG_OP_LESSON_COPY = "lesson.copy";
+  public static final String MSG_OP_LESSON_MOVE_COLLECTION = "lesson.move.collection";
 
 }

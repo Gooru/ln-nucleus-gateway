@@ -17,60 +17,25 @@ public class RouteConstants {
   // Helper constants
   private static final String API_VERSION = "v1";
   private static final String API_BASE_ROUTE = "/api/nucleus/" + API_VERSION + "/";
-  // List Standards for Domains in Taxonomy =
-  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/standards/{standards-framework-id}
-  public static final String EP_STANDARDS_BY_DOMAINS = API_BASE_ROUTE;
-  // List Standards Frameworks = /api/nucleus/{version}/taxonomy/standards
-  public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE;
+
   // Helper: Entity name constants
   private static final String ENTITY_RESOURCES = "resources";
-  // Create a new Resource = /api/nucleus/{version}/resources
-  public static final String EP_RESOURCE_CREATE = API_BASE_ROUTE + ENTITY_RESOURCES;
+
   private static final String ENTITY_QUESTIONS = "questions";
-  // Create a new Question = /api/nucleus/{version}/questions
-  public static final String EP_QUESTION_CREATE = API_BASE_ROUTE + ENTITY_QUESTIONS;
+
   private static final String ENTITY_ASSESSMENTS = "assessments";
-  // Create a New Assessment = /api/nucleus/{version}/assessments
-  public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
+
   private static final String ENTITY_COLLECTIONS = "collections";
-  // Create a New Collection = /api/nucleus/{version}/collections
-  public static final String EP_COLLECTION_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS;
+
   private static final String ENTITY_COURSES = "courses";
-  // Create a New Course = /api/nucleus/{version}/courses
-  public static final String EP_COURSE_CREATE = API_BASE_ROUTE + ENTITY_COURSES;
-  // Copy a Course = /api/nucleus/{version}/courses
-  public static final String EP_COURSE_COPY = API_BASE_ROUTE + ENTITY_COURSES;
+
   private static final String ENTITY_UNITS = "units";
   private static final String ENTITY_LESSONS = "lessons";
   private static final String ENTITY_CLASSES = "classes";
-  // Create a class = /api/nucleus/{version}/classes
-  public static final String EP_CLASS_CREATE = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Archived Classes - for User =
-  // /api/nucleus/{version}/classes?status=archived
-  public static final String EP_CLASS_ARCHIVED_LIST = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Active Classes - for User =
-  // /api/nucleus/{version}/classes?status=active
-  public static final String EP_CLASS_LIST = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Classes which are not associated with Course for User context =
-  // /api/nucleus/{version}/classes?course-assigned=false
-  public static final String EP_CLASS_WITHOUT_COURSE = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Classes for which the specified Content is not Visible =
-  // /api/nucleus/{version}/classes?content-id={content-id}
-  public static final String EP_CLASSES_CONTENT_IS_INVISIBLE = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Publish a specific Collection/Assessment to a multiple Classes =
-  // /api/nucleus/{version}/classes
-  public static final String EP_CLASSES_CONTENT_PUBLISH = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Classes assigned to a specific Course =
-  // /api/nucleus/{version}/classes?assigned-course={course-id}
-  public static final String EP_CLASSES_FOR_COURSE = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Retrieve a specific Class by the Class Code =
-  // /api/nucleus/{version}/classes?class-code={class-code}
-  public static final String EP_CLASS_GET = API_BASE_ROUTE + ENTITY_CLASSES;
+
   private static final String ENTITY_COLLABORATORS = "collaborators";
   private static final String ENTITY_TAXONOMY = "taxonomy";
-  private static final String ENTITY_AUTHENTICATION = "authentication";
-  // Authenticate = /api/nucleus/{version}/authentication
-  public static final String EP_AUTHENTICATE = API_BASE_ROUTE + ENTITY_AUTHENTICATION;
+
   private static final String ENTITY_TX_SUBJECT = "subjects";
   private static final String ENTITY_TX_COURSE = "courses";
   private static final String ENTITY_TX_DOMAIN = "domain";
@@ -99,8 +64,16 @@ public class RouteConstants {
   private static final String RES_MOMENTS = "moments";
   private static final String RES_AUDIENCE = "audience";
   private static final String SEP = "/";
+  private static final String COLON = ":";
+
+  // TODO: 27/1/16 Taxonomy and related stuff
   // List Subjects in Taxonomy = /api/nucleus/{version}/taxonomy/subjects
   public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT;
+  // List Standards for Domains in Taxonomy =
+  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/standards/{standards-framework-id}
+  public static final String EP_STANDARDS_BY_DOMAINS = API_BASE_ROUTE;
+  // List Standards Frameworks = /api/nucleus/{version}/taxonomy/standards
+  public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE;
   /*
    * TODO: standards and learning targets
    *
@@ -121,6 +94,9 @@ public class RouteConstants {
    * level1-id}/level2/{level2-id}/level3/{level3-id}/level4 public static final
    * String EP_
    *
+   */
+  /*
+   * STATIC LOOKUPS
    */
   // List Depth of Knowledge = /api/nucleus/{version}/lookup/dok
   public static final String EP_DOK_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_DOK;
@@ -143,7 +119,9 @@ public class RouteConstants {
   public static final String EP_MOMENTS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_MOMENTS;
   // List Audience = /api/nucleus/{version}/lookups/audience
   public static final String EP_AUDIENCE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_AUDIENCE;
-  private static final String COLON = ":";
+  /*
+   * RESOURCE
+   */
   // Get Resource By Id = /api/nucleus/{version}/resources/{resource-id}
   public static final String EP_RESOURCE_GET = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
   // Delete Resource By Id = /api/nucleus/{version}/resources/{resource-id}
@@ -151,6 +129,11 @@ public class RouteConstants {
   // Update an existing Resource =
   // /api/nucleus/{version}/resources/{resource-id}
   public static final String EP_RESOURCE_UPDATE = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
+  // Create a new Resource = /api/nucleus/{version}/resources
+  public static final String EP_RESOURCE_CREATE = API_BASE_ROUTE + ENTITY_RESOURCES;
+  /*
+   * QUESTION
+   */
   // Get Question By Id = /api/nucleus/{version}/questions/{question-id}
   public static final String EP_QUESTION_GET = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
   // Delete question = /api/nucleus/{version}/questions/{question-id}
@@ -158,6 +141,11 @@ public class RouteConstants {
   // Update an existing Question =
   // /api/nucleus/{version}/questions/{question-id}
   public static final String EP_QUESTION_UPDATE = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
+  // Create a new Question = /api/nucleus/{version}/questions
+  public static final String EP_QUESTION_CREATE = API_BASE_ROUTE + ENTITY_QUESTIONS;
+  /*
+   * ASSESSMENT
+   */
   // Get an Assessment by Id =
   // /api/nucleus/{version}/assessments/{assessment-id}
   public static final String EP_ASSESSMENT_GET = API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
@@ -166,37 +154,22 @@ public class RouteConstants {
   public static final String EP_ASSESSMENT_UPDATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
   // Delete an Assessment = /api/nucleus/{version}/assessments/{assessment-id}
   public static final String EP_ASSESSMENT_DELETE = API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
-  // Add a New Question to Assessment =
+  // Add an Existing Unassigned Question to Assessment =
   // /api/nucleus/{version}/assessments/{assessment-id}/questions
   public static final String EP_ASSESSMENT_QUESTION_ADD = API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_QUESTIONS;
-
-  // List Courses for the specified User Context =
-  // /api/nucleus/{version}/courses
-  // TODO:
-  // Remove a Question from Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}/questions/{question-id}
-  public static final String EP_ASSESSMENT_QUESTION_REMOVE =
-    API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
-  // Update a Question in Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}/questions/{question-id}
-  public static final String EP_ASSESSMENT_QUESTION_UPDATE =
-    API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
-  // Copy an Existing Question to Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}/questions
-  public static final String EP_ASSESSMENT_QUESTION_COPY =
-    API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_ASSESSMENTS + SEP + ENTITY_QUESTIONS;
   // Reorder Questions in Assessments =
   // /api/nucleus/{version}/assessments/{assessment-id}/questions/order
   public static final String EP_ASSESSMENT_QUESTION_REORDER =
     API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_QUESTIONS + SEP + OP_ORDER;
-  // Get the List of Collaborators for an Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}/collaborators
-  public static final String EP_ASSESSMENT_COLLABORATORS_GET =
-    API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_COLLABORATORS;
   // Update the List of Collaborators for an Assessment =
   // /api/nucleus/{version}/assessments/{assessment-id}/collaborators
   public static final String EP_ASSESSMENT_COLLABORATORS_UPDATE =
     API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_COLLABORATORS;
+  // Create a New Assessment = /api/nucleus/{version}/assessments
+  public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
+  /*
+   * COLLECTION
+   */
   // Get a Collection based on Id =
   // /api/nucleus/{version}/collections/{collection-id}
   public static final String EP_COLLECTION_GET = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
@@ -205,45 +178,28 @@ public class RouteConstants {
   public static final String EP_COLLECTION_UPDATE = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
   // Delete a Collection = /api/nucleus/{version}/collections/{collection-id}
   public static final String EP_COLLECTION_DELETE = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
-  // Add a New Question to Collection =
+  // Add an existing Question to Collection =
   // /api/nucleus/{version}/collections/{collection-id}/questions
   public static final String EP_COLLECTION_QUESTION_ADD = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_QUESTIONS;
-  // Remove a Question from Collection =
-  // /api/nucleus/{version}/collections/{collection-id}/questions/{question-id}
-  public static final String EP_COLLECTION_QUESTION_REMOVE =
-    API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
-  // Remove a Resource from a Collection =
-  // /api/nucleus/{version}/collections/{collection-id}/resources/{resource-id}/{sequence-id}
-  public static final String EP_COLLECTION_RESOURCE_REMOVE =
-    API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
-  // Copy an Existing Question to Collection =
-  // /api/nucleus/{version}/collections/{collection-id}/questions
-  public static final String EP_COLLECTION_QUESTION_COPY = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_QUESTIONS;
-  // Add a New Resource to Collection =
+  // Add an existing Resource to Collection =
   // /api/nucleus/{version}/collections/{collection-id}/resources
   public static final String EP_COLLECTION_RESOURCE_ADD = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_RESOURCES;
-  // Add an Existing Resource to Collection =
-  // /api/nucleus/{version}/collections/{collection-id}/resources
-  public static final String EP_COLLECTION_RESOURCE_COPY = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_RESOURCES;
   // Reorder Resources/Questions in Existing Collection =
   // /api/nucleus/{version}/collections/{collection-id}/order
   public static final String EP_COLLECTION_CONTENT_REORDER = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + OP_ORDER;
-  // Update Existing Resource in a Collection =
-  // /api/nucleus/{version}/collections/{collection-id}/resources/{resource-id}/{sequence-id}
-  public static final String EP_COLLECTION_RESOURCE_UPDATE = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP
-    + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE + SEP + COLON + ID_SEQUENCE;
-  // Update Existing Question in a Collection =
-  // /api/nucleus/{version}/collections/{collection-id}/questions/{question-id}/{sequence-id}
-  public static final String EP_COLLECTION_QUESTION_UPDATE = API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP
-    + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + COLON + ID_SEQUENCE;
-  // Get the List of Collaborators for a Collection =
-  // /api/nucleus/{version}/collections/{collection-id}/collaborators
-  public static final String EP_COLLECTION_COLLABORATORS_GET =
-    API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_COLLABORATORS;
   // Update the List of Collaborators for a Collection =
   // /api/nucleus/{version}/collections/{collection-id}/collaborators
   public static final String EP_COLLECTION_COLLABORATORS_UPDATE =
     API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_COLLABORATORS;
+  // Create a New Collection = /api/nucleus/{version}/collections
+  public static final String EP_COLLECTION_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS;
+  /*
+   * COURSES UNITS LESSONS
+   */
+  // Create a New Course = /api/nucleus/{version}/courses
+  public static final String EP_COURSE_CREATE = API_BASE_ROUTE + ENTITY_COURSES;
+  // Copy a Course = /api/nucleus/{version}/courses
+  public static final String EP_COURSE_COPY = API_BASE_ROUTE + ENTITY_COURSES;
   // Update Existing Course = /api/nucleus/{version}/courses/{course-id}
   public static final String EP_COURSE_UPDATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE;
   // Fetch a Course by Id = /api/nucleus/{version}/courses/{course-id}
@@ -253,17 +209,15 @@ public class RouteConstants {
   // Reorder Units in Existing Course =
   // /api/nucleus/{version}/courses/{course-id}/order
   public static final String EP_COURSE_CONTENT_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + OP_ORDER;
-  // Get the List of Collaborators for a Course =
-  // /api/nucleus/{version}/course/{course-id}/collaborators
-  public static final String EP_COURSE_COLLABORATOR_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_COLLABORATORS;
   // Update the List of Collaborators for a Course =
   // /api/nucleus/{version}/courses/{course-id}/collaborators
   public static final String EP_COURSE_COLLABORATOR_UPDATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_COLLABORATORS;
+  // Move an existing unit to existing course
+  // PUT /api/nucleus/{version}/courses/{course-id}/units
+  public static final String EP_COURSE_MOVE_UNIT = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
+
   // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
   public static final String EP_UNIT_CREATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
-  // Copy an Existing Unit to Existing Course =
-  // /api/nucleus/{version}/courses/{course-id}/units/
-  public static final String EP_UNIT_COPY = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
   // Update Existing Unit =
   // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}
   public static final String EP_UNIT_UPDATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT;
@@ -276,30 +230,67 @@ public class RouteConstants {
   // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}/order/
   public static final String EP_UNIT_CONTENT_REORDER =
     API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + OP_ORDER;
+  // Move an existing lesson to existing Course/Unit
+  // PUT /api/nucleus/v1/courses/:courseId/units/:unitId/lessons
+  public static final String EP_UNIT_MOVE_LESSON =
+    API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS;
+
   // Create a new Lesson =
   // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}/lessons
   public static final String EP_LESSON_CREATE =
     API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS;
-  // Copy an Existing Lesson to Existing Unit =
-  // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}/lessons
-  public static final String EP_LESSON_COPY =
-    API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS;
   // Update Existing Lesson =
   // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}/lessons/{lesson-id}
-  public static final String EP_LESSON_UPDATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT
-    + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+  public static final String EP_LESSON_UPDATE =
+    API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON +
+      ID_LESSON;
   // Fetch a Lesson by Id =
   // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}/lessons/{lesson-id}
-  public static final String EP_LESSON_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT
-    + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+  public static final String EP_LESSON_GET =
+    API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON +
+      ID_LESSON;
   // Delete Lesson =
   // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}/lessons/{lesson-id}
-  public static final String EP_LESSON_DELETE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT
-    + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+  public static final String EP_LESSON_DELETE =
+    API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON +
+      ID_LESSON;
   // Reorder Collections/Assessments in Existing Lesson =
   // /api/nucleus/{version}/courses/{course-id}/units/{unit-id}/lessons/{lesson-id}/order/
-  public static final String EP_LESSON_CONTENT_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON
-    + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON + SEP + OP_ORDER;
+  public static final String EP_LESSON_CONTENT_REORDER =
+    API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON +
+      ID_LESSON + SEP + OP_ORDER;
+  // Move existing collection/assessment into existing CUL
+  // /api/nucleus/v1/courses/:courseId/units/:unitId/lessons/:lessonId/collections
+  public static final String EP_LESSON_MOVE_COLLECTION =
+    API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON +
+      ID_LESSON + SEP + ENTITY_COLLECTIONS;
+
+  /*
+   * CLASSES
+   */
+  // Create a class = /api/nucleus/{version}/classes
+  public static final String EP_CLASS_CREATE = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Fetch All Archived Classes - for User =
+  // /api/nucleus/{version}/classes?status=archived
+  public static final String EP_CLASS_ARCHIVED_LIST = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Fetch All Active Classes - for User =
+  // /api/nucleus/{version}/classes?status=active
+  public static final String EP_CLASS_LIST = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Fetch All Classes which are not associated with Course for User context =
+  // /api/nucleus/{version}/classes?course-assigned=false
+  public static final String EP_CLASS_WITHOUT_COURSE = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Fetch All Classes for which the specified Content is not Visible =
+  // /api/nucleus/{version}/classes?content-id={content-id}
+  public static final String EP_CLASSES_CONTENT_IS_INVISIBLE = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Publish a specific Collection/Assessment to a multiple Classes =
+  // /api/nucleus/{version}/classes
+  public static final String EP_CLASSES_CONTENT_PUBLISH = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Fetch All Classes assigned to a specific Course =
+  // /api/nucleus/{version}/classes?assigned-course={course-id}
+  public static final String EP_CLASSES_FOR_COURSE = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Retrieve a specific Class by the Class Code =
+  // /api/nucleus/{version}/classes?class-code={class-code}
+  public static final String EP_CLASS_GET = API_BASE_ROUTE + ENTITY_CLASSES;
   // Update a Class = /api/nucleus/{version}/classes/{class-id}
   public static final String EP_CLASS_UPDATE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS;
   // Get the List of Collaborators for a Class =
@@ -334,7 +325,8 @@ public class RouteConstants {
     API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE;
   // List Domains in Taxonomy =
   // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains
-  public static final String EP_DOMAINS_LIST_BY_COURSE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT
-    + SEP + ENTITY_TX_COURSE + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN;
+  public static final String EP_DOMAINS_LIST_BY_COURSE =
+    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + COLON + ID_TX_COURSE + SEP +
+      ENTITY_TX_DOMAIN;
 
 }
