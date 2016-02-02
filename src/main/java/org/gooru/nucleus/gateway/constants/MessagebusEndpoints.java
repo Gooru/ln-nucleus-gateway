@@ -12,13 +12,10 @@ public class MessagebusEndpoints {
   public static final String MBEP_ASSESSMENT = "org.gooru.nucleus.message.bus.assessment";
   public static final String MBEP_COLLECTION = "org.gooru.nucleus.message.bus.collection";
   public static final String MBEP_COURSE = "org.gooru.nucleus.message.bus.course";
-  public static final String MBEP_UNIT = "org.gooru.nucleus.message.bus.unit";
-  public static final String MBEP_LESSON = "org.gooru.nucleus.message.bus.lesson";
   public static final String MBEP_CLASS = "org.gooru.nucleus.message.bus.class";
   public static final String MBEP_AUTH = "org.gooru.nucleus.message.bus.auth";
   public static final String MBEP_TAXONOMY = "org.gooru.nucleus.message.bus.taxonomy";
   public static final String MBEP_LOOKUP = "org.gooru.nucleus.message.bus.lookup";
-  public static final String MBEP_UPLOAD = "org.gooru.nucleus.message.bus.upload";
   public static final String MBEP_EVENT = "org.gooru.nucleus.message.bus.publisher.event";
   public static final String MBEP_JOB = "org.gooru.nucleus.message.bus.job";
 
