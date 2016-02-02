@@ -38,15 +38,16 @@ public class RouteConstants {
 
   private static final String ENTITY_TX_SUBJECT = "subjects";
   private static final String ENTITY_TX_COURSE = "courses";
-  private static final String ENTITY_TX_DOMAIN = "domain";
+  private static final String ENTITY_TX_DOMAIN = "domains";
+  private static final String ENTITY_TX_STANDARDS = "standards";
   private static final String ID_CLASS = "classId";
   private static final String ID_SEQUENCE = "sequence";
-  private static final String ID_TX_SUBJECT = "subjectId";
-
   // Actual End Point Constants: Note that constant values may be duplicated but
   // we are going to have individual constant values to work with for each
   // point instead of reusing the same
-  private static final String ID_TX_COURSE = "courseId";
+  public static final String ID_TX_SUBJECT = "subjectId";
+  public static final String ID_TX_DOMAIN = "domainId";
+  public static final String ID_TX_COURSE = "courseId";
   // Helper: Operations
   private static final String OP_ORDER = "order";
   private static final String OP_LOOKUP = "lookups";
@@ -70,8 +71,11 @@ public class RouteConstants {
   // List Subjects in Taxonomy = /api/nucleus/{version}/taxonomy/subjects
   public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT;
   // List Standards for Domains in Taxonomy =
-  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/standards/{standards-framework-id}
-  public static final String EP_STANDARDS_BY_DOMAINS = API_BASE_ROUTE;
+  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/standards
+  public static final String EP_STANDARDS_BY_DOMAINS 
+    = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP 
+      + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP 
+      + ENTITY_TX_DOMAIN + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_STANDARDS ;
   // List Standards Frameworks = /api/nucleus/{version}/taxonomy/standards
   public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE;
   /*
@@ -326,7 +330,7 @@ public class RouteConstants {
   // List Domains in Taxonomy =
   // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains
   public static final String EP_DOMAINS_LIST_BY_COURSE =
-    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + COLON + ID_TX_COURSE + SEP +
+    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP +
       ENTITY_TX_DOMAIN;
 
 }
