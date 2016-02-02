@@ -67,15 +67,23 @@ public class RouteConstants {
   private static final String SEP = "/";
   private static final String COLON = ":";
 
-  // TODO: 27/1/16 Taxonomy and related stuff
   // List Subjects in Taxonomy = /api/nucleus/{version}/taxonomy/subjects
   public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT;
+  // List Courses in Taxonomy =
+  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses
+  public static final String EP_COURSES_LIST_BY_SUBJECT =
+    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE;
+  // List Domains in Taxonomy =
+  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains
+  public static final String EP_DOMAINS_LIST_BY_COURSE =
+    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE +
+      SEP +
+      ENTITY_TX_DOMAIN;
   // List Standards for Domains in Taxonomy =
   // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/standards
-  public static final String EP_STANDARDS_BY_DOMAINS 
-    = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP 
-      + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP 
-      + ENTITY_TX_DOMAIN + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_STANDARDS ;
+  public static final String EP_STANDARDS_LIST_BY_DOMAINS =
+    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE +
+      SEP + ENTITY_TX_DOMAIN + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_STANDARDS;
   // List Standards Frameworks = /api/nucleus/{version}/taxonomy/standards
   public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE;
   /*
@@ -323,14 +331,6 @@ public class RouteConstants {
   // Publish content of a Course to a specific Class =
   // /api/nucleus/{version}/classes/{class-id}/courses/{course-id}
   public static final String EP_CLASS_CONTENT_PUBLISH = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + ENTITY_COURSES + COLON + ID_COURSE;
-  // List Courses in Taxonomy =
-  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses
-  public static final String EP_COURSES_LIST_BY_SUBJECT =
-    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE;
-  // List Domains in Taxonomy =
-  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains
-  public static final String EP_DOMAINS_LIST_BY_COURSE =
-    API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP +
-      ENTITY_TX_DOMAIN;
+
 
 }
