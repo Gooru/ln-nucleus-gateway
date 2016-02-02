@@ -26,8 +26,8 @@ class RouteLookupConfigurator implements RouteConfigurator {
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
     router.get(RouteConstants.EP_EDUCATIONAL_USE_LIST).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_EDU_USE);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_EDU_USE);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
@@ -40,15 +40,15 @@ class RouteLookupConfigurator implements RouteConfigurator {
     });
 
     router.get(RouteConstants.EP_READING_LEVELS_LIST).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_READ_LEVEL);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_READ_LEVEL);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
     router.get(RouteConstants.EP_AD_STATUS_LIST).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_AD_STATUS);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_AD_STATUS);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
@@ -68,31 +68,31 @@ class RouteLookupConfigurator implements RouteConfigurator {
     });
 
     router.get(RouteConstants.EP_GRADES_LIST).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_GRADE);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_GRADE);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
 
     router.get(RouteConstants.EP_DOK_LIST).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_DOK);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_DOK);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
 
     router.get(RouteConstants.EP_MOMENTS_LIST).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_MOMENTS);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_MOMENTS);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
     router.get(RouteConstants.EP_AUDIENCE_LIST).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_AUDIENCE);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_AUDIENCE);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });

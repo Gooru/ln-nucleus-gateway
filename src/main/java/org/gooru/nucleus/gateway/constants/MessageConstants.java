@@ -80,9 +80,9 @@ public class MessageConstants {
   public static final String MSG_OP_LESSON_DELETE = "lesson.delete";
   public static final String MSG_OP_LESSON_CONTENT_REORDER = "lesson.content.reorder";
   public static final String MSG_OP_LESSON_MOVE_COLLECTION = "lesson.move.collection";
-  
+
   // Taxonomy Lookup Operations
-  
+
   // Operation names: Also need to be updated in corresponding handlers
   public static final String MSG_OP_TAXONOMY_SUBJECTS_GET = "taxonomy.subjects.get";
   public static final String MSG_OP_TAXONOMY_COURSES_GET = "taxonomy.courses.get";

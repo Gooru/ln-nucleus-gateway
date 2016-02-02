@@ -41,8 +41,7 @@ public class RouteCollectionConfigurator implements RouteConfigurator {
     router.put(RouteConstants.EP_COLLECTION_COLLABORATORS_UPDATE).handler(routingContext -> {
       String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
-        MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_UPDATE)
-                                                     .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+        MessageConstants.MSG_OP_COLLECTION_COLLABORATOR_UPDATE).addHeader(RouteConstants.ID_COLLECTION, collectionId);
       eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 

@@ -7,7 +7,7 @@ This project contains just one main verticle which is responsible for spawning o
 
 TODO
 ----
-* Need to provide the end points configuration based on case to case basis whereever we are doing the implementation
+* Need to provide the end points configuration based on case to case basis wherever we are doing the implementation
 * Provide any other throttling or gateway characteristics that we need
 
 To understand build related stuff, take a look at **BUILD_README.md**.

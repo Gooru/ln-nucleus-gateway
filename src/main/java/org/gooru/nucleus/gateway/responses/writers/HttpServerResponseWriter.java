@@ -14,7 +14,6 @@ import java.util.Map;
 
 class HttpServerResponseWriter implements ResponseWriter {
 
-  static final Logger LOG = LoggerFactory.getLogger(ResponseWriter.class);
   private final RoutingContext routingContext;
   private final AsyncResult<Message<Object>> message;
 

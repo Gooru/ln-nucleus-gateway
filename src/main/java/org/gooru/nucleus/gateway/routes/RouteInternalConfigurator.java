@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 
 class RouteInternalConfigurator implements RouteConfigurator {
 
-  static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
-
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     router.route("/banner").handler(routingContext -> {

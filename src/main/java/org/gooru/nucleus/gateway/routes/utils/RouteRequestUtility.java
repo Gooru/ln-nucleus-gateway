@@ -14,8 +14,8 @@ public class RouteRequestUtility {
   public JsonObject getBodyForMessage(RoutingContext routingContext) {
     JsonObject result = new JsonObject();
     JsonObject httpBody = null;
-    if (routingContext.request().method().name().equals(HttpMethod.POST.name())
-      || routingContext.request().method().name().equals(HttpMethod.PUT.name())) {
+    if (routingContext.request().method().name().equals(HttpMethod.POST.name()) ||
+      routingContext.request().method().name().equals(HttpMethod.PUT.name())) {
       httpBody = routingContext.getBodyAsJson();
     }
     if (httpBody != null) {

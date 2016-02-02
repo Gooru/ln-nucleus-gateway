@@ -28,13 +28,12 @@ public class RouteAuthConfigurator implements RouteConfigurator {
       // If the session token is null or absent, we send an error to client
       if (sessionToken == null || sessionToken.isEmpty()) {
         routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-                      .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
-                      .end();
+                      .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
       } else {
         // If the session token is present, we send it to Message Bus for validation
-        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                       .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_AUTH_WITH_PREFS)
-                                                       .addHeader(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
+        DeliveryOptions options =
+          new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_AUTH_WITH_PREFS)
+                               .addHeader(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
         eBus.send(MessagebusEndpoints.MBEP_AUTH, null, options, reply -> {
           if (reply.succeeded()) {
             AuthPrefsResponseHolder responseHolder = new AuthPrefsResponseHolderBuilder(reply.result()).build();
@@ -43,8 +42,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
             if (responseHolder.isAuthorized()) {
               if (!routingContext.request().method().name().equals(HttpMethod.GET.name()) && responseHolder.isAnonymous()) {
                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
-                              .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage())
-                              .end();
+                              .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
               } else {
                 JsonObject prefs = responseHolder.getPreferences();
                 routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
@@ -53,8 +51,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
               }
             } else {
               routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-                            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
-                            .end();
+                            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
             }
           } else {
             LOG.error("Not able to send message", reply.cause());

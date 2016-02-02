@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RouteClassConfigurator implements RouteConfigurator {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
