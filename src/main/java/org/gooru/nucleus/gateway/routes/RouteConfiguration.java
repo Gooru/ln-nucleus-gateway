@@ -31,6 +31,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteProfileConfigurator());
     configurators.add(new RouteCopierConfigurator());
     configurators.add(new RouteTaxonomyConfigurator());
+    configurators.add(new RouteFailureConfigurator());
     internalIterator = configurators.iterator();
   }
 
