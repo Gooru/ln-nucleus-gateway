@@ -47,7 +47,7 @@ public class RouteQuestionConfigurator implements RouteConfigurator {
     });
 
     router.put(RouteConstants.EP_QUESTION_UPDATE).handler(routingContext -> {
-      String questionId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
+      String questionId = routingContext.request().getParam(RouteConstants.ID_QUESTION);
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_UPDATE)
                              .addHeader(RouteConstants.ID_QUESTION, questionId);
