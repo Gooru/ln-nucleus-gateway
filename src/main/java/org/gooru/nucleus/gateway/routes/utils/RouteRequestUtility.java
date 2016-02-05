@@ -1,28 +1,43 @@
 package org.gooru.nucleus.gateway.routes.utils;
 
+import io.netty.handler.codec.http.QueryStringDecoder;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import org.gooru.nucleus.gateway.constants.MessageConstants;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ashish on 30/12/15.
  */
 public class RouteRequestUtility {
 
+  /*
+   * If the incoming request is POST or PUT, it is expected to have a payload of JSON which is returned. In case of GET request, any query
+   * parameters will be used to create a JSON body. Note that only query string is used and not path matchers. In case of no query parameters
+   * send out empty Json object, but don't send null
+   */
 
   public JsonObject getBodyForMessage(RoutingContext routingContext) {
-    JsonObject result = new JsonObject();
-    JsonObject httpBody = null;
+    JsonObject httpBody, result = new JsonObject();
     if (routingContext.request().method().name().equals(HttpMethod.POST.name()) ||
       routingContext.request().method().name().equals(HttpMethod.PUT.name())) {
       httpBody = routingContext.getBodyAsJson();
-    }
-    if (httpBody != null) {
-      result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
+    } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
+      httpBody = new JsonObject();
+      QueryStringDecoder queryStringDecoder = new QueryStringDecoder(routingContext.request().query(), false);
+      Map<String, List<String>> prms = queryStringDecoder.parameters();
+      if (!prms.isEmpty()) {
+        for (Map.Entry<String, List<String>> entry : prms.entrySet()) {
+          httpBody.put(entry.getKey(), entry.getValue());
+        }
+      }
     } else {
-      result.put(MessageConstants.MSG_HTTP_BODY, new JsonObject());
+      httpBody = new JsonObject();
     }
+    result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
     result.put(MessageConstants.MSG_KEY_PREFS, (JsonObject) routingContext.get(MessageConstants.MSG_KEY_PREFS));
     result.put(MessageConstants.MSG_USER_ID, (String) routingContext.get(MessageConstants.MSG_USER_ID));
     return result;
