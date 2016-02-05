@@ -27,11 +27,14 @@ public class RouteRequestUtility {
       httpBody = routingContext.getBodyAsJson();
     } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
       httpBody = new JsonObject();
-      QueryStringDecoder queryStringDecoder = new QueryStringDecoder(routingContext.request().query(), false);
-      Map<String, List<String>> prms = queryStringDecoder.parameters();
-      if (!prms.isEmpty()) {
-        for (Map.Entry<String, List<String>> entry : prms.entrySet()) {
-          httpBody.put(entry.getKey(), entry.getValue());
+      String uri = routingContext.request().query();
+      if (uri != null) {
+        QueryStringDecoder queryStringDecoder = new QueryStringDecoder(uri, false);
+        Map<String, List<String>> prms = queryStringDecoder.parameters();
+        if (!prms.isEmpty()) {
+          for (Map.Entry<String, List<String>> entry : prms.entrySet()) {
+            httpBody.put(entry.getKey(), entry.getValue());
+          }
         }
       }
     } else {
