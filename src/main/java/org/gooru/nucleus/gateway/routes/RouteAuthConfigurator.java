@@ -12,9 +12,15 @@ import org.gooru.nucleus.gateway.responses.auth.AuthPrefsResponseHolderBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RouteAuthConfigurator implements RouteConfigurator {
 
   private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final String HEADER_AUTH_PREFIX = "Token";
+  private static final Pattern AUTH_PATTERN =
+    Pattern.compile('^' + HEADER_AUTH_PREFIX + "[\\s]+((?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?)\\s*$");
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
@@ -24,7 +30,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
 
 
     router.route(RouteConstants.API_AUTH_ROUTE).handler(routingContext -> {
-      String sessionToken = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
+      String sessionToken = extractSessionToken(routingContext.request().getHeader(HttpConstants.HEADER_AUTH));
       // If the session token is null or absent, we send an error to client
       if (sessionToken == null || sessionToken.isEmpty()) {
         routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
@@ -60,8 +66,17 @@ public class RouteAuthConfigurator implements RouteConfigurator {
         });
       }
     });
+  }
 
-
+  private String extractSessionToken(String authHeader) {
+    if (authHeader == null || authHeader.isEmpty()) {
+      return null;
+    }
+    Matcher authMatcher = AUTH_PATTERN.matcher(authHeader);
+    if (authMatcher.matches()) {
+      return authMatcher.group(1);
+    }
+    return null;
   }
 
 }
