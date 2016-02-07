@@ -31,7 +31,7 @@ class RouteClassConfigurator implements RouteConfigurator {
     router.get(RouteConstants.EP_CLASSES_FOR_COURSE).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_GET)
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_LIST_FOR_COURSE)
                              .addHeader(RouteConstants.ID_COURSE, courseId);
       eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
@@ -67,7 +67,7 @@ class RouteClassConfigurator implements RouteConfigurator {
     router.get(RouteConstants.EP_CLASS_JOIN).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_MEMBERS_GET)
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_JOIN)
                              .addHeader(RouteConstants.ID_CLASS, classId);
       eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
