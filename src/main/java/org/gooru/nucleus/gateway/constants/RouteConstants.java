@@ -3,7 +3,7 @@ package org.gooru.nucleus.gateway.constants;
 /**
  * Created by ashish on 4/12/15.
  */
-public class RouteConstants {
+public final class RouteConstants {
 
   public static final String API_AUTH_ROUTE = "/api/nucleus/*";
   // Helper: Entity Id constants
@@ -14,37 +14,7 @@ public class RouteConstants {
   public static final String ID_COURSE = "courseId";
   public static final String ID_UNIT = "unitId";
   public static final String ID_LESSON = "lessonId";
-  // Helper constants
-  private static final String API_VERSION = "v1";
-  private static final String API_BASE_ROUTE = "/api/nucleus/" + API_VERSION + "/";
-
-  // Helper: Entity name constants
-  private static final String ENTITY_RESOURCES = "resources";
-
-  private static final String ENTITY_QUESTIONS = "questions";
-
-  private static final String ENTITY_ASSESSMENTS = "assessments";
-
-  private static final String ENTITY_COLLECTIONS = "collections";
-
-  private static final String ENTITY_COURSES = "courses";
-
-  private static final String ENTITY_UNITS = "units";
-  private static final String ENTITY_LESSONS = "lessons";
-  private static final String ENTITY_CLASSES = "classes";
-
-  private static final String ENTITY_COLLABORATORS = "collaborators";
-  private static final String ENTITY_TAXONOMY = "taxonomy";
-
-  private static final String ENTITY_TX_SUBJECT = "subjects";
-  private static final String ENTITY_TX_COURSE = "courses";
-  private static final String ENTITY_TX_DOMAIN = "domains";
-  private static final String ENTITY_TX_STANDARDS = "standards";
-  private static final String ID_CLASS = "classId";
-  private static final String ID_SEQUENCE = "sequence";
-  // Actual End Point Constants: Note that constant values may be duplicated but
-  // we are going to have individual constant values to work with for each
-  // point instead of reusing the same
+  public static final String ID_CLASS = "classId";
   public static final String ID_TX_SUBJECT = "subjectId";
   public static final String ID_TX_DOMAIN = "domainId";
   public static final String ID_TX_COURSE = "courseId";
@@ -66,6 +36,27 @@ public class RouteConstants {
   private static final String RES_AUDIENCE = "audience";
   private static final String SEP = "/";
   private static final String COLON = ":";
+  // Helper constants
+  private static final String API_VERSION = "v1";
+  private static final String API_BASE_ROUTE = "/api/nucleus/" + API_VERSION + '/';
+  // Helper: Entity name constants
+  private static final String ENTITY_RESOURCES = "resources";
+  private static final String ENTITY_QUESTIONS = "questions";
+  private static final String ENTITY_ASSESSMENTS = "assessments";
+  private static final String ENTITY_COLLECTIONS = "collections";
+  private static final String ENTITY_COURSES = "courses";
+  private static final String ENTITY_UNITS = "units";
+  private static final String ENTITY_LESSONS = "lessons";
+  private static final String ENTITY_CLASSES = "classes";
+  private static final String ENTITY_COLLABORATORS = "collaborators";
+  private static final String ENTITY_TAXONOMY = "taxonomy";
+  private static final String ENTITY_TX_SUBJECT = "subjects";
+  private static final String ENTITY_TX_COURSE = "courses";
+  private static final String ENTITY_TX_DOMAIN = "domains";
+  private static final String ENTITY_TX_STANDARDS = "standards";
+  // Actual End Point Constants: Note that constant values may be duplicated but
+  // we are going to have individual constant values to work with for each
+  // point instead of reusing the same
 
   // List Subjects in Taxonomy = /api/nucleus/{version}/taxonomy/subjects
   public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT;
@@ -282,55 +273,50 @@ public class RouteConstants {
    */
   // Create a class = /api/nucleus/{version}/classes
   public static final String EP_CLASS_CREATE = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Archived Classes - for User =
-  // /api/nucleus/{version}/classes?status=archived
-  public static final String EP_CLASS_ARCHIVED_LIST = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Active Classes - for User =
-  // /api/nucleus/{version}/classes?status=active
+  // Delete a Class = /api/nucleus/{version}/classes/{class-id}
+  public static final String EP_CLASS_DELETE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS;
+  // Update a Class = /api/nucleus/{version}/classes/{class-id}
+  public static final String EP_CLASS_UPDATE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS;
+  // Retrieve a specific Class by the Class Code =
+  // /api/nucleus/{version}/classes/{classId}
+  public static final String EP_CLASS_GET = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS;
+  // List members of a Class (joined or pending) =
+  // /api/nucleus/{version}/classes/{class-id}/members
+  public static final String EP_CLASS_MEMBERS_GET = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER;
+  // Update the List of Collaborators for a Class
+  // /api/nucleus/{version}/classes/{class-id}/collaborators
+  public static final String EP_CLASS_COLLABORATOR_UPDATE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COLLABORATORS;
+  // Fetch All Classes - for User (active and archived along with course association information) =
+  // /api/nucleus/{version}/classes
   public static final String EP_CLASS_LIST = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Classes which are not associated with Course for User context =
-  // /api/nucleus/{version}/classes?course-assigned=false
-  public static final String EP_CLASS_WITHOUT_COURSE = API_BASE_ROUTE + ENTITY_CLASSES;
+  // Fetch All Classes assigned to a specific Course =
+  // /api/nucleus/{version}/classes/courses/{course-id}
+  public static final String EP_CLASSES_FOR_COURSE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
+  // Join a Class = /api/nucleus/{version}/classes/{class-id}/members
+  public static final String EP_CLASS_JOIN = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER;
+  // Invite to a Class = /api/nucleus/{version}/classes/{class-id}/invites
+  public static final String EP_CLASS_JOIN_INVITE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_INVITE;
+  // Associate a Course with the Class =
+  // /api/nucleus/{version}/classes/{class-id}/courses
+  public static final String EP_CLASS_COURSE_ATTACH = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES;
+
+  // FIXME: 7/2/16 Following needs to be reviewed and confirmed before implementing
+  // Fetch published status for content of a Course associated with a specific
+  // Class = /api/nucleus/{version}/classes/{class-id}/courses/{course-id}
+  public static final String EP_CLASS_COURSE_CONTENT_VISIBILITY =
+    API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
   // Fetch All Classes for which the specified Content is not Visible =
   // /api/nucleus/{version}/classes?content-id={content-id}
   public static final String EP_CLASSES_CONTENT_IS_INVISIBLE = API_BASE_ROUTE + ENTITY_CLASSES;
   // Publish a specific Collection/Assessment to a multiple Classes =
   // /api/nucleus/{version}/classes
   public static final String EP_CLASSES_CONTENT_PUBLISH = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Fetch All Classes assigned to a specific Course =
-  // /api/nucleus/{version}/classes?assigned-course={course-id}
-  public static final String EP_CLASSES_FOR_COURSE = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Retrieve a specific Class by the Class Code =
-  // /api/nucleus/{version}/classes?class-code={class-code}
-  public static final String EP_CLASS_GET = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Update a Class = /api/nucleus/{version}/classes/{class-id}
-  public static final String EP_CLASS_UPDATE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS;
-  // Get the List of Collaborators for a Class =
-  // /api/nucleus/{version}/classes/{class-id}/collaborators
-  public static final String EP_CLASS_COLLABORATOR_GET = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + ENTITY_COLLABORATORS;
-  // Update the List of Collaborators for a Class =
-  // /api/nucleus/{version}/classes/{class-id}/collaborators
-  public static final String EP_CLASS_COLLABORATOR_UPDATE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + ENTITY_COLLABORATORS;
-  // Join a Class = /api/nucleus/{version}/classes/{class-id}/members
-  public static final String EP_CLASS_JOIN = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + OP_MEMBER;
-  // List members who have joined a Class =
-  // /api/nucleus/{version}/classes/{class-id}/members
-  public static final String EP_CLASS_MEMBERS_GET = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + OP_MEMBER;
-  // Invite to a Class = /api/nucleus/{version}/classes/{class-id}/invites
-  public static final String EP_CLASS_JOIN_INVITE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + OP_INVITE;
-  // List pending members for a Class =
-  // /api/nucleus/{version}/classes/{class-id}/invites
-  public static final String EP_CLASS_MEMBERS_PENDING_GET = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + OP_INVITE;
-  // Associate a Course with the Class =
-  // /api/nucleus/{version}/classes/{class-id}/courses
-  public static final String EP_CLASS_COURSE_ATTACH = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + ENTITY_COURSES;
-  // Fetch published status for content of a Course associated with a specific
-  // Class = /api/nucleus/{version}/classes/{class-id}/courses/{course-id}
-  public static final String EP_CLASS_COURSE_CONTENT_VISIBILITY =
-    API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
   // Publish content of a Course to a specific Class =
   // /api/nucleus/{version}/classes/{class-id}/courses/{course-id}
   public static final String EP_CLASS_CONTENT_PUBLISH = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + ENTITY_COURSES + COLON + ID_COURSE;
 
+  private RouteConstants() {
+    throw new AssertionError();
+  }
 
 }

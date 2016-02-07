@@ -7,7 +7,7 @@ import io.vertx.ext.web.Router;
 /**
  * Created by ashish on 28/1/16.
  */
-public class RouteCopierConfigurator implements RouteConfigurator {
+class RouteCopierConfigurator implements RouteConfigurator {
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
 

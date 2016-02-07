@@ -86,8 +86,8 @@ class HttpResponseTransformer implements ResponseTransformer {
     this.headers = new HashMap<>();
     if (jsonHeaders != null && !jsonHeaders.isEmpty()) {
       Map<String, Object> headerMap = jsonHeaders.getMap();
-      for (String headerName : headerMap.keySet()) {
-        this.headers.put(headerName, headerMap.get(headerName).toString());
+      for (Map.Entry<String, Object> entry : headerMap.entrySet()) {
+        this.headers.put(entry.getKey(), entry.getValue().toString());
       }
     }
   }

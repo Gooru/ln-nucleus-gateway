@@ -2,14 +2,13 @@ package org.gooru.nucleus.gateway.responses.auth;
 
 import io.vertx.core.eventbus.Message;
 
-public class AuthPrefsResponseHolderBuilder {
-  private final Message<Object> message;
+public final class AuthPrefsResponseHolderBuilder {
 
-  public AuthPrefsResponseHolderBuilder(Message<Object> message) {
-    this.message = message;
+  public static AuthPrefsResponseHolder build(Message<Object> message) {
+    return new AuthPrefsMessageBusJsonResponseHolder(message);
   }
 
-  public AuthPrefsResponseHolder build() {
-    return new AuthPrefsMessageBusJsonResponseHolder(message);
+  private AuthPrefsResponseHolderBuilder() {
+    throw new AssertionError();
   }
 }

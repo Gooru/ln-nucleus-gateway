@@ -10,7 +10,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
   private final Iterator<RouteConfigurator> internalIterator;
 
   public RouteConfiguration() {
-    List<RouteConfigurator> configurators = new ArrayList<>();
+    List<RouteConfigurator> configurators = new ArrayList<>(32);
     // First the global handler to enable to body reading etc
     configurators.add(new RouteGlobalConfigurator());
 

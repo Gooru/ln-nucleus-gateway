@@ -6,7 +6,7 @@ package org.gooru.nucleus.gateway.constants;
  * Note that these definitions are for gateway, and each end point would be defined in their own component as well. This means that
  * if there is any change here, there must be a corresponding change in the consumer as well.
  */
-public class MessagebusEndpoints {
+public final class MessagebusEndpoints {
   public static final String MBEP_RESOURCE = "org.gooru.nucleus.message.bus.resource";
   public static final String MBEP_QUESTION = "org.gooru.nucleus.message.bus.question";
   public static final String MBEP_ASSESSMENT = "org.gooru.nucleus.message.bus.assessment";
@@ -26,4 +26,8 @@ public class MessagebusEndpoints {
   public static final String MBEP_PROFILE = "org.gooru.nucleus.message.bus.profile";
   public static final String MBEP_NOTIFICATION = "org.gooru.nucleus.message.bus.notification";
   public static final String MBEP_METRICS = "org.gooru.nucleus.message.bus.metrics";
+
+  private MessagebusEndpoints() {
+    throw new AssertionError();
+  }
 }

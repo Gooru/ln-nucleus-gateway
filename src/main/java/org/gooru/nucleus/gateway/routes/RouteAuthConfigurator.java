@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RouteAuthConfigurator implements RouteConfigurator {
+class RouteAuthConfigurator implements RouteConfigurator {
 
   private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
   private static final String HEADER_AUTH_PREFIX = "Token";
@@ -42,7 +42,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                                .addHeader(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
         eBus.send(MessagebusEndpoints.MBEP_AUTH, null, options, reply -> {
           if (reply.succeeded()) {
-            AuthPrefsResponseHolder responseHolder = new AuthPrefsResponseHolderBuilder(reply.result()).build();
+            AuthPrefsResponseHolder responseHolder = AuthPrefsResponseHolderBuilder.build(reply.result());
             // Message header would indicate whether the auth was successful or not. In addition, successful auth may have been
             // for anonymous user. We allow only GET request for anonymous user (since we do not support head, trace, options etc so far)
             if (responseHolder.isAuthorized()) {

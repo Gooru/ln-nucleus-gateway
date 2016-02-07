@@ -1,6 +1,6 @@
 package org.gooru.nucleus.gateway.constants;
 
-public class HttpConstants {
+public final class HttpConstants {
 
   public static final String HEADER_AUTH = "Authorization";
   public static final String HEADER_WWW_AUTHENTICATE = "WWW-Authenticate";
@@ -46,4 +46,7 @@ public class HttpConstants {
     }
   }
 
+  private HttpConstants() {
+    throw new AssertionError();
+  }
 }

@@ -7,8 +7,6 @@ import io.vertx.ext.web.RoutingContext;
 import org.gooru.nucleus.gateway.constants.HttpConstants;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformer;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformerBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -24,7 +22,7 @@ class HttpServerResponseWriter implements ResponseWriter {
 
   @Override
   public void writeResponse() {
-    ResponseTransformer transformer = new ResponseTransformerBuilder().build(message.result());
+    ResponseTransformer transformer = ResponseTransformerBuilder.build(message.result());
     final HttpServerResponse response = routingContext.response();
     // First set the status code
     response.setStatusCode(transformer.transformedStatus());

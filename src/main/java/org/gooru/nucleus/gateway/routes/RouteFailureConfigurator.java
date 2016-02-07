@@ -11,15 +11,15 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by ashish on 4/2/16.
  */
-public class RouteFailureConfigurator implements RouteConfigurator {
+class RouteFailureConfigurator implements RouteConfigurator {
   private static final Logger LOGGER = LoggerFactory.getLogger(RouteFailureConfigurator.class);
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
 
-    router.put().failureHandler(frc -> handleFailures(frc));
+    router.put().failureHandler(this::handleFailures);
 
-    router.put().failureHandler(frc -> handleFailures(frc));
+    router.put().failureHandler(this::handleFailures);
   }
 
   private void handleFailures(RoutingContext frc) {

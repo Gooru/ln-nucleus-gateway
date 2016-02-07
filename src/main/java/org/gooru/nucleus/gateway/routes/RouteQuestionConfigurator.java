@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by ashish on 8/1/16.
  */
-public class RouteQuestionConfigurator implements RouteConfigurator {
+class RouteQuestionConfigurator implements RouteConfigurator {
 
   private static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
 
