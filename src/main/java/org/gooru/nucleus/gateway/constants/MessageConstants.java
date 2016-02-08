@@ -38,6 +38,10 @@ public final class MessageConstants {
   public static final String MSG_OP_LKUP_AUDIENCE = "audience";
   public static final String MSG_OP_LKUP_MOMENTS = "moments";
   public static final String MSG_OP_LKUP_DOK = "dok";
+  public static final String MSG_OP_LKUP_COUNTRIES = "countries";
+  public static final String MSG_OP_LKUP_STATES = "states";
+  public static final String MSG_OP_LKUP_SCHOOLDISTRICTS = "school-districts";
+  public static final String MSG_OP_LKUP_SCHOOLS = "schools";
   // Assessment Operations
   public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
   public static final String MSG_OP_ASSESSMENT_CREATE = "assessment.create";

@@ -18,6 +18,9 @@ public final class RouteConstants {
   public static final String ID_TX_SUBJECT = "subjectId";
   public static final String ID_TX_DOMAIN = "domainId";
   public static final String ID_TX_COURSE = "courseId";
+  public static final String ID_COUNTRY = "countryId";
+  public static final String ID_SCHOOLDISTRICT = "schoolDistrictId";
+  public static final String ID_LKUP_QUERY = "queryURI";
   // Helper: Operations
   private static final String OP_ORDER = "order";
   private static final String OP_LOOKUP = "lookups";
@@ -34,6 +37,10 @@ public final class RouteConstants {
   private static final String RES_GRADES = "grades";
   private static final String RES_MOMENTS = "moments";
   private static final String RES_AUDIENCE = "audience";
+  private static final String RES_COUNTRIES = "countries";
+  private static final String RES_STATES = "states";
+  private static final String RES_SCHOOLDISTRICTS = "school-districts";
+  private static final String RES_SCHOOLS = "schools";
   private static final String SEP = "/";
   private static final String COLON = ":";
   // Helper constants
@@ -122,6 +129,14 @@ public final class RouteConstants {
   public static final String EP_MOMENTS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_MOMENTS;
   // List Audience = /api/nucleus/{version}/lookups/audience
   public static final String EP_AUDIENCE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_AUDIENCE;
+  // List Countries = /api/nucleus/lookups/countries?keyword=ind
+  public static final String EP_COUNTRIES_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_COUNTRIES;
+  // List States = /api/nucleus/lookups/countries/{country-id}/states?keyword=ma
+  public static final String EP_STATES_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_COUNTRIES + SEP + COLON + ID_COUNTRY + SEP + RES_STATES;
+  // List Schooldistricts = /api/nucleus/lookups/school-districts?keyword=ru
+  public static final String EP_SCHOOLDISTRICTS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_SCHOOLDISTRICTS;
+  // List Schools = /api/nucleus/lookups/schools?keyword=jo(&school_district_id as optional)
+  public static final String EP_SCHOOLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_SCHOOLS;
   /*
    * RESOURCE
    */
