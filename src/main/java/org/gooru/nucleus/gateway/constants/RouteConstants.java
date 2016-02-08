@@ -19,8 +19,7 @@ public final class RouteConstants {
   public static final String ID_TX_DOMAIN = "domainId";
   public static final String ID_TX_COURSE = "courseId";
   public static final String ID_COUNTRY = "countryId";
-  public static final String ID_SCHOOLDISTRICT = "schoolDistrictId";
-  public static final String ID_LKUP_QUERY = "queryURI";
+
   // Helper: Operations
   private static final String OP_ORDER = "order";
   private static final String OP_LOOKUP = "lookups";

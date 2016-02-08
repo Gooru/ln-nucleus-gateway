@@ -99,38 +99,31 @@ class RouteLookupConfigurator implements RouteConfigurator {
 
 
     router.get(RouteConstants.EP_STATES_LIST).handler(routingContext -> {
-      String stateKeyword = routingContext.request().query();
       String countryId = routingContext.request().getParam(RouteConstants.ID_COUNTRY);
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_STATES)
-                             .addHeader(RouteConstants.ID_COUNTRY, countryId).addHeader(RouteConstants.ID_LKUP_QUERY, stateKeyword);
+                             .addHeader(RouteConstants.ID_COUNTRY, countryId);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
     router.get(RouteConstants.EP_COUNTRIES_LIST).handler(routingContext -> {
-      String countryKeyword = routingContext.request().query();
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_COUNTRIES)
-                             .addHeader(RouteConstants.ID_LKUP_QUERY, countryKeyword);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_COUNTRIES);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
     router.get(RouteConstants.EP_SCHOOLDISTRICTS_LIST).handler(routingContext -> {
-      String schoolDistrictKeyword = routingContext.request().query();
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_SCHOOLDISTRICTS)
-                                                     .addHeader(RouteConstants.ID_LKUP_QUERY, schoolDistrictKeyword);
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_SCHOOLDISTRICTS);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
 
     router.get(RouteConstants.EP_SCHOOLS_LIST).handler(routingContext -> {
-      String schoolKeyword = routingContext.request().query();
       DeliveryOptions options =
-        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_SCHOOLS)
-                             .addHeader(RouteConstants.ID_LKUP_QUERY, schoolKeyword);
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_SCHOOLS);
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
