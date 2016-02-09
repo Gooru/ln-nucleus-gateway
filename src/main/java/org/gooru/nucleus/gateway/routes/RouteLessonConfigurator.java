@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 class RouteLessonConfigurator implements RouteConfigurator {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOGGER = LoggerFactory.getLogger(RouteLessonConfigurator.class);
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
