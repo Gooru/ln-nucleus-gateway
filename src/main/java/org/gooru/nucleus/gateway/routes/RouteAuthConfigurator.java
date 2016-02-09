@@ -12,9 +12,15 @@ import org.gooru.nucleus.gateway.responses.auth.AuthPrefsResponseHolderBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RouteAuthConfigurator implements RouteConfigurator {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-  private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+class RouteAuthConfigurator implements RouteConfigurator {
+
+  private static final Logger LOG = LoggerFactory.getLogger(RouteAuthConfigurator.class);
+  private static final String HEADER_AUTH_PREFIX = "Token";
+  private static final Pattern AUTH_PATTERN =
+    Pattern.compile('^' + HEADER_AUTH_PREFIX + "[\\s]+((?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?)\\s*$");
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
@@ -24,7 +30,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
 
 
     router.route(RouteConstants.API_AUTH_ROUTE).handler(routingContext -> {
-      String sessionToken = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
+      String sessionToken = extractSessionToken(routingContext.request().getHeader(HttpConstants.HEADER_AUTH));
       // If the session token is null or absent, we send an error to client
       if (sessionToken == null || sessionToken.isEmpty()) {
         routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
@@ -36,7 +42,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                                .addHeader(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
         eBus.send(MessagebusEndpoints.MBEP_AUTH, null, options, reply -> {
           if (reply.succeeded()) {
-            AuthPrefsResponseHolder responseHolder = new AuthPrefsResponseHolderBuilder(reply.result()).build();
+            AuthPrefsResponseHolder responseHolder = AuthPrefsResponseHolderBuilder.build(reply.result());
             // Message header would indicate whether the auth was successful or not. In addition, successful auth may have been
             // for anonymous user. We allow only GET request for anonymous user (since we do not support head, trace, options etc so far)
             if (responseHolder.isAuthorized()) {
@@ -60,8 +66,17 @@ public class RouteAuthConfigurator implements RouteConfigurator {
         });
       }
     });
+  }
 
-
+  private String extractSessionToken(String authHeader) {
+    if (authHeader == null || authHeader.isEmpty()) {
+      return null;
+    }
+    Matcher authMatcher = AUTH_PATTERN.matcher(authHeader);
+    if (authMatcher.matches()) {
+      return authMatcher.group(1);
+    }
+    return null;
   }
 
 }

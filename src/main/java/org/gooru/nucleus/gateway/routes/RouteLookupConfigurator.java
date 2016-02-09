@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 class RouteLookupConfigurator implements RouteConfigurator {
 
-  private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOG = LoggerFactory.getLogger(RouteLookupConfigurator.class);
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
@@ -96,6 +96,38 @@ class RouteLookupConfigurator implements RouteConfigurator {
       eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
+
+
+    router.get(RouteConstants.EP_STATES_LIST).handler(routingContext -> {
+      String countryId = routingContext.request().getParam(RouteConstants.ID_COUNTRY);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_STATES)
+                             .addHeader(RouteConstants.ID_COUNTRY, countryId);
+      eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    router.get(RouteConstants.EP_COUNTRIES_LIST).handler(routingContext -> {
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_COUNTRIES);
+      eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    router.get(RouteConstants.EP_SCHOOLDISTRICTS_LIST).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_SCHOOLDISTRICTS);
+      eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
+    router.get(RouteConstants.EP_SCHOOLS_LIST).handler(routingContext -> {
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_SCHOOLS);
+      eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
+
   }
 
 }

@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by ashish on 8/1/16.
  */
-public class RouteQuestionConfigurator implements RouteConfigurator {
+class RouteQuestionConfigurator implements RouteConfigurator {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOGGER = LoggerFactory.getLogger(RouteQuestionConfigurator.class);
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
@@ -47,7 +47,7 @@ public class RouteQuestionConfigurator implements RouteConfigurator {
     });
 
     router.put(RouteConstants.EP_QUESTION_UPDATE).handler(routingContext -> {
-      String questionId = routingContext.request().getParam(RouteConstants.ID_RESOURCE);
+      String questionId = routingContext.request().getParam(RouteConstants.ID_QUESTION);
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_UPDATE)
                              .addHeader(RouteConstants.ID_QUESTION, questionId);

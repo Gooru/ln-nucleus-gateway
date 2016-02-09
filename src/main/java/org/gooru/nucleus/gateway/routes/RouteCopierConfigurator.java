@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by ashish on 28/1/16.
  */
-public class RouteCopierConfigurator implements RouteConfigurator {
+class RouteCopierConfigurator implements RouteConfigurator {
   private EventBus eb = null;
   private long mbusTimeout;
   private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
@@ -27,7 +27,7 @@ public class RouteCopierConfigurator implements RouteConfigurator {
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     eb = vertx.eventBus();
-    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT) * 1000;
+    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L) * 1000;
     router.post(RouteConstants.EP_RESOURCE_COPY).handler(this::resourceCopy);
     router.post(RouteConstants.EP_QUESTION_COPY).handler(this::questionCopy);
     router.post(RouteConstants.EP_COLLECTION_COPY).handler(this::collectionCopy);

@@ -17,10 +17,10 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by ashish on 6/1/16.
  */
-public class RouteCollectionConfigurator implements RouteConfigurator {
+class RouteCollectionConfigurator implements RouteConfigurator {
 
 
-  private static final Logger LOGGER = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOGGER = LoggerFactory.getLogger(RouteCollectionConfigurator.class);
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {

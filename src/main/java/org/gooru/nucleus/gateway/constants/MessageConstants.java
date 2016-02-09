@@ -1,6 +1,6 @@
 package org.gooru.nucleus.gateway.constants;
 
-public class MessageConstants {
+public final class MessageConstants {
 
   public static final String MSG_HEADER_OP = "mb.operation";
   public static final String MSG_HEADER_TOKEN = "session.token";
@@ -38,6 +38,10 @@ public class MessageConstants {
   public static final String MSG_OP_LKUP_AUDIENCE = "audience";
   public static final String MSG_OP_LKUP_MOMENTS = "moments";
   public static final String MSG_OP_LKUP_DOK = "dok";
+  public static final String MSG_OP_LKUP_COUNTRIES = "countries";
+  public static final String MSG_OP_LKUP_STATES = "states";
+  public static final String MSG_OP_LKUP_SCHOOLDISTRICTS = "school-districts";
+  public static final String MSG_OP_LKUP_SCHOOLS = "schools";
   // Assessment Operations
   public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
   public static final String MSG_OP_ASSESSMENT_CREATE = "assessment.create";
@@ -88,7 +92,20 @@ public class MessageConstants {
   public static final String MSG_OP_TAXONOMY_COURSES_GET = "taxonomy.courses.get";
   public static final String MSG_OP_TAXONOMY_DOMAINS_GET = "taxonomy.domains.get";
   public static final String MSG_OP_TAXONOMY_STANDARDS_GET = "taxonomy.standards.get";
-  
+    
+  // Class operations
+  public static final String MSG_OP_CLASS_CREATE = "class.create";
+  public static final String MSG_OP_CLASS_UPDATE = "class.update";
+  public static final String MSG_OP_CLASS_DELETE = "class.delete";
+  public static final String MSG_OP_CLASS_GET = "class.get";
+  public static final String MSG_OP_CLASS_MEMBERS_GET = "class.members.get";
+  public static final String MSG_OP_CLASS_COLLABORATORS_UPDATE = "class.collaborators.update";
+  public static final String MSG_OP_CLASS_LIST = "class.list";
+  public static final String MSG_OP_CLASS_LIST_FOR_COURSE = "class.list.for.course";
+  public static final String MSG_OP_CLASS_JOIN = "class.join";
+  public static final String MSG_OP_CLASS_INVITE = "class.invite.user";
+  public static final String MSG_OP_CLASS_COURSE_ASSOCIATION = "class.course.association";
+
   // Copier Operations
   public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
   public static final String MSG_OP_QUESTION_COPY = "question.copy";
@@ -97,5 +114,8 @@ public class MessageConstants {
   public static final String MSG_OP_COURSE_COPY = "course.copy";
   public static final String MSG_OP_UNIT_COPY = "unit.copy";
   public static final String MSG_OP_LESSON_COPY = "lesson.copy";
-  
+ 
+  private MessageConstants() {
+    throw new AssertionError();
+  }
 }

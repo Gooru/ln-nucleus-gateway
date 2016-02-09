@@ -6,8 +6,6 @@ import io.vertx.ext.dropwizard.MetricsService;
 import io.vertx.ext.web.Router;
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class RouteMetricsConfigurator implements RouteConfigurator {
 

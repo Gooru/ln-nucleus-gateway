@@ -2,10 +2,13 @@ package org.gooru.nucleus.gateway.responses.transformers;
 
 import io.vertx.core.eventbus.Message;
 
-public class ResponseTransformerBuilder {
+public final class ResponseTransformerBuilder {
 
-  public ResponseTransformer build(Message<Object> message) {
+  public static ResponseTransformer build(Message<Object> message) {
     return new HttpResponseTransformer(message);
   }
 
+  private ResponseTransformerBuilder() {
+    throw new AssertionError();
+  }
 }
