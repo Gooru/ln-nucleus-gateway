@@ -91,8 +91,9 @@ public final class MessageConstants {
   public static final String MSG_OP_TAXONOMY_SUBJECTS_GET = "taxonomy.subjects.get";
   public static final String MSG_OP_TAXONOMY_COURSES_GET = "taxonomy.courses.get";
   public static final String MSG_OP_TAXONOMY_DOMAINS_GET = "taxonomy.domains.get";
-  public static final String MSG_OP_TAXONOMY_STANDARDS_GET = "taxonomy.standards.get";
-    
+  public static final String MSG_OP_TAXONOMY_DOMAIN_STANDARDS_GET = "taxonomy.domain.standards.get";
+  public static final String MSG_OP_TAXONOMY_STANDARD_FRAMEWORKS_GET = "taxonomy.standard.framework.get";
+
   // Class operations
   public static final String MSG_OP_CLASS_CREATE = "class.create";
   public static final String MSG_OP_CLASS_UPDATE = "class.update";
@@ -114,7 +115,7 @@ public final class MessageConstants {
   public static final String MSG_OP_COURSE_COPY = "course.copy";
   public static final String MSG_OP_UNIT_COPY = "unit.copy";
   public static final String MSG_OP_LESSON_COPY = "lesson.copy";
- 
+
   private MessageConstants() {
     throw new AssertionError();
   }
