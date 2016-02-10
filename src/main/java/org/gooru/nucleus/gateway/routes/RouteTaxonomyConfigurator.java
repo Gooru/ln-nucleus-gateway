@@ -30,6 +30,7 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
     router.get(RouteConstants.EP_COURSES_LIST_BY_SUBJECT).handler(this::getCourses);
     router.get(RouteConstants.EP_DOMAINS_LIST_BY_COURSE).handler(this::getDomains);
     router.get(RouteConstants.EP_STANDARDS_LIST_BY_DOMAINS).handler(this::getDomainStandards);
+    router.get(RouteConstants.EP_STANDARDS_FRAMEWORK_LIST).handler(this::getStandardFrameworks);
 
   }
 
@@ -66,9 +67,17 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
     final String domainId = routingContext.request().getParam(RouteConstants.ID_TX_DOMAIN);
     final DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_STANDARDS_GET)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_DOMAIN_STANDARDS_GET)
                     .addHeader(RouteConstants.ID_TX_SUBJECT, subjectId).addHeader(RouteConstants.ID_TX_COURSE, courseId)
                     .addHeader(RouteConstants.ID_TX_DOMAIN, domainId);
+    eb.send(MessagebusEndpoints.MBEP_TAXONOMY, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+  }
+  
+  private void getStandardFrameworks(RoutingContext routingContext) {
+    final DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_STANDARD_FRAMEWORKS_GET);
     eb.send(MessagebusEndpoints.MBEP_TAXONOMY, new RouteRequestUtility().getBodyForMessage(routingContext), options,
             reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
   }

@@ -83,26 +83,7 @@ public final class RouteConstants {
           + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_STANDARDS;
   // List Standards Frameworks = /api/nucleus/{version}/taxonomy/standards
   public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE + RES_TX_STANDARD_FRAMEWORK;
-  /*
-   * TODO: standards and learning targets
-   * 
-   * // List Standards Framework Level 1 =
-   * /api/nucleus/{version}/taxonomy/standards/{standards-framework-id}/level1
-   * public static final String EP_
-   * 
-   * // List Standards Framework Level 2 =
-   * /api/nucleus/{version}/taxonomy/standards/{standards-framework-id}/level1/{
-   * level1-id}/level2 public static final String EP_
-   * 
-   * // List Standards Framework Level 3 =
-   * /api/nucleus/{version}/taxonomy/standards/{standards-framework-id}/level1/{
-   * level1-id}/level2/{level2-id}/level3 public static final String EP_
-   * 
-   * // List Standards Framework Level 4 =
-   * /api/nucleus/{version}/taxonomy/standards/{standards-framework-id}/level1/{
-   * level1-id}/level2/{level2-id}/level3/{level3-id}/level4 public static final
-   * String EP_
-   */
+ 
   /*
    * STATIC LOOKUPS
    */
