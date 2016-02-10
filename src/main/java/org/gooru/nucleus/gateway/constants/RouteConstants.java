@@ -41,7 +41,6 @@ public final class RouteConstants {
   private static final String RES_SCHOOLDISTRICTS = "school-districts";
   private static final String RES_SCHOOLS = "schools";
   private static final String RES_TX_STANDARD_FRAMEWORK = "standard-frameworks";
-  private static final String RES_COPIER = "copier";
   private static final String SEP = "/";
   private static final String COLON = ":";
   // Helper constants
@@ -62,6 +61,7 @@ public final class RouteConstants {
   private static final String ENTITY_TX_COURSE = "courses";
   private static final String ENTITY_TX_DOMAIN = "domains";
   private static final String ENTITY_TX_STANDARDS = "standards";
+  private static final String ENTITY_COPIER = "copier";
 
   // Actual End Point Constants: Note that constant values may be duplicated but
   // we are going to have individual constant values to work with for each
@@ -82,7 +82,7 @@ public final class RouteConstants {
   public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT
           + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_STANDARDS;
   // List Standards Frameworks = /api/nucleus/{version}/taxonomy/standards
-  public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE + RES_TX_STANDARD_FRAMEWORK;
+  public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK;
  
   /*
    * STATIC LOOKUPS
@@ -310,14 +310,14 @@ public final class RouteConstants {
           + ID_COURSE;
 
   // COPIER
-  public static final String EP_RESOURCE_COPY = API_BASE_ROUTE + RES_COPIER + SEP + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
-  public static final String EP_QUESTION_COPY = API_BASE_ROUTE + RES_COPIER + SEP + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
-  public static final String EP_COLLECTION_COPY = API_BASE_ROUTE + RES_COPIER + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
-  public static final String EP_ASSESSMENT_COPY = API_BASE_ROUTE + RES_COPIER + SEP + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
-  public static final String EP_COURSE_COPY = API_BASE_ROUTE + RES_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
-  public static final String EP_UNIT_COPY = API_BASE_ROUTE + RES_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP
+  public static final String EP_RESOURCE_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
+  public static final String EP_QUESTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
+  public static final String EP_COLLECTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
+  public static final String EP_ASSESSMENT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
+  public static final String EP_COURSE_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
+  public static final String EP_UNIT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP
           + COLON + ID_UNIT;
-  public static final String EP_LESSON_COPY = API_BASE_ROUTE + RES_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP
+  public static final String EP_LESSON_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP
           + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
 
   private RouteConstants() {
