@@ -27,6 +27,7 @@ public final class RouteConstants {
   private static final String OP_LOOKUP = "lookups";
   private static final String OP_MEMBER = "members";
   private static final String OP_INVITE = "invites";
+  private static final String OP_AUTH = "authorization";
   // Misc helpers
   private static final String RES_EDUCATIONAL_USE = "educational-use";
   private static final String RES_DOK = "dok";
@@ -96,6 +97,12 @@ public final class RouteConstants {
   // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/codes/{code-id}
   public static final String EP_SUB_CODES_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + COLON
           + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_CODES + SEP + COLON + ID_TX_CODE;
+
+  /*
+   * External authorization end point to validate the authorization, if needed.
+   * GET /api/nucleus/{version}/authorization
+   */
+  public static final String EP_EXERNAL_AUTH = API_BASE_ROUTE + OP_AUTH;
 
   /*
    * STATIC LOOKUPS
@@ -328,6 +335,7 @@ public final class RouteConstants {
   public static final String EP_COLLECTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
   public static final String EP_ASSESSMENT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
   public static final String EP_COURSE_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
+
   public static final String EP_UNIT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS
           + SEP + COLON + ID_UNIT;
   public static final String EP_LESSON_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS
