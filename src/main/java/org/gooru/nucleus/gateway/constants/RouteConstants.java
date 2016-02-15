@@ -94,9 +94,9 @@ public final class RouteConstants {
           + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_CODES;
 
   // List Sub codes =
-  // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/codes/{code-id}
+  // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/codes/{code-id}/codes
   public static final String EP_SUB_CODES_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + COLON
-          + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_CODES + SEP + COLON + ID_TX_CODE;
+          + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_CODES + SEP + COLON + ID_TX_CODE + SEP + ENTITY_TX_CODES;
 
   /*
    * External authorization end point to validate the authorization, if needed.
