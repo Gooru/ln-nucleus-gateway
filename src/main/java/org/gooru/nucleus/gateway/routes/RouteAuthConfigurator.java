@@ -66,6 +66,17 @@ class RouteAuthConfigurator implements RouteConfigurator {
         });
       }
     });
+
+    router.get(RouteConstants.EP_EXERNAL_AUTH).handler(routingContext -> {
+      String userId = routingContext.get(MessageConstants.MSG_USER_ID);
+      JsonObject prefs = routingContext.get(MessageConstants.MSG_KEY_PREFS);
+      if (userId == null || userId.isEmpty() || userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS) || prefs == null || prefs.isEmpty()) {
+        routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
+                      .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
+      } else {
+        routingContext.response().setStatusCode(HttpConstants.HttpStatus.SUCCESS.getCode()).end();
+      }
+    });
   }
 
   private String extractSessionToken(String authHeader) {
