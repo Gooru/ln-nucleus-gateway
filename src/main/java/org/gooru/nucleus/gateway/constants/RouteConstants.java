@@ -18,6 +18,8 @@ public final class RouteConstants {
   public static final String ID_TX_SUBJECT = "subjectId";
   public static final String ID_TX_DOMAIN = "domainId";
   public static final String ID_TX_COURSE = "courseId";
+  public static final String ID_TX_STANDARD_FRAMEWORK = "standardFrameworkId";
+  public static final String ID_TX_CODE = "codeId";
   public static final String ID_COUNTRY = "countryId";
 
   // Helper: Operations
@@ -60,7 +62,7 @@ public final class RouteConstants {
   private static final String ENTITY_TX_SUBJECT = "subjects";
   private static final String ENTITY_TX_COURSE = "courses";
   private static final String ENTITY_TX_DOMAIN = "domains";
-  private static final String ENTITY_TX_STANDARDS = "standards";
+  private static final String ENTITY_TX_CODES = "codes";
   private static final String ENTITY_COPIER = "copier";
 
   // Actual End Point Constants: Note that constant values may be duplicated but
@@ -77,13 +79,24 @@ public final class RouteConstants {
   // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains
   public static final String EP_DOMAINS_LIST_BY_COURSE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT
           + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN;
-  // List Standards for Domains in Taxonomy =
-  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/standards
+  // List Codes for Domains in Taxonomy =
+  // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/codes
   public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT
-          + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_STANDARDS;
-  // List Standards Frameworks = /api/nucleus/{version}/taxonomy/standards
+          + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;
+  // List Standards Frameworks =
+  // /api/nucleus/{version}/taxonomy/standard-frameworks
   public static final String EP_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK;
- 
+
+  // List Root codes =
+  // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/codes
+  public static final String EP_ROOT_CODES_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + COLON
+          + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_CODES;
+
+  // List Sub codes =
+  // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/codes/{code-id}
+  public static final String EP_SUB_CODES_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + COLON
+          + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_CODES + SEP + COLON + ID_TX_CODE;
+
   /*
    * STATIC LOOKUPS
    */
@@ -315,10 +328,10 @@ public final class RouteConstants {
   public static final String EP_COLLECTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
   public static final String EP_ASSESSMENT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
   public static final String EP_COURSE_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
-  public static final String EP_UNIT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP
-          + COLON + ID_UNIT;
-  public static final String EP_LESSON_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP
-          + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+  public static final String EP_UNIT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS
+          + SEP + COLON + ID_UNIT;
+  public static final String EP_LESSON_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS
+          + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
 
   private RouteConstants() {
     throw new AssertionError();
