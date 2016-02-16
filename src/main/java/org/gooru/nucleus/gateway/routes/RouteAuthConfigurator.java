@@ -36,7 +36,9 @@ class RouteAuthConfigurator implements RouteConfigurator {
         routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
                       .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
       } else {
-        // If the session token is present, we send it to Message Bus for validation
+        // If the session token is present, we send it to Message Bus for validation. We stash it on to routing context for good measure. We could
+        // have done that later in success callback but we want to avoid closure from callback for success to this local context, hence it is here
+        routingContext.put(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
         DeliveryOptions options =
           new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_AUTH_WITH_PREFS)
                                .addHeader(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
