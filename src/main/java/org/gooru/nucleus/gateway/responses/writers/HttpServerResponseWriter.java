@@ -37,6 +37,8 @@ class HttpServerResponseWriter implements ResponseWriter {
     final String responseBody =
       ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ? transformer.transformedBody().toString() : null;
     if (responseBody != null) {
+      // As of today, we always serve JSON
+      response.putHeader(HttpConstants.HEADER_CONTENT_TYPE, HttpConstants.CONTENT_TYPE_JSON);
       response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH, Integer.toString(responseBody.length()));
       response.end(responseBody);
     } else {
