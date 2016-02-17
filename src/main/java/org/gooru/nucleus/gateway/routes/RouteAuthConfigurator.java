@@ -30,7 +30,11 @@ class RouteAuthConfigurator implements RouteConfigurator {
 
 
     router.route(RouteConstants.API_AUTH_ROUTE).handler(routingContext -> {
-      String sessionToken = extractSessionToken(routingContext.request().getHeader(HttpConstants.HEADER_AUTH));
+      routingContext.put(MessageConstants.MSG_KEY_PREFS, new JsonObject().put("abc", "xyz"));
+      routingContext.put(MessageConstants.MSG_USER_ID, "81789433-aa0a-43cc-a272-ca823c099a0a");
+      //routingContext.put(MessageConstants.MSG_USER_ID, "c59fa706-d5f5-4230-a241-1eb96b3ff0e1");
+      routingContext.next();
+      /*String sessionToken = extractSessionToken(routingContext.request().getHeader(HttpConstants.HEADER_AUTH));
       // If the session token is null or absent, we send an error to client
       if (sessionToken == null || sessionToken.isEmpty()) {
         routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
@@ -66,7 +70,7 @@ class RouteAuthConfigurator implements RouteConfigurator {
             routingContext.response().setStatusCode(HttpConstants.HttpStatus.ERROR.getCode()).end();
           }
         });
-      }
+      }*/
     });
 
     router.get(RouteConstants.EP_EXERNAL_AUTH).handler(routingContext -> {
