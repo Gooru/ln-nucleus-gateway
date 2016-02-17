@@ -21,6 +21,7 @@ public final class RouteConstants {
   public static final String ID_TX_STANDARD_FRAMEWORK = "standardFrameworkId";
   public static final String ID_TX_CODE = "codeId";
   public static final String ID_COUNTRY = "countryId";
+  public static final String ID_USER = "userId";
 
   // Helper: Operations
   private static final String OP_ORDER = "order";
@@ -28,6 +29,11 @@ public final class RouteConstants {
   private static final String OP_MEMBER = "members";
   private static final String OP_INVITE = "invites";
   private static final String OP_AUTH = "authorization";
+  private static final String OP_DEMOGRAPHICS = "demographics";
+
+  // Request Params
+  public static final String PARAM_PREVIEW = "preview"; 
+
   // Misc helpers
   private static final String RES_EDUCATIONAL_USE = "educational-use";
   private static final String RES_DOK = "dok";
@@ -65,6 +71,7 @@ public final class RouteConstants {
   private static final String ENTITY_TX_DOMAIN = "domains";
   private static final String ENTITY_TX_CODES = "codes";
   private static final String ENTITY_COPIER = "copier";
+  private static final String ENTITY_PROFILES = "profiles";
 
   // Actual End Point Constants: Note that constant values may be duplicated but
   // we are going to have individual constant values to work with for each
@@ -349,6 +356,15 @@ public final class RouteConstants {
   public static final String EP_LESSON_COPY =
     API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP +
       ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+
+  //PROFILES
+  // /api/nucleus/{version}/profiles/{user-id}/courses
+  public static final String EP_PROFILE_COURSE_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COURSES;
+  public static final String EP_PROFILE_COLLECTION_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS;
+  public static final String EP_PROFILE_ASSESSMENT_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS;
+  public static final String EP_PROFILE_RESOURCE_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES;
+  public static final String EP_PROFILE_QUESTION_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS;
+  public static final String EP_PROFILE_DEMOGRAPHIC_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_DEMOGRAPHICS;
 
   private RouteConstants() {
     throw new AssertionError();

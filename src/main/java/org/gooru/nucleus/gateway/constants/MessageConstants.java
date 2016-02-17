@@ -118,6 +118,14 @@ public final class MessageConstants {
   public static final String MSG_OP_UNIT_COPY = "unit.copy";
   public static final String MSG_OP_LESSON_COPY = "lesson.copy";
 
+  // Profile Operations
+  public static final String MSG_OP_PROFILE_LIST_COURSES = "list.courses";
+  public static final String MSG_OP_PROFILE_LIST_COLLECTOIONS = "list.collections";
+  public static final String MSG_OP_PROFILE_LIST_ASSESSMENTS = "list.assessments";
+  public static final String MSG_OP_PROFILE_LIST_RESOURCES = "list.resources";
+  public static final String MSG_OP_PROFILE_LIST_QUESTIONS = "list.questions";
+  public static final String MSG_OP_PROFILE_GET_DEMOGRAPHICS = "list.demographics";
+  
   private MessageConstants() {
     throw new AssertionError();
   }
