@@ -32,9 +32,6 @@ class RouteProfileConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_LIST_COURSES)
                                                      .addHeader(RouteConstants.ID_USER, userId);
-      if(routingContext.request().params().contains(RouteConstants.PARAM_PREVIEW)) {
-        options.addHeader(RouteConstants.PARAM_PREVIEW, routingContext.request().getParam(RouteConstants.PARAM_PREVIEW));
-      }
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
@@ -44,9 +41,6 @@ class RouteProfileConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_LIST_COLLECTOIONS)
                                                      .addHeader(RouteConstants.ID_USER, userId);
-      if(routingContext.request().params().contains(RouteConstants.PARAM_PREVIEW)) {
-        options.addHeader(RouteConstants.PARAM_PREVIEW, routingContext.request().getParam(RouteConstants.PARAM_PREVIEW));
-      }
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
@@ -56,9 +50,6 @@ class RouteProfileConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_LIST_ASSESSMENTS)
                                                      .addHeader(RouteConstants.ID_USER, userId);
-      if(routingContext.request().params().contains(RouteConstants.PARAM_PREVIEW)) {
-        options.addHeader(RouteConstants.PARAM_PREVIEW, routingContext.request().getParam(RouteConstants.PARAM_PREVIEW));
-      }
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
@@ -68,9 +59,6 @@ class RouteProfileConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_LIST_RESOURCES)
                                                      .addHeader(RouteConstants.ID_USER, userId);
-      if(routingContext.request().params().contains(RouteConstants.PARAM_PREVIEW)) {
-        options.addHeader(RouteConstants.PARAM_PREVIEW, routingContext.request().getParam(RouteConstants.PARAM_PREVIEW));
-      }
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
@@ -80,9 +68,6 @@ class RouteProfileConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_LIST_QUESTIONS)
                                                      .addHeader(RouteConstants.ID_USER, userId);
-      if(routingContext.request().params().contains(RouteConstants.PARAM_PREVIEW)) {
-        options.addHeader(RouteConstants.PARAM_PREVIEW, routingContext.request().getParam(RouteConstants.PARAM_PREVIEW));
-      }
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
@@ -92,9 +77,6 @@ class RouteProfileConfigurator implements RouteConfigurator {
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                                                      .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_GET_DEMOGRAPHICS)
                                                      .addHeader(RouteConstants.ID_USER, userId);
-      if(routingContext.request().params().contains(RouteConstants.PARAM_PREVIEW)) {
-        options.addHeader(RouteConstants.PARAM_PREVIEW, routingContext.request().getParam(RouteConstants.PARAM_PREVIEW));
-      }
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
