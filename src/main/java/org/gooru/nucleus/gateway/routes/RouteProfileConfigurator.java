@@ -79,5 +79,39 @@ class RouteProfileConfigurator implements RouteConfigurator {
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
+    
+    router.post(RouteConstants.EP_PROFILE_FOLLOW).handler(routingContext -> {
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_FOLLOW);
+      eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+    
+    router.delete(RouteConstants.EP_PROFILE_UNFOLLOW).handler(routingContext -> {
+      String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_UNFOLLOW)
+                                                     .addHeader(RouteConstants.ID_USER, userId);
+      eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+    
+    router.get(RouteConstants.EP_PROFILE_FOLLOWERS_LIST).handler(routingContext -> {
+      String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_LIST_FOLLOWERS)
+                                                     .addHeader(RouteConstants.ID_USER, userId);
+      eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+    
+    router.get(RouteConstants.EP_PROFILE_FOLLOWINGS_LIST).handler(routingContext -> {
+      String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_LIST_FOLLOWINGS)
+                                                     .addHeader(RouteConstants.ID_USER, userId);
+      eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
   }
 }

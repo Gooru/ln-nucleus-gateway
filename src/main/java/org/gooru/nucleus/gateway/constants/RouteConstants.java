@@ -30,6 +30,10 @@ public final class RouteConstants {
   private static final String OP_INVITE = "invites";
   private static final String OP_AUTH = "authorization";
   private static final String OP_DEMOGRAPHICS = "demographics";
+  private static final String OP_FOLLOW = "follow";
+  private static final String OP_UNFOLLOW = "unfollow";
+  private static final String OP_FOLLOWERS = "followers";
+  private static final String OP_FOLLOWINGS = "followings";
 
   // Request Params
   public static final String PARAM_PREVIEW = "preview";
@@ -365,6 +369,10 @@ public final class RouteConstants {
   public static final String EP_PROFILE_RESOURCE_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES;
   public static final String EP_PROFILE_QUESTION_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS;
   public static final String EP_PROFILE_DEMOGRAPHIC_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_DEMOGRAPHICS;
+  public static final String EP_PROFILE_FOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_FOLLOW;
+  public static final String EP_PROFILE_UNFOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_UNFOLLOW;
+  public static final String EP_PROFILE_FOLLOWERS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWERS;
+  public static final String EP_PROFILE_FOLLOWINGS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWINGS;
 
   private RouteConstants() {
     throw new AssertionError();

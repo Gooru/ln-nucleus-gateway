@@ -125,6 +125,10 @@ public final class MessageConstants {
   public static final String MSG_OP_PROFILE_LIST_RESOURCES = "list.resources";
   public static final String MSG_OP_PROFILE_LIST_QUESTIONS = "list.questions";
   public static final String MSG_OP_PROFILE_GET_DEMOGRAPHICS = "list.demographics";
+  public static final String MSG_OP_PROFILE_FOLLOW = "follow.profile";
+  public static final String MSG_OP_PROFILE_UNFOLLOW = "unfollow.profile";
+  public static final String MSG_OP_PROFILE_LIST_FOLLOWERS = "list.followers";
+  public static final String MSG_OP_PROFILE_LIST_FOLLOWINGS = "list.followings";
 
   private MessageConstants() {
     throw new AssertionError();
