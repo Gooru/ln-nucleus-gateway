@@ -32,7 +32,7 @@ public final class RouteConstants {
   private static final String OP_DEMOGRAPHICS = "demographics";
 
   // Request Params
-  public static final String PARAM_PREVIEW = "preview"; 
+  public static final String PARAM_PREVIEW = "preview";
 
   // Misc helpers
   private static final String RES_EDUCATIONAL_USE = "educational-use";

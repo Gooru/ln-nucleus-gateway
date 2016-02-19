@@ -125,7 +125,7 @@ public final class MessageConstants {
   public static final String MSG_OP_PROFILE_LIST_RESOURCES = "list.resources";
   public static final String MSG_OP_PROFILE_LIST_QUESTIONS = "list.questions";
   public static final String MSG_OP_PROFILE_GET_DEMOGRAPHICS = "list.demographics";
-  
+
   private MessageConstants() {
     throw new AssertionError();
   }
