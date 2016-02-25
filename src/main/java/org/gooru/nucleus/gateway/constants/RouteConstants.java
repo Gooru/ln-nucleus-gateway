@@ -34,6 +34,7 @@ public final class RouteConstants {
   private static final String OP_UNFOLLOW = "unfollow";
   private static final String OP_FOLLOWERS = "followers";
   private static final String OP_FOLLOWINGS = "followings";
+  private static final String OP_SEARCH = "search";
 
   // Request Params
   public static final String PARAM_PREVIEW = "preview";
@@ -373,6 +374,10 @@ public final class RouteConstants {
   public static final String EP_PROFILE_UNFOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_UNFOLLOW;
   public static final String EP_PROFILE_FOLLOWERS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWERS;
   public static final String EP_PROFILE_FOLLOWINGS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWINGS;
+  public static final String EP_PROFILE_COLLECTION_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS + SEP + OP_SEARCH;
+  public static final String EP_PROFILE_ASSESSMENT_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS + SEP + OP_SEARCH;
+  public static final String EP_PROFILE_RESOURCE_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES + SEP + OP_SEARCH;
+  public static final String EP_PROFILE_QUESTION_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS  + SEP + OP_SEARCH;
 
   private RouteConstants() {
     throw new AssertionError();
