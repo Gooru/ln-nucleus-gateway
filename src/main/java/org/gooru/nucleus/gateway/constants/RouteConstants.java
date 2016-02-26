@@ -22,6 +22,7 @@ public final class RouteConstants {
   public static final String ID_TX_CODE = "codeId";
   public static final String ID_COUNTRY = "countryId";
   public static final String ID_USER = "userId";
+  public static final String CODE_CLASS = "classCode";
 
   // Helper: Operations
   private static final String OP_ORDER = "order";

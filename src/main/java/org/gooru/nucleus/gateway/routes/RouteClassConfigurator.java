@@ -65,11 +65,11 @@ class RouteClassConfigurator implements RouteConfigurator {
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
-    router.get(RouteConstants.EP_CLASS_JOIN).handler(routingContext -> {
+    router.put(RouteConstants.EP_CLASS_JOIN).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_JOIN)
-                             .addHeader(RouteConstants.ID_CLASS, classId);
+                             .addHeader(RouteConstants.CODE_CLASS, classId);
       eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
