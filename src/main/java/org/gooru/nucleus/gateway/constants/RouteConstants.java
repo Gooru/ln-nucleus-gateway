@@ -31,9 +31,12 @@ public final class RouteConstants {
   private static final String OP_INVITE = "invites";
   private static final String OP_AUTH = "authorization";
   private static final String OP_DEMOGRAPHICS = "demographics";
-
-  // Request Params
-  public static final String PARAM_PREVIEW = "preview";
+  private static final String OP_FOLLOW = "follow";
+  private static final String OP_UNFOLLOW = "unfollow";
+  private static final String OP_FOLLOWERS = "followers";
+  private static final String OP_FOLLOWINGS = "followings";
+  private static final String OP_TXCOUNT = "taxonomycount";
+  private static final String OP_TAXONOMY = "taxonomy";
 
   // Misc helpers
   private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -243,7 +246,10 @@ public final class RouteConstants {
   // Move an existing unit to existing course
   // PUT /api/nucleus/{version}/courses/{course-id}/units
   public static final String EP_COURSE_MOVE_UNIT = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
-
+  // Reorder courses in subject bucket
+  // PUT /api/nucleus/{version}/courses/reorder
+  public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
+  
   // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
   public static final String EP_UNIT_CREATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
   // Update Existing Unit =
@@ -366,6 +372,15 @@ public final class RouteConstants {
   public static final String EP_PROFILE_RESOURCE_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES;
   public static final String EP_PROFILE_QUESTION_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS;
   public static final String EP_PROFILE_DEMOGRAPHIC_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_DEMOGRAPHICS;
+  public static final String EP_PROFILE_FOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_FOLLOW;
+  public static final String EP_PROFILE_UNFOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_UNFOLLOW;
+  public static final String EP_PROFILE_FOLLOWERS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWERS;
+  public static final String EP_PROFILE_FOLLOWINGS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWINGS;
+  public static final String EP_PROFILE_COURSE_TAXONOMYCOUNT = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COURSES  + SEP + OP_TXCOUNT;
+  public static final String EP_PROFILE_COLLECTION_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_ASSESSMENT_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_RESOURCE_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_QUESTION_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS  + SEP + OP_TAXONOMY;
 
   private RouteConstants() {
     throw new AssertionError();

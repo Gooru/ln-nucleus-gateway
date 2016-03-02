@@ -72,6 +72,7 @@ public final class MessageConstants {
   public static final String MSG_OP_COURSE_COLLABORATOR_UPDATE = "course.collaborator.update";
   public static final String MSG_OP_COURSE_CONTENT_REORDER = "course.content.reorder";
   public static final String MSG_OP_COURSE_MOVE_UNIT = "course.move.unit";
+  public static final String MSG_OP_COURSE_REORDER = "course.reorder";
   public static final String MSG_OP_UNIT_GET = "unit.get";
   public static final String MSG_OP_UNIT_CREATE = "unit.create";
   public static final String MSG_OP_UNIT_UPDATE = "unit.update";
@@ -119,12 +120,21 @@ public final class MessageConstants {
   public static final String MSG_OP_LESSON_COPY = "lesson.copy";
 
   // Profile Operations
-  public static final String MSG_OP_PROFILE_LIST_COURSES = "list.courses";
-  public static final String MSG_OP_PROFILE_LIST_COLLECTOIONS = "list.collections";
-  public static final String MSG_OP_PROFILE_LIST_ASSESSMENTS = "list.assessments";
-  public static final String MSG_OP_PROFILE_LIST_RESOURCES = "list.resources";
-  public static final String MSG_OP_PROFILE_LIST_QUESTIONS = "list.questions";
-  public static final String MSG_OP_PROFILE_GET_DEMOGRAPHICS = "list.demographics";
+  public static final String MSG_OP_PROFILE_COURSE_LIST = "profile.course.list";
+  public static final String MSG_OP_PROFILE_COLLECTION_LIST = "profile.collection.list";
+  public static final String MSG_OP_PROFILE_ASSESSMENT_LIST = "profile.assessment.list";
+  public static final String MSG_OP_PROFILE_RESOURCE_LIST = "profile.resource.list";
+  public static final String MSG_OP_PROFILE_QUESTION_LIST = "profile.question.list";
+  public static final String MSG_OP_PROFILE_DEMOGRAPHICS_GET = "profile.demographics.get";
+  public static final String MSG_OP_PROFILE_FOLLOW = "profile.follow";
+  public static final String MSG_OP_PROFILE_UNFOLLOW = "profile.unfollow";
+  public static final String MSG_OP_PROFILE_FOLLOWERS_LIST = "profile.followers.list";
+  public static final String MSG_OP_PROFILE_FOLLOWINGS_LIST = "profile.followings.list";
+  public static final String MSG_OP_PROFILE_COURSE_TAXONOMYCOUNT = "profile.course.taxonomycount";
+  public static final String MSG_OP_PROFILE_COLLECTION_TAXONOMY = "profile.collection.taxonomy";
+  public static final String MSG_OP_PROFILE_ASSESSMENT_TAXONOMY = "profile.assessment.taxonomy";
+  public static final String MSG_OP_PROFILE_RESOURCE_TAXONOMY = "profile.resource.taxonomy";
+  public static final String MSG_OP_PROFILE_QUESTION_TAXONOMY = "profile.question.taxonomy";
 
   private MessageConstants() {
     throw new AssertionError();
