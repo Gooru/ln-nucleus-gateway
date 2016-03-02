@@ -246,7 +246,10 @@ public final class RouteConstants {
   // Move an existing unit to existing course
   // PUT /api/nucleus/{version}/courses/{course-id}/units
   public static final String EP_COURSE_MOVE_UNIT = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
-
+  // Reorder courses in subject bucket
+  // PUT /api/nucleus/{version}/courses/reorder
+  public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
+  
   // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
   public static final String EP_UNIT_CREATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
   // Update Existing Unit =
