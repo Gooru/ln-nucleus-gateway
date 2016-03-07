@@ -96,64 +96,55 @@ class RouteProfileConfigurator implements RouteConfigurator {
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
     
-    router.get(RouteConstants.EP_PROFILE_FOLLOWERS_LIST).handler(routingContext -> {
+    router.get(RouteConstants.EP_PROFILE_NETWORK_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_FOLLOWERS_LIST)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_NETWORK_GET)
                                                      .addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
     
-    router.get(RouteConstants.EP_PROFILE_FOLLOWINGS_LIST).handler(routingContext -> {
+    router.get(RouteConstants.EP_PROFILE_COURSE_SUBJECTBUCKETS_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_FOLLOWINGS_LIST)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_COURSE_SUBJECTBUCKETS_GET)
                                                      .addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
     
-    router.get(RouteConstants.EP_PROFILE_COURSE_TAXONOMYCOUNT).handler(routingContext -> {
+    router.get(RouteConstants.EP_PROFILE_COLLECTION_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_COURSE_TAXONOMYCOUNT)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_COLLECTION_TAXONOMY_GET)
                                                      .addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
     
-    router.get(RouteConstants.EP_PROFILE_COLLECTION_TAXONOMY).handler(routingContext -> {
+    router.get(RouteConstants.EP_PROFILE_ASSESSMENT_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_COLLECTION_TAXONOMY)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_ASSESSMENT_TAXONOMY_GET)
                                                      .addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
     
-    router.get(RouteConstants.EP_PROFILE_ASSESSMENT_TAXONOMY).handler(routingContext -> {
+    router.get(RouteConstants.EP_PROFILE_RESOURCE_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_ASSESSMENT_TAXONOMY)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_RESOURCE_TAXONOMY_GET)
                                                      .addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
     
-    router.get(RouteConstants.EP_PROFILE_RESOURCE_TAXONOMY).handler(routingContext -> {
+    router.get(RouteConstants.EP_PROFILE_QUESTION_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_RESOURCE_TAXONOMY)
-                                                     .addHeader(RouteConstants.ID_USER, userId);
-      eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
-        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-    });
-    
-    router.get(RouteConstants.EP_PROFILE_QUESTION_TAXONOMY).handler(routingContext -> {
-      String userId = routingContext.request().getParam(RouteConstants.ID_USER);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_QUESTION_TAXONOMY)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_QUESTION_TAXONOMY_GET)
                                                      .addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));

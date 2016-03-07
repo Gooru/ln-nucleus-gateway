@@ -33,10 +33,9 @@ public final class RouteConstants {
   private static final String OP_DEMOGRAPHICS = "demographics";
   private static final String OP_FOLLOW = "follow";
   private static final String OP_UNFOLLOW = "unfollow";
-  private static final String OP_FOLLOWERS = "followers";
-  private static final String OP_FOLLOWINGS = "followings";
-  private static final String OP_TXCOUNT = "taxonomycount";
+  private static final String OP_SUBJECT_BUCKET = "subject-buckets";
   private static final String OP_TAXONOMY = "taxonomy";
+  private static final String OP_NETWORK = "network";
 
   // Misc helpers
   private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -374,13 +373,12 @@ public final class RouteConstants {
   public static final String EP_PROFILE_DEMOGRAPHIC_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_DEMOGRAPHICS;
   public static final String EP_PROFILE_FOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_FOLLOW;
   public static final String EP_PROFILE_UNFOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_UNFOLLOW;
-  public static final String EP_PROFILE_FOLLOWERS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWERS;
-  public static final String EP_PROFILE_FOLLOWINGS_LIST = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_FOLLOWINGS;
-  public static final String EP_PROFILE_COURSE_TAXONOMYCOUNT = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COURSES  + SEP + OP_TXCOUNT;
-  public static final String EP_PROFILE_COLLECTION_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS + SEP + OP_TAXONOMY;
-  public static final String EP_PROFILE_ASSESSMENT_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS + SEP + OP_TAXONOMY;
-  public static final String EP_PROFILE_RESOURCE_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES + SEP + OP_TAXONOMY;
-  public static final String EP_PROFILE_QUESTION_TAXONOMY = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS  + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_NETWORK_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_NETWORK;
+  public static final String EP_PROFILE_COURSE_SUBJECTBUCKETS_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COURSES  + SEP + OP_SUBJECT_BUCKET;
+  public static final String EP_PROFILE_COLLECTION_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_ASSESSMENT_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_RESOURCE_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_QUESTION_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS  + SEP + OP_TAXONOMY;
 
   private RouteConstants() {
     throw new AssertionError();
