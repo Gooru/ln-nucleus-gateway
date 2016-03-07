@@ -128,13 +128,12 @@ public final class MessageConstants {
   public static final String MSG_OP_PROFILE_DEMOGRAPHICS_GET = "profile.demographics.get";
   public static final String MSG_OP_PROFILE_FOLLOW = "profile.follow";
   public static final String MSG_OP_PROFILE_UNFOLLOW = "profile.unfollow";
-  public static final String MSG_OP_PROFILE_FOLLOWERS_LIST = "profile.followers.list";
-  public static final String MSG_OP_PROFILE_FOLLOWINGS_LIST = "profile.followings.list";
-  public static final String MSG_OP_PROFILE_COURSE_TAXONOMYCOUNT = "profile.course.taxonomycount";
-  public static final String MSG_OP_PROFILE_COLLECTION_TAXONOMY = "profile.collection.taxonomy";
-  public static final String MSG_OP_PROFILE_ASSESSMENT_TAXONOMY = "profile.assessment.taxonomy";
-  public static final String MSG_OP_PROFILE_RESOURCE_TAXONOMY = "profile.resource.taxonomy";
-  public static final String MSG_OP_PROFILE_QUESTION_TAXONOMY = "profile.question.taxonomy";
+  public static final String MSG_OP_PROFILE_NETWORK_GET = "profile.network.get";
+  public static final String MSG_OP_PROFILE_COURSE_SUBJECTBUCKETS_GET = "profile.course.subjectbucket.get";
+  public static final String MSG_OP_PROFILE_COLLECTION_TAXONOMY_GET = "profile.collection.taxonomy.get";
+  public static final String MSG_OP_PROFILE_ASSESSMENT_TAXONOMY_GET = "profile.assessment.taxonomy.get";
+  public static final String MSG_OP_PROFILE_RESOURCE_TAXONOMY_GET = "profile.resource.taxonomy.get";
+  public static final String MSG_OP_PROFILE_QUESTION_TAXONOMY_GET = "profile.question.taxonomy.get";
 
   private MessageConstants() {
     throw new AssertionError();
