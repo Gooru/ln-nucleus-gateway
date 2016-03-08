@@ -79,23 +79,23 @@ class RouteProfileConfigurator implements RouteConfigurator {
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.post(RouteConstants.EP_PROFILE_FOLLOW).handler(routingContext -> {
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_FOLLOW);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_FOLLOW);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.delete(RouteConstants.EP_PROFILE_UNFOLLOW).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_UNFOLLOW)
-                                                     .addHeader(RouteConstants.ID_USER, userId);
+      DeliveryOptions options =
+        new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_UNFOLLOW)
+                             .addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.get(RouteConstants.EP_PROFILE_NETWORK_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
@@ -104,34 +104,31 @@ class RouteProfileConfigurator implements RouteConfigurator {
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.get(RouteConstants.EP_PROFILE_COURSE_SUBJECTBUCKETS_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_COURSE_SUBJECTBUCKETS_GET)
-                                                     .addHeader(RouteConstants.ID_USER, userId);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+        MessageConstants.MSG_OP_PROFILE_COURSE_SUBJECTBUCKETS_GET).addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.get(RouteConstants.EP_PROFILE_COLLECTION_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_COLLECTION_TAXONOMY_GET)
-                                                     .addHeader(RouteConstants.ID_USER, userId);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+        MessageConstants.MSG_OP_PROFILE_COLLECTION_TAXONOMY_GET).addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.get(RouteConstants.EP_PROFILE_ASSESSMENT_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
-      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_ASSESSMENT_TAXONOMY_GET)
-                                                     .addHeader(RouteConstants.ID_USER, userId);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP,
+        MessageConstants.MSG_OP_PROFILE_ASSESSMENT_TAXONOMY_GET).addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.get(RouteConstants.EP_PROFILE_RESOURCE_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
@@ -140,7 +137,7 @@ class RouteProfileConfigurator implements RouteConfigurator {
       eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
-    
+
     router.get(RouteConstants.EP_PROFILE_QUESTION_TAXONOMY_GET).handler(routingContext -> {
       String userId = routingContext.request().getParam(RouteConstants.ID_USER);
       DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
