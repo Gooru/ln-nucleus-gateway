@@ -248,7 +248,7 @@ public final class RouteConstants {
   // Reorder courses in subject bucket
   // PUT /api/nucleus/{version}/courses/reorder
   public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
-  
+
   // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
   public static final String EP_UNIT_CREATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
   // Update Existing Unit =
@@ -374,11 +374,20 @@ public final class RouteConstants {
   public static final String EP_PROFILE_FOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_FOLLOW;
   public static final String EP_PROFILE_UNFOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_UNFOLLOW;
   public static final String EP_PROFILE_NETWORK_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_NETWORK;
-  public static final String EP_PROFILE_COURSE_SUBJECTBUCKETS_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COURSES  + SEP + OP_SUBJECT_BUCKET;
-  public static final String EP_PROFILE_COLLECTION_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS + SEP + OP_TAXONOMY;
-  public static final String EP_PROFILE_ASSESSMENT_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS + SEP + OP_TAXONOMY;
-  public static final String EP_PROFILE_RESOURCE_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES + SEP + OP_TAXONOMY;
-  public static final String EP_PROFILE_QUESTION_TAXONOMY_GET = API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS  + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_COURSE_SUBJECTBUCKETS_GET =
+    API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COURSES + SEP + OP_SUBJECT_BUCKET;
+  public static final String EP_PROFILE_COLLECTION_TAXONOMY_GET =
+    API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_ASSESSMENT_TAXONOMY_GET =
+    API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_RESOURCE_TAXONOMY_GET =
+    API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES + SEP + OP_TAXONOMY;
+  public static final String EP_PROFILE_QUESTION_TAXONOMY_GET =
+    API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS + SEP + OP_TAXONOMY;
+
+  public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
+  public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";
+  public static final String EP_INTERNAL_EVENT = "/api/internal/v1/events";
 
   private RouteConstants() {
     throw new AssertionError();
