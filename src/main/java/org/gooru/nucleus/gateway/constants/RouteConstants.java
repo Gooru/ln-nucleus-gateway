@@ -351,14 +351,27 @@ public final class RouteConstants {
     API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
 
   // COPIER
+  // Copy resource 
+  // /api/nucleus/{version}/copier/resources/{resource-id}
   public static final String EP_RESOURCE_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
+  // Copy question 
+  // /api/nucleus/{version}/copier/questions/{question-id}
   public static final String EP_QUESTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
+  //Copy collection 
+  // /api/nucleus/{version}/copier/collections/{collection-id}
   public static final String EP_COLLECTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
+  //Copy assessment 
+  // /api/nucleus/{version}/copier/assessments/{assessment-id}
   public static final String EP_ASSESSMENT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
+  //Copy course
+  // /api/nucleus/{version}/copier/courses/{course-id}
   public static final String EP_COURSE_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
-
+  // Copy unit
+  // /api/nucleus/{version}/copier/courses/{course-id}/units/{unit-id}?target_course_id=
   public static final String EP_UNIT_COPY =
     API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT;
+  //Copy lesson
+  // /api/nucleus/{version}/copier/courses/{course-id}/units/{unit-id}/lessons/{lesson-id}?target_course_id=&target_unit_id=
   public static final String EP_LESSON_COPY =
     API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP +
       ENTITY_LESSONS + SEP + COLON + ID_LESSON;
