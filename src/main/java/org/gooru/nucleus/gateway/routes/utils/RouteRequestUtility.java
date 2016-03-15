@@ -22,7 +22,7 @@ public class RouteRequestUtility {
 
   public JsonObject getBodyForMessage(RoutingContext routingContext) {
     JsonObject httpBody, result = new JsonObject();
-    if (routingContext.getBody() != null && routingContext.getBody().length() > 0) {
+    if (routingContext.getBody() != null && routingContext.getBody().length() > 0 && !routingContext.request().method().name().equals(HttpMethod.GET.name())) {
       httpBody = routingContext.getBodyAsJson();
     } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
       httpBody = new JsonObject();
