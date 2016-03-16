@@ -22,7 +22,10 @@ public class RouteRequestUtility {
 
   public JsonObject getBodyForMessage(RoutingContext routingContext) {
     JsonObject httpBody, result = new JsonObject();
-    if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
+    if (routingContext.request().method().name().equals(HttpMethod.POST.name()) ||
+      routingContext.request().method().name().equals(HttpMethod.PUT.name())) {
+      httpBody = routingContext.getBodyAsJson();
+    } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
       httpBody = new JsonObject();
       String uri = routingContext.request().query();
       if (uri != null) {
@@ -34,8 +37,6 @@ public class RouteRequestUtility {
           }
         }
       }
-    } else if (routingContext.getBody() != null && routingContext.getBody().length() > 0) { 
-      httpBody = routingContext.getBodyAsJson();
     } else {
       httpBody = new JsonObject();
     }
