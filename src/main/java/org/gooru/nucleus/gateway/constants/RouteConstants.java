@@ -62,6 +62,7 @@ public final class RouteConstants {
   private static final String ENTITY_RESOURCES = "resources";
   private static final String ENTITY_QUESTIONS = "questions";
   private static final String ENTITY_ASSESSMENTS = "assessments";
+  private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
   private static final String ENTITY_COLLECTIONS = "collections";
   private static final String ENTITY_COURSES = "courses";
   private static final String ENTITY_UNITS = "units";
@@ -198,6 +199,17 @@ public final class RouteConstants {
     API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_COLLABORATORS;
   // Create a New Assessment = /api/nucleus/{version}/assessments
   public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
+  /*
+   * External Assessments
+   */
+  public static final String EP_ASSESSMENT_EX_GET = API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
+  // Update an Existing Assessment =
+  // /api/nucleus/{version}/assessments/{assessment-id}
+  public static final String EP_ASSESSMENT_EX_UPDATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
+  // Delete an Assessment = /api/nucleus/{version}/assessments/{assessment-id}
+  public static final String EP_ASSESSMENT_EX_DELETE = API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
+  // Create a New Assessment = /api/nucleus/{version}/assessments
+  public static final String EP_ASSESSMENT_EX_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX;
   /*
    * COLLECTION
    */
@@ -351,16 +363,16 @@ public final class RouteConstants {
     API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
 
   // COPIER
-  // Copy resource 
+  // Copy resource
   // /api/nucleus/{version}/copier/resources/{resource-id}
   public static final String EP_RESOURCE_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
-  // Copy question 
+  // Copy question
   // /api/nucleus/{version}/copier/questions/{question-id}
   public static final String EP_QUESTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
-  //Copy collection 
+  //Copy collection
   // /api/nucleus/{version}/copier/collections/{collection-id}
   public static final String EP_COLLECTION_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
-  //Copy assessment 
+  //Copy assessment
   // /api/nucleus/{version}/copier/assessments/{assessment-id}
   public static final String EP_ASSESSMENT_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
   //Copy course

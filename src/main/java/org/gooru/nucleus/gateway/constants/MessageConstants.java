@@ -50,6 +50,13 @@ public final class MessageConstants {
   public static final String MSG_OP_ASSESSMENT_COLLABORATOR_UPDATE = "assessment.collaborator.update";
   public static final String MSG_OP_ASSESSMENT_QUESTION_ADD = "assessment.question.add";
   public static final String MSG_OP_ASSESSMENT_QUESTION_REORDER = "assessment.content.reorder";
+  // External Assessment Operations
+  public static final String MSG_OP_EXT_ASSESSMENT_GET = "ext.assessment.get";
+  public static final String MSG_OP_EXT_ASSESSMENT_CREATE = "ext.assessment.create";
+  public static final String MSG_OP_EXT_ASSESSMENT_UPDATE = "ext.assessment.update";
+  public static final String MSG_OP_EXT_ASSESSMENT_DELETE = "ext.assessment.delete";
+
+
   // Collection Operations
   public static final String MSG_OP_COLLECTION_GET = "collection.get";
   public static final String MSG_OP_COLLECTION_CREATE = "collection.create";
