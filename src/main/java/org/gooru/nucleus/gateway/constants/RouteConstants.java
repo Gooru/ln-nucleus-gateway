@@ -344,23 +344,9 @@ public final class RouteConstants {
   // payload
   public static final String EP_CLASS_COURSE_ATTACH =
     API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
-
-  // FIXME: 7/2/16 Following needs to be reviewed and confirmed before
-  // implementing
-  // Fetch published status for content of a Course associated with a specific
-  // Class = /api/nucleus/{version}/classes/{class-id}/courses/{course-id}
-  public static final String EP_CLASS_COURSE_CONTENT_VISIBILITY =
-    API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
-  // Fetch All Classes for which the specified Content is not Visible =
-  // /api/nucleus/{version}/classes?content-id={content-id}
-  public static final String EP_CLASSES_CONTENT_IS_INVISIBLE = API_BASE_ROUTE + ENTITY_CLASSES;
-  // Publish a specific Collection/Assessment to a multiple Classes =
-  // /api/nucleus/{version}/classes
-  public static final String EP_CLASSES_CONTENT_PUBLISH = API_BASE_ROUTE + ENTITY_CLASSES;
   // Publish content of a Course to a specific Class =
-  // /api/nucleus/{version}/classes/{class-id}/courses/{course-id}
-  public static final String EP_CLASS_CONTENT_PUBLISH =
-    API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + COLON + ID_COURSE;
+  // /api/nucleus/{version}/classes/{class-id}/courses
+  public static final String EP_CLASS_CONTENT_PUBLISH = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES;
 
   // COPIER
   // Copy resource
