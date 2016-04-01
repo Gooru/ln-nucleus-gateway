@@ -19,7 +19,7 @@ class RouteFailureConfigurator implements RouteConfigurator {
 
     router.put().failureHandler(this::handleFailures);
 
-    router.put().failureHandler(this::handleFailures);
+    router.post().failureHandler(this::handleFailures);
   }
 
   private void handleFailures(RoutingContext frc) {
