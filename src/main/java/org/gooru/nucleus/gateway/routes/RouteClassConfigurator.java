@@ -37,6 +37,16 @@ class RouteClassConfigurator implements RouteConfigurator {
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
+    router.delete(RouteConstants.EP_CLASS_INVITE_REMOVE).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String email = routingContext.request().getParam(RouteConstants.ID_EMAIL);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_INVITE_REMOVE)
+                                                     .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_EMAIL, email);
+      eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+
     router.put(RouteConstants.EP_CLASS_JOIN_INVITE).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       DeliveryOptions options =
@@ -70,6 +80,16 @@ class RouteClassConfigurator implements RouteConfigurator {
       DeliveryOptions options =
         new DeliveryOptions().setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_MEMBERS_GET)
                              .addHeader(RouteConstants.ID_CLASS, classId);
+      eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+
+    router.delete(RouteConstants.EP_CLASS_STUDENT_REMOVE).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+      DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                                                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_REMOVE_STUDENT)
+                                                     .addHeader(RouteConstants.ID_CLASS, classId).addHeader(RouteConstants.ID_USER, userId);
       eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
