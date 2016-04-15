@@ -2,6 +2,7 @@ package org.gooru.nucleus.gateway.routes;
 
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.HttpConstants;
+import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
 import org.gooru.nucleus.gateway.constants.RouteConstants;
 import org.slf4j.Logger;
@@ -37,7 +38,8 @@ class RouteInternalConfigurator implements RouteConfigurator {
         final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 5L);
 
         router.post(RouteConstants.EP_INTERNAL_EVENT).handler(routingContext -> {
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000);
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EVENT_PUBLISH);
             try {
                 JsonObject eventData = routingContext.getBodyAsJson();
                 if (eventData == null || eventData.isEmpty()) {

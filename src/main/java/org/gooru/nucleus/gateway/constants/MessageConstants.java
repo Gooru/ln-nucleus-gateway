@@ -144,6 +144,9 @@ public final class MessageConstants {
     public static final String MSG_OP_PROFILE_RESOURCE_TAXONOMY_GET = "profile.resource.taxonomy.get";
     public static final String MSG_OP_PROFILE_QUESTION_TAXONOMY_GET = "profile.question.taxonomy.get";
 
+    // Event Operations
+    public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
+    
     private MessageConstants() {
         throw new AssertionError();
     }
