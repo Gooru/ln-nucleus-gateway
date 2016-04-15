@@ -6,8 +6,6 @@ import java.util.Map;
 import org.gooru.nucleus.gateway.constants.HttpConstants;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformer;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformerBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.eventbus.Message;
@@ -15,7 +13,7 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.RoutingContext;
 
 class HttpServerResponseWriter implements ResponseWriter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(HttpServerResponseWriter.class);
+
     private final RoutingContext routingContext;
     private final AsyncResult<Message<Object>> message;
 
@@ -46,7 +44,6 @@ class HttpServerResponseWriter implements ResponseWriter {
             // As of today, we always serve JSON
             response.putHeader(HttpConstants.HEADER_CONTENT_TYPE, HttpConstants.CONTENT_TYPE_JSON);
             response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH, Integer.toString(responseBody.getBytes(StandardCharsets.UTF_8).length));
-            LOGGER.debug("final response to client:== {}", responseBody);
             response.end(responseBody);
         } else {
             response.end();
