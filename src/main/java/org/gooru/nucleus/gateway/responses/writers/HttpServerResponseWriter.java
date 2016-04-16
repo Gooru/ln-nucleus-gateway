@@ -1,5 +1,6 @@
 package org.gooru.nucleus.gateway.responses.writers;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.gooru.nucleus.gateway.constants.HttpConstants;
@@ -42,7 +43,7 @@ class HttpServerResponseWriter implements ResponseWriter {
         if (responseBody != null) {
             // As of today, we always serve JSON
             response.putHeader(HttpConstants.HEADER_CONTENT_TYPE, HttpConstants.CONTENT_TYPE_JSON);
-            response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH, Integer.toString(responseBody.length()));
+            response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH, Integer.toString(responseBody.getBytes(StandardCharsets.UTF_8).length));
             response.end(responseBody);
         } else {
             response.end();
