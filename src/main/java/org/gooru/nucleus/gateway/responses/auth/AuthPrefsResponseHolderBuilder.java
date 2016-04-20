@@ -4,11 +4,11 @@ import io.vertx.core.eventbus.Message;
 
 public final class AuthPrefsResponseHolderBuilder {
 
-  public static AuthPrefsResponseHolder build(Message<Object> message) {
-    return new AuthPrefsMessageBusJsonResponseHolder(message);
-  }
+    public static AuthPrefsResponseHolder build(Message<Object> message) {
+        return new AuthPrefsMessageBusJsonResponseHolder(message);
+    }
 
-  private AuthPrefsResponseHolderBuilder() {
-    throw new AssertionError();
-  }
+    private AuthPrefsResponseHolderBuilder() {
+        throw new AssertionError();
+    }
 }
