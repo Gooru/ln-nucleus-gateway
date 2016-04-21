@@ -54,6 +54,7 @@ public final class RouteConstants {
     private static final String RES_SCHOOLDISTRICTS = "school-districts";
     private static final String RES_SCHOOLS = "schools";
     private static final String RES_TX_STANDARD_FRAMEWORK = "standard-frameworks";
+    private static final String RES_LICENSE = "licenses";
     private static final String SEP = "/";
     private static final String COLON = ":";
     // Helper constants
@@ -156,6 +157,9 @@ public final class RouteConstants {
     // /api/nucleus/lookups/schools?keyword=jo(&school_district_id
     // as optional)
     public static final String EP_SCHOOLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_SCHOOLS;
+    // List License  = /api/nucleus/{version}/lookups/licenses
+    public static final String EP_LICENSE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LICENSE;
+    
     /*
      * RESOURCE
      */

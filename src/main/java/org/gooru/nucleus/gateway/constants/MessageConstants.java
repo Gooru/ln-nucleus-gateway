@@ -42,6 +42,8 @@ public final class MessageConstants {
     public static final String MSG_OP_LKUP_STATES = "states";
     public static final String MSG_OP_LKUP_SCHOOLDISTRICTS = "school-districts";
     public static final String MSG_OP_LKUP_SCHOOLS = "schools";
+    public static final String MSG_OP_LKUP_LICENSES = "licenses";
+    
     // Assessment Operations
     public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
     public static final String MSG_OP_ASSESSMENT_CREATE = "assessment.create";
