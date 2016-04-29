@@ -275,7 +275,9 @@ public final class RouteConstants {
     // Reorder courses in subject bucket = PUT
     // /api/nucleus/{version}/courses/reorder
     public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
-
+    // Fetch resources by Course by Id = /api/nucleus/{version}/courses/{course-id}/resources
+    public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;
+    
     // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
     public static final String EP_UNIT_CREATE =
         API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
