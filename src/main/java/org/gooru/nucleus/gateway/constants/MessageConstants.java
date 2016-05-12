@@ -43,7 +43,7 @@ public final class MessageConstants {
     public static final String MSG_OP_LKUP_SCHOOLDISTRICTS = "school-districts";
     public static final String MSG_OP_LKUP_SCHOOLS = "schools";
     public static final String MSG_OP_LKUP_LICENSES = "licenses";
-    
+
     // Assessment Operations
     public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
     public static final String MSG_OP_ASSESSMENT_CREATE = "assessment.create";
@@ -119,6 +119,8 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_INVITE = "class.invite.user";
     public static final String MSG_OP_CLASS_COURSE_ASSOCIATION = "class.course.association";
     public static final String MSG_OP_CLASS_SET_CONTENT_VISIBILITY = "class.content.visibility.set";
+    public static final String MSG_OP_CLASS_GET_CONTENT_VISIBILITY_STATS = "class.content.visibility.stats.get";
+    public static final String MSG_OP_CLASS_GET_CONTENT_VISIBILITY = "class.content.visibility.get";
     public static final String MSG_OP_CLASS_INVITE_REMOVE = "class.invite.user.remove";
     public static final String MSG_OP_CLASS_REMOVE_STUDENT = "class.join.removal";
 
@@ -149,7 +151,7 @@ public final class MessageConstants {
 
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
-    
+
     private MessageConstants() {
         throw new AssertionError();
     }

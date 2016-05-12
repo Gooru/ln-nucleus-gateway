@@ -55,6 +55,7 @@ public final class RouteConstants {
     private static final String RES_SCHOOLS = "schools";
     private static final String RES_TX_STANDARD_FRAMEWORK = "standard-frameworks";
     private static final String RES_LICENSE = "licenses";
+    private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";
     // Helper constants
@@ -159,7 +160,7 @@ public final class RouteConstants {
     public static final String EP_SCHOOLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_SCHOOLS;
     // List License  = /api/nucleus/{version}/lookups/licenses
     public static final String EP_LICENSE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LICENSE;
-    
+
     /*
      * RESOURCE
      */
@@ -281,7 +282,7 @@ public final class RouteConstants {
     public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
     // Fetch resources by Course by Id = /api/nucleus/{version}/courses/{course-id}/resources
     public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;
-    
+
     // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
     public static final String EP_UNIT_CREATE =
         API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS;
@@ -381,6 +382,14 @@ public final class RouteConstants {
     // /api/nucleus/{version}/classes/{class-id}/courses
     public static final String EP_CLASS_CONTENT_PUBLISH =
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES;
+    // Get the visible items in a course for that class
+    // /api/nucleus/{version}/classes/{class-id}/courses
+    public static final String EP_CLASS_CONTENT_PUBLISHED =
+        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES;
+    // Get the visible items statistics in a course for that class
+    // /api/nucleus/{version}/classes/{class-id}/courses/stats
+    public static final String EP_CLASS_CONTENT_PUBLISHED_STATS =
+        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + RES_STATS;
 
     // COPIER
     // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
