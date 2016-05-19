@@ -85,36 +85,26 @@ public final class RouteConstants {
     // we are going to have individual constant values to work with for each
     // point instead of reusing the same
 
-    // List Subjects in Taxonomy = /api/nucleus/{version}/taxonomy/subjects
-    public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT;
+    // List Subjects in Taxonomy = /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/subjects
+    public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;
     // List Courses in Taxonomy =
-    // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses
-    public static final String EP_COURSES_LIST_BY_SUBJECT = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT
+    // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/subjects/{subject-id}/courses
+    public static final String EP_COURSES_LIST_BY_SUBJECT = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
         + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE;
     // List Domains in Taxonomy =
-    // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains
-    public static final String EP_DOMAINS_LIST_BY_COURSE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT
+    // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/subjects/{subject-id}/courses/{course-id}/domains
+    public static final String EP_DOMAINS_LIST_BY_COURSE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
         + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN;
     // List Codes for Domains in Taxonomy =
-    // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/codes
-    public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT
+    // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/codes
+    public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP  + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
         + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN
         + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;
-    // List Standards Frameworks =
-    // /api/nucleus/{version}/taxonomy/standard-frameworks
-    public static final String EP_STANDARDS_FRAMEWORK_LIST =
-        API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK;
+    // List Subject Standards Frameworks =
+    // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/standard-frameworks
+    public static final String EP_SUBJECT_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT
+        + SEP + COLON + ID_TX_SUBJECT + SEP +  RES_TX_STANDARD_FRAMEWORK;
 
-    // List Root codes =
-    // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/codes
-    public static final String EP_ROOT_CODES_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK
-        + SEP + COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_CODES;
-
-    // List Sub codes =
-    // /api/nucleus/{version}/taxonomy/standard-frameworks/{standard-framework-id}/codes/{code-id}/codes
-    public static final String EP_SUB_CODES_LIST =
-        API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + COLON + ID_TX_STANDARD_FRAMEWORK
-            + SEP + ENTITY_TX_CODES + SEP + COLON + ID_TX_CODE + SEP + ENTITY_TX_CODES;
 
     /*
      * External authorization end point to validate the authorization, if
