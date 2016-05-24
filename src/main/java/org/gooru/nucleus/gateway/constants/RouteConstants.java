@@ -85,8 +85,9 @@ public final class RouteConstants {
     // we are going to have individual constant values to work with for each
     // point instead of reusing the same
 
-    // List Subjects in Taxonomy = /api/nucleus/{version}/taxonomy/frameworks/{framework-id}/subjects
-    public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;
+    // List Subjects =
+    // /api/nucleus/{version}/taxonomy/subjects
+    public static final String EP_SUBJECTS_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT;
     // List Courses in Taxonomy =
     // /api/nucleus/{version}/taxonomy/frameworks/{framework-id}/subjects/{subject-id}/courses
     public static final String EP_COURSES_LIST_BY_SUBJECT = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
@@ -99,12 +100,7 @@ public final class RouteConstants {
     // /api/nucleus/{version}/taxonomy/frameworks/{framework-id}/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/codes
     public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP  + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
         + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN
-        + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;
-    // List Subject Standards Frameworks =
-    // /api/nucleus/{version}/taxonomy/subjects/{subject-id}/frameworks
-    public static final String EP_SUBJECT_STANDARDS_FRAMEWORK_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT
-        + SEP + COLON + ID_TX_SUBJECT + SEP +  RES_TX_STANDARD_FRAMEWORK;
-
+        + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;    
 
     /*
      * External authorization end point to validate the authorization, if

@@ -30,15 +30,12 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
         router.get(RouteConstants.EP_COURSES_LIST_BY_SUBJECT).handler(this::getCourses);
         router.get(RouteConstants.EP_DOMAINS_LIST_BY_COURSE).handler(this::getDomains);
         router.get(RouteConstants.EP_STANDARDS_LIST_BY_DOMAINS).handler(this::getDomainCodes);
-        router.get(RouteConstants.EP_SUBJECT_STANDARDS_FRAMEWORK_LIST).handler(this::getStandardFrameworks);
     }
 
     private void getSubjects(RoutingContext routingContext) {
-        final String standardFrameworkId = routingContext.request().getParam(RouteConstants.ID_TX_STANDARD_FRAMEWORK);
         final DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_SUBJECTS_GET)
-                .addHeader(RouteConstants.ID_TX_STANDARD_FRAMEWORK, standardFrameworkId);
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_SUBJECTS_GET);
         eb.send(MessagebusEndpoints.MBEP_TAXONOMY, new RouteRequestUtility().getBodyForMessage(routingContext),
             options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     }
@@ -79,16 +76,6 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
                 .addHeader(RouteConstants.ID_TX_DOMAIN, domainId).addHeader(RouteConstants.ID_TX_SUBJECT, subjectId)
                 .addHeader(RouteConstants.ID_TX_COURSE, courseId)
                 .addHeader(RouteConstants.ID_TX_STANDARD_FRAMEWORK, standardFrameworkId);
-        eb.send(MessagebusEndpoints.MBEP_TAXONOMY, new RouteRequestUtility().getBodyForMessage(routingContext),
-            options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-    }
-
-    private void getStandardFrameworks(RoutingContext routingContext) {
-        final String subjectId = routingContext.request().getParam(RouteConstants.ID_TX_SUBJECT);
-        final DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_STANDARD_FRAMEWORKS_GET)
-                .addHeader(RouteConstants.ID_TX_SUBJECT, subjectId);
         eb.send(MessagebusEndpoints.MBEP_TAXONOMY, new RouteRequestUtility().getBodyForMessage(routingContext),
             options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     }
