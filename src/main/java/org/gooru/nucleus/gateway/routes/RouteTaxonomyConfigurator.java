@@ -30,6 +30,7 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
         router.get(RouteConstants.EP_COURSES_LIST_BY_SUBJECT).handler(this::getCourses);
         router.get(RouteConstants.EP_DOMAINS_LIST_BY_COURSE).handler(this::getDomains);
         router.get(RouteConstants.EP_STANDARDS_LIST_BY_DOMAINS).handler(this::getDomainCodes);
+        router.get(RouteConstants.EP_CODE).handler(this::getCode);
     }
 
     private void getSubjects(RoutingContext routingContext) {
@@ -80,5 +81,12 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
             options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     }
     
-
+    private void getCode(RoutingContext routingContext) {
+        final String idList = routingContext.request().getParam(RouteConstants.ID_TX_CODE_ID_LIST);
+        final DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_CODES_GET)
+            .addHeader(RouteConstants.ID_TX_CODE_ID_LIST, idList);
+        eb.send(MessagebusEndpoints.MBEP_TAXONOMY, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    }
 }
