@@ -19,7 +19,7 @@ public final class RouteConstants {
     public static final String ID_TX_DOMAIN = "domainId";
     public static final String ID_TX_COURSE = "courseId";
     public static final String ID_TX_STANDARD_FRAMEWORK = "standardFrameworkId";
-    public static final String ID_TX_CODE = "codeId";
+    public static final String ID_TX_CODE_ID_LIST = "idList";
     public static final String ID_COUNTRY = "countryId";
     public static final String ID_USER = "userId";
     public static final String ID_EMAIL = "email";
@@ -100,7 +100,10 @@ public final class RouteConstants {
     // /api/nucleus/{version}/taxonomy/frameworks/{framework-id}/subjects/{subject-id}/courses/{course-id}/domains/{domain-id}/codes
     public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP  + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
         + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN
-        + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;    
+        + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;
+    // Fetch code =     
+    // /api/nucleus/{version}/taxonomy/codes?idList=
+    public static final String EP_CODE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CODES;
 
     /*
      * External authorization end point to validate the authorization, if
