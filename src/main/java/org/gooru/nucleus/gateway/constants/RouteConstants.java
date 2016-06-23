@@ -269,8 +269,6 @@ public final class RouteConstants {
     // Reorder courses in subject bucket = PUT
     // /api/nucleus/{version}/courses/reorder
     public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
-    // Fetch resources by Course by Id = /api/nucleus/{version}/courses/{course-id}/resources
-    public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;
 
     // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
     public static final String EP_UNIT_CREATE =
@@ -351,14 +349,14 @@ public final class RouteConstants {
     // Remove a student from class who has joined already =
     // /api/nucleus/{version}/classes/{classId}/members/{userId}
     public static final String EP_CLASS_STUDENT_REMOVE =
-        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER + SEP + ID_USER;
+        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER + SEP + COLON + ID_USER;
     // Join a Class = /api/nucleus/{version}/classes/{class-id}/members
     public static final String EP_CLASS_JOIN =
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER;
     // Remove invitation from a Class =
     // /api/nucleus/{version}/classes/{class-id}/invites/{emailId}
     public static final String EP_CLASS_INVITE_REMOVE =
-        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_INVITE + SEP + ID_EMAIL;
+        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_INVITE + SEP + COLON + ID_EMAIL;
     // Invite to a Class = /api/nucleus/{version}/classes/{class-id}/invites
     public static final String EP_CLASS_JOIN_INVITE =
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_INVITE;
