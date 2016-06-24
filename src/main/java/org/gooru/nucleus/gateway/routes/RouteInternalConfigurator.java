@@ -1,10 +1,6 @@
 package org.gooru.nucleus.gateway.routes;
 
-import org.gooru.nucleus.gateway.constants.ConfigConstants;
-import org.gooru.nucleus.gateway.constants.HttpConstants;
-import org.gooru.nucleus.gateway.constants.MessageConstants;
-import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
-import org.gooru.nucleus.gateway.constants.RouteConstants;
+import org.gooru.nucleus.gateway.constants.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,8 +18,9 @@ class RouteInternalConfigurator implements RouteConfigurator {
     @Override
     public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
         router.route(RouteConstants.EP_INTERNAL_BANNER).handler(routingContext -> {
-            JsonObject result = new JsonObject().put("Organisation", "gooru.org").put("Product", "nucleus")
-                .put("purpose", "api").put("mission", "Honor the human right to education");
+            JsonObject result =
+                new JsonObject().put("Organisation", "gooru.org").put("Product", "nucleus").put("purpose", "api")
+                    .put("mission", "Honor the human right to education");
             routingContext.response().end(result.toString());
         });
 
@@ -55,5 +52,25 @@ class RouteInternalConfigurator implements RouteConfigurator {
                 throw throwable;
             }
         });
+
+        router.post(RouteConstants.EP_INTERNAL_EVENT_PROCESSOR).handler(routingContext -> {
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EVENT_PROCESS);
+            try {
+                JsonObject eventData = routingContext.getBodyAsJson();
+                if (eventData == null || eventData.isEmpty()) {
+                    LOGGER.warn("Invalid event data to be published");
+                    routingContext.response().setStatusCode(HttpConstants.HttpStatus.BAD_REQUEST.getCode()).end();
+                } else {
+                    eb.send(MessagebusEndpoints.MBEP_EVENT, eventData, options);
+                    routingContext.response().setStatusCode(HttpConstants.HttpStatus.SUCCESS.getCode()).end();
+                }
+            } catch (Throwable throwable) {
+                LOGGER.warn("Error trying to publish event to publisher", throwable);
+                // handled downstream
+                throw throwable;
+            }
+        });
+
     }
 }

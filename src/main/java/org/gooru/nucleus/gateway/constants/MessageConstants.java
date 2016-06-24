@@ -148,6 +148,7 @@ public final class MessageConstants {
 
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
+    public static final String MSG_OP_EVENT_PROCESS = "event.process";
 
     private MessageConstants() {
         throw new AssertionError();

@@ -101,7 +101,7 @@ public final class RouteConstants {
     public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP  + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
         + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN
         + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;
-    // Fetch code =     
+    // Fetch code =
     // /api/nucleus/{version}/taxonomy/codes?idList=
     public static final String EP_CODE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CODES;
 
@@ -435,7 +435,13 @@ public final class RouteConstants {
 
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
     public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";
+    // This is event publisher. It expects full blown event structure which will be relayed to Kafka
     public static final String EP_INTERNAL_EVENT = "/api/internal/v1/events";
+    // This is event processor. It provides a JSON Object as request which has two parts.
+    // One mandatory part is <event> this is processed as other events from the message bus
+    // Second optional part is <context> which can provide additional information like email should be sent or not
+    // Note that difference between original message on message bus and this is the presence of op name
+    public static final String EP_INTERNAL_EVENT_PROCESSOR = "/api/internal/v1/eventprocessor";
 
     private RouteConstants() {
         throw new AssertionError();
