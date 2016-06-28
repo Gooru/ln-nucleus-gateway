@@ -55,6 +55,7 @@ public final class RouteConstants {
     private static final String RES_SCHOOLS = "schools";
     private static final String RES_TX_STANDARD_FRAMEWORK = "frameworks";
     private static final String RES_LICENSE = "licenses";
+    private static final String RES_APIKEY_CONFIG = "apikey-config";
     private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";
@@ -149,6 +150,8 @@ public final class RouteConstants {
     public static final String EP_SCHOOLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_SCHOOLS;
     // List License  = /api/nucleus/{version}/lookups/licenses
     public static final String EP_LICENSE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LICENSE;
+    // API Key Config = /api/nucleus/{version}/lookups/apikey-config
+    public static final String EP_APIKEY_CONFIG = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_APIKEY_CONFIG;
 
     /*
      * RESOURCE
@@ -318,6 +321,11 @@ public final class RouteConstants {
     public static final String EP_LESSON_MOVE_COLLECTION =
         API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP
             + ENTITY_LESSONS + SEP + COLON + ID_LESSON + SEP + ENTITY_COLLECTIONS;
+    // Remove existing collection/assessment from CUL =
+    // /api/nucleus/v1/courses/:courseId/units/:unitId/lessons/:lessonId/collections/:collectionId
+    public static final String EP_LESSON_REMOVE_COLLECTION =
+        API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP
+            + ENTITY_LESSONS + SEP + COLON + ID_LESSON + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
 
     /*
      * CLASSES
