@@ -55,6 +55,7 @@ public final class RouteConstants {
     private static final String RES_SCHOOLS = "schools";
     private static final String RES_TX_STANDARD_FRAMEWORK = "frameworks";
     private static final String RES_LICENSE = "licenses";
+    private static final String RES_APIKEY_CONFIG = "apikey-config";
     private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";
@@ -101,7 +102,7 @@ public final class RouteConstants {
     public static final String EP_STANDARDS_LIST_BY_DOMAINS = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP  + RES_TX_STANDARD_FRAMEWORK + SEP +  COLON + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT
         + SEP + COLON + ID_TX_SUBJECT + SEP + ENTITY_TX_COURSE + SEP + COLON + ID_TX_COURSE + SEP + ENTITY_TX_DOMAIN
         + SEP + COLON + ID_TX_DOMAIN + SEP + ENTITY_TX_CODES;
-    // Fetch code =     
+    // Fetch code =
     // /api/nucleus/{version}/taxonomy/codes?idList=
     public static final String EP_CODE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CODES;
 
@@ -149,6 +150,8 @@ public final class RouteConstants {
     public static final String EP_SCHOOLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_SCHOOLS;
     // List License  = /api/nucleus/{version}/lookups/licenses
     public static final String EP_LICENSE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LICENSE;
+    // API Key Config = /api/nucleus/{version}/lookups/apikey-config
+    public static final String EP_APIKEY_CONFIG = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_APIKEY_CONFIG;
 
     /*
      * RESOURCE
@@ -318,6 +321,11 @@ public final class RouteConstants {
     public static final String EP_LESSON_MOVE_COLLECTION =
         API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP
             + ENTITY_LESSONS + SEP + COLON + ID_LESSON + SEP + ENTITY_COLLECTIONS;
+    // Remove existing collection/assessment from CUL =
+    // /api/nucleus/v1/courses/:courseId/units/:unitId/lessons/:lessonId/collections/:collectionId
+    public static final String EP_LESSON_REMOVE_COLLECTION =
+        API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP
+            + ENTITY_LESSONS + SEP + COLON + ID_LESSON + SEP + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
 
     /*
      * CLASSES
@@ -435,7 +443,13 @@ public final class RouteConstants {
 
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
     public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";
+    // This is event publisher. It expects full blown event structure which will be relayed to Kafka
     public static final String EP_INTERNAL_EVENT = "/api/internal/v1/events";
+    // This is event processor. It provides a JSON Object as request which has two parts.
+    // One mandatory part is <event> this is processed as other events from the message bus
+    // Second optional part is <context> which can provide additional information like email should be sent or not
+    // Note that difference between original message on message bus and this is the presence of op name
+    public static final String EP_INTERNAL_EVENT_PROCESSOR = "/api/internal/v1/eventprocessor";
 
     private RouteConstants() {
         throw new AssertionError();

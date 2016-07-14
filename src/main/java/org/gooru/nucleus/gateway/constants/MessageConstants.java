@@ -43,6 +43,7 @@ public final class MessageConstants {
     public static final String MSG_OP_LKUP_SCHOOLDISTRICTS = "school-districts";
     public static final String MSG_OP_LKUP_SCHOOLS = "schools";
     public static final String MSG_OP_LKUP_LICENSES = "licenses";
+    public static final String MSG_OP_LKUP_APIKEY_CONFIG = "apikey.config";
 
     // Assessment Operations
     public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
@@ -93,6 +94,7 @@ public final class MessageConstants {
     public static final String MSG_OP_LESSON_DELETE = "lesson.delete";
     public static final String MSG_OP_LESSON_CONTENT_REORDER = "lesson.content.reorder";
     public static final String MSG_OP_LESSON_MOVE_COLLECTION = "lesson.move.collection";
+    public static final String MSG_OP_LESSON_REMOVE_COLLECTION = "lesson.remove.collection";
 
     // Taxonomy Lookup Operations
 
@@ -148,6 +150,7 @@ public final class MessageConstants {
 
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
+    public static final String MSG_OP_EVENT_PROCESS = "event.process";
 
     private MessageConstants() {
         throw new AssertionError();
