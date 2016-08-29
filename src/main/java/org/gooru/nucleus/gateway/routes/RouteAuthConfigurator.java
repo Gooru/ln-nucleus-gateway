@@ -34,6 +34,7 @@ class RouteAuthConfigurator implements RouteConfigurator {
         final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
         router.route(RouteConstants.API_AUTH_ROUTE).handler(routingContext -> {
+            long authProcessingStart = System.nanoTime();
             String sessionToken = extractSessionToken(routingContext.request().getHeader(HttpConstants.HEADER_AUTH));
             // If the session token is null or absent, we send an error to
             // client
@@ -69,6 +70,7 @@ class RouteAuthConfigurator implements RouteConfigurator {
                                 JsonObject prefs = responseHolder.getPreferences();
                                 routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
                                 routingContext.put(MessageConstants.MSG_USER_ID, responseHolder.getUser());
+                                routingContext.put(MessageConstants.MSG_OP_AUTH_TIME, (System.nanoTime() - authProcessingStart));
                                 routingContext.next();
                             }
                         } else {

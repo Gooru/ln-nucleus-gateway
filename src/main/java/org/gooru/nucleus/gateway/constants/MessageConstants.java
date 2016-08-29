@@ -152,6 +152,10 @@ public final class MessageConstants {
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
     public static final String MSG_OP_EVENT_PROCESS = "event.process";
 
+    //Request Processing LOG constants
+    public static final String MSG_OP_AUTH_TIME = "processing.time.auth";
+    public static final String MSG_OP_HANDLER_START = "start.time.handler";
+    
     private MessageConstants() {
         throw new AssertionError();
     }
