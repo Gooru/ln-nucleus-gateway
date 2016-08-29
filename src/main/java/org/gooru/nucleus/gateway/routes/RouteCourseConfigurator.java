@@ -30,7 +30,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
         router.put(RouteConstants.EP_COURSE_COLLABORATOR_UPDATE).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_COLLABORATOR_UPDATE)
@@ -40,7 +39,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         });
 
         router.put(RouteConstants.EP_COURSE_CONTENT_REORDER).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_CONTENT_REORDER)
@@ -50,7 +48,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         });
 
         router.put(RouteConstants.EP_COURSE_REORDER).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_REORDER);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
@@ -58,7 +55,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         });
 
         router.put(RouteConstants.EP_COURSE_MOVE_UNIT).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_MOVE_UNIT)
@@ -68,7 +64,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         });
 
         router.put(RouteConstants.EP_COURSE_UPDATE).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_UPDATE)
@@ -78,7 +73,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         });
 
         router.delete(RouteConstants.EP_COURSE_DELETE).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_DELETE)
@@ -88,7 +82,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         });
 
         router.get(RouteConstants.EP_COURSE_GET).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_GET)
@@ -98,7 +91,6 @@ class RouteCourseConfigurator implements RouteConfigurator {
         });
         
         router.post(RouteConstants.EP_COURSE_CREATE).handler(routingContext -> {
-            routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.nanoTime());
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_CREATE);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
