@@ -4,8 +4,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.gooru.nucleus.gateway.constants.HttpConstants;
+import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformer;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformerBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.eventbus.Message;
@@ -14,6 +17,7 @@ import io.vertx.ext.web.RoutingContext;
 
 class HttpServerResponseWriter implements ResponseWriter {
 
+    private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.performance.log");
     private final RoutingContext routingContext;
     private final AsyncResult<Message<Object>> message;
 
@@ -52,6 +56,15 @@ class HttpServerResponseWriter implements ResponseWriter {
             }
         } else {
             response.end();
+        }
+        
+        try {
+            long authProcessingTime = (Long) routingContext.get(MessageConstants.MSG_OP_AUTH_TIME);
+            long handlerProcessingTime = (System.currentTimeMillis() - authProcessingTime);
+            String userId = (String) routingContext.get(MessageConstants.MSG_USER_ID);
+            LOG.info("Auth Processing Time:{}ms -- Handler Processing Time:{}ms -- UserId:{}", authProcessingTime, handlerProcessingTime, userId);
+        } catch (Throwable t) {
+            LOG.error("error while logging request processing time", t.getMessage());
         }
     }
 }
