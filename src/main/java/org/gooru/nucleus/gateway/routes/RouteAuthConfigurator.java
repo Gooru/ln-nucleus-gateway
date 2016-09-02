@@ -71,6 +71,7 @@ class RouteAuthConfigurator implements RouteConfigurator {
                                 routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
                                 routingContext.put(MessageConstants.MSG_USER_ID, responseHolder.getUser());
                                 routingContext.put(MessageConstants.MSG_OP_AUTH_TIME, (System.currentTimeMillis() - authProcessingStart));
+                                routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.currentTimeMillis());
                                 routingContext.next();
                             }
                         } else {
