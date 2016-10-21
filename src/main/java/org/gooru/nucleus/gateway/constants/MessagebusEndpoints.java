@@ -21,6 +21,7 @@ public final class MessagebusEndpoints {
     public static final String MBEP_EVENT = "org.gooru.nucleus.message.bus.publisher.event";
     public static final String MBEP_JOB = "org.gooru.nucleus.message.bus.job";
     public static final String MBEP_COPIER = "org.gooru.nucleus.message.bus.copier";
+    public static final String MBEP_WATSON = "org.gooru.nucleus.message.bus.watson";
 
     public static final String MBEP_PREFS = "org.gooru.nucleus.message.bus.prefs";
     public static final String MBEP_CONTENT_FLAG = "org.gooru.nucleus.message.bus.content.flag";

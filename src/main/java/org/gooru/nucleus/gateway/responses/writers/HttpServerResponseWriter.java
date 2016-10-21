@@ -16,8 +16,9 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.RoutingContext;
 
 class HttpServerResponseWriter implements ResponseWriter {
-
+  
     private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.performance.log");
+
     private final RoutingContext routingContext;
     private final AsyncResult<Message<Object>> message;
 
