@@ -53,5 +53,15 @@ class HttpServerResponseWriter implements ResponseWriter {
         } else {
             response.end();
         }
+        
+        try {
+            long authProcessingTime = (Long) routingContext.get(MessageConstants.MSG_OP_AUTH_TIME);
+            long handlerProcessingStart = (Long) routingContext.get(MessageConstants.MSG_OP_HANDLER_START);
+            long handlerProcessingTime = (System.currentTimeMillis() - handlerProcessingStart);
+            String userId = (String) routingContext.get(MessageConstants.MSG_USER_ID);
+            LOG.info("Auth Processing Time:{}ms -- Handler Processing Time:{}ms -- UserId:{}", authProcessingTime, handlerProcessingTime, userId);
+        } catch (Throwable t) {
+            LOG.error("error while logging request processing time", t.getMessage());
+        }
     }
 }
