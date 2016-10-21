@@ -82,7 +82,6 @@ public final class MessageConstants {
     public static final String MSG_OP_COURSE_CONTENT_REORDER = "course.content.reorder";
     public static final String MSG_OP_COURSE_MOVE_UNIT = "course.move.unit";
     public static final String MSG_OP_COURSE_REORDER = "course.reorder";
-    public static final String MSG_OP_COURSE_RESOURCES_GET = "course.resources.get";
     public static final String MSG_OP_UNIT_GET = "unit.get";
     public static final String MSG_OP_UNIT_CREATE = "unit.create";
     public static final String MSG_OP_UNIT_UPDATE = "unit.update";
@@ -123,6 +122,20 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_GET_CONTENT_VISIBILITY = "class.content.visibility.get";
     public static final String MSG_OP_CLASS_INVITE_REMOVE = "class.invite.user.remove";
     public static final String MSG_OP_CLASS_REMOVE_STUDENT = "class.join.removal";
+    
+    //Watson Operations
+    public static final String MSG_OP_WATSON_COURSE_GET = "watson.get.course";
+    public static final String MSG_OP_WATSON_COURSE_UPDATE = "watson.update.course";
+    public static final String MSG_OP_WATSON_ASSESSMENT_GET = "watson.get.assessment";
+    public static final String MSG_OP_WATSON_ASSESSMENT_UPDATE = "watson.update.assessment";
+    public static final String MSG_OP_WATSON_RESOURCE_GET = "watson.get.resource";
+    public static final String MSG_OP_WATSON_RESOURCE_UPDATE = "watson.update.resource";
+    public static final String MSG_OP_WATSON_UNIT_GET = "watson.get.unit";
+    public static final String MSG_OP_WATSON_UNIT_UPDATE = "watson.update.unit";
+    public static final String MSG_OP_WATSON_QUESTION_GET = "watson.get.question";
+    public static final String MSG_OP_WATSON_QUESTION_UPDATE = "watson.update.question";
+    public static final String MSG_OP_WATSON_COLLECTION_GET = "watson.get.collection";
+    public static final String MSG_OP_WATSON_COLLECTION_UPDATE = "watson.update.collection";
 
     // Copier Operations
     public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
@@ -153,10 +166,6 @@ public final class MessageConstants {
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
     public static final String MSG_OP_EVENT_PROCESS = "event.process";
 
-    //Request Processing LOG constants
-    public static final String MSG_OP_AUTH_TIME = "processing.time.auth";
-    public static final String MSG_OP_HANDLER_START = "start.time.handler";
-    
     private MessageConstants() {
         throw new AssertionError();
     }

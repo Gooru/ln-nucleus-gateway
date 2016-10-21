@@ -4,11 +4,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.gooru.nucleus.gateway.constants.HttpConstants;
-import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformer;
 import org.gooru.nucleus.gateway.responses.transformers.ResponseTransformerBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.eventbus.Message;
@@ -17,7 +14,6 @@ import io.vertx.ext.web.RoutingContext;
 
 class HttpServerResponseWriter implements ResponseWriter {
 
-    private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.performance.log");
     private final RoutingContext routingContext;
     private final AsyncResult<Message<Object>> message;
 
