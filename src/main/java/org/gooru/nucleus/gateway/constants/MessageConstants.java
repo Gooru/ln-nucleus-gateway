@@ -82,6 +82,7 @@ public final class MessageConstants {
     public static final String MSG_OP_COURSE_CONTENT_REORDER = "course.content.reorder";
     public static final String MSG_OP_COURSE_MOVE_UNIT = "course.move.unit";
     public static final String MSG_OP_COURSE_REORDER = "course.reorder";
+    public static final String MSG_OP_COURSE_RESOURCES_GET = "course.resources.get";
     public static final String MSG_OP_UNIT_GET = "unit.get";
     public static final String MSG_OP_UNIT_CREATE = "unit.create";
     public static final String MSG_OP_UNIT_UPDATE = "unit.update";
@@ -166,6 +167,10 @@ public final class MessageConstants {
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
     public static final String MSG_OP_EVENT_PROCESS = "event.process";
 
+    //Request Processing LOG constants
+    public static final String MSG_OP_AUTH_TIME = "processing.time.auth";
+    public static final String MSG_OP_HANDLER_START = "start.time.handler";
+    
     private MessageConstants() {
         throw new AssertionError();
     }
