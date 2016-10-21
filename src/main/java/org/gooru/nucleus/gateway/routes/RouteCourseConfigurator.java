@@ -90,6 +90,16 @@ class RouteCourseConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
         
+        router.get(RouteConstants.EP_COURSE_RESOURCES_GET).handler(routingContext -> {
+          String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+          DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_RESOURCES_GET)
+              .addHeader(RouteConstants.ID_COURSE, courseId);
+          eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
+              options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+      });
+      
+        
         router.post(RouteConstants.EP_COURSE_CREATE).handler(routingContext -> {
             DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
                 .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_CREATE);
