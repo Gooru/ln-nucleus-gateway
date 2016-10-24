@@ -68,7 +68,7 @@ public final class RouteConstants {
     private static final String ENTITY_ASSESSMENTS = "assessments";
     private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
     private static final String ENTITY_COLLECTIONS = "collections";
-    private static final String ENTITY_WATSON = "watson";
+    private static final String ENTITY_KEYWORD = "keyword";
     private static final String ENTITY_COURSES = "courses";
     private static final String ENTITY_UNITS = "units";
     private static final String ENTITY_LESSONS = "lessons";
@@ -274,7 +274,7 @@ public final class RouteConstants {
     // /api/nucleus/{version}/courses/reorder
     public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
     // Fetch resources by Course by Id = /api/nucleus/{version}/courses/{course-id}/resources
-    public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;  
+    public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;
 
     // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
     public static final String EP_UNIT_CREATE =
@@ -453,22 +453,25 @@ public final class RouteConstants {
     // Second optional part is <context> which can provide additional information like email should be sent or not
     // Note that difference between original message on message bus and this is the presence of op name
     public static final String EP_INTERNAL_EVENT_PROCESSOR = "/api/internal/v1/eventprocessor";
-    
+
     /*
-     * WATSON TAGGING 
+     * KEYWORDS TAGGING
      */
-    //Get course tags = /api/nucleus/{version}/watson/courses/{course-id}
-    public static final String EP_WATSON_COURSE = API_BASE_ROUTE + ENTITY_WATSON + SEP +  ENTITY_COURSES + SEP + COLON + ID_COURSE;
-    //Get assessment tags = /api/nucleus/{version}/watson/assessments/{assessment-id}
-    public static final String EP_WATSON_ASSESSMENT = API_BASE_ROUTE + ENTITY_WATSON + SEP +  ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT;
-    //Get resource tags = /api/nucleus/{version}/watson/resources/{resource-id}
-    public static final String EP_WATSON_RESOURCE = API_BASE_ROUTE + ENTITY_WATSON + SEP +  ENTITY_RESOURCES + SEP + COLON + ID_RESOURCE;
-    //Get question tags = /api/nucleus/{version}/watson/questions/{question-id}
-    public static final String EP_WATSON_QUESTION = API_BASE_ROUTE + ENTITY_WATSON + SEP +  ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
-    //Get unit tags = /api/nucleus/{version}/watson/units/{unit-id}
-    public static final String EP_WATSON_UNIT = API_BASE_ROUTE + ENTITY_WATSON + SEP +  ENTITY_UNITS + SEP + COLON + ID_UNIT;
-    //Get collection tags = /api/nucleus/{version}/watson/collections/{collection-id}
-    public static final String EP_WATSON_COLLECTION = API_BASE_ROUTE + ENTITY_WATSON + SEP +  ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION;
+    //Get course tags = /api/nucleus/{version}/courses/{course-id}/keyword
+    public static final String EP_COURSE_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_COURSES + SEP + COLON + ID_COURSE +
+        SEP + ENTITY_KEYWORD ;
+    //Get assessment tags = /api/nucleus/{version}/assessments/{assessment-id}/keyword
+    public static final String EP_ASSESSMENT_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_ASSESSMENTS + SEP + COLON +
+        ID_ASSESSMENT + SEP + ENTITY_KEYWORD;
+    //Get collection tags = /api/nucleus/{version}/collections/{collection-id}/keyword
+    public static final String EP_COLLECTION_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_COLLECTIONS + SEP + COLON +
+        ID_COLLECTION + SEP + ENTITY_KEYWORD ;
+    //Get resource tags = /api/nucleus/{version}/resources/{resource-id}/keyword
+    public static final String EP_RESOURCE_KEYWORD = API_BASE_ROUTE + ENTITY_KEYWORD + SEP +  ENTITY_RESOURCES + SEP +
+        COLON + ID_RESOURCE + SEP + ENTITY_KEYWORD ;
+    //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
+    public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_QUESTIONS + SEP + COLON +
+        ID_QUESTION + SEP + ENTITY_KEYWORD ;
 
     private RouteConstants() {
         throw new AssertionError();
