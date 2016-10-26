@@ -458,19 +458,19 @@ public final class RouteConstants {
      * KEYWORDS TAGGING
      */
     //Get course tags = /api/nucleus/{version}/courses/{course-id}/keyword
-    public static final String EP_COURSE_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_COURSES + SEP + COLON + ID_COURSE +
+    public static final String EP_COURSE_KEYWORD = API_BASE_ROUTE +  ENTITY_COURSES + SEP + COLON + ID_COURSE +
         SEP + ENTITY_KEYWORD ;
     //Get assessment tags = /api/nucleus/{version}/assessments/{assessment-id}/keyword
-    public static final String EP_ASSESSMENT_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_ASSESSMENTS + SEP + COLON +
+    public static final String EP_ASSESSMENT_KEYWORD = API_BASE_ROUTE +  ENTITY_ASSESSMENTS + SEP + COLON +
         ID_ASSESSMENT + SEP + ENTITY_KEYWORD;
     //Get collection tags = /api/nucleus/{version}/collections/{collection-id}/keyword
-    public static final String EP_COLLECTION_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_COLLECTIONS + SEP + COLON +
+    public static final String EP_COLLECTION_KEYWORD = API_BASE_ROUTE +  ENTITY_COLLECTIONS + SEP + COLON +
         ID_COLLECTION + SEP + ENTITY_KEYWORD ;
     //Get resource tags = /api/nucleus/{version}/resources/{resource-id}/keyword
     public static final String EP_RESOURCE_KEYWORD = API_BASE_ROUTE + ENTITY_KEYWORD + SEP +  ENTITY_RESOURCES + SEP +
         COLON + ID_RESOURCE + SEP + ENTITY_KEYWORD ;
     //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
-    public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE + SEP +  ENTITY_QUESTIONS + SEP + COLON +
+    public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE +  ENTITY_QUESTIONS + SEP + COLON +
         ID_QUESTION + SEP + ENTITY_KEYWORD ;
 
     private RouteConstants() {
