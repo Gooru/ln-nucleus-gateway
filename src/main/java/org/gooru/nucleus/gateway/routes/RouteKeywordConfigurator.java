@@ -86,6 +86,14 @@ public class RouteKeywordConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_KEYWORD, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
+        
+        router.put(RouteConstants.EP_RESOURCE_KEYWORD_BULK_UPDATE).handler(routingContext -> {
+            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RESOURCE_KEYWORD_UPDATE)
+                .addHeader(MessageConstants.MSG_HEADER_BULK_UPDATE, String.valueOf(Boolean.TRUE));
+            eb.send(MessagebusEndpoints.MBEP_KEYWORD, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
 
     }
 

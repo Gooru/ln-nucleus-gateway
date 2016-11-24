@@ -467,11 +467,14 @@ public final class RouteConstants {
     public static final String EP_COLLECTION_KEYWORD = API_BASE_ROUTE +  ENTITY_COLLECTIONS + SEP + COLON +
         ID_COLLECTION + SEP + ENTITY_KEYWORD ;
     //Get resource tags = /api/nucleus/{version}/resources/{resource-id}/keyword
-    public static final String EP_RESOURCE_KEYWORD = API_BASE_ROUTE + ENTITY_KEYWORD + SEP +  ENTITY_RESOURCES + SEP +
-        COLON + ID_RESOURCE + SEP + ENTITY_KEYWORD ;
+    public static final String EP_RESOURCE_KEYWORD = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON + 
+        ID_RESOURCE + SEP + ENTITY_KEYWORD ;
     //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
     public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE +  ENTITY_QUESTIONS + SEP + COLON +
         ID_QUESTION + SEP + ENTITY_KEYWORD ;
+    
+    //bulk update resource tags = /api/nucleus/{version}/resources/keyword/bulkUpdate
+    public static final String EP_RESOURCE_KEYWORD_BULK_UPDATE = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + ENTITY_KEYWORD + SEP + "bulkUpdate";
 
     private RouteConstants() {
         throw new AssertionError();

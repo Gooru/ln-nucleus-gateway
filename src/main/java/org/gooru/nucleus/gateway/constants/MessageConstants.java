@@ -125,6 +125,7 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_REMOVE_STUDENT = "class.join.removal";
 
     //Watson Operations
+    public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";
     public static final String MSG_OP_COURSE_KEYWORD_GET = "course.keyword.get";
     public static final String MSG_OP_COURSE_KEYWORD_UPDATE = "course.keyword.update";
     public static final String MSG_OP_ASSESSMENT_KEYWORD_GET = "assessment.keyword.get";
