@@ -4,6 +4,7 @@ import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
 import org.gooru.nucleus.gateway.constants.RouteConstants;
+import org.gooru.nucleus.gateway.routes.utils.DeliveryOptionsBuilder;
 import org.gooru.nucleus.gateway.routes.utils.RouteRequestUtility;
 import org.gooru.nucleus.gateway.routes.utils.RouteResponseUtility;
 import org.slf4j.Logger;
@@ -30,9 +31,10 @@ public class RouteAssessmentExternalConfigurator implements RouteConfigurator {
 
         router.get(RouteConstants.EP_ASSESSMENT_EX_GET).handler(routingContext -> {
             String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_GET)
-                .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_GET)
+                    .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
             eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
@@ -40,26 +42,29 @@ public class RouteAssessmentExternalConfigurator implements RouteConfigurator {
 
         router.put(RouteConstants.EP_ASSESSMENT_EX_UPDATE).handler(routingContext -> {
             String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_UPDATE)
-                .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_UPDATE)
+                    .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
             eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
 
         router.delete(RouteConstants.EP_ASSESSMENT_EX_DELETE).handler(routingContext -> {
             String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_DELETE)
-                .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_DELETE)
+                    .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
             eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 
         });
 
         router.post(RouteConstants.EP_ASSESSMENT_EX_CREATE).handler(routingContext -> {
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_CREATE);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_EXT_ASSESSMENT_CREATE);
             eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
 

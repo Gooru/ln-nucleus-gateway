@@ -3,6 +3,7 @@ package org.gooru.nucleus.gateway.constants;
 public final class MessageConstants {
 
     public static final String MSG_HEADER_OP = "mb.operation";
+    public static final String MSG_API_VERSION = "api.version";
     public static final String MSG_HEADER_TOKEN = "session.token";
     public static final String MSG_OP_AUTH_WITH_PREFS = "auth.with.prefs";
     public static final String MSG_OP_STATUS = "mb.operation.status";
@@ -156,7 +157,7 @@ public final class MessageConstants {
     //Request Processing LOG constants
     public static final String MSG_OP_AUTH_TIME = "processing.time.auth";
     public static final String MSG_OP_HANDLER_START = "start.time.handler";
-    
+
     private MessageConstants() {
         throw new AssertionError();
     }
