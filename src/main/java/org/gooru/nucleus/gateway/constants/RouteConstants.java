@@ -68,6 +68,7 @@ public final class RouteConstants {
     private static final String ENTITY_ASSESSMENTS = "assessments";
     private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
     private static final String ENTITY_COLLECTIONS = "collections";
+    private static final String ENTITY_KEYWORD = "keyword";
     private static final String ENTITY_COURSES = "courses";
     private static final String ENTITY_UNITS = "units";
     private static final String ENTITY_LESSONS = "lessons";
@@ -451,6 +452,25 @@ public final class RouteConstants {
     // Second optional part is <context> which can provide additional information like email should be sent or not
     // Note that difference between original message on message bus and this is the presence of op name
     public static final String EP_INTERNAL_EVENT_PROCESSOR = "/api/internal/v1/eventprocessor";
+
+    /*
+     * KEYWORDS TAGGING
+     */
+    //Get course tags = /api/nucleus/{version}/courses/{course-id}/keyword
+    public static final String EP_COURSE_KEYWORD = API_BASE_ROUTE +  ENTITY_COURSES + SEP + COLON + ID_COURSE +
+        SEP + ENTITY_KEYWORD ;
+    //Get assessment tags = /api/nucleus/{version}/assessments/{assessment-id}/keyword
+    public static final String EP_ASSESSMENT_KEYWORD = API_BASE_ROUTE +  ENTITY_ASSESSMENTS + SEP + COLON +
+        ID_ASSESSMENT + SEP + ENTITY_KEYWORD;
+    //Get collection tags = /api/nucleus/{version}/collections/{collection-id}/keyword
+    public static final String EP_COLLECTION_KEYWORD = API_BASE_ROUTE +  ENTITY_COLLECTIONS + SEP + COLON +
+        ID_COLLECTION + SEP + ENTITY_KEYWORD ;
+    //Get resource tags = /api/nucleus/{version}/resources/{resource-id}/keyword
+    public static final String EP_RESOURCE_KEYWORD = API_BASE_ROUTE + ENTITY_KEYWORD + SEP +  ENTITY_RESOURCES + SEP +
+        COLON + ID_RESOURCE + SEP + ENTITY_KEYWORD ;
+    //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
+    public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE +  ENTITY_QUESTIONS + SEP + COLON +
+        ID_QUESTION + SEP + ENTITY_KEYWORD ;
 
     private RouteConstants() {
         throw new AssertionError();
