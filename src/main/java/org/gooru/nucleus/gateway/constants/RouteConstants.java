@@ -60,8 +60,8 @@ public final class RouteConstants {
     private static final String SEP = "/";
     private static final String COLON = ":";
     // Helper constants
-    private static final String API_VERSION = "v1";
-    private static final String API_BASE_ROUTE = "/api/nucleus/" + API_VERSION + '/';
+    public static final String API_VERSION = "version";
+    private static final String API_BASE_ROUTE = "/api/nucleus/" + COLON + API_VERSION + '/';
     // Helper: Entity name constants
     private static final String ENTITY_RESOURCES = "resources";
     private static final String ENTITY_QUESTIONS = "questions";
@@ -82,8 +82,7 @@ public final class RouteConstants {
     private static final String ENTITY_COPIER = "copier";
     private static final String ENTITY_PROFILES = "profiles";
 
-    // Actual End Point Constants: Note that constant values may be duplicated
-    // but
+    // Actual End Point Constants: Note that constant values may be duplicated but
     // we are going to have individual constant values to work with for each
     // point instead of reusing the same
 
