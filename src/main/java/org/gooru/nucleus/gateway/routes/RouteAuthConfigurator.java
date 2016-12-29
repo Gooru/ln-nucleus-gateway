@@ -3,11 +3,7 @@ package org.gooru.nucleus.gateway.routes;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.gooru.nucleus.gateway.constants.ConfigConstants;
-import org.gooru.nucleus.gateway.constants.HttpConstants;
-import org.gooru.nucleus.gateway.constants.MessageConstants;
-import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
-import org.gooru.nucleus.gateway.constants.RouteConstants;
+import org.gooru.nucleus.gateway.constants.*;
 import org.gooru.nucleus.gateway.responses.auth.AuthPrefsResponseHolder;
 import org.gooru.nucleus.gateway.responses.auth.AuthPrefsResponseHolderBuilder;
 import org.slf4j.Logger;
@@ -70,7 +66,8 @@ class RouteAuthConfigurator implements RouteConfigurator {
                                 JsonObject prefs = responseHolder.getPreferences();
                                 routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
                                 routingContext.put(MessageConstants.MSG_USER_ID, responseHolder.getUser());
-                                routingContext.put(MessageConstants.MSG_OP_AUTH_TIME, (System.currentTimeMillis() - authProcessingStart));
+                                routingContext.put(MessageConstants.MSG_OP_AUTH_TIME,
+                                    (System.currentTimeMillis() - authProcessingStart));
                                 routingContext.put(MessageConstants.MSG_OP_HANDLER_START, System.currentTimeMillis());
                                 routingContext.next();
                             }

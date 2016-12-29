@@ -15,7 +15,7 @@ public class RouteResponseUtility {
     public void responseHandler(final RoutingContext routingContext, final AsyncResult<Message<Object>> reply,
         final Logger LOG) {
         if (reply.succeeded()) {
-            new ResponseWriterBuilder(routingContext, reply).build().writeResponse();
+            ResponseWriterBuilder.build(routingContext, reply).writeResponse();
         } else {
             LOG.error("Not able to send message", reply.cause());
             routingContext.response().setStatusCode(500).end();
