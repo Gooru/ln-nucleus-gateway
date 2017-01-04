@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.gooru.nucleus.gateway.constants.*;
-import org.gooru.nucleus.gateway.responses.auth.AuthPrefsResponseHolder;
-import org.gooru.nucleus.gateway.responses.auth.AuthPrefsResponseHolderBuilder;
+import org.gooru.nucleus.gateway.responses.auth.AuthSessionResponseHolder;
+import org.gooru.nucleus.gateway.responses.auth.AuthSessionResponseHolderBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,39 +32,33 @@ class RouteAuthConfigurator implements RouteConfigurator {
         router.route(RouteConstants.API_AUTH_ROUTE).handler(routingContext -> {
             long authProcessingStart = System.currentTimeMillis();
             String sessionToken = extractSessionToken(routingContext.request().getHeader(HttpConstants.HEADER_AUTH));
-            // If the session token is null or absent, we send an error to
-            // client
+            // If the session token is null or absent, we send an error to client
             if (sessionToken == null || sessionToken.isEmpty()) {
                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
                     .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
             } else {
-                // If the session token is present, we send it to Message Bus
-                // for validation. We stash it on to routing context for good
-                // measure. We could
-                // have done that later in success callback but we want to avoid
-                // closure from callback for success to this local context,
-                // hence it is here
+                // If the session token is present, we send it to Message Bus for validation. We stash it on to
+                // routing context for good measure. We could have done that later in success callback but we want to
+                // avoid closure from callback for success to this local context, hence it is here
                 routingContext.put(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
                 DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_AUTH_WITH_PREFS)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_AUTH)
                     .addHeader(MessageConstants.MSG_HEADER_TOKEN, sessionToken);
                 eBus.send(MessagebusEndpoints.MBEP_AUTH, null, options, reply -> {
                     if (reply.succeeded()) {
-                        AuthPrefsResponseHolder responseHolder = AuthPrefsResponseHolderBuilder.build(reply.result());
-                        // Message header would indicate whether the auth was
-                        // successful or not. In addition, successful auth may
-                        // have been
-                        // for anonymous user. We allow only GET request for
-                        // anonymous user (since we do not support head, trace,
-                        // options etc so far)
+                        AuthSessionResponseHolder responseHolder =
+                            AuthSessionResponseHolderBuilder.build(reply.result());
+                        // Message header would indicate whether the auth was successful or not. In addition,
+                        // successful auth may have been for anonymous user. We allow only GET request for anonymous
+                        // user (since we do not support head, trace, options etc so far)
                         if (responseHolder.isAuthorized()) {
                             if (!routingContext.request().method().name().equals(HttpMethod.GET.name())
                                 && responseHolder.isAnonymous()) {
                                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                                     .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
                             } else {
-                                JsonObject prefs = responseHolder.getPreferences();
-                                routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
+                                JsonObject session = responseHolder.getSession();
+                                routingContext.put(MessageConstants.MSG_KEY_SESSION, session);
                                 routingContext.put(MessageConstants.MSG_USER_ID, responseHolder.getUser());
                                 routingContext.put(MessageConstants.MSG_OP_AUTH_TIME,
                                     (System.currentTimeMillis() - authProcessingStart));
@@ -85,9 +79,9 @@ class RouteAuthConfigurator implements RouteConfigurator {
 
         router.get(RouteConstants.EP_EXERNAL_AUTH).handler(routingContext -> {
             String userId = routingContext.get(MessageConstants.MSG_USER_ID);
-            JsonObject prefs = routingContext.get(MessageConstants.MSG_KEY_PREFS);
+            JsonObject session = routingContext.get(MessageConstants.MSG_KEY_SESSION);
             if (userId == null || userId.isEmpty() || userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS)
-                || prefs == null || prefs.isEmpty()) {
+                || session == null || session.isEmpty()) {
                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                     .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
             } else {

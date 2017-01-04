@@ -7,13 +7,13 @@ import org.slf4j.LoggerFactory;
 import io.vertx.core.eventbus.Message;
 import io.vertx.core.json.JsonObject;
 
-class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
+class AuthSessionMessageBusJsonResponseHolder implements AuthSessionResponseHolder {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AuthPrefsResponseHolder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AuthSessionResponseHolder.class);
     private final Message<Object> message;
     private boolean isAuthorized = false;
 
-    public AuthPrefsMessageBusJsonResponseHolder(Message<Object> message) {
+    public AuthSessionMessageBusJsonResponseHolder(Message<Object> message) {
         this.message = message;
         if (message != null) {
             LOG.debug("Received response from Auth End point : {}", message.body().toString());
@@ -35,13 +35,11 @@ class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
     }
 
     @Override
-    public JsonObject getPreferences() {
+    public JsonObject getSession() {
         if (!isAuthorized) {
             return null;
         }
-        JsonObject jsonObject = (JsonObject) message.body();
-        return jsonObject.getJsonObject(MessageConstants.MSG_KEY_PREFS);
-
+        return (JsonObject) message.body();
     }
 
     @Override
