@@ -156,6 +156,22 @@ class RouteLookupConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
         });
+        
+        router.get(RouteConstants.EP_FIREBASE_CONFIG).handler(routingContext -> {
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_FIREBASE_APIKEY_CONFIG);
+            eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
+        
+        router.get(RouteConstants.EP_JWT_GENERATION).handler(routingContext -> {
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_FIREBASE_JWT_CREATION);
+            eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+        });
 
     }
 

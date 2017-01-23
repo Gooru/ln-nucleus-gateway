@@ -45,6 +45,8 @@ public final class MessageConstants {
     public static final String MSG_OP_LKUP_SCHOOLS = "schools";
     public static final String MSG_OP_LKUP_LICENSES = "licenses";
     public static final String MSG_OP_LKUP_APIKEY_CONFIG = "apikey.config";
+    public static final String MSG_OP_FIREBASE_APIKEY_CONFIG = "firebase.config";
+    
 
     // Assessment Operations
     public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
@@ -170,6 +172,8 @@ public final class MessageConstants {
     //Request Processing LOG constants
     public static final String MSG_OP_AUTH_TIME = "processing.time.auth";
     public static final String MSG_OP_HANDLER_START = "start.time.handler";
+    
+    public static final String MSG_OP_FIREBASE_JWT_CREATION = "firebase.jwt";
 
     private MessageConstants() {
         throw new AssertionError();

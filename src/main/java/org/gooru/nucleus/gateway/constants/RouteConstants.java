@@ -56,6 +56,7 @@ public final class RouteConstants {
     private static final String RES_TX_STANDARD_FRAMEWORK = "frameworks";
     private static final String RES_LICENSE = "licenses";
     private static final String RES_APIKEY_CONFIG = "apikey-config";
+    private static final String RES_FIREBASE_CONFIG = "firebase-config";
     private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";
@@ -81,6 +82,7 @@ public final class RouteConstants {
     private static final String ENTITY_TX_CODES = "codes";
     private static final String ENTITY_COPIER = "copier";
     private static final String ENTITY_PROFILES = "profiles";
+    private static final String FIREBASE_JWT = "firebase/jwt";
 
     // Actual End Point Constants: Note that constant values may be duplicated but
     // we are going to have individual constant values to work with for each
@@ -152,6 +154,8 @@ public final class RouteConstants {
     public static final String EP_LICENSE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LICENSE;
     // API Key Config = /api/nucleus/{version}/lookups/apikey-config
     public static final String EP_APIKEY_CONFIG = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_APIKEY_CONFIG;
+    //API Key config for firebase = /api/nucleus/{version}/lookups/firebase-config
+    public static final String EP_FIREBASE_CONFIG = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_FIREBASE_CONFIG;
 
     /*
      * RESOURCE
@@ -471,6 +475,11 @@ public final class RouteConstants {
     //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
     public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE +  ENTITY_QUESTIONS + SEP + COLON +
         ID_QUESTION + SEP + ENTITY_KEYWORD ;
+    
+    /*
+     * JWT GENERATION
+     */
+    public static final String EP_JWT_GENERATION = API_BASE_ROUTE + FIREBASE_JWT;
     
     //bulk update resource tags = /api/nucleus/{version}/resources/keyword/bulkUpdate
     public static final String EP_RESOURCE_KEYWORD_BULK_UPDATE = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + ENTITY_KEYWORD + SEP + "bulkUpdate";
