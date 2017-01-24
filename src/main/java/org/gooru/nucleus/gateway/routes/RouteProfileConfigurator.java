@@ -79,11 +79,9 @@ class RouteProfileConfigurator implements RouteConfigurator {
         });
 
         router.get(RouteConstants.EP_PROFILE_DEMOGRAPHIC_GET).handler(routingContext -> {
-            String userId = routingContext.request().getParam(RouteConstants.ID_USER);
             DeliveryOptions options =
                 DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_DEMOGRAPHICS_GET)
-                    .addHeader(RouteConstants.ID_USER, userId);
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_PROFILE_DEMOGRAPHICS_GET);
             eb.send(MessagebusEndpoints.MBEP_PROFILE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
