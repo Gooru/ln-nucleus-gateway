@@ -158,6 +158,8 @@ public final class MessageConstants {
     public static final String MSG_OP_PROFILE_UNFOLLOW = "profile.unfollow";
     public static final String MSG_OP_PROFILE_NETWORK_GET = "profile.network.get";
     public static final String MSG_OP_PROFILE_SEARCH = "profile.search";
+    public static final String MSG_OP_PROFILE_PREFERENCE_GET = "profile.preference.get";
+    public static final String MSG_OP_PROFILE_PREFERENCE_UPDATE = "profile.preference.update";
 
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";

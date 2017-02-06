@@ -36,6 +36,7 @@ public final class RouteConstants {
     private static final String OP_UNFOLLOW = "unfollow";
     private static final String OP_NETWORK = "network";
     private static final String OP_SEARCH = "search";
+    private static final String OP_PREFERENCE = "preference";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -432,6 +433,7 @@ public final class RouteConstants {
     public static final String EP_PROFILE_NETWORK_GET =
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_NETWORK;
     public static final String EP_PROFILE_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_SEARCH;
+    public static final String EP_PROFILE_PREFERENCE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_PREFERENCE;
     
 
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
