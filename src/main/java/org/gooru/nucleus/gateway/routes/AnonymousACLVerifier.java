@@ -1,44 +1,53 @@
 package org.gooru.nucleus.gateway.routes;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import org.gooru.nucleus.gateway.constants.RouteConstants;
 
-import com.hazelcast.util.collection.ArrayUtils;
-
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServerRequest;
 
-class AnonymousACLVerifier {
+final class AnonymousACLVerifier {
 
-    private final static String[] allowedMethods = new String[] { HttpMethod.GET.name() };
-    private static final Map<String, String[]> ROUTES;
+    private AnonymousACLVerifier() {
+        throw new AssertionError();
+    }
+
+    private final static List<String> ALLOWED_METHODS = Arrays.asList(HttpMethod.GET.name());
+    private static final Map<String, List<String>> ROUTES;
 
     /**
      * This mapper constant have route suffix url and it's request methods which
      * are allowed by gateway using anonymous token.
      */
     static {
-        Map<String, String[]> routes = new HashMap<>();
-        routes.put(RouteConstants.RT_CROSSWALK_CODES_GDFW, new String[] { HttpMethod.POST.name() });
-        routes.put(RouteConstants.RT_CROSSWALK_CODES_FW, new String[] { HttpMethod.POST.name() });
+        Map<String, List<String>> routes = new HashMap<>();
+        routes.put(RouteConstants.RT_CROSSWALK_CODES_GDFW, Arrays.asList(HttpMethod.POST.name()));
+        routes.put(RouteConstants.RT_CROSSWALK_CODES_FW, Arrays.asList(HttpMethod.POST.name()));
+
         ROUTES = Collections.unmodifiableMap(routes);
     }
 
-    protected static boolean hasPermit(HttpServerRequest httpServerRequest) {
-        if (ArrayUtils.contains(allowedMethods, httpServerRequest.method().name())) {
+    static boolean hasPermit(HttpServerRequest httpServerRequest) {
+        if (permittedBasedOnHttpMethod(httpServerRequest)) {
             return true;
         }
-        for (Entry<String, String[]> entry : ROUTES.entrySet()) {
-            if (httpServerRequest.path().endsWith(entry.getKey())
-                && ArrayUtils.contains(entry.getValue(), httpServerRequest.method().name())) {
+        return permittedBasedOnRouteAndHttpMethod(httpServerRequest);
+    }
+
+    private static boolean permittedBasedOnRouteAndHttpMethod(HttpServerRequest httpServerRequest) {
+        final String path = httpServerRequest.path();
+        for (Entry<String, List<String>> entry : ROUTES.entrySet()) {
+            if (path.endsWith(entry.getKey()) && entry.getValue()
+                .contains(httpServerRequest.method().name())) {
                 return true;
             }
         }
         return false;
     }
 
+    private static boolean permittedBasedOnHttpMethod(HttpServerRequest httpServerRequest) {
+        return ALLOWED_METHODS.contains(httpServerRequest.method().name());
+    }
 }
