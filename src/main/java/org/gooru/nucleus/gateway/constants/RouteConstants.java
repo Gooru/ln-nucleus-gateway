@@ -60,6 +60,10 @@ public final class RouteConstants {
     private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";
+    private static final String RES_TX_CROSSWALK = "crosswalk";
+    private static final String RES_TX_GDFW = "gdfw";
+    private static final String RES_TX_FW = "fw";
+
     // Helper constants
     public static final String API_VERSION = "version";
     private static final String API_BASE_ROUTE = "/api/nucleus/" + COLON + API_VERSION + '/';
@@ -83,6 +87,9 @@ public final class RouteConstants {
     private static final String ENTITY_COPIER = "copier";
     private static final String ENTITY_PROFILES = "profiles";
     private static final String FIREBASE_JWT = "firebase/jwt";
+    
+    public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
+    public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
 
     // Actual End Point Constants: Note that constant values may be duplicated but
     // we are going to have individual constant values to work with for each
@@ -107,6 +114,11 @@ public final class RouteConstants {
     // Fetch code =
     // /api/nucleus/{version}/taxonomy/codes?idList=
     public static final String EP_CODE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CODES;
+    // Fetch crosswalk codes from  guaranteed  GDF frameworks
+    public static final String EP_CROSSWALK_CODES_GDFW = API_BASE_ROUTE + RT_CROSSWALK_CODES_GDFW;
+    // Fetch crosswalk codes from  not guaranteed  GDF frameworks
+    public static final String EP_CROSSWALK_CODES_FW = API_BASE_ROUTE + RT_CROSSWALK_CODES_FW;
+
 
     /*
      * External authorization end point to validate the authorization, if
