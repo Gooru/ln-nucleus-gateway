@@ -36,6 +36,7 @@ class RouteCopierConfigurator implements RouteConfigurator {
         router.post(RouteConstants.EP_COURSE_COPY).handler(this::courseCopy);
         router.post(RouteConstants.EP_UNIT_COPY).handler(this::unitCopy);
         router.post(RouteConstants.EP_LESSON_COPY).handler(this::lessonCopy);
+        router.post(RouteConstants.EP_RUBRIC_COPY).handler(this::rubricCopy);
 
     }
 
@@ -102,6 +103,15 @@ class RouteCopierConfigurator implements RouteConfigurator {
             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_COPY)
             .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
             .addHeader(RouteConstants.ID_LESSON, lessonId);
+        eb.send(MessagebusEndpoints.MBEP_COPIER, new RouteRequestUtility().getBodyForMessage(routingContext), options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    }
+    
+    private void rubricCopy(RoutingContext routingContext) {
+        String rubricId = routingContext.request().getParam(RouteConstants.ID_RUBRIC);
+        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_COPY)
+            .addHeader(RouteConstants.ID_RUBRIC, rubricId);
         eb.send(MessagebusEndpoints.MBEP_COPIER, new RouteRequestUtility().getBodyForMessage(routingContext), options,
             reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     }

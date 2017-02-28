@@ -15,6 +15,7 @@ public final class RouteConstants {
     public static final String ID_UNIT = "unitId";
     public static final String ID_LESSON = "lessonId";
     public static final String ID_CLASS = "classId";
+    public static final String ID_RUBRIC = "rubricId";
     public static final String ID_TX_SUBJECT = "subjectId";
     public static final String ID_TX_DOMAIN = "domainId";
     public static final String ID_TX_COURSE = "courseId";
@@ -86,6 +87,7 @@ public final class RouteConstants {
     private static final String ENTITY_TX_CODES = "codes";
     private static final String ENTITY_COPIER = "copier";
     private static final String ENTITY_PROFILES = "profiles";
+    private static final String ENTITY_RUBRICS = "rubrics";
     private static final String FIREBASE_JWT = "firebase/jwt";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
@@ -193,6 +195,8 @@ public final class RouteConstants {
     public static final String EP_QUESTION_UPDATE = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
     // Create a new Question = /api/nucleus/{version}/questions
     public static final String EP_QUESTION_CREATE = API_BASE_ROUTE + ENTITY_QUESTIONS;
+    public static final String EP_QUESTION_RUBRIC_ASSOCIATE =
+        API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
     /*
      * ASSESSMENT
      */
@@ -428,6 +432,7 @@ public final class RouteConstants {
     // /api/nucleus/{version}/copier/courses/{course-id}/units/{unit-id}/lessons/{lesson-id}?target_course_id=&target_unit_id=
     public static final String EP_LESSON_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON
         + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+    public static final String EP_RUBRIC_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
 
     // PROFILES
     // /api/nucleus/{version}/profiles/{user-id}/courses
@@ -441,6 +446,8 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES;
     public static final String EP_PROFILE_QUESTION_LIST =
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS;
+    public static final String EP_PROFILE_RUBRIC_LIST =
+        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RUBRICS;
     public static final String EP_PROFILE_DEMOGRAPHIC_GET =
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_DEMOGRAPHICS;
     public static final String EP_PROFILE_FOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_FOLLOW;
@@ -451,7 +458,12 @@ public final class RouteConstants {
     public static final String EP_PROFILE_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_SEARCH;
     public static final String EP_PROFILE_PREFERENCE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_PREFERENCE;
     
-
+    //Rubrics Routes
+    public static final String EP_RUBRIC_CREATE = API_BASE_ROUTE + ENTITY_RUBRICS;
+    public static final String EP_RUBRIC_UPDATE = API_BASE_ROUTE + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    public static final String EP_RUBRIC_GET = API_BASE_ROUTE + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    public static final String EP_RUBRIC_DELETE = API_BASE_ROUTE + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
     public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";
     // This is event publisher. It expects full blown event structure which will be relayed to Kafka

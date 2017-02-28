@@ -70,11 +70,20 @@ public final class MessageConstants {
     public static final String MSG_OP_COLLECTION_QUESTION_ADD = "collection.question.add";
     public static final String MSG_OP_COLLECTION_CONTENT_REORDER = "collection.content.reorder";
     public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
+    
     // Question Operations
     public static final String MSG_OP_QUESTION_GET = "question.get";
     public static final String MSG_OP_QUESTION_CREATE = "question.create";
     public static final String MSG_OP_QUESTION_UPDATE = "question.update";
     public static final String MSG_OP_QUESTION_DELETE = "question.delete";
+    
+    // Rubric Operations
+    public static final String MSG_OP_RUBRIC_GET = "rubric.get";
+    public static final String MSG_OP_RUBRIC_CREATE = "rubric.create";
+    public static final String MSG_OP_RUBRIC_UPDATE = "rubric.update";
+    public static final String MSG_OP_RUBRIC_DELETE = "rubric.delete";
+    public static final String MSG_OP_QUESTION_RUBRIC_ASSOCIATE = "question.rubirc.association";
+    
     // Course Operations
     public static final String MSG_OP_COURSE_GET = "course.get";
     public static final String MSG_OP_COURSE_CREATE = "course.create";
@@ -149,6 +158,7 @@ public final class MessageConstants {
     public static final String MSG_OP_COURSE_COPY = "course.copy";
     public static final String MSG_OP_UNIT_COPY = "unit.copy";
     public static final String MSG_OP_LESSON_COPY = "lesson.copy";
+    public static final String MSG_OP_RUBRIC_COPY = "rubric.copy"; 
 
     // Profile Operations
     public static final String MSG_OP_PROFILE_COURSE_LIST = "profile.course.list";
@@ -156,6 +166,7 @@ public final class MessageConstants {
     public static final String MSG_OP_PROFILE_ASSESSMENT_LIST = "profile.assessment.list";
     public static final String MSG_OP_PROFILE_RESOURCE_LIST = "profile.resource.list";
     public static final String MSG_OP_PROFILE_QUESTION_LIST = "profile.question.list";
+    public static final String MSG_OP_PROFILE_RUBRIC_LIST = "profile.rubric.list";
     public static final String MSG_OP_PROFILE_DEMOGRAPHICS_GET = "profile.demographics.get";
     public static final String MSG_OP_PROFILE_FOLLOW = "profile.follow";
     public static final String MSG_OP_PROFILE_UNFOLLOW = "profile.unfollow";
