@@ -15,6 +15,7 @@ public final class RouteConstants {
     public static final String ID_UNIT = "unitId";
     public static final String ID_LESSON = "lessonId";
     public static final String ID_CLASS = "classId";
+    public static final String ID_CONTENT = "contentId";
     public static final String ID_TX_SUBJECT = "subjectId";
     public static final String ID_TX_DOMAIN = "domainId";
     public static final String ID_TX_COURSE = "courseId";
@@ -87,6 +88,8 @@ public final class RouteConstants {
     private static final String ENTITY_COPIER = "copier";
     private static final String ENTITY_PROFILES = "profiles";
     private static final String FIREBASE_JWT = "firebase/jwt";
+    private static final String ENTITY_COURSE_MAP = "course-map";
+    private static final String ENTITY_CLASS_CONTENT = "contents";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -489,6 +492,13 @@ public final class RouteConstants {
     //bulk update resource tags = /api/nucleus/{version}/resources/keyword/bulkUpdate
     public static final String EP_RESOURCE_KEYWORD_BULK_UPDATE = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + ENTITY_KEYWORD + SEP + "bulkUpdate";
 
+    public static final String EP_COURSE_MAP_COURSE = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE;
+    public static final String EP_COURSE_MAP_UNIT = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT;
+    public static final String EP_COURSE_MAP_LESSON = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT + SEP +  ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+    public static final String EP_CLASS_CONTENT = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT;
+    public static final String EP_CLASS_CONTENT_ASSIGN = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
+    
+    
     private RouteConstants() {
         throw new AssertionError();
     }
