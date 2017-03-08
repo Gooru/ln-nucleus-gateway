@@ -110,7 +110,7 @@ class RouteCopierConfigurator implements RouteConfigurator {
     private void rubricCopy(RoutingContext routingContext) {
         String rubricId = routingContext.request().getParam(RouteConstants.ID_RUBRIC);
         DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_COPY)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RUBRIC_COPY)
             .addHeader(RouteConstants.ID_RUBRIC, rubricId);
         eb.send(MessagebusEndpoints.MBEP_COPIER, new RouteRequestUtility().getBodyForMessage(routingContext), options,
             reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
