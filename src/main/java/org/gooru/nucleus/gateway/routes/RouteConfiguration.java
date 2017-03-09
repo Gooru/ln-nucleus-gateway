@@ -24,6 +24,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
         configurators.add(new RouteAssessmentConfigurator());
         configurators.add(new RouteAssessmentExternalConfigurator());
         configurators.add(new RouteClassConfigurator());
+        configurators.add(new RouteClassContentConfigurator());
         configurators.add(new RouteCollectionConfigurator());
         configurators.add(new RouteKeywordConfigurator());
         // Order may be important for CUL
@@ -33,6 +34,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
         configurators.add(new RouteProfileConfigurator());
         configurators.add(new RouteCopierConfigurator());
         configurators.add(new RouteTaxonomyConfigurator());
+        configurators.add(new RouteCourseMapConfigurator());
         configurators.add(new RouteFailureConfigurator());
         internalIterator = configurators.iterator();
     }

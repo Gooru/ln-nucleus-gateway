@@ -175,6 +175,19 @@ public final class MessageConstants {
     public static final String MSG_OP_PROFILE_PREFERENCE_GET = "profile.preference.get";
     public static final String MSG_OP_PROFILE_PREFERENCE_UPDATE = "profile.preference.update";
 
+    // Content map Operations
+    public static final String MSG_OP_BOOKMARK_CREATE = "bookmark.create";
+    public static final String MSG_OP_BOOKMARK_DELETE = "bookmark.delete";
+    public static final String MSG_OP_BOOKMARK_LIST = "bookmark.list";
+    public static final String MSG_OP_COURSEMAP_COURSE_GET = "coursemap.course.get";
+    public static final String MSG_OP_COURSEMAP_UNIT_GET = "coursemap.unit.get";
+    public static final String MSG_OP_COURSEMAP_LESSON_GET = "coursemap.lesson.get";
+    public static final String MSG_OP_PATH_COURSE_CREATE = "path.course.create";
+    public static final String MSG_OP_PATH_CLASS_CONTENT_CREATE = "path.class.content.create";
+    public static final String MSG_OP_CLASS_CONTENT_CREATE = "class.content.create";
+    public static final String MSG_OP_CLASS_CONTENT_FETCH = "class.content.fetch";
+    public static final String MSG_OP_CLASS_CONTENT_ASSIGN = "class.content.assign";
+    
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
     public static final String MSG_OP_EVENT_PROCESS = "event.process";
@@ -184,6 +197,7 @@ public final class MessageConstants {
     public static final String MSG_OP_HANDLER_START = "start.time.handler";
     
     public static final String MSG_OP_FIREBASE_JWT_CREATION = "firebase.jwt";
+    
 
     private MessageConstants() {
         throw new AssertionError();
