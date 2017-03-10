@@ -185,8 +185,8 @@ public final class MessageConstants {
     public static final String MSG_OP_PATH_COURSE_CREATE = "path.course.create";
     public static final String MSG_OP_PATH_CLASS_CONTENT_CREATE = "path.class.content.create";
     public static final String MSG_OP_CLASS_CONTENT_ADD = "class.content.add";
-    public static final String MSG_OP_CLASS_CONTENT_FETCH = "class.content.list";
-    public static final String MSG_OP_CLASS_CONTENT_ASSIGN = "class.content.enable";
+    public static final String MSG_OP_CLASS_CONTENT_LIST = "class.content.list";
+    public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
     
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
