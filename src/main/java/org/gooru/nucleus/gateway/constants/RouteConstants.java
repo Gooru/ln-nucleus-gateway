@@ -26,7 +26,8 @@ public final class RouteConstants {
     public static final String ID_USER = "userId";
     public static final String ID_EMAIL = "email";
     public static final String CODE_CLASS = "classCode";
-
+    public static final String ID_BOOKMARK = "bookmarkId";
+    
     // Helper: Operations
     private static final String OP_ORDER = "order";
     private static final String OP_LOOKUP = "lookups";
@@ -92,6 +93,7 @@ public final class RouteConstants {
     private static final String FIREBASE_JWT = "firebase/jwt";
     private static final String ENTITY_COURSE_MAP = "course-map";
     private static final String ENTITY_CLASS_CONTENT = "contents";
+    private static final String ENTITY_BOOKMARK = "bookmarks";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -509,6 +511,9 @@ public final class RouteConstants {
     public static final String EP_COURSE_MAP_LESSON = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT + SEP +  ENTITY_LESSONS + SEP + COLON + ID_LESSON;
     public static final String EP_CLASS_CONTENT = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT;
     public static final String EP_CLASS_CONTENT_ASSIGN = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
+	public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE  + ENTITY_BOOKMARK;
+	public static final String EP_BOOKMARK_CREATE = API_BASE_ROUTE  + ENTITY_BOOKMARK;
+	public static final String EP_BOOKMARK_DELETE = API_BASE_ROUTE  + ENTITY_BOOKMARK + SEP + COLON + ID_BOOKMARK;
     
     
     private RouteConstants() {
