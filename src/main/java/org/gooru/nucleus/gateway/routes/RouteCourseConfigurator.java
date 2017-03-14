@@ -107,6 +107,16 @@ class RouteCourseConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
+        
+        router.get(RouteConstants.EP_COURSE_ASSESSMENTS_GET).handler(routingContext -> {
+            String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_ASSESSMENTS_GET)
+                    .addHeader(RouteConstants.ID_COURSE, courseId);
+            eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
 
         router.post(RouteConstants.EP_COURSE_CREATE).handler(routingContext -> {
             DeliveryOptions options =
