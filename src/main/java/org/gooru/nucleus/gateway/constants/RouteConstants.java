@@ -300,6 +300,10 @@ public final class RouteConstants {
     public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
     // Fetch resources by Course by Id = /api/nucleus/{version}/courses/{course-id}/resources
     public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;
+    // Fetch assessments by Course by Id = /api/nucleus/{version}/courses/{course-id}/assessments
+    public static final String EP_COURSE_ASSESSMENTS_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_ASSESSMENTS;
+    // Fetch collections by Course by Id = /api/nucleus/{version}/courses/{course-id}/collections
+    public static final String EP_COURSE_COLLECTIONS_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_COLLECTIONS;
 
     // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
     public static final String EP_UNIT_CREATE =
