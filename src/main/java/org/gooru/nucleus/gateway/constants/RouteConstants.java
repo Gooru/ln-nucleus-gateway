@@ -94,6 +94,7 @@ public final class RouteConstants {
     private static final String ENTITY_COURSE_MAP = "course-map";
     private static final String ENTITY_CLASS_CONTENT = "contents";
     private static final String ENTITY_BOOKMARK = "bookmarks";
+    private static final String ENTITY_PATHS = "paths";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -513,6 +514,7 @@ public final class RouteConstants {
     public static final String EP_COURSE_MAP_COURSE = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE;
     public static final String EP_COURSE_MAP_UNIT = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT;
     public static final String EP_COURSE_MAP_LESSON = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT + SEP +  ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+    public static final String EP_COURSE_MAP_PATH = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + ENTITY_PATHS;
     public static final String EP_CLASS_CONTENT = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT;
     public static final String EP_CLASS_CONTENT_ASSIGN = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
 	public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE  + ENTITY_BOOKMARK;
