@@ -95,6 +95,7 @@ public final class RouteConstants {
     private static final String ENTITY_CLASS_CONTENT = "contents";
     private static final String ENTITY_BOOKMARK = "bookmarks";
     private static final String ENTITY_PATHS = "paths";
+    private static final String ENTITY_TX_FRAMEWORKS = "frameworks";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -126,6 +127,7 @@ public final class RouteConstants {
     public static final String EP_CROSSWALK_CODES_GDFW = API_BASE_ROUTE + RT_CROSSWALK_CODES_GDFW;
     // Fetch crosswalk codes from  not guaranteed  GDF frameworks
     public static final String EP_CROSSWALK_CODES_FW = API_BASE_ROUTE + RT_CROSSWALK_CODES_FW;
+    public static final String EP_STANDARD_FW_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_FRAMEWORKS;
 
 
     /*
