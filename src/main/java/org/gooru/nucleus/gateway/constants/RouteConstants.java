@@ -40,6 +40,7 @@ public final class RouteConstants {
     private static final String OP_NETWORK = "network";
     private static final String OP_SEARCH = "search";
     private static final String OP_PREFERENCE = "preference";
+    private static final String OP_ARCHIVE = "archive";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -419,7 +420,9 @@ public final class RouteConstants {
     // /api/nucleus/{version}/classes/{class-id}/courses/stats
     public static final String EP_CLASS_CONTENT_PUBLISHED_STATS =
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + RES_STATS;
-
+    // Archive Class = /api/nucleus/{version}/classes/{class-id}/archive
+    public static final String EP_CLASS_ARCHIVE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_ARCHIVE;
+    
     // COPIER
     // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
     public static final String EP_RESOURCE_COPY =
