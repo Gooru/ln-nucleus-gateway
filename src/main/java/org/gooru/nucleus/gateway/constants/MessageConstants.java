@@ -201,7 +201,14 @@ public final class MessageConstants {
     
     public static final String MSG_OP_FIREBASE_JWT_CREATION = "firebase.jwt";
     
-
+    // Notification Operations
+    public static final String MSG_OP_NOTIFICATION_COUNT_GET = "notification.count.get";
+    public static final String MSG_OP_NOTIFICATION_GET = "notification.get";
+    public static final String MSG_OP_NOTIFICATION_FILTERS_GET = "notification.filters.get";
+    public static final String MSG_OP_NOTIFICATION_FILTERS_UPDATE = "notification.filters.update";
+    public static final String MSG_OP_NOTIFICATION_BLOCKED_USERS_GET = "notification.blocked.users.get";
+    public static final String MSG_OP_NOTIFICATION_BLOCKED_USERS_DELETE = "notification.blocked.users.delete";
+    
     private MessageConstants() {
         throw new AssertionError();
     }
