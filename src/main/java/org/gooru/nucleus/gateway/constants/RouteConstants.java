@@ -41,6 +41,7 @@ public final class RouteConstants {
     private static final String OP_SEARCH = "search";
     private static final String OP_PREFERENCE = "preference";
     private static final String OP_ARCHIVE = "archive";
+    private static final String OP_COUNT = "count";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -97,6 +98,9 @@ public final class RouteConstants {
     private static final String ENTITY_BOOKMARK = "bookmarks";
     private static final String ENTITY_PATHS = "paths";
     private static final String ENTITY_TX_FRAMEWORKS = "frameworks";
+    private static final String ENTITY_NOTIFICATIONS = "notifications";
+    private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
+    private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -507,6 +511,27 @@ public final class RouteConstants {
     //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
     public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE +  ENTITY_QUESTIONS + SEP + COLON +
         ID_QUESTION + SEP + ENTITY_KEYWORD ;
+    
+    // Notification Routes
+    // Get notification count: /api/nucleus/{version}/noitifications/count
+    public static final String EP_NOTIFICATION_COUNT_GET = API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP + OP_COUNT;
+    // Get notifications: /api/nucleus/{version}/noitifications
+    public static final String EP_NOTIFICATION_GET = API_BASE_ROUTE + ENTITY_NOTIFICATIONS;
+    // Get notifications filters: /api/nucleus/{version}/noitifications/filters
+    public static final String EP_NOTIFICATION_FILTERS_GET =
+        API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP + ENTITY_NOTIFICATIONS_FILTERS;
+    // Update notifications filters:
+    // /api/nucleus/{version}/noitifications/filters
+    public static final String EP_NOTIFICATION_FILTERS_UPDATE =
+        API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP + ENTITY_NOTIFICATIONS_FILTERS;
+    // Get blocked users:
+    // /api/nucleus/{version}/noitifications/filters/blacklist/users;
+    public static final String EP_NOTIFICATION_FILTERS_BLOCKED_USERS_GET = API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP
+        + ENTITY_NOTIFICATIONS_FILTERS + SEP + ENTITY_NOTIFICATIONS_BLOCKED_USERS;
+    // Delete blocked users:
+    // /api/nucleus/{version}/noitifications/filters/blacklist/users;
+    public static final String EP_NOTIFICATION_FILTERS_BLOCKED_USERS_DELETE = API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP
+        + ENTITY_NOTIFICATIONS_FILTERS + SEP + ENTITY_NOTIFICATIONS_BLOCKED_USERS;
     
     /*
      * JWT GENERATION
