@@ -27,6 +27,7 @@ public final class RouteConstants {
     public static final String ID_EMAIL = "email";
     public static final String CODE_CLASS = "classCode";
     public static final String ID_BOOKMARK = "bookmarkId";
+    public static final String ID_LIBRARY = "libraryId";
     
     // Helper: Operations
     private static final String OP_ORDER = "order";
@@ -42,6 +43,7 @@ public final class RouteConstants {
     private static final String OP_PREFERENCE = "preference";
     private static final String OP_ARCHIVE = "archive";
     private static final String OP_COUNT = "count";
+    private static final String OP_CONTENTS = "contents";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -99,6 +101,7 @@ public final class RouteConstants {
     private static final String ENTITY_PATHS = "paths";
     private static final String ENTITY_TX_FRAMEWORKS = "frameworks";
     private static final String ENTITY_NOTIFICATIONS = "notifications";
+    private static final String ENTITY_LIBRARIES = "libraries";
     private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
     private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
     
@@ -532,6 +535,13 @@ public final class RouteConstants {
     // /api/nucleus/{version}/noitifications/filters/blacklist/users;
     public static final String EP_NOTIFICATION_FILTERS_BLOCKED_USERS_DELETE = API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP
         + ENTITY_NOTIFICATIONS_FILTERS + SEP + ENTITY_NOTIFICATIONS_BLOCKED_USERS;
+    
+    // Library Routes
+    // Get Libraries
+    public static final String EP_LIBRARIES_GET = API_BASE_ROUTE + ENTITY_LIBRARIES;
+    // Get Library contents
+    public static final String EP_LIBRARY_CONTENTS_GET =
+        API_BASE_ROUTE + ENTITY_LIBRARIES + SEP + COLON + ID_LIBRARY + SEP + OP_CONTENTS;
     
     /*
      * JWT GENERATION
