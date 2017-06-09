@@ -190,6 +190,7 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_CONTENT_ADD = "class.content.add";
     public static final String MSG_OP_CLASS_CONTENT_LIST = "class.content.list";
     public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
+    public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";
     
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
