@@ -537,6 +537,8 @@ public final class RouteConstants {
         + ENTITY_NOTIFICATIONS_FILTERS + SEP + ENTITY_NOTIFICATIONS_BLOCKED_USERS;
     
     // Library Routes
+    // Get Library
+    public static final String EP_LIBRARY_GET = API_BASE_ROUTE + ENTITY_LIBRARIES + SEP + COLON + ID_LIBRARY;
     // Get Libraries
     public static final String EP_LIBRARIES_GET = API_BASE_ROUTE + ENTITY_LIBRARIES;
     // Get Library contents

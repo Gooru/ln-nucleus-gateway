@@ -28,6 +28,16 @@ public class RouteLibraryConfigurator implements RouteConfigurator {
         final EventBus eb = vertx.eventBus();
         final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
+        router.get(RouteConstants.EP_LIBRARY_GET).handler(routingContext -> {
+            String libraryId = routingContext.request().getParam(RouteConstants.ID_LIBRARY);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LIBRARY_GET)
+                    .addHeader(RouteConstants.ID_LIBRARY, libraryId);
+            eb.send(MessagebusEndpoints.MBEP_LIBRARY, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
+
         router.get(RouteConstants.EP_LIBRARIES_GET).handler(routingContext -> {
             LOGGER.debug("getting libraries");
             DeliveryOptions options =
