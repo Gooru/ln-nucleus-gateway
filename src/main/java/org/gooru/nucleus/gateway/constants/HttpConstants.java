@@ -27,9 +27,11 @@ public final class HttpConstants {
         NOT_FOUND(404, "Not Found"),
         NOT_ACCEPTABLE(406, "Not Acceptable"),
         TIMED_OUT(408, "Request Timeout"),
+        GONE(410, "Gone"),
         TOO_LARGE(413, "Request Entity Too Large"),
         TOO_MANY_REQUESTS(429, "Too Many Requests"),
-        ERROR(500, "Internal Server Error");
+        ERROR(500, "Internal Server Error"),
+        NOT_IMPLEMENTED(501, "Not Implemented");
 
         private final int code;
         private final String message;

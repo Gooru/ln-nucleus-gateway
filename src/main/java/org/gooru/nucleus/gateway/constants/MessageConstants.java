@@ -3,10 +3,11 @@ package org.gooru.nucleus.gateway.constants;
 public final class MessageConstants {
 
     public static final String MSG_HEADER_OP = "mb.operation";
+    public static final String MSG_API_VERSION = "api.version";
     public static final String MSG_HEADER_TOKEN = "session.token";
-    public static final String MSG_OP_AUTH_WITH_PREFS = "auth.with.prefs";
+    public static final String MSG_OP_AUTH = "auth";
     public static final String MSG_OP_STATUS = "mb.operation.status";
-    public static final String MSG_KEY_PREFS = "prefs";
+    public static final String MSG_KEY_SESSION = "session";
     public static final String MSG_OP_STATUS_SUCCESS = "success";
     public static final String MSG_OP_STATUS_ERROR = "error";
     public static final String MSG_OP_STATUS_VALIDATION_ERROR = "error.validation";
@@ -44,6 +45,7 @@ public final class MessageConstants {
     public static final String MSG_OP_LKUP_SCHOOLS = "schools";
     public static final String MSG_OP_LKUP_LICENSES = "licenses";
     public static final String MSG_OP_LKUP_APIKEY_CONFIG = "apikey.config";
+    
 
     // Assessment Operations
     public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
@@ -68,11 +70,20 @@ public final class MessageConstants {
     public static final String MSG_OP_COLLECTION_QUESTION_ADD = "collection.question.add";
     public static final String MSG_OP_COLLECTION_CONTENT_REORDER = "collection.content.reorder";
     public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
+    
     // Question Operations
     public static final String MSG_OP_QUESTION_GET = "question.get";
     public static final String MSG_OP_QUESTION_CREATE = "question.create";
     public static final String MSG_OP_QUESTION_UPDATE = "question.update";
     public static final String MSG_OP_QUESTION_DELETE = "question.delete";
+    
+    // Rubric Operations
+    public static final String MSG_OP_RUBRIC_GET = "rubric.get";
+    public static final String MSG_OP_RUBRIC_CREATE = "rubric.create";
+    public static final String MSG_OP_RUBRIC_UPDATE = "rubric.update";
+    public static final String MSG_OP_RUBRIC_DELETE = "rubric.delete";
+    public static final String MSG_OP_QUESTION_RUBRIC_ASSOCIATE = "question.rubirc.association";
+    
     // Course Operations
     public static final String MSG_OP_COURSE_GET = "course.get";
     public static final String MSG_OP_COURSE_CREATE = "course.create";
@@ -82,6 +93,9 @@ public final class MessageConstants {
     public static final String MSG_OP_COURSE_CONTENT_REORDER = "course.content.reorder";
     public static final String MSG_OP_COURSE_MOVE_UNIT = "course.move.unit";
     public static final String MSG_OP_COURSE_REORDER = "course.reorder";
+    public static final String MSG_OP_COURSE_RESOURCES_GET = "course.resources.get";
+    public static final String MSG_OP_COURSE_ASSESSMENTS_GET = "course.assessments.get";
+    public static final String MSG_OP_COURSE_COLLECTIONS_GET = "course.collections.get";
     public static final String MSG_OP_UNIT_GET = "unit.get";
     public static final String MSG_OP_UNIT_CREATE = "unit.create";
     public static final String MSG_OP_UNIT_UPDATE = "unit.update";
@@ -104,6 +118,9 @@ public final class MessageConstants {
     public static final String MSG_OP_TAXONOMY_DOMAINS_GET = "taxonomy.domains.get";
     public static final String MSG_OP_TAXONOMY_DOMAIN_CODES_GET = "taxonomy.domain.codes.get";
     public static final String MSG_OP_TAXONOMY_CODES_GET = "taxonomy.codes.get";
+    public static final String MSG_OP_TAXONOMY_CROSSWALK_GDFW_GET = "taxonomy.crosswalk.gdfw.get";
+    public static final String MSG_OP_TAXONOMY_CROSSWALK_FW_GET = "taxonomy.crosswalk.fw.get";
+    public static final String MSG_OP_TAXONOMY_FRAMEWORKS_GET = "taxonomy.frameworks.get";
 
     // Class operations
     public static final String MSG_OP_CLASS_CREATE = "class.create";
@@ -122,6 +139,20 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_GET_CONTENT_VISIBILITY = "class.content.visibility.get";
     public static final String MSG_OP_CLASS_INVITE_REMOVE = "class.invite.user.remove";
     public static final String MSG_OP_CLASS_REMOVE_STUDENT = "class.join.removal";
+    public static final String MSG_OP_CLASS_ARCHIVE = "class.archive";
+
+    //Watson Operations
+    public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";
+    public static final String MSG_OP_COURSE_KEYWORD_GET = "course.keyword.get";
+    public static final String MSG_OP_COURSE_KEYWORD_UPDATE = "course.keyword.update";
+    public static final String MSG_OP_ASSESSMENT_KEYWORD_GET = "assessment.keyword.get";
+    public static final String MSG_OP_ASSESSMENT_KEYWORD_UPDATE = "assessment.keyword.update";
+    public static final String MSG_OP_COLLECTION_KEYWORD_GET = "collection.keyword.get";
+    public static final String MSG_OP_COLLECTION_KEYWORD_UPDATE = "collection.keyword.update";
+    public static final String MSG_OP_RESOURCE_KEYWORD_GET = "resource.keyword.get";
+    public static final String MSG_OP_RESOURCE_KEYWORD_UPDATE = "resource.keyword.update";
+    public static final String MSG_OP_QUESTION_KEYWORD_GET = "question.keyword.get";
+    public static final String MSG_OP_QUESTION_KEYWORD_UPDATE = "question.keyword.update";
 
     // Copier Operations
     public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
@@ -131,6 +162,7 @@ public final class MessageConstants {
     public static final String MSG_OP_COURSE_COPY = "course.copy";
     public static final String MSG_OP_UNIT_COPY = "unit.copy";
     public static final String MSG_OP_LESSON_COPY = "lesson.copy";
+    public static final String MSG_OP_RUBRIC_COPY = "rubric.copy"; 
 
     // Profile Operations
     public static final String MSG_OP_PROFILE_COURSE_LIST = "profile.course.list";
@@ -138,20 +170,51 @@ public final class MessageConstants {
     public static final String MSG_OP_PROFILE_ASSESSMENT_LIST = "profile.assessment.list";
     public static final String MSG_OP_PROFILE_RESOURCE_LIST = "profile.resource.list";
     public static final String MSG_OP_PROFILE_QUESTION_LIST = "profile.question.list";
+    public static final String MSG_OP_PROFILE_RUBRIC_LIST = "profile.rubric.list";
     public static final String MSG_OP_PROFILE_DEMOGRAPHICS_GET = "profile.demographics.get";
     public static final String MSG_OP_PROFILE_FOLLOW = "profile.follow";
     public static final String MSG_OP_PROFILE_UNFOLLOW = "profile.unfollow";
     public static final String MSG_OP_PROFILE_NETWORK_GET = "profile.network.get";
-    public static final String MSG_OP_PROFILE_COURSE_SUBJECTBUCKETS_GET = "profile.course.subjectbucket.get";
-    public static final String MSG_OP_PROFILE_COLLECTION_TAXONOMY_GET = "profile.collection.taxonomy.get";
-    public static final String MSG_OP_PROFILE_ASSESSMENT_TAXONOMY_GET = "profile.assessment.taxonomy.get";
-    public static final String MSG_OP_PROFILE_RESOURCE_TAXONOMY_GET = "profile.resource.taxonomy.get";
-    public static final String MSG_OP_PROFILE_QUESTION_TAXONOMY_GET = "profile.question.taxonomy.get";
+    public static final String MSG_OP_PROFILE_SEARCH = "profile.search";
+    public static final String MSG_OP_PROFILE_PREFERENCE_GET = "profile.preference.get";
+    public static final String MSG_OP_PROFILE_PREFERENCE_UPDATE = "profile.preference.update";
 
+    // Content map Operations
+    public static final String MSG_OP_BOOKMARK_CREATE = "bookmark.create";
+    public static final String MSG_OP_BOOKMARK_DELETE = "bookmark.delete";
+    public static final String MSG_OP_BOOKMARK_LIST = "bookmark.list";
+    public static final String MSG_OP_COURSEMAP_COURSE_GET = "coursemap.course.get";
+    public static final String MSG_OP_COURSEMAP_UNIT_GET = "coursemap.unit.get";
+    public static final String MSG_OP_COURSEMAP_LESSON_GET = "coursemap.lesson.get";
+    public static final String MSG_OP_COURSEMAP_PATH_CREATE = "coursemap.path.create";
+    public static final String MSG_OP_CLASS_CONTENT_ADD = "class.content.add";
+    public static final String MSG_OP_CLASS_CONTENT_LIST = "class.content.list";
+    public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
+    public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";
+    
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
     public static final String MSG_OP_EVENT_PROCESS = "event.process";
 
+    //Request Processing LOG constants
+    public static final String MSG_OP_AUTH_TIME = "processing.time.auth";
+    public static final String MSG_OP_HANDLER_START = "start.time.handler";
+    
+    public static final String MSG_OP_FIREBASE_JWT_CREATION = "firebase.jwt";
+    
+    // Notification Operations
+    public static final String MSG_OP_NOTIFICATION_COUNT_GET = "notification.count.get";
+    public static final String MSG_OP_NOTIFICATION_GET = "notification.get";
+    public static final String MSG_OP_NOTIFICATION_FILTERS_GET = "notification.filters.get";
+    public static final String MSG_OP_NOTIFICATION_FILTERS_UPDATE = "notification.filters.update";
+    public static final String MSG_OP_NOTIFICATION_BLOCKED_USERS_GET = "notification.blocked.users.get";
+    public static final String MSG_OP_NOTIFICATION_BLOCKED_USERS_DELETE = "notification.blocked.users.delete";
+    
+    // Library Operations
+    public static final String MSG_OP_LIBRARY_GET = "library.get";
+    public static final String MSG_OP_LIBRARIES_GET = "libraries.get";
+    public static final String MSG_OP_LIBRARY_CONTENTS_GET = "library.contents.get";
+    
     private MessageConstants() {
         throw new AssertionError();
     }

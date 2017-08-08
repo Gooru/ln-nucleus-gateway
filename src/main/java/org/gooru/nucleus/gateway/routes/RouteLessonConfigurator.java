@@ -4,6 +4,7 @@ import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
 import org.gooru.nucleus.gateway.constants.RouteConstants;
+import org.gooru.nucleus.gateway.routes.utils.DeliveryOptionsBuilder;
 import org.gooru.nucleus.gateway.routes.utils.RouteRequestUtility;
 import org.gooru.nucleus.gateway.routes.utils.RouteResponseUtility;
 import org.slf4j.Logger;
@@ -34,10 +35,11 @@ class RouteLessonConfigurator implements RouteConfigurator {
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
             String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
 
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CONTENT_REORDER)
-                .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                .addHeader(RouteConstants.ID_LESSON, lessonId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CONTENT_REORDER)
+                    .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                    .addHeader(RouteConstants.ID_LESSON, lessonId);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
@@ -46,10 +48,11 @@ class RouteLessonConfigurator implements RouteConfigurator {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
             String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_MOVE_COLLECTION)
-                .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                .addHeader(RouteConstants.ID_LESSON, lessonId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_MOVE_COLLECTION)
+                    .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                    .addHeader(RouteConstants.ID_LESSON, lessonId);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
@@ -58,10 +61,11 @@ class RouteLessonConfigurator implements RouteConfigurator {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
             String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_GET)
-                .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                .addHeader(RouteConstants.ID_LESSON, lessonId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_GET)
+                    .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                    .addHeader(RouteConstants.ID_LESSON, lessonId);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
@@ -70,10 +74,11 @@ class RouteLessonConfigurator implements RouteConfigurator {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
             String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_UPDATE)
-                .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                .addHeader(RouteConstants.ID_LESSON, lessonId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_UPDATE)
+                    .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                    .addHeader(RouteConstants.ID_LESSON, lessonId);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
@@ -82,23 +87,26 @@ class RouteLessonConfigurator implements RouteConfigurator {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
             String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_DELETE)
-                .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                .addHeader(RouteConstants.ID_LESSON, lessonId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_DELETE)
+                    .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                    .addHeader(RouteConstants.ID_LESSON, lessonId);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
-        
+
         router.delete(RouteConstants.EP_LESSON_REMOVE_COLLECTION).handler(routingContext -> {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
             String lessonId = routingContext.request().getParam(RouteConstants.ID_LESSON);
             String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_REMOVE_COLLECTION)
-                .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
-                .addHeader(RouteConstants.ID_LESSON, lessonId).addHeader(RouteConstants.ID_COLLECTION, collectionId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_REMOVE_COLLECTION)
+                    .addHeader(RouteConstants.ID_COURSE, courseId).addHeader(RouteConstants.ID_UNIT, unitId)
+                    .addHeader(RouteConstants.ID_LESSON, lessonId)
+                    .addHeader(RouteConstants.ID_COLLECTION, collectionId);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
@@ -107,9 +115,10 @@ class RouteLessonConfigurator implements RouteConfigurator {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             String unitId = routingContext.request().getParam(RouteConstants.ID_UNIT);
 
-            DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout * 1000)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CREATE)
-                .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_COURSE, courseId);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LESSON_CREATE)
+                    .addHeader(RouteConstants.ID_UNIT, unitId).addHeader(RouteConstants.ID_COURSE, courseId);
             eb.send(MessagebusEndpoints.MBEP_COURSE, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });

@@ -25,8 +25,8 @@ public class RouteRequestUtility {
 
     public JsonObject getBodyForMessage(RoutingContext routingContext) {
         JsonObject httpBody, result = new JsonObject();
-        if (routingContext.request().method().name().equals(HttpMethod.POST.name())
-            || routingContext.request().method().name().equals(HttpMethod.PUT.name())) {
+        if (routingContext.request().method().name().equals(HttpMethod.POST.name()) || routingContext.request().method()
+            .name().equals(HttpMethod.PUT.name())) {
             httpBody = routingContext.getBodyAsJson();
         } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
             httpBody = new JsonObject();
@@ -44,7 +44,7 @@ public class RouteRequestUtility {
             httpBody = new JsonObject();
         }
         result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
-        result.put(MessageConstants.MSG_KEY_PREFS, (JsonObject) routingContext.get(MessageConstants.MSG_KEY_PREFS));
+        result.put(MessageConstants.MSG_KEY_SESSION, (JsonObject) routingContext.get(MessageConstants.MSG_KEY_SESSION));
         result.put(MessageConstants.MSG_USER_ID, (String) routingContext.get(MessageConstants.MSG_USER_ID));
         result.put(MessageConstants.MSG_HEADER_TOKEN, (String) routingContext.get(MessageConstants.MSG_HEADER_TOKEN));
         return result;

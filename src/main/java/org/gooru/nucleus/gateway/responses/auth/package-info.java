@@ -25,7 +25,7 @@ package org.gooru.nucleus.gateway.responses.auth;
  * <p>
  * The message body is JSON and should contain at least following key values, others may be present as well
  * <p>
- * key: MessageConstants.MSG_KEY_PREFS
+ * key: MessageConstants.MSG_KEY_SESSION
  * value: user preferences for taxonomy subjects and its mapping to framework. The value is Json object
  * <p>
  * key: MessageConstants.MSG_USER_ID
