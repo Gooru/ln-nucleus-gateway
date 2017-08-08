@@ -15,6 +15,8 @@ public final class RouteConstants {
     public static final String ID_UNIT = "unitId";
     public static final String ID_LESSON = "lessonId";
     public static final String ID_CLASS = "classId";
+    public static final String ID_RUBRIC = "rubricId";
+    public static final String ID_CONTENT = "contentId";
     public static final String ID_TX_SUBJECT = "subjectId";
     public static final String ID_TX_DOMAIN = "domainId";
     public static final String ID_TX_COURSE = "courseId";
@@ -24,7 +26,9 @@ public final class RouteConstants {
     public static final String ID_USER = "userId";
     public static final String ID_EMAIL = "email";
     public static final String CODE_CLASS = "classCode";
-
+    public static final String ID_BOOKMARK = "bookmarkId";
+    public static final String ID_LIBRARY = "libraryId";
+    
     // Helper: Operations
     private static final String OP_ORDER = "order";
     private static final String OP_LOOKUP = "lookups";
@@ -34,9 +38,12 @@ public final class RouteConstants {
     private static final String OP_DEMOGRAPHICS = "demographics";
     private static final String OP_FOLLOW = "follow";
     private static final String OP_UNFOLLOW = "unfollow";
-    private static final String OP_SUBJECT_BUCKET = "subject-buckets";
-    private static final String OP_TAXONOMY = "taxonomy";
     private static final String OP_NETWORK = "network";
+    private static final String OP_SEARCH = "search";
+    private static final String OP_PREFERENCE = "preference";
+    private static final String OP_ARCHIVE = "archive";
+    private static final String OP_COUNT = "count";
+    private static final String OP_CONTENTS = "contents";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -56,18 +63,24 @@ public final class RouteConstants {
     private static final String RES_TX_STANDARD_FRAMEWORK = "frameworks";
     private static final String RES_LICENSE = "licenses";
     private static final String RES_APIKEY_CONFIG = "apikey-config";
+    private static final String RES_FIREBASE_CONFIG = "firebase-config";
     private static final String RES_STATS = "stats";
     private static final String SEP = "/";
     private static final String COLON = ":";
+    private static final String RES_TX_CROSSWALK = "crosswalk";
+    private static final String RES_TX_GDFW = "gdfw";
+    private static final String RES_TX_FW = "fw";
+
     // Helper constants
-    private static final String API_VERSION = "v1";
-    private static final String API_BASE_ROUTE = "/api/nucleus/" + API_VERSION + '/';
+    public static final String API_VERSION = "version";
+    private static final String API_BASE_ROUTE = "/api/nucleus/" + COLON + API_VERSION + '/';
     // Helper: Entity name constants
     private static final String ENTITY_RESOURCES = "resources";
     private static final String ENTITY_QUESTIONS = "questions";
     private static final String ENTITY_ASSESSMENTS = "assessments";
     private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
     private static final String ENTITY_COLLECTIONS = "collections";
+    private static final String ENTITY_KEYWORD = "keyword";
     private static final String ENTITY_COURSES = "courses";
     private static final String ENTITY_UNITS = "units";
     private static final String ENTITY_LESSONS = "lessons";
@@ -80,9 +93,22 @@ public final class RouteConstants {
     private static final String ENTITY_TX_CODES = "codes";
     private static final String ENTITY_COPIER = "copier";
     private static final String ENTITY_PROFILES = "profiles";
+    private static final String ENTITY_RUBRICS = "rubrics";
+    private static final String FIREBASE_JWT = "firebase/jwt";
+    private static final String ENTITY_COURSE_MAP = "course-map";
+    private static final String ENTITY_CLASS_CONTENT = "contents";
+    private static final String ENTITY_BOOKMARK = "bookmarks";
+    private static final String ENTITY_PATHS = "paths";
+    private static final String ENTITY_TX_FRAMEWORKS = "frameworks";
+    private static final String ENTITY_NOTIFICATIONS = "notifications";
+    private static final String ENTITY_LIBRARIES = "libraries";
+    private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
+    private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
+    
+    public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
+    public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
 
-    // Actual End Point Constants: Note that constant values may be duplicated
-    // but
+    // Actual End Point Constants: Note that constant values may be duplicated but
     // we are going to have individual constant values to work with for each
     // point instead of reusing the same
 
@@ -105,6 +131,12 @@ public final class RouteConstants {
     // Fetch code =
     // /api/nucleus/{version}/taxonomy/codes?idList=
     public static final String EP_CODE = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CODES;
+    // Fetch crosswalk codes from  guaranteed  GDF frameworks
+    public static final String EP_CROSSWALK_CODES_GDFW = API_BASE_ROUTE + RT_CROSSWALK_CODES_GDFW;
+    // Fetch crosswalk codes from  not guaranteed  GDF frameworks
+    public static final String EP_CROSSWALK_CODES_FW = API_BASE_ROUTE + RT_CROSSWALK_CODES_FW;
+    public static final String EP_STANDARD_FW_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_FRAMEWORKS;
+
 
     /*
      * External authorization end point to validate the authorization, if
@@ -152,6 +184,8 @@ public final class RouteConstants {
     public static final String EP_LICENSE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LICENSE;
     // API Key Config = /api/nucleus/{version}/lookups/apikey-config
     public static final String EP_APIKEY_CONFIG = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_APIKEY_CONFIG;
+    //API Key config for firebase = /api/nucleus/{version}/lookups/firebase-config
+    public static final String EP_FIREBASE_CONFIG = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_FIREBASE_CONFIG;
 
     /*
      * RESOURCE
@@ -177,6 +211,8 @@ public final class RouteConstants {
     public static final String EP_QUESTION_UPDATE = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION;
     // Create a new Question = /api/nucleus/{version}/questions
     public static final String EP_QUESTION_CREATE = API_BASE_ROUTE + ENTITY_QUESTIONS;
+    public static final String EP_QUESTION_RUBRIC_ASSOCIATE =
+        API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
     /*
      * ASSESSMENT
      */
@@ -273,7 +309,11 @@ public final class RouteConstants {
     // /api/nucleus/{version}/courses/reorder
     public static final String EP_COURSE_REORDER = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_ORDER;
     // Fetch resources by Course by Id = /api/nucleus/{version}/courses/{course-id}/resources
-    public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;    
+    public static final String EP_COURSE_RESOURCES_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_RESOURCES;
+    // Fetch assessments by Course by Id = /api/nucleus/{version}/courses/{course-id}/assessments
+    public static final String EP_COURSE_ASSESSMENTS_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_ASSESSMENTS;
+    // Fetch collections by Course by Id = /api/nucleus/{version}/courses/{course-id}/collections
+    public static final String EP_COURSE_COLLECTIONS_GET = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE + SEP + ENTITY_COLLECTIONS;
 
     // Create a new Unit = /api/nucleus/{version}/courses/{course-id}/units
     public static final String EP_UNIT_CREATE =
@@ -387,7 +427,9 @@ public final class RouteConstants {
     // /api/nucleus/{version}/classes/{class-id}/courses/stats
     public static final String EP_CLASS_CONTENT_PUBLISHED_STATS =
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + RES_STATS;
-
+    // Archive Class = /api/nucleus/{version}/classes/{class-id}/archive
+    public static final String EP_CLASS_ARCHIVE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_ARCHIVE;
+    
     // COPIER
     // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
     public static final String EP_RESOURCE_COPY =
@@ -412,6 +454,7 @@ public final class RouteConstants {
     // /api/nucleus/{version}/copier/courses/{course-id}/units/{unit-id}/lessons/{lesson-id}?target_course_id=&target_unit_id=
     public static final String EP_LESSON_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_COURSES + SEP + COLON
         + ID_COURSE + SEP + ENTITY_UNITS + SEP + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+    public static final String EP_RUBRIC_COPY = API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
 
     // PROFILES
     // /api/nucleus/{version}/profiles/{user-id}/courses
@@ -425,24 +468,24 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES;
     public static final String EP_PROFILE_QUESTION_LIST =
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS;
+    public static final String EP_PROFILE_RUBRIC_LIST =
+        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RUBRICS;
     public static final String EP_PROFILE_DEMOGRAPHIC_GET =
-        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_DEMOGRAPHICS;
+        API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_DEMOGRAPHICS;
     public static final String EP_PROFILE_FOLLOW = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_FOLLOW;
     public static final String EP_PROFILE_UNFOLLOW =
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_UNFOLLOW;
     public static final String EP_PROFILE_NETWORK_GET =
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_NETWORK;
-    public static final String EP_PROFILE_COURSE_SUBJECTBUCKETS_GET =
-        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COURSES + SEP + OP_SUBJECT_BUCKET;
-    public static final String EP_PROFILE_COLLECTION_TAXONOMY_GET =
-        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_COLLECTIONS + SEP + OP_TAXONOMY;
-    public static final String EP_PROFILE_ASSESSMENT_TAXONOMY_GET =
-        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_ASSESSMENTS + SEP + OP_TAXONOMY;
-    public static final String EP_PROFILE_RESOURCE_TAXONOMY_GET =
-        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_RESOURCES + SEP + OP_TAXONOMY;
-    public static final String EP_PROFILE_QUESTION_TAXONOMY_GET =
-        API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_QUESTIONS + SEP + OP_TAXONOMY;
-
+    public static final String EP_PROFILE_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_SEARCH;
+    public static final String EP_PROFILE_PREFERENCE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_PREFERENCE;
+    
+    //Rubrics Routes
+    public static final String EP_RUBRIC_CREATE = API_BASE_ROUTE + ENTITY_RUBRICS;
+    public static final String EP_RUBRIC_UPDATE = API_BASE_ROUTE + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    public static final String EP_RUBRIC_GET = API_BASE_ROUTE + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    public static final String EP_RUBRIC_DELETE = API_BASE_ROUTE + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    
     public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
     public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";
     // This is event publisher. It expects full blown event structure which will be relayed to Kafka
@@ -453,6 +496,75 @@ public final class RouteConstants {
     // Note that difference between original message on message bus and this is the presence of op name
     public static final String EP_INTERNAL_EVENT_PROCESSOR = "/api/internal/v1/eventprocessor";
 
+    /*
+     * KEYWORDS TAGGING
+     */
+    //Get course tags = /api/nucleus/{version}/courses/{course-id}/keyword
+    public static final String EP_COURSE_KEYWORD = API_BASE_ROUTE +  ENTITY_COURSES + SEP + COLON + ID_COURSE +
+        SEP + ENTITY_KEYWORD ;
+    //Get assessment tags = /api/nucleus/{version}/assessments/{assessment-id}/keyword
+    public static final String EP_ASSESSMENT_KEYWORD = API_BASE_ROUTE +  ENTITY_ASSESSMENTS + SEP + COLON +
+        ID_ASSESSMENT + SEP + ENTITY_KEYWORD;
+    //Get collection tags = /api/nucleus/{version}/collections/{collection-id}/keyword
+    public static final String EP_COLLECTION_KEYWORD = API_BASE_ROUTE +  ENTITY_COLLECTIONS + SEP + COLON +
+        ID_COLLECTION + SEP + ENTITY_KEYWORD ;
+    //Get resource tags = /api/nucleus/{version}/resources/{resource-id}/keyword
+    public static final String EP_RESOURCE_KEYWORD = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON + 
+        ID_RESOURCE + SEP + ENTITY_KEYWORD ;
+    //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
+    public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE +  ENTITY_QUESTIONS + SEP + COLON +
+        ID_QUESTION + SEP + ENTITY_KEYWORD ;
+    
+    // Notification Routes
+    // Get notification count: /api/nucleus/{version}/noitifications/count
+    public static final String EP_NOTIFICATION_COUNT_GET = API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP + OP_COUNT;
+    // Get notifications: /api/nucleus/{version}/noitifications
+    public static final String EP_NOTIFICATION_GET = API_BASE_ROUTE + ENTITY_NOTIFICATIONS;
+    // Get notifications filters: /api/nucleus/{version}/noitifications/filters
+    public static final String EP_NOTIFICATION_FILTERS_GET =
+        API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP + ENTITY_NOTIFICATIONS_FILTERS;
+    // Update notifications filters:
+    // /api/nucleus/{version}/noitifications/filters
+    public static final String EP_NOTIFICATION_FILTERS_UPDATE =
+        API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP + ENTITY_NOTIFICATIONS_FILTERS;
+    // Get blocked users:
+    // /api/nucleus/{version}/noitifications/filters/blacklist/users;
+    public static final String EP_NOTIFICATION_FILTERS_BLOCKED_USERS_GET = API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP
+        + ENTITY_NOTIFICATIONS_FILTERS + SEP + ENTITY_NOTIFICATIONS_BLOCKED_USERS;
+    // Delete blocked users:
+    // /api/nucleus/{version}/noitifications/filters/blacklist/users;
+    public static final String EP_NOTIFICATION_FILTERS_BLOCKED_USERS_DELETE = API_BASE_ROUTE + ENTITY_NOTIFICATIONS + SEP
+        + ENTITY_NOTIFICATIONS_FILTERS + SEP + ENTITY_NOTIFICATIONS_BLOCKED_USERS;
+    
+    // Library Routes
+    // Get Library
+    public static final String EP_LIBRARY_GET = API_BASE_ROUTE + ENTITY_LIBRARIES + SEP + COLON + ID_LIBRARY;
+    // Get Libraries
+    public static final String EP_LIBRARIES_GET = API_BASE_ROUTE + ENTITY_LIBRARIES;
+    // Get Library contents
+    public static final String EP_LIBRARY_CONTENTS_GET =
+        API_BASE_ROUTE + ENTITY_LIBRARIES + SEP + COLON + ID_LIBRARY + SEP + OP_CONTENTS;
+    
+    /*
+     * JWT GENERATION
+     */
+    public static final String EP_JWT_GENERATION = API_BASE_ROUTE + FIREBASE_JWT;
+    
+    //bulk update resource tags = /api/nucleus/{version}/resources/keyword/bulkUpdate
+    public static final String EP_RESOURCE_KEYWORD_BULK_UPDATE = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + ENTITY_KEYWORD + SEP + "bulkUpdate";
+
+    public static final String EP_COURSE_MAP_COURSE = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE;
+    public static final String EP_COURSE_MAP_UNIT = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT;
+    public static final String EP_COURSE_MAP_LESSON = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT + SEP +  ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+    public static final String EP_COURSE_MAP_PATH = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + ENTITY_PATHS;
+    public static final String EP_CLASS_CONTENT = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT;
+    public static final String EP_CLASS_CONTENT_ASSIGN = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
+    public static final String EP_CLASS_CONTENT_DELETE = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
+	public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE  + ENTITY_BOOKMARK;
+	public static final String EP_BOOKMARK_CREATE = API_BASE_ROUTE  + ENTITY_BOOKMARK;
+	public static final String EP_BOOKMARK_DELETE = API_BASE_ROUTE  + ENTITY_BOOKMARK + SEP + COLON + ID_BOOKMARK;
+    
+    
     private RouteConstants() {
         throw new AssertionError();
     }

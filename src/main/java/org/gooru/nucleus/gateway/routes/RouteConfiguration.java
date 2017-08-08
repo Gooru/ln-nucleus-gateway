@@ -19,11 +19,14 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
         configurators.add(new RouteMetricsConfigurator());
         configurators.add(new RouteResourceConfigurator());
         configurators.add(new RouteQuestionConfigurator());
+        configurators.add(new RouteRubricConfigurator());
         configurators.add(new RouteLookupConfigurator());
         configurators.add(new RouteAssessmentConfigurator());
         configurators.add(new RouteAssessmentExternalConfigurator());
         configurators.add(new RouteClassConfigurator());
+        configurators.add(new RouteClassContentConfigurator());
         configurators.add(new RouteCollectionConfigurator());
+        configurators.add(new RouteKeywordConfigurator());
         // Order may be important for CUL
         configurators.add(new RouteLessonConfigurator());
         configurators.add(new RouteUnitConfigurator());
@@ -31,6 +34,10 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
         configurators.add(new RouteProfileConfigurator());
         configurators.add(new RouteCopierConfigurator());
         configurators.add(new RouteTaxonomyConfigurator());
+        configurators.add(new RouteCourseMapConfigurator());
+        configurators.add(new RouteBookmarkConfigurator());
+        configurators.add(new RouteNotificationConfigurator());
+        configurators.add(new RouteLibraryConfigurator());
         configurators.add(new RouteFailureConfigurator());
         internalIterator = configurators.iterator();
     }

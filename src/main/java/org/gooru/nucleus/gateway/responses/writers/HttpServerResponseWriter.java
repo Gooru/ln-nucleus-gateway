@@ -16,31 +16,49 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.RoutingContext;
 
 class HttpServerResponseWriter implements ResponseWriter {
-
+  
     private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.performance.log");
+
     private final RoutingContext routingContext;
-    private final AsyncResult<Message<Object>> message;
+    ResponseTransformer transformer;
 
     public HttpServerResponseWriter(RoutingContext routingContext, AsyncResult<Message<Object>> message) {
         this.routingContext = routingContext;
-        this.message = message;
+        transformer = ResponseTransformerBuilder.build(message.result());
+    }
+
+    public HttpServerResponseWriter(RoutingContext routingContext, ResponseTransformer transformer) {
+        this.routingContext = routingContext;
+        this.transformer = transformer;
     }
 
     @Override
     public void writeResponse() {
-        ResponseTransformer transformer = ResponseTransformerBuilder.build(message.result());
         final HttpServerResponse response = routingContext.response();
         // First set the status code
-        response.setStatusCode(transformer.transformedStatus());
+        writeHttpStatus(response);
         // Then set the headers
-        Map<String, String> headers = transformer.transformedHeaders();
-        if (headers != null && !headers.isEmpty()) {
-            // Never accept content-length from others, we do that
-            headers.keySet().stream()
-                .filter(headerName -> !headerName.equalsIgnoreCase(HttpConstants.HEADER_CONTENT_LENGTH))
-                .forEach(headerName -> response.putHeader(headerName, headers.get(headerName)));
-        }
+        writeHttpHeaders(response);
         // Then it is turn of the body to be set and ending the response
+        writeHttpBody(response);
+
+        logPerformanceStats();
+    }
+
+    private void logPerformanceStats() {
+        try {
+            long authProcessingTime = (Long) routingContext.get(MessageConstants.MSG_OP_AUTH_TIME);
+            long handlerProcessingStart = (Long) routingContext.get(MessageConstants.MSG_OP_HANDLER_START);
+            long handlerProcessingTime = (System.currentTimeMillis() - handlerProcessingStart);
+            String userId = (String) routingContext.get(MessageConstants.MSG_USER_ID);
+            LOG.info("Auth Processing Time:{}ms -- Handler Processing Time:{}ms -- UserId:{}", authProcessingTime,
+                handlerProcessingTime, userId);
+        } catch (Throwable t) {
+            LOG.error("error while logging request processing time", t.getMessage());
+        }
+    }
+
+    private void writeHttpBody(HttpServerResponse response) {
         if (transformer.transformedStatus() != HttpConstants.HttpStatus.NO_CONTENT.getCode()) {
             final String responseBody =
                 ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ?
@@ -57,15 +75,19 @@ class HttpServerResponseWriter implements ResponseWriter {
         } else {
             response.end();
         }
-        
-        try {
-            long authProcessingTime = (Long) routingContext.get(MessageConstants.MSG_OP_AUTH_TIME);
-            long handlerProcessingStart = (Long) routingContext.get(MessageConstants.MSG_OP_HANDLER_START);
-            long handlerProcessingTime = (System.currentTimeMillis() - handlerProcessingStart);
-            String userId = (String) routingContext.get(MessageConstants.MSG_USER_ID);
-            LOG.info("Auth Processing Time:{}ms -- Handler Processing Time:{}ms -- UserId:{}", authProcessingTime, handlerProcessingTime, userId);
-        } catch (Throwable t) {
-            LOG.error("error while logging request processing time", t.getMessage());
+    }
+
+    private void writeHttpHeaders(HttpServerResponse response) {
+        Map<String, String> headers = transformer.transformedHeaders();
+        if (headers != null && !headers.isEmpty()) {
+            // Never accept content-length from others, we do that
+            headers.keySet().stream()
+                .filter(headerName -> !headerName.equalsIgnoreCase(HttpConstants.HEADER_CONTENT_LENGTH))
+                .forEach(headerName -> response.putHeader(headerName, headers.get(headerName)));
         }
+    }
+
+    private void writeHttpStatus(HttpServerResponse response) {
+        response.setStatusCode(transformer.transformedStatus());
     }
 }
