@@ -213,6 +213,8 @@ public final class RouteConstants {
     public static final String EP_QUESTION_CREATE = API_BASE_ROUTE + ENTITY_QUESTIONS;
     public static final String EP_QUESTION_RUBRIC_ASSOCIATE =
         API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    // Bulk Get Question By Ids = /api/nucleus/{version}/questions?ids=
+    public static final String EP_QUESTION_GET_BULK = API_BASE_ROUTE + ENTITY_QUESTIONS;
     /*
      * ASSESSMENT
      */

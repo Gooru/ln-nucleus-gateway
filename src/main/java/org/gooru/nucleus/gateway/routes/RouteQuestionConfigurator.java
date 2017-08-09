@@ -49,6 +49,14 @@ class RouteQuestionConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
+        
+        router.get(RouteConstants.EP_QUESTION_GET_BULK).handler(routingContext -> {
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_QUESTION_GET_BULK);
+            eb.send(MessagebusEndpoints.MBEP_QUESTION, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
 
         router.put(RouteConstants.EP_QUESTION_UPDATE).handler(routingContext -> {
             String questionId = routingContext.request().getParam(RouteConstants.ID_QUESTION);
