@@ -44,6 +44,7 @@ public final class RouteConstants {
     private static final String OP_ARCHIVE = "archive";
     private static final String OP_COUNT = "count";
     private static final String OP_CONTENTS = "contents";
+    private static final String OP_SCORE = "score";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -215,6 +216,8 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
     // Bulk Get Question By Ids = /api/nucleus/{version}/questions?ids=
     public static final String EP_QUESTION_GET_BULK = API_BASE_ROUTE + ENTITY_QUESTIONS;
+    // /api/nucleus/{version}/questions/{question-id}/score
+    public static final String EP_QUESTION_SCORE_UPDATE = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + OP_SCORE;
     /*
      * ASSESSMENT
      */

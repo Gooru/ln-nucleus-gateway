@@ -77,6 +77,7 @@ public final class MessageConstants {
     public static final String MSG_OP_QUESTION_UPDATE = "question.update";
     public static final String MSG_OP_QUESTION_DELETE = "question.delete";
     public static final String MSG_OP_QUESTION_GET_BULK = "bulk.question.get";
+    public static final String MSG_OP_QUESTION_SCORE_UPDATE = "question.score.update";
     
     // Rubric Operations
     public static final String MSG_OP_RUBRIC_GET = "rubric.get";
