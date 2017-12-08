@@ -41,6 +41,7 @@ public final class RouteConstants {
     private static final String OP_NETWORK = "network";
     private static final String OP_SEARCH = "search";
     private static final String OP_PREFERENCE = "preference";
+    private static final String OP_STATE = "state";
     private static final String OP_ARCHIVE = "archive";
     private static final String OP_COUNT = "count";
     private static final String OP_CONTENTS = "contents";
@@ -484,6 +485,7 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_NETWORK;
     public static final String EP_PROFILE_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_SEARCH;
     public static final String EP_PROFILE_PREFERENCE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_PREFERENCE;
+    public static final String EP_PROFILE_STATE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_STATE;
     
     //Rubrics Routes
     public static final String EP_RUBRIC_CREATE = API_BASE_ROUTE + ENTITY_RUBRICS;
