@@ -41,9 +41,11 @@ public final class RouteConstants {
     private static final String OP_NETWORK = "network";
     private static final String OP_SEARCH = "search";
     private static final String OP_PREFERENCE = "preference";
+    private static final String OP_STATE = "state";
     private static final String OP_ARCHIVE = "archive";
     private static final String OP_COUNT = "count";
     private static final String OP_CONTENTS = "contents";
+    private static final String OP_SCORE = "score";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -213,6 +215,10 @@ public final class RouteConstants {
     public static final String EP_QUESTION_CREATE = API_BASE_ROUTE + ENTITY_QUESTIONS;
     public static final String EP_QUESTION_RUBRIC_ASSOCIATE =
         API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+    // Bulk Get Question By Ids = /api/nucleus/{version}/questions?ids=
+    public static final String EP_QUESTION_GET_BULK = API_BASE_ROUTE + ENTITY_QUESTIONS;
+    // /api/nucleus/{version}/questions/{question-id}/score
+    public static final String EP_QUESTION_SCORE_UPDATE = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON + ID_QUESTION + SEP + OP_SCORE;
     /*
      * ASSESSMENT
      */
@@ -479,6 +485,7 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + OP_NETWORK;
     public static final String EP_PROFILE_SEARCH = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_SEARCH;
     public static final String EP_PROFILE_PREFERENCE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_PREFERENCE;
+    public static final String EP_PROFILE_STATE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_STATE;
     
     //Rubrics Routes
     public static final String EP_RUBRIC_CREATE = API_BASE_ROUTE + ENTITY_RUBRICS;
