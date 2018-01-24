@@ -46,6 +46,7 @@ public final class RouteConstants {
     private static final String OP_COUNT = "count";
     private static final String OP_CONTENTS = "contents";
     private static final String OP_SCORE = "score";
+    private static final String OP_AGGREGATE_TAGS = "aggregate-tags";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -244,6 +245,11 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_COLLABORATORS;
     // Create a New Assessment = /api/nucleus/{version}/assessments
     public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
+    // Aggregate tags
+    // /api/nucleus/{version}/assessments/{assessment-id}/aggregate-tags
+    public static final String EP_ASSESSMENT_QUESTION_AGGREGATE_TAGS =
+        API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + OP_AGGREGATE_TAGS;
+    
     /*
      * External Assessments
      */
@@ -287,6 +293,11 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_COLLABORATORS;
     // Create a New Collection = /api/nucleus/{version}/collections
     public static final String EP_COLLECTION_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS;
+    // Aggregate tags
+    // /api/nucleus/{version}/collections/{collection-id}/aggregate-tags
+    public static final String EP_COLLECTION_RESOURCE_AGGREGATE_TAGS =
+        API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + OP_AGGREGATE_TAGS;
+    
     /*
      * COURSES UNITS LESSONS
      */

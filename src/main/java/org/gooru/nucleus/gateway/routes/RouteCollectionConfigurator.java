@@ -81,6 +81,16 @@ class RouteCollectionConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
+        
+        router.put(RouteConstants.EP_COLLECTION_RESOURCE_AGGREGATE_TAGS).handler(routingContext -> {
+            String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COLLECTION_RESOURCE_TAG_AGGREGATE)
+                    .addHeader(RouteConstants.ID_COLLECTION, collectionId);
+            eb.send(MessagebusEndpoints.MBEP_COLLECTION, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
 
         router.delete(RouteConstants.EP_COLLECTION_DELETE).handler(routingContext -> {
             String collectionId = routingContext.request().getParam(RouteConstants.ID_COLLECTION);

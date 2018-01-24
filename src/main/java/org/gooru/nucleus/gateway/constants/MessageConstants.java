@@ -55,6 +55,7 @@ public final class MessageConstants {
     public static final String MSG_OP_ASSESSMENT_COLLABORATOR_UPDATE = "assessment.collaborator.update";
     public static final String MSG_OP_ASSESSMENT_QUESTION_ADD = "assessment.question.add";
     public static final String MSG_OP_ASSESSMENT_QUESTION_REORDER = "assessment.content.reorder";
+    public static final String MSG_OP_ASSESSMENT_QUESTION_TAG_AGGREGATE = "assessment.question.tag.aggregate";
     // External Assessment Operations
     public static final String MSG_OP_EXT_ASSESSMENT_GET = "ext.assessment.get";
     public static final String MSG_OP_EXT_ASSESSMENT_CREATE = "ext.assessment.create";
@@ -70,6 +71,7 @@ public final class MessageConstants {
     public static final String MSG_OP_COLLECTION_QUESTION_ADD = "collection.question.add";
     public static final String MSG_OP_COLLECTION_CONTENT_REORDER = "collection.content.reorder";
     public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
+    public static final String MSG_OP_COLLECTION_RESOURCE_TAG_AGGREGATE = "collection.resource.tag.aggregate";
     
     // Question Operations
     public static final String MSG_OP_QUESTION_GET = "question.get";
