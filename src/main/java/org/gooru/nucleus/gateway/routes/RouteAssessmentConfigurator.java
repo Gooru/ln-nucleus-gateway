@@ -72,16 +72,6 @@ class RouteAssessmentConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
         
-        router.put(RouteConstants.EP_ASSESSMENT_QUESTION_AGGREGATE_TAGS).handler(routingContext -> {
-            String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
-            DeliveryOptions options =
-                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ASSESSMENT_QUESTION_TAG_AGGREGATE)
-                    .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
-            eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext),
-                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-        });
-
         router.delete(RouteConstants.EP_ASSESSMENT_DELETE).handler(routingContext -> {
             String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
             DeliveryOptions options =
