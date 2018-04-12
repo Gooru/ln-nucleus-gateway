@@ -123,7 +123,7 @@ public final class MessageConstants {
     public static final String MSG_OP_TAXONOMY_CROSSWALK_GDFW_GET = "taxonomy.crosswalk.gdfw.get";
     public static final String MSG_OP_TAXONOMY_CROSSWALK_FW_GET = "taxonomy.crosswalk.fw.get";
     public static final String MSG_OP_TAXONOMY_FRAMEWORKS_GET = "taxonomy.frameworks.get";
-    public static final String MSG_OP_TAXONOMY_LEARNER_CLASSIFICATIONS_GET = "taxonomy.learner.classifications.get";
+    public static final String MSG_OP_TAXONOMY_SUBJECT_CLASSIFICATIONS_GET = "taxonomy.subject.classifications.get";
 
     // Class operations
     public static final String MSG_OP_CLASS_CREATE = "class.create";

@@ -35,7 +35,7 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
         router.post(RouteConstants.EP_CROSSWALK_CODES_FW).handler(this::getCrosswalkFWCodes);
         router.post(RouteConstants.EP_CROSSWALK_CODES_GDFW).handler(this::getCrosswalkGDFWCodes);
         router.get(RouteConstants.EP_STANDARD_FW_LIST).handler(this::getTaxonomyFrameworks);
-        router.get(RouteConstants.EP_LEARNER_CLASSIFICATION_LIST).handler(this::getTaxonomyLearnerClassification);
+        router.get(RouteConstants.EP_SUBJECT_CLASSIFICATION_LIST).handler(this::getTaxonomySubjectClassifications);
     }
 
     private void getSubjects(RoutingContext routingContext) {
@@ -118,10 +118,10 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
             reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     }
     
-    private void getTaxonomyLearnerClassification(RoutingContext routingContext) {
+    private void getTaxonomySubjectClassifications(RoutingContext routingContext) {
         final DeliveryOptions options =
             DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
-                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_LEARNER_CLASSIFICATIONS_GET);
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_TAXONOMY_SUBJECT_CLASSIFICATIONS_GET);
         eb.send(MessagebusEndpoints.MBEP_TAXONOMY, new RouteRequestUtility().getBodyForMessage(routingContext), options,
             reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     }
