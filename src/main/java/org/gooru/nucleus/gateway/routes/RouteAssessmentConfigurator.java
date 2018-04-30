@@ -71,7 +71,7 @@ class RouteAssessmentConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_ASSESSMENT, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
-
+        
         router.delete(RouteConstants.EP_ASSESSMENT_DELETE).handler(routingContext -> {
             String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
             DeliveryOptions options =

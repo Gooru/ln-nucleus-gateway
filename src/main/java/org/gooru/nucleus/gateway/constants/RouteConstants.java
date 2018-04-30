@@ -106,6 +106,7 @@ public final class RouteConstants {
     private static final String ENTITY_LIBRARIES = "libraries";
     private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
     private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
+    private static final String ENTITY_TX_SUBJECTS_CLASSIFICATIONS = "subjects/classifications";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -138,7 +139,10 @@ public final class RouteConstants {
     // Fetch crosswalk codes from  not guaranteed  GDF frameworks
     public static final String EP_CROSSWALK_CODES_FW = API_BASE_ROUTE + RT_CROSSWALK_CODES_FW;
     public static final String EP_STANDARD_FW_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_FRAMEWORKS;
-
+    // List Taxonomy Subject Classifications =
+    // /api/nucleus/{version}/taxonomy/subjects/classifications
+    public static final String EP_SUBJECT_CLASSIFICATION_LIST = API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECTS_CLASSIFICATIONS;
+    
 
     /*
      * External authorization end point to validate the authorization, if
@@ -244,6 +248,7 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP + ENTITY_COLLABORATORS;
     // Create a New Assessment = /api/nucleus/{version}/assessments
     public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
+    
     /*
      * External Assessments
      */
@@ -287,6 +292,7 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON + ID_COLLECTION + SEP + ENTITY_COLLABORATORS;
     // Create a New Collection = /api/nucleus/{version}/collections
     public static final String EP_COLLECTION_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS;
+    
     /*
      * COURSES UNITS LESSONS
      */
