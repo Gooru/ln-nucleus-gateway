@@ -59,14 +59,6 @@ class RouteCourseMapConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
         
-        
-        router.post(RouteConstants.EP_COURSE_MAP_PATH).handler(routingContext -> {
-            DeliveryOptions options =
-                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSEMAP_PATH_CREATE);
-            eb.send(MessagebusEndpoints.MBEP_CONTENT_MAP, new RouteRequestUtility().getBodyForMessage(routingContext),
-                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-        });
 
     }
 }
