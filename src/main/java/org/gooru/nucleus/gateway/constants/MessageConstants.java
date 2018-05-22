@@ -144,6 +144,7 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_REMOVE_STUDENT = "class.join.removal";
     public static final String MSG_OP_CLASS_ARCHIVE = "class.archive";
     public static final String MSG_OP_CLASS_UPDATE_RESCOPE_SETTING = "class.update.rescope.setting";
+    public static final String MSG_OP_CLASS_UPDATE_ROUTE0_SETTING = "class.update.route0.setting";
 
     //Watson Operations
     public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";

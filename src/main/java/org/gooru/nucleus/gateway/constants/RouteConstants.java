@@ -108,6 +108,7 @@ public final class RouteConstants {
     private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
     private static final String ENTITY_TX_SUBJECTS_CLASSIFICATIONS = "subjects/classifications";
     private static final String ENTITY_CLASS_SETTINGS_RESCOPE = "settings/rescope";
+    private static final String ENTITY_CLASS_SETTINGS_ROUTE0 = "settings/route0";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -446,6 +447,10 @@ public final class RouteConstants {
     // /api/nucleus/{version}/classes/{class-id}/settings/rescope
     public static final String EP_CLASS_UPDATE_RESCOPE_SETTING =
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_SETTINGS_RESCOPE;
+    // Update class route0 setting =
+    // /api/nucleus/{version}/classes/{class-id}/settings/route0
+    public static final String EP_CLASS_UPDATE_ROUTE0_SETTING =
+        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_SETTINGS_ROUTE0;
     
     
     // COPIER
