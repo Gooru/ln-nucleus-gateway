@@ -107,6 +107,7 @@ public final class RouteConstants {
     private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
     private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
     private static final String ENTITY_TX_SUBJECTS_CLASSIFICATIONS = "subjects/classifications";
+    private static final String ENTITY_CLASS_SETTINGS_RESCOPE = "settings/rescope";
     
     public static final String RT_CROSSWALK_CODES_FW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
     public static final String RT_CROSSWALK_CODES_GDFW = ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_GDFW;
@@ -441,6 +442,11 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + RES_STATS;
     // Archive Class = /api/nucleus/{version}/classes/{class-id}/archive
     public static final String EP_CLASS_ARCHIVE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_ARCHIVE;
+    // Update class rescope setting =
+    // /api/nucleus/{version}/classes/{class-id}/settings/rescope
+    public static final String EP_CLASS_UPDATE_RESCOPE_SETTING =
+        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_SETTINGS_RESCOPE;
+    
     
     // COPIER
     // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
@@ -569,7 +575,6 @@ public final class RouteConstants {
     public static final String EP_COURSE_MAP_COURSE = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE;
     public static final String EP_COURSE_MAP_UNIT = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT;
     public static final String EP_COURSE_MAP_LESSON = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + COLON +  ID_COURSE + SEP +  ENTITY_UNITS +  SEP + COLON + ID_UNIT + SEP +  ENTITY_LESSONS + SEP + COLON + ID_LESSON;
-    public static final String EP_COURSE_MAP_PATH = API_BASE_ROUTE  + ENTITY_COURSE_MAP + SEP + ENTITY_PATHS;
     public static final String EP_CLASS_CONTENT = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT;
     public static final String EP_CLASS_CONTENT_ASSIGN = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
     public static final String EP_CLASS_CONTENT_DELETE = API_BASE_ROUTE  + ENTITY_CLASSES + SEP + COLON +  ID_CLASS + SEP +  ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
