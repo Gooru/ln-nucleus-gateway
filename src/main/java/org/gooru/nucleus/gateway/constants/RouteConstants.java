@@ -443,15 +443,6 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + RES_STATS;
     // Archive Class = /api/nucleus/{version}/classes/{class-id}/archive
     public static final String EP_CLASS_ARCHIVE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_ARCHIVE;
-    // Update class rescope setting =
-    // /api/nucleus/{version}/classes/{class-id}/settings/rescope
-    public static final String EP_CLASS_UPDATE_RESCOPE_SETTING =
-        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_SETTINGS_RESCOPE;
-    // Update class route0 setting =
-    // /api/nucleus/{version}/classes/{class-id}/settings/route0
-    public static final String EP_CLASS_UPDATE_ROUTE0_SETTING =
-        API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_SETTINGS_ROUTE0;
-    
     
     // COPIER
     // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
