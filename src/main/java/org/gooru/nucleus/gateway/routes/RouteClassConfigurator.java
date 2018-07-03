@@ -200,25 +200,5 @@ class RouteClassConfigurator implements RouteConfigurator {
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
         
-        router.put(RouteConstants.EP_CLASS_UPDATE_RESCOPE_SETTING).handler(routingContext -> {
-            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-            DeliveryOptions options =
-                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_UPDATE_RESCOPE_SETTING)
-                    .addHeader(RouteConstants.ID_CLASS, classId);
-            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
-                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-        });
-        
-        router.put(RouteConstants.EP_CLASS_UPDATE_ROUTE0_SETTING).handler(routingContext -> {
-            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-            DeliveryOptions options =
-                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_UPDATE_ROUTE0_SETTING)
-                    .addHeader(RouteConstants.ID_CLASS, classId);
-            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
-                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-        });
-
     }
 }
