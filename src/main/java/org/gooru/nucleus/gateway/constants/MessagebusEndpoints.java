@@ -28,7 +28,6 @@ public final class MessagebusEndpoints {
     public static final String MBEP_CONTENT_FLAG = "org.gooru.nucleus.message.bus.content.flag";
     public static final String MBEP_CONTENT_PUBLISH = "org.gooru.nucleus.message.bus.content.publish";
     public static final String MBEP_PROFILE = "org.gooru.nucleus.message.bus.profile";
-    public static final String MBEP_NOTIFICATION = "org.gooru.nucleus.message.bus.notification";
     public static final String MBEP_LIBRARY = "org.gooru.nucleus.message.bus.library";
     public static final String MBEP_METRICS = "org.gooru.nucleus.message.bus.metrics";
 
