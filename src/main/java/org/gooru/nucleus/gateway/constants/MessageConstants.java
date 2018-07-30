@@ -45,7 +45,7 @@ public final class MessageConstants {
     public static final String MSG_OP_LKUP_SCHOOLS = "schools";
     public static final String MSG_OP_LKUP_LICENSES = "licenses";
     public static final String MSG_OP_LKUP_APIKEY_CONFIG = "apikey.config";
-    
+
 
     // Assessment Operations
     public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
@@ -70,7 +70,7 @@ public final class MessageConstants {
     public static final String MSG_OP_COLLECTION_QUESTION_ADD = "collection.question.add";
     public static final String MSG_OP_COLLECTION_CONTENT_REORDER = "collection.content.reorder";
     public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
-    
+
     // Question Operations
     public static final String MSG_OP_QUESTION_GET = "question.get";
     public static final String MSG_OP_QUESTION_CREATE = "question.create";
@@ -78,14 +78,14 @@ public final class MessageConstants {
     public static final String MSG_OP_QUESTION_DELETE = "question.delete";
     public static final String MSG_OP_QUESTION_GET_BULK = "bulk.question.get";
     public static final String MSG_OP_QUESTION_SCORE_UPDATE = "question.score.update";
-    
+
     // Rubric Operations
     public static final String MSG_OP_RUBRIC_GET = "rubric.get";
     public static final String MSG_OP_RUBRIC_CREATE = "rubric.create";
     public static final String MSG_OP_RUBRIC_UPDATE = "rubric.update";
     public static final String MSG_OP_RUBRIC_DELETE = "rubric.delete";
     public static final String MSG_OP_QUESTION_RUBRIC_ASSOCIATE = "question.rubirc.association";
-    
+
     // Course Operations
     public static final String MSG_OP_COURSE_GET = "course.get";
     public static final String MSG_OP_COURSE_CREATE = "course.create";
@@ -165,7 +165,7 @@ public final class MessageConstants {
     public static final String MSG_OP_COURSE_COPY = "course.copy";
     public static final String MSG_OP_UNIT_COPY = "unit.copy";
     public static final String MSG_OP_LESSON_COPY = "lesson.copy";
-    public static final String MSG_OP_RUBRIC_COPY = "rubric.copy"; 
+    public static final String MSG_OP_RUBRIC_COPY = "rubric.copy";
 
     // Profile Operations
     public static final String MSG_OP_PROFILE_COURSE_LIST = "profile.course.list";
@@ -194,7 +194,7 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_CONTENT_LIST = "class.content.list";
     public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
     public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";
-    
+
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
     public static final String MSG_OP_EVENT_PROCESS = "event.process";
@@ -202,22 +202,14 @@ public final class MessageConstants {
     //Request Processing LOG constants
     public static final String MSG_OP_AUTH_TIME = "processing.time.auth";
     public static final String MSG_OP_HANDLER_START = "start.time.handler";
-    
+
     public static final String MSG_OP_FIREBASE_JWT_CREATION = "firebase.jwt";
-    
-    // Notification Operations
-    public static final String MSG_OP_NOTIFICATION_COUNT_GET = "notification.count.get";
-    public static final String MSG_OP_NOTIFICATION_GET = "notification.get";
-    public static final String MSG_OP_NOTIFICATION_FILTERS_GET = "notification.filters.get";
-    public static final String MSG_OP_NOTIFICATION_FILTERS_UPDATE = "notification.filters.update";
-    public static final String MSG_OP_NOTIFICATION_BLOCKED_USERS_GET = "notification.blocked.users.get";
-    public static final String MSG_OP_NOTIFICATION_BLOCKED_USERS_DELETE = "notification.blocked.users.delete";
-    
+
     // Library Operations
     public static final String MSG_OP_LIBRARY_GET = "library.get";
     public static final String MSG_OP_LIBRARIES_GET = "libraries.get";
     public static final String MSG_OP_LIBRARY_CONTENTS_GET = "library.contents.get";
-    
+
     private MessageConstants() {
         throw new AssertionError();
     }
