@@ -46,6 +46,7 @@ public final class RouteConstants {
     private static final String OP_COUNT = "count";
     private static final String OP_CONTENTS = "contents";
     private static final String OP_SCORE = "score";
+    private static final String OP_LIST = "list";
 
     // Misc helpers
     private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -298,9 +299,10 @@ public final class RouteConstants {
     /*
      * COURSES UNITS LESSONS
      */
+    // Get list of Courses = /api/nucleus/{version}/courses/list?id=a,b,c&type=card/summary/detail
+    public static final String EP_COURSE_LIST = API_BASE_ROUTE + ENTITY_COURSES + SEP + OP_LIST;
     // Create a New Course = /api/nucleus/{version}/courses
     public static final String EP_COURSE_CREATE = API_BASE_ROUTE + ENTITY_COURSES;
-
     // Update Existing Course = /api/nucleus/{version}/courses/{course-id}
     public static final String EP_COURSE_UPDATE = API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE;
     // Fetch a Course by Id = /api/nucleus/{version}/courses/{course-id}
