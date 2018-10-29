@@ -445,6 +445,10 @@ public final class RouteConstants {
         API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_COURSES + SEP + RES_STATS;
     // Archive Class = /api/nucleus/{version}/classes/{class-id}/archive
     public static final String EP_CLASS_ARCHIVE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_ARCHIVE;
+    // Reroute setting change = /api/nucleus/{version}/classes/{class-id}/settings/reroute
+    public static final String EP_CLASS_SETTING_REROUTE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "settings/reroute";
+    // Trigger profile baseline = /api/nucleus/{version}/classes/{class-id}/profilebaseline
+    public static final String EP_CLASS_PROFILE_BASELINE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "profilebaseline";
 
     // COPIER
     // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
