@@ -213,6 +213,16 @@ public final class MessageConstants {
     public static final String MSG_OP_LIBRARIES_GET = "libraries.get";
     public static final String MSG_OP_LIBRARY_CONTENTS_GET = "library.contents.get";
 
+    // RBAC Operations
+    public static final String MSG_OP_RBAC_ROLE_CREATE = "rbac.role.create";
+    public static final String MSG_OP_RBAC_ROLE_UPDATE = "rbac.role.update";
+    public static final String MSG_OP_RBAC_ROLE_LIST = "rbac.role.list";
+    public static final String MSG_OP_RBAC_ROLE_GET = "rbac.role.get";
+    public static final String MSG_OP_RBAC_ROLE_DELETE = "rbac.role.delete";
+    public static final String MSG_OP_RBAC_ROLE_ASSIGN = "rbac.role.assign";
+    public static final String MSG_OP_RBAC_ROLE_REVOKE = "rbac.role.revoke";
+    public static final String MSG_OP_RBAC_PERMISSION_LIST = "rbac.permission.list";
+    
     private MessageConstants() {
         throw new AssertionError();
     }
