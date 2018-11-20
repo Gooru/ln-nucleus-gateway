@@ -145,6 +145,7 @@ public final class MessageConstants {
     public static final String MSG_OP_CLASS_REMOVE_STUDENT = "class.join.removal";
     public static final String MSG_OP_CLASS_ARCHIVE = "class.archive";
     public static final String MSG_OP_CLASS_REROUTE_SETTINGS_UPDATE = "class.reroute.settings.update";
+    public static final String MSG_OP_CLASS_MEMBERS_REROUTE_SETTINGS_UPDATE = "class.members.reroute.settings.update";
     public static final String MSG_OP_CLASS_LPBASELINE_TRIGGER = "class.lb.baseline.trigger";
 
     //Watson Operations
