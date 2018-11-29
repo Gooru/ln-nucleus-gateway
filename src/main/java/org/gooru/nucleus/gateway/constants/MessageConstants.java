@@ -191,13 +191,17 @@ public final class MessageConstants {
     public static final String MSG_OP_BOOKMARK_CREATE = "bookmark.create";
     public static final String MSG_OP_BOOKMARK_DELETE = "bookmark.delete";
     public static final String MSG_OP_BOOKMARK_LIST = "bookmark.list";
+
     public static final String MSG_OP_COURSEMAP_COURSE_GET = "coursemap.course.get";
     public static final String MSG_OP_COURSEMAP_UNIT_GET = "coursemap.unit.get";
     public static final String MSG_OP_COURSEMAP_LESSON_GET = "coursemap.lesson.get";
+
     public static final String MSG_OP_CLASS_CONTENT_ADD = "class.content.add";
     public static final String MSG_OP_CLASS_CONTENT_LIST = "class.content.list";
     public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
     public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";
+    public static final String MSG_OP_CLASS_CONTENT_USERS_ADD = "class.content.users.add";
+    public static final String MSG_OP_CLASS_CONTENT_USERS_LIST = "class.content.users.list";
 
     // Event Operations
     public static final String MSG_OP_EVENT_PUBLISH = "event.publish";

@@ -19,11 +19,36 @@ import io.vertx.ext.web.Router;
 class RouteClassContentConfigurator implements RouteConfigurator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RouteClassContentConfigurator.class);
+    private static final String CLASS_CONTENT_ID = "classContentId";
 
     @Override
     public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
         final EventBus eb = vertx.eventBus();
         final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
+
+        router.put(RouteConstants.EP_CLASS_CONTENT_USERS_ADD).handler(routingContext -> {
+            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+            String classContentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_USERS_ADD)
+                    .addHeader(RouteConstants.ID_CLASS, classId)
+                    .addHeader(CLASS_CONTENT_ID, classContentId);
+            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
+
+        router.get(RouteConstants.EP_CLASS_CONTENT_USERS_LIST).handler(routingContext -> {
+            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+            String classContentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_USERS_LIST)
+                    .addHeader(RouteConstants.ID_CLASS, classId)
+                    .addHeader(CLASS_CONTENT_ID, classContentId);
+            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
 
         router.post(RouteConstants.EP_CLASS_CONTENT).handler(routingContext -> {
             String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
