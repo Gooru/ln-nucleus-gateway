@@ -114,6 +114,7 @@ public final class RouteConstants {
   private static final String ENTITY_LIBRARIES = "libraries";
   private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
   private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
+  private static final String ENTITY_CLASS_CONTENTS_USERS = "users";
   private static final String ENTITY_TX_SUBJECTS_CLASSIFICATIONS = "subjects/classifications";
   private static final String ENTITY_CLASS_SETTINGS_RESCOPE = "settings/rescope";
   private static final String ENTITY_CLASS_SETTINGS_ROUTE0 = "settings/route0";
@@ -680,10 +681,10 @@ public final class RouteConstants {
           + COLON + ID_CONTENT;
   public static final String EP_CLASS_CONTENT_USERS_ADD =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
-          + COLON + ID_CONTENT;
+          + COLON + ID_CONTENT + SEP + ENTITY_CLASS_CONTENTS_USERS;
   public static final String EP_CLASS_CONTENT_USERS_LIST =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
-          + COLON + ID_CONTENT;
+          + COLON + ID_CONTENT + SEP + ENTITY_CLASS_CONTENTS_USERS;
 
 
   public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE + ENTITY_BOOKMARK;
