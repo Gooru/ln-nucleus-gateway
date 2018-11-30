@@ -50,6 +50,8 @@ public final class RouteConstants {
   private static final String OP_LIST = "list";
   private static final String OP_ASSIGN = "assign";
   private static final String OP_REVOKE = "revoke";
+  private static final String OP_ACTIVATE = "activate";
+  private static final String OP_DEACTIVATE = "deactivate";
 
   // Misc helpers
   private static final String RES_EDUCATIONAL_USE = "educational-use";
@@ -471,6 +473,12 @@ public final class RouteConstants {
   // /api/nucleus/{version}/classes/{class-id}/members
   public static final String EP_CLASS_MEMBERS_GET =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER;
+  public static final String EP_CLASS_MEMBERS_ACTIVATE =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER + SEP
+          + OP_ACTIVATE;
+  public static final String EP_CLASS_MEMBERS_DEACTIVATE =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER + SEP
+          + OP_DEACTIVATE;
   // Update the List of Collaborators for a Class
   // /api/nucleus/{version}/classes/{class-id}/collaborators
   public static final String EP_CLASS_COLLABORATOR_UPDATE =
