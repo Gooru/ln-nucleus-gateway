@@ -30,6 +30,36 @@ class RouteClassConfigurator implements RouteConfigurator {
 
         final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
+        router.put(RouteConstants.EP_CLASS_STUDENT_SETTING_REROUTE).handler(routingContext -> {
+            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_MEMBERS_REROUTE_SETTINGS_UPDATE)
+                    .addHeader(RouteConstants.ID_CLASS, classId);
+            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
+
+        router.put(RouteConstants.EP_CLASS_SETTING_REROUTE).handler(routingContext -> {
+            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_REROUTE_SETTINGS_UPDATE)
+                    .addHeader(RouteConstants.ID_CLASS, classId);
+            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
+
+        router.post(RouteConstants.EP_CLASS_PROFILE_BASELINE).handler(routingContext -> {
+            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_LPBASELINE_TRIGGER)
+                    .addHeader(RouteConstants.ID_CLASS, classId);
+            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
+                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+        });
+
         router.get(RouteConstants.EP_CLASSES_FOR_COURSE).handler(routingContext -> {
             String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
             DeliveryOptions options =
@@ -196,16 +226,6 @@ class RouteClassConfigurator implements RouteConfigurator {
             DeliveryOptions options =
                 DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
                     .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_LIST);
-            eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
-                options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-        });
-        
-        router.put(RouteConstants.EP_CLASS_UPDATE_RESCOPE_SETTING).handler(routingContext -> {
-            String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-            DeliveryOptions options =
-                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_UPDATE_RESCOPE_SETTING)
-                    .addHeader(RouteConstants.ID_CLASS, classId);
             eb.send(MessagebusEndpoints.MBEP_CLASS, new RouteRequestUtility().getBodyForMessage(routingContext),
                 options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
         });
