@@ -203,6 +203,14 @@ class RouteLookupConfigurator implements RouteConfigurator {
           new RouteRequestUtility().getBodyForMessage(routingContext),
           options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
     });
+    
+    router.get(RouteConstants.EP_LANGUAGE_LIST).handler(routingContext -> {
+        DeliveryOptions options =
+            DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_LKUP_LANGUAGES);
+        eb.send(MessagebusEndpoints.MBEP_LOOKUP, new RouteRequestUtility().getBodyForMessage(routingContext),
+            options, reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+    });
 
   }
 
