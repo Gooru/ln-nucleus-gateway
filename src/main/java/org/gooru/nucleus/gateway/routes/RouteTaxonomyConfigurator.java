@@ -27,6 +27,7 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
     mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L) * 1000;
     eb = vertx.eventBus();
     router.get(RouteConstants.EP_SUBJECTS_LIST).handler(this::getSubjects);
+    router.get(RouteConstants.EP_SUBJECTS_FETCH).handler(this::fetchSubject);
     router.get(RouteConstants.EP_COURSES_LIST_BY_SUBJECT).handler(this::getCourses);
     router.get(RouteConstants.EP_DOMAINS_LIST_BY_COURSE).handler(this::getDomains);
     router.get(RouteConstants.EP_STANDARDS_LIST_BY_DOMAINS).handler(this::getDomainCodes);
@@ -36,6 +37,19 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
     router.get(RouteConstants.EP_STANDARD_FW_LIST).handler(this::getTaxonomyFrameworks);
     router.get(RouteConstants.EP_SUBJECT_CLASSIFICATION_LIST)
         .handler(this::getTaxonomySubjectClassifications);
+  }
+
+  private void fetchSubject(RoutingContext routingContext) {
+    final String subjectId = routingContext.request().getParam(RouteConstants.ID_TX_SUBJECT);
+    final DeliveryOptions options =
+        DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(RouteConstants.ID_TX_SUBJECT, subjectId)
+            .addHeader(MessageConstants.MSG_HEADER_OP,
+                MessageConstants.MSG_OP_TAXONOMY_SUBJECTS_FETCH);
+    eb.send(MessagebusEndpoints.MBEP_TAXONOMY,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+
   }
 
   private void getSubjects(RoutingContext routingContext) {
