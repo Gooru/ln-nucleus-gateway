@@ -70,6 +70,7 @@ public final class RouteConstants {
   private static final String RES_SCHOOLS = "schools";
   private static final String RES_TX_STANDARD_FRAMEWORK = "frameworks";
   private static final String RES_LICENSE = "licenses";
+  private static final String RES_LANGUAGES = "languages";
   private static final String RES_APIKEY_CONFIG = "apikey-config";
   private static final String RES_FIREBASE_CONFIG = "firebase-config";
   private static final String RES_STATS = "stats";
@@ -221,6 +222,8 @@ public final class RouteConstants {
   public static final String EP_SCHOOLS_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_SCHOOLS;
   // List License  = /api/nucleus/{version}/lookups/licenses
   public static final String EP_LICENSE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LICENSE;
+  //List Language  = /api/nucleus/{version}/lookups/languages
+  public static final String EP_LANGUAGE_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_LANGUAGES;
   // API Key Config = /api/nucleus/{version}/lookups/apikey-config
   public static final String EP_APIKEY_CONFIG =
       API_BASE_ROUTE + OP_LOOKUP + SEP + RES_APIKEY_CONFIG;
