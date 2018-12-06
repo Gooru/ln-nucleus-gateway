@@ -135,6 +135,10 @@ public final class RouteConstants {
   // /api/nucleus/{version}/taxonomy/subjects
   public static final String EP_SUBJECTS_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT;
+  // Fetch Subject using id = /api/nucleus/{version}/taxonomy/subjects/{subject-id}
+  public static final String EP_SUBJECTS_FETCH =
+      API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT;
+
   // List Courses in Taxonomy =
   // /api/nucleus/{version}/taxonomy/frameworks/{framework-id}/subjects/{subject-id}/courses
   public static final String EP_COURSES_LIST_BY_SUBJECT =
