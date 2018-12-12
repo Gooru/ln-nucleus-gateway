@@ -4,7 +4,6 @@
 package org.gooru.nucleus.gateway.constants;
 
 /**
- * This package contains the constants defined for the application
- * Instead of one big file for all the constants, we are going to have specific constants in
- * their own packaging.
+ * This package contains the constants defined for the application Instead of one big file for all
+ * the constants, we are going to have specific constants in their own packaging.
  **/
