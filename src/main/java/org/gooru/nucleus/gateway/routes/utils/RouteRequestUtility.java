@@ -22,11 +22,18 @@ public class RouteRequestUtility {
    */
 
   public JsonObject getBodyForMessage(RoutingContext routingContext) {
+    return getBodyForMessage(routingContext, null);
+  }
+
+  public JsonObject getBodyForMessage(RoutingContext routingContext, JsonObject additionalBody) {
     JsonObject httpBody, result = new JsonObject();
     if (routingContext.request().method().name().equals(HttpMethod.POST.name()) || routingContext
         .request().method()
         .name().equals(HttpMethod.PUT.name())) {
       httpBody = routingContext.getBodyAsJson();
+      if (additionalBody != null) {
+        httpBody.mergeIn(additionalBody);
+      }
     } else if (routingContext.request().method().name().equals(HttpMethod.GET.name())) {
       httpBody = new JsonObject();
       String uri = routingContext.request().query();
@@ -39,8 +46,14 @@ public class RouteRequestUtility {
           }
         }
       }
+      if (additionalBody != null) {
+        httpBody.mergeIn(additionalBody);
+      }
     } else {
       httpBody = new JsonObject();
+      if (additionalBody != null) {
+        httpBody.mergeIn(additionalBody);
+      }
     }
     result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
     result.put(MessageConstants.MSG_KEY_SESSION,
