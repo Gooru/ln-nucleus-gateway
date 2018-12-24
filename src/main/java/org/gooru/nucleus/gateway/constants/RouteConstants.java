@@ -173,7 +173,9 @@ public final class RouteConstants {
   // /api/nucleus/{version}/taxonomy/subjects/classifications
   public static final String EP_SUBJECT_CLASSIFICATION_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECTS_CLASSIFICATIONS;
-
+ 
+  public static final String EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST =
+      API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;
 
   /*
    * External authorization end point to validate the authorization, if
