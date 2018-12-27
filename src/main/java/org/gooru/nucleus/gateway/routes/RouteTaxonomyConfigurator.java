@@ -37,6 +37,7 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
     router.get(RouteConstants.EP_STANDARD_FW_LIST).handler(this::getTaxonomyFrameworks);
     router.get(RouteConstants.EP_SUBJECT_CLASSIFICATION_LIST)
         .handler(this::getTaxonomySubjectClassifications);
+    router.get(RouteConstants.EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST).handler(this::listFrameworkSubjects);
   }
 
   private void fetchSubject(RoutingContext routingContext) {
@@ -155,6 +156,16 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
         DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
             .addHeader(MessageConstants.MSG_HEADER_OP,
                 MessageConstants.MSG_OP_TAXONOMY_SUBJECT_CLASSIFICATIONS_GET);
+    eb.send(MessagebusEndpoints.MBEP_TAXONOMY,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+  }
+  
+  private void listFrameworkSubjects(RoutingContext routingContext) {
+    final DeliveryOptions options =
+        DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP,
+                MessageConstants.MSG_OP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST);
     eb.send(MessagebusEndpoints.MBEP_TAXONOMY,
         new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));

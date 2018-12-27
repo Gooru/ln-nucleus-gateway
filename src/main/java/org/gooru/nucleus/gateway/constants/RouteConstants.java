@@ -29,6 +29,7 @@ public final class RouteConstants {
   public static final String ID_BOOKMARK = "bookmarkId";
   public static final String ID_LIBRARY = "libraryId";
   public static final String ID_ROLE = "roleId";
+  public static final String ID_GRADE = "gradeId";
 
   // Helper: Operations
   private static final String OP_ORDER = "order";
@@ -173,7 +174,9 @@ public final class RouteConstants {
   // /api/nucleus/{version}/taxonomy/subjects/classifications
   public static final String EP_SUBJECT_CLASSIFICATION_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECTS_CLASSIFICATIONS;
-
+ 
+  public static final String EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST =
+      API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;
 
   /*
    * External authorization end point to validate the authorization, if
@@ -303,6 +306,11 @@ public final class RouteConstants {
           + ENTITY_COLLABORATORS;
   // Create a New Assessment = /api/nucleus/{version}/assessments
   public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
+  // Fetch diagnostic assessment for specified grade and framework
+  // /api/nucleus/{version}/assessments/diagnostics/grade/{gradeId}?fw_code=CCSS
+  private static final String DIAGNOSTICS_GRADE = "diagnostics/grade/";
+  public static final String EP_ASSESSMENT_DIAGNOSTIC_GRADE_FW =
+      API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + DIAGNOSTICS_GRADE + COLON + ID_GRADE;
 
   /*
    * External Assessments
