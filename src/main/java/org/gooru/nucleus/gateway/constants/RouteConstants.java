@@ -553,6 +553,10 @@ public final class RouteConstants {
   public static final String EP_CLASS_STUDENT_SETTING_REROUTE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER + SEP
           + "settings/reroute";
+  //Class preference update
+  public static final String EP_CLASS_PREFERENCE_UPDATE =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "preference";
+      
 
   // COPIER
   // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
