@@ -92,6 +92,7 @@ public final class RouteConstants {
   private static final String ENTITY_ASSESSMENTS = "assessments";
   private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
   private static final String ENTITY_COLLECTIONS = "collections";
+  private static final String ENTITY_COLLECTIONS_EX = "collections-external";
   private static final String ENTITY_KEYWORD = "keyword";
   private static final String ENTITY_COURSES = "courses";
   private static final String ENTITY_UNITS = "units";
@@ -315,16 +316,17 @@ public final class RouteConstants {
   /*
    * External Assessments
    */
+  // Get an Ext-Asmt based on ID = api/nucleus/{version}/assessments-external/{assessment-id}
   public static final String EP_ASSESSMENT_EX_GET =
       API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
   // Update an Existing Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}
+  // /api/nucleus/{version}/assessments-external/{assessment-id}
   public static final String EP_ASSESSMENT_EX_UPDATE =
       API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
-  // Delete an Assessment = /api/nucleus/{version}/assessments/{assessment-id}
+  // Delete an Assessment = /api/nucleus/{version}/assessments-external/{assessment-id}
   public static final String EP_ASSESSMENT_EX_DELETE =
       API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
-  // Create a New Assessment = /api/nucleus/{version}/assessments
+  // Create a New Assessment = /api/nucleus/{version}/assessments-external
   public static final String EP_ASSESSMENT_EX_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX;
   /*
    * COLLECTION
@@ -360,6 +362,21 @@ public final class RouteConstants {
   // Create a New Collection = /api/nucleus/{version}/collections
   public static final String EP_COLLECTION_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS;
 
+  /*
+   * External Collections
+   */
+  // Get an Ext-Collection based on ID = /api/nucleus/{version}/collections-external/{collection-id}
+  public static final String EP_COLLECTION_EX_GET =
+      API_BASE_ROUTE + ENTITY_COLLECTIONS_EX + SEP + COLON + ID_COLLECTION;
+  // Update an Existing Ext-Collection = /api/nucleus/{version}/collections-external/{collection-id}
+  public static final String EP_COLLECTION_EX_UPDATE =
+      API_BASE_ROUTE + ENTITY_COLLECTIONS_EX + SEP + COLON + ID_COLLECTION;
+  // Delete an Ext-Collection = /api/nucleus/{version}/collections-external/{collection-id}
+  public static final String EP_COLLECTION_EX_DELETE =
+      API_BASE_ROUTE + ENTITY_COLLECTIONS_EX + SEP + COLON + ID_COLLECTION;
+  // Create a New Ext-Collection = /api/nucleus/{version}/collections-external
+  public static final String EP_COLLECTION_EX_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS_EX;
+  
   /*
    * COURSES UNITS LESSONS
    */
