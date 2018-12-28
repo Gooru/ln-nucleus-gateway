@@ -153,6 +153,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_REROUTE_SETTINGS_UPDATE = "class.reroute.settings.update";
   public static final String MSG_OP_CLASS_MEMBERS_REROUTE_SETTINGS_UPDATE = "class.members.reroute.settings.update";
   public static final String MSG_OP_CLASS_LPBASELINE_TRIGGER = "class.lb.baseline.trigger";
+  public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
 
   //Watson Operations
   public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";
