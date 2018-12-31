@@ -120,7 +120,7 @@ public final class RouteConstants {
   private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
   private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
   private static final String ENTITY_CLASS_CONTENTS_USERS = "users";
-  private static final String ENTITY_TX_SUBJECTS_CLASSIFICATIONS = "subjects/classifications";
+  private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
   private static final String ENTITY_CLASS_SETTINGS_RESCOPE = "settings/rescope";
   private static final String ENTITY_CLASS_SETTINGS_ROUTE0 = "settings/route0";
 
@@ -171,10 +171,10 @@ public final class RouteConstants {
   public static final String EP_CROSSWALK_CODES_FW = API_BASE_ROUTE + RT_CROSSWALK_CODES_FW;
   public static final String EP_STANDARD_FW_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_FRAMEWORKS;
-  // List Taxonomy Subject Classifications =
-  // /api/nucleus/{version}/taxonomy/subjects/classifications
-  public static final String EP_SUBJECT_CLASSIFICATION_LIST =
-      API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECTS_CLASSIFICATIONS;
+  // List Taxonomy  Classifications =
+  // /api/nucleus/{version}/taxonomy/classifications
+  public static final String EP_TAXONOMY_CLASSIFICATION_LIST =
+      API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CLASSIFICATIONS;
  
   public static final String EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;

@@ -35,7 +35,7 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
     router.post(RouteConstants.EP_CROSSWALK_CODES_FW).handler(this::getCrosswalkFWCodes);
     router.post(RouteConstants.EP_CROSSWALK_CODES_GDFW).handler(this::getCrosswalkGDFWCodes);
     router.get(RouteConstants.EP_STANDARD_FW_LIST).handler(this::getTaxonomyFrameworks);
-    router.get(RouteConstants.EP_SUBJECT_CLASSIFICATION_LIST)
+    router.get(RouteConstants.EP_TAXONOMY_CLASSIFICATION_LIST)
         .handler(this::getTaxonomySubjectClassifications);
     router.get(RouteConstants.EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST).handler(this::listFrameworkSubjects);
   }
