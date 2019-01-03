@@ -92,6 +92,7 @@ public final class RouteConstants {
   private static final String ENTITY_ASSESSMENTS = "assessments";
   private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
   private static final String ENTITY_COLLECTIONS = "collections";
+  private static final String ENTITY_COLLECTIONS_EX = "collections-external";
   private static final String ENTITY_KEYWORD = "keyword";
   private static final String ENTITY_COURSES = "courses";
   private static final String ENTITY_UNITS = "units";
@@ -119,7 +120,7 @@ public final class RouteConstants {
   private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
   private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
   private static final String ENTITY_CLASS_CONTENTS_USERS = "users";
-  private static final String ENTITY_TX_SUBJECTS_CLASSIFICATIONS = "subjects/classifications";
+  private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
   private static final String ENTITY_CLASS_SETTINGS_RESCOPE = "settings/rescope";
   private static final String ENTITY_CLASS_SETTINGS_ROUTE0 = "settings/route0";
 
@@ -170,10 +171,10 @@ public final class RouteConstants {
   public static final String EP_CROSSWALK_CODES_FW = API_BASE_ROUTE + RT_CROSSWALK_CODES_FW;
   public static final String EP_STANDARD_FW_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_FRAMEWORKS;
-  // List Taxonomy Subject Classifications =
-  // /api/nucleus/{version}/taxonomy/subjects/classifications
-  public static final String EP_SUBJECT_CLASSIFICATION_LIST =
-      API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_SUBJECTS_CLASSIFICATIONS;
+  // List Taxonomy  Classifications =
+  // /api/nucleus/{version}/taxonomy/classifications
+  public static final String EP_TAXONOMY_CLASSIFICATION_LIST =
+      API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CLASSIFICATIONS;
  
   public static final String EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;
@@ -315,16 +316,17 @@ public final class RouteConstants {
   /*
    * External Assessments
    */
+  // Get an Ext-Asmt based on ID = api/nucleus/{version}/assessments-external/{assessment-id}
   public static final String EP_ASSESSMENT_EX_GET =
       API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
   // Update an Existing Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}
+  // /api/nucleus/{version}/assessments-external/{assessment-id}
   public static final String EP_ASSESSMENT_EX_UPDATE =
       API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
-  // Delete an Assessment = /api/nucleus/{version}/assessments/{assessment-id}
+  // Delete an Assessment = /api/nucleus/{version}/assessments-external/{assessment-id}
   public static final String EP_ASSESSMENT_EX_DELETE =
       API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX + SEP + COLON + ID_ASSESSMENT;
-  // Create a New Assessment = /api/nucleus/{version}/assessments
+  // Create a New Assessment = /api/nucleus/{version}/assessments-external
   public static final String EP_ASSESSMENT_EX_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS_EX;
   /*
    * COLLECTION
@@ -360,6 +362,21 @@ public final class RouteConstants {
   // Create a New Collection = /api/nucleus/{version}/collections
   public static final String EP_COLLECTION_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS;
 
+  /*
+   * External Collections
+   */
+  // Get an Ext-Collection based on ID = /api/nucleus/{version}/collections-external/{collection-id}
+  public static final String EP_COLLECTION_EX_GET =
+      API_BASE_ROUTE + ENTITY_COLLECTIONS_EX + SEP + COLON + ID_COLLECTION;
+  // Update an Existing Ext-Collection = /api/nucleus/{version}/collections-external/{collection-id}
+  public static final String EP_COLLECTION_EX_UPDATE =
+      API_BASE_ROUTE + ENTITY_COLLECTIONS_EX + SEP + COLON + ID_COLLECTION;
+  // Delete an Ext-Collection = /api/nucleus/{version}/collections-external/{collection-id}
+  public static final String EP_COLLECTION_EX_DELETE =
+      API_BASE_ROUTE + ENTITY_COLLECTIONS_EX + SEP + COLON + ID_COLLECTION;
+  // Create a New Ext-Collection = /api/nucleus/{version}/collections-external
+  public static final String EP_COLLECTION_EX_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS_EX;
+  
   /*
    * COURSES UNITS LESSONS
    */
@@ -553,6 +570,10 @@ public final class RouteConstants {
   public static final String EP_CLASS_STUDENT_SETTING_REROUTE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER + SEP
           + "settings/reroute";
+  //Class preference update
+  public static final String EP_CLASS_PREFERENCE_UPDATE =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "preference";
+      
 
   // COPIER
   // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}

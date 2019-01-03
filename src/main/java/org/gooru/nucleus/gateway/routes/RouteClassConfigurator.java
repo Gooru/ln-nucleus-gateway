@@ -28,6 +28,18 @@ class RouteClassConfigurator implements RouteConfigurator {
     final EventBus eb = vertx.eventBus();
 
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
+    
+    router.put(RouteConstants.EP_CLASS_PREFERENCE_UPDATE).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_CLASS_PREFERENCE_UPDATE)
+          .addHeader(RouteConstants.ID_CLASS, classId);
+      eb.send(MessagebusEndpoints.MBEP_CLASS,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
 
     router.put(RouteConstants.EP_CLASS_STUDENT_SETTING_REROUTE).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);

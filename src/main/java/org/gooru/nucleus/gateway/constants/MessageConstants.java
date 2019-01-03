@@ -72,6 +72,12 @@ public final class MessageConstants {
   public static final String MSG_OP_COLLECTION_QUESTION_ADD = "collection.question.add";
   public static final String MSG_OP_COLLECTION_CONTENT_REORDER = "collection.content.reorder";
   public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
+  
+  // External Collection Operations
+  public static final String MSG_OP_EXT_COLLECTION_GET = "ext.collection.get";
+  public static final String MSG_OP_EXT_COLLECTION_CREATE = "ext.collection.create";
+  public static final String MSG_OP_EXT_COLLECTION_UPDATE = "ext.collection.update";
+  public static final String MSG_OP_EXT_COLLECTION_DELETE = "ext.collection.delete";
 
   // Question Operations
   public static final String MSG_OP_QUESTION_GET = "question.get";
@@ -153,6 +159,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_REROUTE_SETTINGS_UPDATE = "class.reroute.settings.update";
   public static final String MSG_OP_CLASS_MEMBERS_REROUTE_SETTINGS_UPDATE = "class.members.reroute.settings.update";
   public static final String MSG_OP_CLASS_LPBASELINE_TRIGGER = "class.lb.baseline.trigger";
+  public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
 
   //Watson Operations
   public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";
