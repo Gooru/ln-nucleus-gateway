@@ -30,6 +30,7 @@ public final class RouteConstants {
   public static final String ID_LIBRARY = "libraryId";
   public static final String ID_ROLE = "roleId";
   public static final String ID_GRADE = "gradeId";
+  public static final String ID_LANGUAGE = "languageId";
 
   // Helper: Operations
   private static final String OP_ORDER = "order";
@@ -575,7 +576,7 @@ public final class RouteConstants {
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "preference";
   //Class primary language update
   public static final String EP_CLASS_LANGUAGE_UPDATE =
-      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "language";
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "language" + SEP + COLON + ID_LANGUAGE;
 
   // COPIER
   // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
