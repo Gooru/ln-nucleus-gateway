@@ -573,7 +573,9 @@ public final class RouteConstants {
   //Class preference update
   public static final String EP_CLASS_PREFERENCE_UPDATE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "preference";
-      
+  //Class primary language update
+  public static final String EP_CLASS_LANGUAGE_UPDATE =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "language";
 
   // COPIER
   // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
