@@ -567,6 +567,9 @@ public final class RouteConstants {
   // Trigger profile baseline = /api/nucleus/{version}/classes/{class-id}/profilebaseline
   public static final String EP_CLASS_PROFILE_BASELINE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "profilebaseline";
+  //Trigger profile baseline = /api/nucleus/{version}/classes/{class-id}/profilebaseline/student
+  public static final String EP_CLASS_PROFILE_BASELINE_STUDENT =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "profilebaseline/student";
   // Reroute settings for class member = /api/nucleus/{version}/classes/{classId}/members/settings/reroute
   public static final String EP_CLASS_STUDENT_SETTING_REROUTE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + OP_MEMBER + SEP
