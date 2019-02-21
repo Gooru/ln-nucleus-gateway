@@ -58,20 +58,6 @@ class RouteAssessmentConfigurator implements RouteConfigurator {
 
     });
 
-    router.get(RouteConstants.EP_ASSESSMENT_DIAGNOSTIC_GRADE_FW).handler(routingContext -> {
-      String gradeId = routingContext.request().getParam(RouteConstants.ID_GRADE);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_ASSESSMENT_DIAG_GET);
-      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT,
-          new RouteRequestUtility().getBodyForMessage(routingContext, new JsonObject()
-              .put(RouteConstants.ID_GRADE, gradeId)), options,
-          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-
-    });
-
     router.get(RouteConstants.EP_ASSESSMENT_GET).handler(routingContext -> {
       String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
       DeliveryOptions options =

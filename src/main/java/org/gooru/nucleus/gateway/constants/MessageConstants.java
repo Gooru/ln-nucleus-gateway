@@ -50,7 +50,6 @@ public final class MessageConstants {
 
   // Assessment Operations
   public static final String MSG_OP_ASSESSMENT_GET = "assessment.get";
-  public static final String MSG_OP_ASSESSMENT_DIAG_GET = "assessment.diagnostic.get";
   public static final String MSG_OP_ASSESSMENT_CREATE = "assessment.create";
   public static final String MSG_OP_ASSESSMENT_UPDATE = "assessment.update";
   public static final String MSG_OP_ASSESSMENT_DELETE = "assessment.delete";
