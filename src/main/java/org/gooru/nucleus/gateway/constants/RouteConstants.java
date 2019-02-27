@@ -29,7 +29,6 @@ public final class RouteConstants {
   public static final String ID_BOOKMARK = "bookmarkId";
   public static final String ID_LIBRARY = "libraryId";
   public static final String ID_ROLE = "roleId";
-  public static final String ID_GRADE = "gradeId";
   public static final String ID_LANGUAGE = "languageId";
 
   // Helper: Operations
@@ -308,11 +307,6 @@ public final class RouteConstants {
           + ENTITY_COLLABORATORS;
   // Create a New Assessment = /api/nucleus/{version}/assessments
   public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
-  // Fetch diagnostic assessment for specified grade and framework
-  // /api/nucleus/{version}/assessments/diagnostics/grade/{gradeId}?fw_code=CCSS
-  private static final String DIAGNOSTICS_GRADE = "diagnostics/grade/";
-  public static final String EP_ASSESSMENT_DIAGNOSTIC_GRADE_FW =
-      API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + DIAGNOSTICS_GRADE + COLON + ID_GRADE;
 
   /*
    * External Assessments
