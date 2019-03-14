@@ -54,6 +54,7 @@ public final class MessageConstants {
   public static final String MSG_OP_ASSESSMENT_UPDATE = "assessment.update";
   public static final String MSG_OP_ASSESSMENT_DELETE = "assessment.delete";
   public static final String MSG_OP_ASSESSMENT_COLLABORATOR_UPDATE = "assessment.collaborator.update";
+  public static final String MSG_OP_ASSESSMENT_MASTERY_ACCRUAL_GET = "assessment.mastery-accrual.get";
   public static final String MSG_OP_ASSESSMENT_QUESTION_ADD = "assessment.question.add";
   public static final String MSG_OP_ASSESSMENT_QUESTION_REORDER = "assessment.content.reorder";
   // External Assessment Operations
@@ -71,7 +72,7 @@ public final class MessageConstants {
   public static final String MSG_OP_COLLECTION_QUESTION_ADD = "collection.question.add";
   public static final String MSG_OP_COLLECTION_CONTENT_REORDER = "collection.content.reorder";
   public static final String MSG_OP_COLLECTION_RESOURCE_ADD = "collection.resource.add";
-  
+
   // External Collection Operations
   public static final String MSG_OP_EXT_COLLECTION_GET = "ext.collection.get";
   public static final String MSG_OP_EXT_COLLECTION_CREATE = "ext.collection.create";
