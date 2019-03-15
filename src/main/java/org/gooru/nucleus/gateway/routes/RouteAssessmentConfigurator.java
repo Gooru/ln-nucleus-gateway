@@ -28,20 +28,6 @@ class RouteAssessmentConfigurator implements RouteConfigurator {
 
     final long mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
 
-    router.get(RouteConstants.EP_ASSESSMENT_MASTERY_ACCRUAL).handler(routingContext -> {
-      String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_ASSESSMENT_MASTERY_ACCRUAL_GET)
-              .addHeader(RouteConstants.ID_ASSESSMENT, assessmentId);
-      eb.send(MessagebusEndpoints.MBEP_ASSESSMENT,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
-          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-    });
-
     router.put(RouteConstants.EP_ASSESSMENT_COLLABORATORS_UPDATE).handler(routingContext -> {
       String assessmentId = routingContext.request().getParam(RouteConstants.ID_ASSESSMENT);
       DeliveryOptions options =

@@ -123,7 +123,6 @@ public final class RouteConstants {
   private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
   private static final String ENTITY_CLASS_SETTINGS_RESCOPE = "settings/rescope";
   private static final String ENTITY_CLASS_SETTINGS_ROUTE0 = "settings/route0";
-  private static final String MASTERY_ACCRUAL = "mastery-accrual";
 
   public static final String RT_CROSSWALK_CODES_FW =
       ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
@@ -306,13 +305,6 @@ public final class RouteConstants {
   public static final String EP_ASSESSMENT_COLLABORATORS_UPDATE =
       API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP
           + ENTITY_COLLABORATORS;
-
-  // Query about mastery accrual capability via this Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}/mastery-accrual
-  public static final String EP_ASSESSMENT_MASTERY_ACCRUAL =
-      API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP
-          + MASTERY_ACCRUAL;
-
   // Create a New Assessment = /api/nucleus/{version}/assessments
   public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
 
