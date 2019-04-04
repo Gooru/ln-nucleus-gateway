@@ -308,10 +308,9 @@ public final class RouteConstants {
           + ENTITY_COLLABORATORS;
 
   // Query about mastery accrual capability via this Assessment =
-  // /api/nucleus/{version}/assessments/{assessment-id}/mastery-accrual
+  // /api/nucleus/{version}/assessments/mastery-accrual
   public static final String EP_ASSESSMENT_MASTERY_ACCRUAL =
-      API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON + ID_ASSESSMENT + SEP
-          + MASTERY_ACCRUAL;
+      API_BASE_ROUTE + ENTITY_ASSESSMENTS  + SEP + MASTERY_ACCRUAL;
 
   // Create a New Assessment = /api/nucleus/{version}/assessments
   public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
