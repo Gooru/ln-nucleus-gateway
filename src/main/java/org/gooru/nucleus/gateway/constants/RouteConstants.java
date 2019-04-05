@@ -45,7 +45,6 @@ public final class RouteConstants {
   private static final String OP_PREFERENCE = "preference";
   private static final String OP_STATE = "state";
   private static final String OP_ARCHIVE = "archive";
-  private static final String OP_COUNT = "count";
   private static final String OP_CONTENTS = "contents";
   private static final String OP_SCORE = "score";
   private static final String OP_LIST = "list";
@@ -113,16 +112,10 @@ public final class RouteConstants {
   private static final String ENTITY_COURSE_MAP = "course-map";
   private static final String ENTITY_CLASS_CONTENT = "contents";
   private static final String ENTITY_BOOKMARK = "bookmarks";
-  private static final String ENTITY_PATHS = "paths";
   private static final String ENTITY_TX_FRAMEWORKS = "frameworks";
-  private static final String ENTITY_NOTIFICATIONS = "notifications";
   private static final String ENTITY_LIBRARIES = "libraries";
-  private static final String ENTITY_NOTIFICATIONS_FILTERS = "filters";
-  private static final String ENTITY_NOTIFICATIONS_BLOCKED_USERS = "blacklist/users";
   private static final String ENTITY_CLASS_CONTENTS_USERS = "users";
   private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
-  private static final String ENTITY_CLASS_SETTINGS_RESCOPE = "settings/rescope";
-  private static final String ENTITY_CLASS_SETTINGS_ROUTE0 = "settings/route0";
   private static final String MASTERY_ACCRUAL = "mastery-accrual";
 
   public static final String RT_CROSSWALK_CODES_FW =
@@ -736,6 +729,13 @@ public final class RouteConstants {
   public static final String EP_CLASS_CONTENT_USERS_LIST =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
           + COLON + ID_CONTENT + SEP + ENTITY_CLASS_CONTENTS_USERS;
+  
+  // Update class content mastery accrual =
+  // /api/nucleus/{version}/classes/{class-id}/contents/{content-id}/mastery-accrual
+  public static final String EP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
+          + COLON + ID_CONTENT + SEP + MASTERY_ACCRUAL;
+  
 
 
   public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE + ENTITY_BOOKMARK;

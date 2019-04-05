@@ -20,6 +20,7 @@ class RouteClassContentConfigurator implements RouteConfigurator {
   private static final Logger LOGGER = LoggerFactory.getLogger(RouteClassContentConfigurator.class);
   private static final String CLASS_CONTENT_ID = "classContentId";
 
+
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     final EventBus eb = vertx.eventBus();
@@ -114,5 +115,21 @@ class RouteClassContentConfigurator implements RouteConfigurator {
           options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
+    
+    router.put(RouteConstants.EP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE).handler(routingContext -> {
+        String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+        String contentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
+        DeliveryOptions options =
+            DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+                .setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP,
+                    MessageConstants.MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE)
+                .addHeader(RouteConstants.ID_CLASS, classId)
+                .addHeader(RouteConstants.ID_CONTENT, contentId);
+        eb.send(MessagebusEndpoints.MBEP_CLASS,
+            new RouteRequestUtility().getBodyForMessage(routingContext),
+            options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+      });
   }
 }
