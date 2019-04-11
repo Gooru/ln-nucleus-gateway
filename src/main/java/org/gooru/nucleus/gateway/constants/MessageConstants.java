@@ -97,6 +97,8 @@ public final class MessageConstants {
   // Course Operations
   public static final String MSG_OP_COURSE_LIST_GET = "course.list.get";
   public static final String MSG_OP_COURSE_GET = "course.get";
+  public static final String MSG_OP_COURSE_MS_GET = "course.ms.get";
+  public static final String MSG_OP_COURSE_MS_MILESTONE_GET = "course.ms.milestone.get";
   public static final String MSG_OP_COURSE_CREATE = "course.create";
   public static final String MSG_OP_COURSE_UPDATE = "course.update";
   public static final String MSG_OP_COURSE_DELETE = "course.delete";
