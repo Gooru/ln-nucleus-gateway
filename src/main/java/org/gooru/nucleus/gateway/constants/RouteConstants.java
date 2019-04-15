@@ -31,6 +31,7 @@ public final class RouteConstants {
   public static final String ID_ROLE = "roleId";
   public static final String ID_LANGUAGE = "languageId";
   public static final String ID_MILESTONE = "milestoneId";
+  public static final String FW_CODE = "fwCode";
 
   // Helper: Operations
   private static final String OP_ORDER = "order";
@@ -97,6 +98,7 @@ public final class RouteConstants {
   private static final String ENTITY_COURSES = "courses";
   private static final String ENTITY_COURSES_MS = "courses/ms";
   private static final String ENTITY_MILESTONES = "milestones";
+  private static final String ENTITY_FW = "fw";
   private static final String ENTITY_UNITS = "units";
   private static final String ENTITY_LESSONS = "lessons";
   private static final String ENTITY_CLASSES = "classes";
@@ -484,9 +486,9 @@ public final class RouteConstants {
           + ENTITY_LESSONS + SEP + COLON + ID_LESSON + SEP + ENTITY_COLLECTIONS + SEP + COLON
           + ID_COLLECTION;
 
-  // Fetch a Course by Id by milestone pivot = /api/nucleus/{version}/courses/ms/{course-id}
+  // Fetch a Course by Id by milestone pivot = /api/nucleus/{version}/courses/ms/{course-id}/fw/{fw-code}
   public static final String EP_MS_COURSE_GET =
-      API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE;
+      API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_FW + SEP + FW_CODE;
   // Fetch a milestone by id in course = /api/nucleus/{version}/courses/ms/{course-id}/milestones/{milestone-id}
   public static final String EP_MS_COURSE_MILESTONE_GET =
       API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_MILESTONES + SEP

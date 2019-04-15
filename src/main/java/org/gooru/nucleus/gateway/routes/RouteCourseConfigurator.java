@@ -202,12 +202,13 @@ class RouteCourseConfigurator implements RouteConfigurator {
 
     router.get(RouteConstants.EP_MS_COURSE_GET).handler(routingContext -> {
       String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String fwCode = routingContext.request().getParam(RouteConstants.FW_CODE);
 
       DeliveryOptions options =
           DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
               .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_COURSE_MS_GET)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_MS_GET)
+              .addHeader(RouteConstants.FW_CODE, fwCode)
               .addHeader(RouteConstants.ID_COURSE, courseId);
       eb.send(MessagebusEndpoints.MBEP_COURSE,
           new RouteRequestUtility().getBodyForMessage(routingContext), options,
