@@ -488,7 +488,7 @@ public final class RouteConstants {
 
   // Fetch a Course by Id by milestone pivot = /api/nucleus/{version}/courses/ms/{course-id}/fw/{fw-code}
   public static final String EP_MS_COURSE_GET =
-      API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_FW + SEP + FW_CODE;
+      API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_FW + SEP + COLON + FW_CODE;
   // Fetch a milestone by id in course = /api/nucleus/{version}/courses/ms/{course-id}/milestones/{milestone-id}
   public static final String EP_MS_COURSE_MILESTONE_GET =
       API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_MILESTONES + SEP
