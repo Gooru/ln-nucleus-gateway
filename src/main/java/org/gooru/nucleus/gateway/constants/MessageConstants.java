@@ -167,19 +167,6 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE = "class.content.mastery.accrual.update";
   public static final String MSG_OP_CLASS_CONTENT_COMPLETION = "class.content.completion";
 
-  //Watson Operations
-  public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";
-  public static final String MSG_OP_COURSE_KEYWORD_GET = "course.keyword.get";
-  public static final String MSG_OP_COURSE_KEYWORD_UPDATE = "course.keyword.update";
-  public static final String MSG_OP_ASSESSMENT_KEYWORD_GET = "assessment.keyword.get";
-  public static final String MSG_OP_ASSESSMENT_KEYWORD_UPDATE = "assessment.keyword.update";
-  public static final String MSG_OP_COLLECTION_KEYWORD_GET = "collection.keyword.get";
-  public static final String MSG_OP_COLLECTION_KEYWORD_UPDATE = "collection.keyword.update";
-  public static final String MSG_OP_RESOURCE_KEYWORD_GET = "resource.keyword.get";
-  public static final String MSG_OP_RESOURCE_KEYWORD_UPDATE = "resource.keyword.update";
-  public static final String MSG_OP_QUESTION_KEYWORD_GET = "question.keyword.get";
-  public static final String MSG_OP_QUESTION_KEYWORD_UPDATE = "question.keyword.update";
-
   // Copier Operations
   public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
   public static final String MSG_OP_QUESTION_COPY = "question.copy";

@@ -94,7 +94,6 @@ public final class RouteConstants {
   private static final String ENTITY_ASSESSMENTS_EX = "assessments-external";
   private static final String ENTITY_COLLECTIONS = "collections";
   private static final String ENTITY_COLLECTIONS_EX = "collections-external";
-  private static final String ENTITY_KEYWORD = "keyword";
   private static final String ENTITY_COURSES = "courses";
   private static final String ENTITY_COURSES_MS = "courses/ms";
   private static final String ENTITY_MILESTONES = "milestones";
@@ -680,27 +679,6 @@ public final class RouteConstants {
   // Note that difference between original message on message bus and this is the presence of op name
   public static final String EP_INTERNAL_EVENT_PROCESSOR = "/api/internal/v1/eventprocessor";
 
-  /*
-   * KEYWORDS TAGGING
-   */
-  //Get course tags = /api/nucleus/{version}/courses/{course-id}/keyword
-  public static final String EP_COURSE_KEYWORD =
-      API_BASE_ROUTE + ENTITY_COURSES + SEP + COLON + ID_COURSE +
-          SEP + ENTITY_KEYWORD;
-  //Get assessment tags = /api/nucleus/{version}/assessments/{assessment-id}/keyword
-  public static final String EP_ASSESSMENT_KEYWORD =
-      API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + COLON +
-          ID_ASSESSMENT + SEP + ENTITY_KEYWORD;
-  //Get collection tags = /api/nucleus/{version}/collections/{collection-id}/keyword
-  public static final String EP_COLLECTION_KEYWORD =
-      API_BASE_ROUTE + ENTITY_COLLECTIONS + SEP + COLON +
-          ID_COLLECTION + SEP + ENTITY_KEYWORD;
-  //Get resource tags = /api/nucleus/{version}/resources/{resource-id}/keyword
-  public static final String EP_RESOURCE_KEYWORD = API_BASE_ROUTE + ENTITY_RESOURCES + SEP + COLON +
-      ID_RESOURCE + SEP + ENTITY_KEYWORD;
-  //Get question tags = /api/nucleus/{version}/questions/{question-id}/keyword
-  public static final String EP_QUESTION_KEYWORD = API_BASE_ROUTE + ENTITY_QUESTIONS + SEP + COLON +
-      ID_QUESTION + SEP + ENTITY_KEYWORD;
 
   // Library Routes
   // Get Library
@@ -717,9 +695,6 @@ public final class RouteConstants {
    */
   public static final String EP_JWT_GENERATION = API_BASE_ROUTE + FIREBASE_JWT;
 
-  //bulk update resource tags = /api/nucleus/{version}/resources/keyword/bulkUpdate
-  public static final String EP_RESOURCE_KEYWORD_BULK_UPDATE =
-      API_BASE_ROUTE + ENTITY_RESOURCES + SEP + ENTITY_KEYWORD + SEP + "bulkUpdate";
 
   public static final String EP_COURSE_MAP_COURSE =
       API_BASE_ROUTE + ENTITY_COURSE_MAP + SEP + COLON + ID_COURSE;
@@ -729,6 +704,10 @@ public final class RouteConstants {
   public static final String EP_COURSE_MAP_LESSON =
       API_BASE_ROUTE + ENTITY_COURSE_MAP + SEP + COLON + ID_COURSE + SEP + ENTITY_UNITS + SEP
           + COLON + ID_UNIT + SEP + ENTITY_LESSONS + SEP + COLON + ID_LESSON;
+
+  /*
+   * CA: Class activities
+   */
   public static final String EP_CLASS_CONTENT =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT;
   public static final String EP_CLASS_CONTENT_ASSIGN =
@@ -743,7 +722,6 @@ public final class RouteConstants {
   public static final String EP_CLASS_CONTENT_USERS_LIST =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
           + COLON + ID_CONTENT + SEP + ENTITY_CLASS_CONTENTS_USERS;
-  
   // Update class content mastery accrual =
   // /api/nucleus/{version}/classes/{class-id}/contents/{content-id}/mastery-accrual
   public static final String EP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE =
@@ -754,6 +732,7 @@ public final class RouteConstants {
   public static final String EP_CLASS_CONTENT_COMPLETION =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
           + COLON + ID_CONTENT + SEP + COMPLETION;
+
 
 
 
