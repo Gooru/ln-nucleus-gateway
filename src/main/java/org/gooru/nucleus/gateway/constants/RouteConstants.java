@@ -122,6 +122,7 @@ public final class RouteConstants {
   private static final String ENTITY_CLASS_CONTENTS_USERS = "users";
   private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
   private static final String MASTERY_ACCRUAL = "mastery-accrual";
+  private static final String COMPLETION = "completion";
 
   public static final String RT_CROSSWALK_CODES_FW =
       ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
@@ -748,7 +749,12 @@ public final class RouteConstants {
   public static final String EP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
           + COLON + ID_CONTENT + SEP + MASTERY_ACCRUAL;
-  
+  // Mark offline activity as complete =
+  // /api/nucleus/:version/classes/:classId/contents/:contentId/completion
+  public static final String EP_CLASS_CONTENT_COMPLETION =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
+          + COLON + ID_CONTENT + SEP + COMPLETION;
+
 
 
   public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE + ENTITY_BOOKMARK;

@@ -165,6 +165,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
   public static final String MSG_OP_CLASS_LANGUAGE_UPDATE = "class.language.update";
   public static final String MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE = "class.content.mastery.accrual.update";
+  public static final String MSG_OP_CLASS_CONTENT_COMPLETION = "class.content.completion";
 
   //Watson Operations
   public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";
