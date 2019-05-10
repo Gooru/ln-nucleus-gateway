@@ -57,6 +57,8 @@ dependencies {
 
     // Test dependencies
     testCompile "junit:junit:${junitVersion}"
+    testCompile "io.vertx:vertx-unit:${vertxVersion}"
+    testCompile "io.vertx:vertx-web-client:${vertxVersion}"
 }
 
 shadowJar {

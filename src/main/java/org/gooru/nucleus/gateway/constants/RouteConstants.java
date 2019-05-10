@@ -81,6 +81,8 @@ public final class RouteConstants {
   private static final String RES_TX_CROSSWALK = "crosswalk";
   private static final String RES_TX_GDFW = "gdfw";
   private static final String RES_TX_FW = "fw";
+  private static final String RES_ENABLE = "enable";
+  private static final String RES_SCHEDULE = "schedule";
 
   // Helper constants
   public static final String API_VERSION = "version";
@@ -121,7 +123,7 @@ public final class RouteConstants {
   private static final String ENTITY_CLASS_CONTENTS_USERS = "users";
   private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
   private static final String MASTERY_ACCRUAL = "mastery-accrual";
-  private static final String COMPLETION = "completion";
+  private static final String COMPLETE = "complete";
 
   public static final String RT_CROSSWALK_CODES_FW =
       ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
@@ -174,7 +176,7 @@ public final class RouteConstants {
   // /api/nucleus/{version}/taxonomy/classifications
   public static final String EP_TAXONOMY_CLASSIFICATION_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + ENTITY_TX_CLASSIFICATIONS;
- 
+
   public static final String EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;
 
@@ -308,7 +310,7 @@ public final class RouteConstants {
   // Query about mastery accrual capability via this Assessment =
   // /api/nucleus/{version}/assessments/mastery-accrual
   public static final String EP_ASSESSMENT_MASTERY_ACCRUAL =
-      API_BASE_ROUTE + ENTITY_ASSESSMENTS  + SEP + MASTERY_ACCRUAL;
+      API_BASE_ROUTE + ENTITY_ASSESSMENTS + SEP + MASTERY_ACCRUAL;
 
   // Create a New Assessment = /api/nucleus/{version}/assessments
   public static final String EP_ASSESSMENT_CREATE = API_BASE_ROUTE + ENTITY_ASSESSMENTS;
@@ -376,7 +378,7 @@ public final class RouteConstants {
       API_BASE_ROUTE + ENTITY_COLLECTIONS_EX + SEP + COLON + ID_COLLECTION;
   // Create a New Ext-Collection = /api/nucleus/{version}/collections-external
   public static final String EP_COLLECTION_EX_CREATE = API_BASE_ROUTE + ENTITY_COLLECTIONS_EX;
-  
+
   /*
    * COURSES UNITS LESSONS
    */
@@ -488,7 +490,8 @@ public final class RouteConstants {
 
   // Fetch a Course by Id by milestone pivot = /api/nucleus/{version}/courses/ms/{course-id}/fw/{fw-code}
   public static final String EP_MS_COURSE_GET =
-      API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_FW + SEP + COLON + FW_CODE;
+      API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_FW + SEP + COLON
+          + FW_CODE;
   // Fetch a milestone by id in course = /api/nucleus/{version}/courses/ms/{course-id}/milestones/{milestone-id}
   public static final String EP_MS_COURSE_MILESTONE_GET =
       API_BASE_ROUTE + ENTITY_COURSES_MS + SEP + COLON + ID_COURSE + SEP + ENTITY_MILESTONES + SEP
@@ -586,7 +589,8 @@ public final class RouteConstants {
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "preference";
   //Class primary language update
   public static final String EP_CLASS_LANGUAGE_UPDATE =
-      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "language" + SEP + COLON + ID_LANGUAGE;
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "language" + SEP + COLON
+          + ID_LANGUAGE;
 
   // COPIER
   // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
@@ -708,11 +712,15 @@ public final class RouteConstants {
   /*
    * CA: Class activities
    */
-  public static final String EP_CLASS_CONTENT =
+  public static final String EP_CLASS_CONTENT_LIST =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT;
-  public static final String EP_CLASS_CONTENT_ASSIGN =
+  public static final String EP_CLASS_CONTENT_CREATE = EP_CLASS_CONTENT_LIST;
+  public static final String EP_CLASS_CONTENT_ENABLE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
-          + COLON + ID_CONTENT;
+          + COLON + ID_CONTENT + SEP + RES_ENABLE;
+  public static final String EP_CLASS_CONTENT_SCHEDULE = API_BASE_ROUTE + ENTITY_CLASSES + SEP
+      + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT + SEP
+      + RES_SCHEDULE;
   public static final String EP_CLASS_CONTENT_DELETE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
           + COLON + ID_CONTENT;
@@ -728,12 +736,10 @@ public final class RouteConstants {
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
           + COLON + ID_CONTENT + SEP + MASTERY_ACCRUAL;
   // Mark offline activity as complete =
-  // /api/nucleus/:version/classes/:classId/contents/:contentId/completion
+  // /api/nucleus/:version/classes/:classId/contents/:contentId/complete
   public static final String EP_CLASS_CONTENT_COMPLETION =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
-          + COLON + ID_CONTENT + SEP + COMPLETION;
-
-
+          + COLON + ID_CONTENT + SEP + COMPLETE;
 
 
   public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE + ENTITY_BOOKMARK;

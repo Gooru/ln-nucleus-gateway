@@ -164,8 +164,6 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_LPBASELINE_STUDENT_TRIGGER = "class.lb.baseline.student.trigger";
   public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
   public static final String MSG_OP_CLASS_LANGUAGE_UPDATE = "class.language.update";
-  public static final String MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE = "class.content.mastery.accrual.update";
-  public static final String MSG_OP_CLASS_CONTENT_COMPLETION = "class.content.completion";
 
   // Copier Operations
   public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
@@ -205,9 +203,12 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_CONTENT_ADD = "class.content.add";
   public static final String MSG_OP_CLASS_CONTENT_LIST = "class.content.list";
   public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
+  public static final String MSG_OP_CLASS_CONTENT_SCHEDULE = "class.content.schedule";
   public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";
   public static final String MSG_OP_CLASS_CONTENT_USERS_ADD = "class.content.users.add";
   public static final String MSG_OP_CLASS_CONTENT_USERS_LIST = "class.content.users.list";
+  public static final String MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE = "class.content.mastery.accrual.update";
+  public static final String MSG_OP_CLASS_CONTENT_COMPLETION = "class.content.completion";
 
   // Event Operations
   public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
