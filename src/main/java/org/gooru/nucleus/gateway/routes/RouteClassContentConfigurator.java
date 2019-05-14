@@ -5,6 +5,7 @@ import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext;
 import org.gooru.nucleus.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.gateway.constants.MessageConstants;
 import org.gooru.nucleus.gateway.constants.MessagebusEndpoints;
@@ -151,19 +152,32 @@ class RouteClassContentConfigurator implements RouteConfigurator {
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
-    router.get(RouteConstants.EP_CLASS_CONTENT_LIST).handler(routingContext -> {
-      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_LIST)
-              .addHeader(RouteConstants.ID_CLASS, classId);
-      eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
-          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
-    });
+    router.get(RouteConstants.EP_CLASS_CONTENT_LIST_UNSCHEDULED)
+        .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
+            MessageConstants.MSG_OP_CLASS_CONTENT_LIST_UNSCHEDULED));
 
+    router.get(RouteConstants.EP_CLASS_CONTENT_LIST_OFFLINE_ACTIVE)
+        .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
+            MessageConstants.MSG_OP_CLASS_CONTENT_LIST_OFFLINE_ACTIVE));
 
+    router.get(RouteConstants.EP_CLASS_CONTENT_LIST_OFFLINE_COMPLETED)
+        .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
+            MessageConstants.MSG_OP_CLASS_CONTENT_LIST_OFFLINE_COMPLETED));
+
+    router.get(RouteConstants.EP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED)
+        .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
+            MessageConstants.MSG_OP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED));
+
+  }
+
+  private void listRoutingContextHandler(RoutingContext routingContext,
+      EventBus eb, long mbusTimeout, String msgOp) {
+    String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+    DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+        .setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, msgOp)
+        .addHeader(RouteConstants.ID_CLASS, classId);
+    eb.send(MessagebusEndpoints.MBEP_CLASS,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
   }
 }

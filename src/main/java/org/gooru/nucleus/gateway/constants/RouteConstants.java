@@ -712,8 +712,27 @@ public final class RouteConstants {
   /*
    * CA: Class activities
    */
+  // No real end point here
   public static final String EP_CLASS_CONTENT_LIST =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT;
+
+  // /api/nucleus/:version/classes/:classId/contents/all/unscheduled
+  public static final String EP_CLASS_CONTENT_LIST_UNSCHEDULED =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
+          + "all/unscheduled";
+  // /api/nucleus/:version/classes/:classId/contents/offline/completed
+  public static final String EP_CLASS_CONTENT_LIST_OFFLINE_COMPLETED =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
+          + "offline/completed";
+  // /api/nucleus/:version/classes/:classId/contents/offline/active
+  public static final String EP_CLASS_CONTENT_LIST_OFFLINE_ACTIVE =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
+          + "offline/active";
+  // /api/nucleus/:version/classes/:classId/contents/online/scheduled
+  public static final String EP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
+          + "online/scheduled";
+
   public static final String EP_CLASS_CONTENT_CREATE = EP_CLASS_CONTENT_LIST;
   public static final String EP_CLASS_CONTENT_ENABLE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
