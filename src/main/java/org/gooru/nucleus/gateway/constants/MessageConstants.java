@@ -164,20 +164,6 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_LPBASELINE_STUDENT_TRIGGER = "class.lb.baseline.student.trigger";
   public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
   public static final String MSG_OP_CLASS_LANGUAGE_UPDATE = "class.language.update";
-  public static final String MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE = "class.content.mastery.accrual.update";
-
-  //Watson Operations
-  public static final String MSG_HEADER_BULK_UPDATE = "bulk.update";
-  public static final String MSG_OP_COURSE_KEYWORD_GET = "course.keyword.get";
-  public static final String MSG_OP_COURSE_KEYWORD_UPDATE = "course.keyword.update";
-  public static final String MSG_OP_ASSESSMENT_KEYWORD_GET = "assessment.keyword.get";
-  public static final String MSG_OP_ASSESSMENT_KEYWORD_UPDATE = "assessment.keyword.update";
-  public static final String MSG_OP_COLLECTION_KEYWORD_GET = "collection.keyword.get";
-  public static final String MSG_OP_COLLECTION_KEYWORD_UPDATE = "collection.keyword.update";
-  public static final String MSG_OP_RESOURCE_KEYWORD_GET = "resource.keyword.get";
-  public static final String MSG_OP_RESOURCE_KEYWORD_UPDATE = "resource.keyword.update";
-  public static final String MSG_OP_QUESTION_KEYWORD_GET = "question.keyword.get";
-  public static final String MSG_OP_QUESTION_KEYWORD_UPDATE = "question.keyword.update";
 
   // Copier Operations
   public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
@@ -215,11 +201,17 @@ public final class MessageConstants {
   public static final String MSG_OP_COURSEMAP_LESSON_GET = "coursemap.lesson.get";
 
   public static final String MSG_OP_CLASS_CONTENT_ADD = "class.content.add";
-  public static final String MSG_OP_CLASS_CONTENT_LIST = "class.content.list";
+  public static final String MSG_OP_CLASS_CONTENT_LIST_UNSCHEDULED = "class.content.list.unscheduled";
+  public static final String MSG_OP_CLASS_CONTENT_LIST_OFFLINE_COMPLETED = "class.content.list.offline.completed";
+  public static final String MSG_OP_CLASS_CONTENT_LIST_OFFLINE_ACTIVE = "class.content.list.offline.active";
+  public static final String MSG_OP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED = "class.content.list.online.scheduled";
   public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
+  public static final String MSG_OP_CLASS_CONTENT_SCHEDULE = "class.content.schedule";
   public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";
   public static final String MSG_OP_CLASS_CONTENT_USERS_ADD = "class.content.users.add";
   public static final String MSG_OP_CLASS_CONTENT_USERS_LIST = "class.content.users.list";
+  public static final String MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE = "class.content.mastery.accrual.update";
+  public static final String MSG_OP_CLASS_CONTENT_COMPLETION = "class.content.completion";
 
   // Event Operations
   public static final String MSG_OP_EVENT_PUBLISH = "event.publish";
