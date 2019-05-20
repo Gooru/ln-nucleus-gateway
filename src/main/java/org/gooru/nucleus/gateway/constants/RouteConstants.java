@@ -86,7 +86,7 @@ public final class RouteConstants {
 
   // Helper constants
   public static final String API_VERSION = "version";
-  private static final String API_BASE_ROUTE = "/api/nucleus/" + COLON + API_VERSION + '/';
+  public static final String API_BASE_ROUTE = "/api/nucleus/" + COLON + API_VERSION + '/';
   private static final String API_BASE_RBAC_ROUTE = API_BASE_ROUTE + "rbac";
 
   // Helper: Entity name constants
