@@ -37,7 +37,6 @@ class RouteOfflineActivityConfigurator implements RouteConfigurator, PathParamCr
   private static final String MSG_OP_OA_TASK_SUBMISSION_CREATE = "oa.task.submission.create";
   private static final String MSG_OP_OA_TASK_SUBMISSION_DELETE = "oa.task.submission.delete";
   private static final String MSG_OP_OA_REF_DELETE = "oa.ref.delete";
-  private static final String MSG_OP_OA_REF_UPDATE = "oa.ref.update";
   private static final String MSG_OP_OA_REF_CREATE = "oa.ref.create";
   private static final String MSG_OP_OA_TEACHER_RUBRIC_ASSOCIATE = "oa.rubric.teacher.add";
   private static final String MSG_OP_OA_STUDENT_RUBRIC_ASSOCIATE = "oa.rubric.student.add";
@@ -134,7 +133,6 @@ class RouteOfflineActivityConfigurator implements RouteConfigurator, PathParamCr
         return headersWithOaAndTask(routingContext);
       case MSG_OP_OA_TASK_SUBMISSION_DELETE:
         return headersWithOaTaskSubmission(routingContext);
-      case MSG_OP_OA_REF_UPDATE:
       case MSG_OP_OA_REF_DELETE:
         return headersWithOAAndRef(routingContext);
       case MSG_OP_OA_TEACHER_RUBRIC_ASSOCIATE:
