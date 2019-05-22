@@ -65,8 +65,6 @@ class RouteOfflineActivityConfigurator implements RouteConfigurator, PathParamCr
           + "/tasks/" + OA_TASK_ID + "/submissions/" + OA_TASK_SUBMISSION_ID;
   private static final String EP_OA_REFERENCE_CREATE = RouteConstants.API_BASE_ROUTE + "oa/" + OA_ID
       + "/references";
-  private static final String EP_OA_REFERENCE_UPDATE = RouteConstants.API_BASE_ROUTE + "oa/" + OA_ID
-      + "/references/" + OA_REF_ID;
   private static final String EP_OA_REFERENCE_DELETE = RouteConstants.API_BASE_ROUTE + "oa/" + OA_ID
       + "/references/" + OA_REF_ID;
   private static final String EP_OA_TEACHER_RUBRIC_ASSOCIATE = RouteConstants.API_BASE_ROUTE + "oa/"
