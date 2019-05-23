@@ -40,8 +40,9 @@ class RouteOfflineActivityConfigurator implements RouteConfigurator, PathParamCr
   private static final String MSG_OP_OA_REF_CREATE = "oa.ref.create";
   private static final String MSG_OP_OA_TEACHER_RUBRIC_ASSOCIATE = "oa.rubric.teacher.add";
   private static final String MSG_OP_OA_STUDENT_RUBRIC_ASSOCIATE = "oa.rubric.student.add";
+  private static final String MSG_OP_OA_SUBTYPES_LIST = "oa.list.subtypes";
 
-
+  private static final String EP_OA_SUBTYPES_LIST = RouteConstants.API_BASE_ROUTE + "oa/subtypes";
   private static final String EP_OA_CREATE = RouteConstants.API_BASE_ROUTE + "oa";
   private static final String EP_OA_UPDATE = RouteConstants.API_BASE_ROUTE + "oa/" + OA_ID;
   private static final String EP_OA_COLLABORATORS_UPDATE =
@@ -109,6 +110,8 @@ class RouteOfflineActivityConfigurator implements RouteConfigurator, PathParamCr
         .handler(new RequestHandler(MSG_OP_OA_TEACHER_RUBRIC_ASSOCIATE, context, this));
     router.put(EP_OA_STUDENT_RUBRIC_ASSOCIATE)
         .handler(new RequestHandler(MSG_OP_OA_STUDENT_RUBRIC_ASSOCIATE, context, this));
+    router.get(EP_OA_SUBTYPES_LIST)
+        .handler(new RequestHandler(MSG_OP_OA_SUBTYPES_LIST, context, this));
 
   }
 
@@ -116,6 +119,7 @@ class RouteOfflineActivityConfigurator implements RouteConfigurator, PathParamCr
   public Map<String, String> getHeadersFromPathParams(RoutingContext routingContext, String op) {
     switch (op) {
       case MSG_OP_OA_CREATE:
+      case MSG_OP_OA_SUBTYPES_LIST:
         return Collections.emptyMap();
       case MSG_OP_OA_UPDATE:
       case MSG_OP_OA_GET_SUMMARY:
