@@ -207,5 +207,19 @@ class RouteProfileConfigurator implements RouteConfigurator {
           options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
+    
+    router.get(RouteConstants.EP_PROFILE_OFFLINE_ACTIVITIES_LIST).handler(routingContext -> {
+        String userId = routingContext.request().getParam(RouteConstants.ID_USER);
+        DeliveryOptions options =
+            DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+                .setSendTimeout(mbusTimeout * 1000)
+                .addHeader(MessageConstants.MSG_HEADER_OP,
+                    MessageConstants.MSG_OP_PROFILE_OFFLINE_ACTIVITES_LIST)
+                .addHeader(RouteConstants.ID_USER, userId);
+        eb.send(MessagebusEndpoints.MBEP_PROFILE,
+            new RouteRequestUtility().getBodyForMessage(routingContext),
+            options,
+            reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+      });
   }
 }

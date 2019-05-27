@@ -124,6 +124,7 @@ public final class RouteConstants {
   private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
   private static final String MASTERY_ACCRUAL = "mastery-accrual";
   private static final String COMPLETE = "complete";
+  private static final String ENTITY_OFFLINE_ACTIVITIES = "offline-activities";
 
   public static final String RT_CROSSWALK_CODES_FW =
       ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + RES_TX_FW;
@@ -647,6 +648,8 @@ public final class RouteConstants {
   public static final String EP_PROFILE_PREFERENCE =
       API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_PREFERENCE;
   public static final String EP_PROFILE_STATE = API_BASE_ROUTE + ENTITY_PROFILES + SEP + OP_STATE;
+  public static final String EP_PROFILE_OFFLINE_ACTIVITIES_LIST =
+      API_BASE_ROUTE + ENTITY_PROFILES + SEP + COLON + ID_USER + SEP + ENTITY_OFFLINE_ACTIVITIES;
 
   //Rubrics Routes
   public static final String EP_RUBRIC_CREATE = API_BASE_ROUTE + ENTITY_RUBRICS;
