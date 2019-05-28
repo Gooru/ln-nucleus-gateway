@@ -25,7 +25,6 @@ public final class MessagebusEndpoints {
   public static final String MBEP_PROFILE = "org.gooru.nucleus.message.bus.profile";
   public static final String MBEP_LIBRARY = "org.gooru.nucleus.message.bus.library";
   public static final String MBEP_METRICS = "org.gooru.nucleus.message.bus.metrics";
-  public static final String MBEP_OFFLINE_ACTIVITY = "org.gooru.nucleus.message.bus.offlineactivity";
 
 
   private MessagebusEndpoints() {
