@@ -83,7 +83,7 @@ class RouteOfflineActivityConfigurator implements RouteConfigurator, PathParamCr
     final EventBus eventBus = vertx.eventBus();
     final long eventBusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
     final RequestHandlerMessageBusContext context = new RequestHandlerMessageBusContext(eventBus,
-        MessagebusEndpoints.MBEP_OFFLINE_ACTIVITY, eventBusTimeout, LOGGER);
+        MessagebusEndpoints.MBEP_ASSESSMENT, eventBusTimeout, LOGGER);
 
     router.post(EP_OA_CREATE).handler(new RequestHandler(MSG_OP_OA_CREATE, context, this));
     router.put(EP_OA_UPDATE).handler(new RequestHandler(MSG_OP_OA_UPDATE, context, this));
