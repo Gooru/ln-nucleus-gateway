@@ -38,6 +38,7 @@ class RouteCopierConfigurator implements RouteConfigurator {
     router.post(RouteConstants.EP_UNIT_COPY).handler(this::unitCopy);
     router.post(RouteConstants.EP_LESSON_COPY).handler(this::lessonCopy);
     router.post(RouteConstants.EP_RUBRIC_COPY).handler(this::rubricCopy);
+    router.post(RouteConstants.EP_OFFLINE_ACTIVITIES_COPY).handler(this::offlineActivityCopy);
 
   }
 
@@ -128,6 +129,17 @@ class RouteCopierConfigurator implements RouteConfigurator {
         .setSendTimeout(mbusTimeout)
         .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RUBRIC_COPY)
         .addHeader(RouteConstants.ID_RUBRIC, rubricId);
+    eb.send(MessagebusEndpoints.MBEP_COPIER,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
+  }
+  
+  private void offlineActivityCopy(RoutingContext routingContext) {
+    String offlineAcitivityId = routingContext.request().getParam(RouteConstants.ID_OFFLINE_ACTIVITY);
+    DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+        .setSendTimeout(mbusTimeout)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_OFFLINE_ACTIVITY_COPY)
+        .addHeader(RouteConstants.ID_OFFLINE_ACTIVITY, offlineAcitivityId);
     eb.send(MessagebusEndpoints.MBEP_COPIER,
         new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOG));
