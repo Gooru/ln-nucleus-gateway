@@ -138,7 +138,7 @@ class RouteCopierConfigurator implements RouteConfigurator {
     String offlineAcitivityId = routingContext.request().getParam(RouteConstants.ID_OFFLINE_ACTIVITY);
     DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
         .setSendTimeout(mbusTimeout)
-        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_OFFLINE_ACTIVITY_COPY)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_OA_COPY)
         .addHeader(RouteConstants.ID_OFFLINE_ACTIVITY, offlineAcitivityId);
     eb.send(MessagebusEndpoints.MBEP_COPIER,
         new RouteRequestUtility().getBodyForMessage(routingContext), options,

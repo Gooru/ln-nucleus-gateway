@@ -174,7 +174,7 @@ public final class MessageConstants {
   public static final String MSG_OP_UNIT_COPY = "unit.copy";
   public static final String MSG_OP_LESSON_COPY = "lesson.copy";
   public static final String MSG_OP_RUBRIC_COPY = "rubric.copy";
-  public static final String MSG_OP_OFFLINE_ACTIVITY_COPY = "offline-activity.copy";
+  public static final String MSG_OP_OA_COPY = "oa.copy";
 
   // Profile Operations
   public static final String MSG_OP_PROFILE_COURSE_LIST = "profile.course.list";
