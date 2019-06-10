@@ -32,6 +32,7 @@ public final class RouteConstants {
   public static final String ID_LANGUAGE = "languageId";
   public static final String ID_MILESTONE = "milestoneId";
   public static final String FW_CODE = "fwCode";
+  public static final String ID_OFFLINE_ACTIVITY = "offlineActivityId";
 
   // Helper: Operations
   private static final String OP_ORDER = "order";
@@ -622,6 +623,9 @@ public final class RouteConstants {
           + COLON + ID_LESSON;
   public static final String EP_RUBRIC_COPY =
       API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
+  //Copy offline activities /api/nucleus/{version}/copier/offline-activities/{oa-id}
+  public static final String EP_OFFLINE_ACTIVITIES_COPY =
+     API_BASE_ROUTE + ENTITY_COPIER + SEP + ENTITY_OFFLINE_ACTIVITIES + SEP + COLON + ID_OFFLINE_ACTIVITY;
 
   // PROFILES
   // /api/nucleus/{version}/profiles/{user-id}/courses
