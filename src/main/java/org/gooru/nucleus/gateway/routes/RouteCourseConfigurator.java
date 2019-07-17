@@ -184,5 +184,36 @@ class RouteCourseConfigurator implements RouteConfigurator {
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
+    router.get(RouteConstants.EP_MS_COURSE_MILESTONE_GET).handler(routingContext -> {
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String milestoneId = routingContext.request().getParam(RouteConstants.ID_MILESTONE);
+
+      DeliveryOptions options =
+          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+              .setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP,
+                  MessageConstants.MSG_OP_COURSE_MS_MILESTONE_GET)
+              .addHeader(RouteConstants.ID_COURSE, courseId)
+              .addHeader(RouteConstants.ID_MILESTONE, milestoneId);
+      eb.send(MessagebusEndpoints.MBEP_COURSE,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+
+    router.get(RouteConstants.EP_MS_COURSE_GET).handler(routingContext -> {
+      String courseId = routingContext.request().getParam(RouteConstants.ID_COURSE);
+      String fwCode = routingContext.request().getParam(RouteConstants.FW_CODE);
+
+      DeliveryOptions options =
+          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+              .setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_COURSE_MS_GET)
+              .addHeader(RouteConstants.FW_CODE, fwCode)
+              .addHeader(RouteConstants.ID_COURSE, courseId);
+      eb.send(MessagebusEndpoints.MBEP_COURSE,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
+
   }
 }

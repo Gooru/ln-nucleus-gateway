@@ -27,7 +27,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteClassContentConfigurator());
     configurators.add(new RouteCollectionConfigurator());
     configurators.add(new RouteCollectionExternalConfigurator());
-    configurators.add(new RouteKeywordConfigurator());
+    configurators.add(new RouteOfflineActivityConfigurator());
     // Order may be important for CUL
     configurators.add(new RouteLessonConfigurator());
     configurators.add(new RouteUnitConfigurator());
