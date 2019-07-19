@@ -593,6 +593,9 @@ public final class RouteConstants {
   public static final String EP_CLASS_LANGUAGE_UPDATE =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "language" + SEP + COLON
           + ID_LANGUAGE;
+  // Add students to class
+  public static final String EP_CLASS_STUDENTS_ADD =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "students";
 
   // COPIER
   // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
