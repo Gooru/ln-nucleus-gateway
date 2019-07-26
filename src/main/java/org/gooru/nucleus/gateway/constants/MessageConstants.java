@@ -164,6 +164,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_LPBASELINE_STUDENT_TRIGGER = "class.lb.baseline.student.trigger";
   public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
   public static final String MSG_OP_CLASS_LANGUAGE_UPDATE = "class.language.update";
+  public static final String MSG_OP_CLASS_STUDENTS_ADD = "class.students.add";
 
   // Copier Operations
   public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
