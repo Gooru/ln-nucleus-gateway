@@ -38,6 +38,7 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
     router.get(RouteConstants.EP_TAXONOMY_CLASSIFICATION_LIST)
         .handler(this::getTaxonomySubjectClassifications);
     router.get(RouteConstants.EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST).handler(this::listFrameworkSubjects);
+    router.get(RouteConstants.EP_TAXONOMY_FRAMEWORK_SUBJECT_COMPETENCY_CROSSWALK).handler(this::getFrameworkSubjectCompetencyCrosswalk);
   }
 
   private void fetchSubject(RoutingContext routingContext) {
@@ -166,6 +167,21 @@ class RouteTaxonomyConfigurator implements RouteConfigurator {
         DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
             .addHeader(MessageConstants.MSG_HEADER_OP,
                 MessageConstants.MSG_OP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST);
+    eb.send(MessagebusEndpoints.MBEP_TAXONOMY,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+  }
+
+  private void getFrameworkSubjectCompetencyCrosswalk(RoutingContext routingContext) {
+    final String subjectId = routingContext.request().getParam(RouteConstants.ID_TX_SUBJECT);
+    final String standardFrameworkId =
+        routingContext.request().getParam(RouteConstants.ID_TX_STANDARD_FRAMEWORK);
+
+    final DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+        .setSendTimeout(mbusTimeout).addHeader(RouteConstants.ID_TX_SUBJECT, subjectId)
+        .addHeader(RouteConstants.ID_TX_STANDARD_FRAMEWORK, standardFrameworkId)
+        .addHeader(MessageConstants.MSG_HEADER_OP,
+            MessageConstants.MSG_OP_TAXONOMY_FRAMEWORK_SUBJECT_COMPETENCY_CROSSWALK);
     eb.send(MessagebusEndpoints.MBEP_TAXONOMY,
         new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
