@@ -179,6 +179,10 @@ public final class RouteConstants {
   public static final String EP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST =
       API_BASE_ROUTE + ENTITY_TAXONOMY + SEP + RES_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT;
 
+  public static final String EP_TAXONOMY_FRAMEWORK_SUBJECT_COMPETENCY_CROSSWALK = API_BASE_ROUTE
+      + ENTITY_TAXONOMY + SEP + RES_TX_CROSSWALK + SEP + ENTITY_TX_FRAMEWORKS + SEP + COLON
+      + ID_TX_STANDARD_FRAMEWORK + SEP + ENTITY_TX_SUBJECT + SEP + COLON + ID_TX_SUBJECT;
+  
   /*
    * External authorization end point to validate the authorization, if needed. GET
    * /api/nucleus/{version}/authorization
