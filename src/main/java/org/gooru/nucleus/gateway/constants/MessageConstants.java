@@ -122,6 +122,9 @@ public final class MessageConstants {
   public static final String MSG_OP_LESSON_CONTENT_REORDER = "lesson.content.reorder";
   public static final String MSG_OP_LESSON_MOVE_COLLECTION = "lesson.move.collection";
   public static final String MSG_OP_LESSON_REMOVE_COLLECTION = "lesson.remove.collection";
+  public static final String MSG_OP_LESSON_PLAN_CREATE = "lesson.plan.create";
+  public static final String MSG_OP_LESSON_PLAN_UPDATE = "lesson.plan.update";
+  public static final String MSG_OP_LESSON_PLAN_DELETE = "lesson.plan.delete";
 
   // Taxonomy Lookup Operations
 
