@@ -30,6 +30,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteOfflineActivityConfigurator());
     // Order may be important for CUL
     configurators.add(new RouteLessonConfigurator());
+    configurators.add(new RouteLessonPlanConfigurator());
     configurators.add(new RouteUnitConfigurator());
     configurators.add(new RouteCourseConfigurator());
     configurators.add(new RouteProfileConfigurator());
