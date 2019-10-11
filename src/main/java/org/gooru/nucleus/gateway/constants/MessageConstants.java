@@ -46,6 +46,7 @@ public final class MessageConstants {
   public static final String MSG_OP_LKUP_LICENSES = "licenses";
   public static final String MSG_OP_LKUP_LANGUAGES = "languages";
   public static final String MSG_OP_LKUP_APIKEY_CONFIG = "apikey.config";
+  public static final String MSG_OP_LKUP_FEEDBACK_CATEGORIES = "feedback.categories";
 
 
   // Assessment Operations
