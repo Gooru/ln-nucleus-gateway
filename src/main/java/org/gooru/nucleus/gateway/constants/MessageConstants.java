@@ -167,6 +167,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
   public static final String MSG_OP_CLASS_LANGUAGE_UPDATE = "class.language.update";
   public static final String MSG_OP_CLASS_STUDENTS_ADD = "class.students.add";
+  public static final String MSG_OP_CLASS_SECONDARY_CLASSES_FIND = "class.secondary.classes.find";
 
   // Copier Operations
   public static final String MSG_OP_RESOURCE_COPY = "resource.copy";

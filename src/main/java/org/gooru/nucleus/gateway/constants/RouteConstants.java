@@ -589,7 +589,10 @@ public final class RouteConstants {
   // Add students to class
   public static final String EP_CLASS_STUDENTS_ADD =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "students";
-
+  // Fetch possible secondary classes
+  public static final String EP_CLASS_SECONDARY_CLASSES =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + "secondaryclasses";
+  
   // COPIER
   // Copy resource /api/nucleus/{version}/copier/resources/{resource-id}
   public static final String EP_RESOURCE_COPY =
