@@ -84,6 +84,7 @@ public final class RouteConstants {
   private static final String RES_TX_FW = "fw";
   private static final String RES_ENABLE = "enable";
   private static final String RES_SCHEDULE = "schedule";
+  private static final String RES_FEEDBACK_CATEGORIES = "feedback-categories";
 
   // Helper constants
   public static final String API_VERSION = "version";
@@ -241,6 +242,8 @@ public final class RouteConstants {
   // API Key config for firebase = /api/nucleus/{version}/lookups/firebase-config
   public static final String EP_FIREBASE_CONFIG =
       API_BASE_ROUTE + OP_LOOKUP + SEP + RES_FIREBASE_CONFIG;
+  //List Feedback Categories = /api/nucleus/{version}/lookup/feedback-categories?content_type=&user_category_id=
+  public static final String EP_FEEDBACK_CATEGORY_LIST = API_BASE_ROUTE + OP_LOOKUP + SEP + RES_FEEDBACK_CATEGORIES;
 
   /*
    * RESOURCE
