@@ -212,6 +212,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_CONTENT_LIST_OFFLINE_COMPLETED = "class.content.list.offline.completed";
   public static final String MSG_OP_CLASS_CONTENT_LIST_OFFLINE_ACTIVE = "class.content.list.offline.active";
   public static final String MSG_OP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED = "class.content.list.online.scheduled";
+  public static final String MSG_OP_CLASS_CONTENT_LIST_SCHEDULED = "class.content.list.scheduled";
   public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
   public static final String MSG_OP_CLASS_CONTENT_SCHEDULE = "class.content.schedule";
   public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";

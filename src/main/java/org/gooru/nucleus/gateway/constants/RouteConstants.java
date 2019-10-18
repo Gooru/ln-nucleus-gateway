@@ -738,7 +738,11 @@ public final class RouteConstants {
   public static final String EP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
           + "online/scheduled";
-
+  // /api/nucleus/:version/classes/:classId/contents/scheduled
+  public static final String EP_CLASS_CONTENT_LIST_SCHEDULED =
+      API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
+          + "scheduled";
+  
   public static final String EP_CLASS_CONTENT_CREATE = EP_CLASS_CONTENT_LIST;
   public static final String EP_CLASS_CONTENT_ENABLE = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON
       + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT + SEP + RES_ENABLE;
