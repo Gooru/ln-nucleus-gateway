@@ -168,6 +168,10 @@ class RouteClassContentConfigurator implements RouteConfigurator {
         .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
             MessageConstants.MSG_OP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED));
 
+    router.get(RouteConstants.EP_CLASS_CONTENT_LIST_SCHEDULED)
+    .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
+        MessageConstants.MSG_OP_CLASS_CONTENT_LIST_SCHEDULED));
+
   }
 
   private void listRoutingContextHandler(RoutingContext routingContext,
