@@ -245,7 +245,11 @@ public final class MessageConstants {
   public static final String MSG_OP_RBAC_ROLE_ASSIGN = "rbac.role.assign";
   public static final String MSG_OP_RBAC_ROLE_REVOKE = "rbac.role.revoke";
   public static final String MSG_OP_RBAC_PERMISSION_LIST = "rbac.permission.list";
-
+  public static final String MSG_OP_RBAC_PERMISSION_CREATE = "rbac.permission.create";
+  public static final String MSG_OP_RBAC_PERMISSION_GET = "rbac.permission.get";
+  public static final String MSG_OP_RBAC_PERMISSION_UPDATE = "rbac.permission.update";
+  public static final String MSG_OP_RBAC_PERMISSION_DELETE = "rbac.permission.delete";
+  
   private MessageConstants() {
     throw new AssertionError();
   }

@@ -34,6 +34,7 @@ public final class RouteConstants {
   public static final String FW_CODE = "fwCode";
   public static final String ID_OFFLINE_ACTIVITY = "offlineActivityId";
   public static final String ID_LESSON_PLAN = "lessonPlanId";
+  public static final String ID_PERMISSION = "permissionId";
 
   // Helper: Operations
   private static final String OP_ORDER = "order";
@@ -115,8 +116,8 @@ public final class RouteConstants {
   private static final String ENTITY_COPIER = "copier";
   private static final String ENTITY_PROFILES = "profiles";
   private static final String ENTITY_RUBRICS = "rubrics";
-  private static final String ENTITY_ROLE = "role";
-  private static final String ENTITY_PERMISSION = "permission";
+  private static final String ENTITY_ROLES = "roles";
+  private static final String ENTITY_PERMISSIONS = "permissions";
   private static final String FIREBASE_JWT = "firebase/jwt";
   private static final String ENTITY_COURSE_MAP = "course-map";
   private static final String ENTITY_CLASS_CONTENT = "contents";
@@ -665,20 +666,25 @@ public final class RouteConstants {
       API_BASE_ROUTE + ENTITY_RUBRICS + SEP + COLON + ID_RUBRIC;
 
   // RBAC Routes
-  public static final String EP_RBAC_ROLE_CREATE = API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLE;
+  public static final String EP_RBAC_ROLE_CREATE = API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES;
   public static final String EP_RBAC_ROLE_UPDATE =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLE + SEP + COLON + ID_ROLE;
-  public static final String EP_RBAC_ROLE_LIST = API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLE;
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE;
+  public static final String EP_RBAC_ROLE_LIST = API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES;
   public static final String EP_RBAC_ROLE_GET =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLE + SEP + COLON + ID_ROLE;
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE;
   public static final String EP_RBAC_ROLE_DELETE =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLE + SEP + COLON + ID_ROLE;
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE;
   public static final String EP_RBAC_ROLE_ASSIGN =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLE + SEP + COLON + ID_ROLE + SEP + OP_ASSIGN;
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE + SEP + OP_ASSIGN;
   public static final String EP_RBAC_ROLE_REVOKE =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLE + SEP + COLON + ID_ROLE + SEP + OP_REVOKE;
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE + SEP + OP_REVOKE;
   public static final String EP_RBAC_PERMISSION_LIST =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSION;
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS;
+  public static final String EP_RBAC_PERMISSION_CREATE = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS;
+  public static final String EP_RBAC_PERMISSION_UPDATE = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS + SEP + COLON + ID_PERMISSION;
+  public static final String EP_RBAC_PERMISSION_GET = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS + SEP + COLON + ID_PERMISSION;
+  public static final String EP_RBAC_PERMISSION_DELETE = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS + SEP + COLON + ID_PERMISSION;
+  
 
   public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
   public static final String EP_INTERNAL_METRICS = "/api/internal/v1/metrics";

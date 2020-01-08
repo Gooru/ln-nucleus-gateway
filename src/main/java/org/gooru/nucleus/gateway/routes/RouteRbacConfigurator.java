@@ -32,11 +32,15 @@ public class RouteRbacConfigurator implements RouteConfigurator {
 
     router.post(RouteConstants.EP_RBAC_ROLE_CREATE).handler(this::createRole);
     router.put(RouteConstants.EP_RBAC_ROLE_UPDATE).handler(this::updateRole);
-    router.get(RouteConstants.EP_RBAC_ROLE_LIST).handler(this::listRoles);
     router.get(RouteConstants.EP_RBAC_ROLE_GET).handler(this::getRole);
     router.delete(RouteConstants.EP_RBAC_ROLE_DELETE).handler(this::deleteRole);
+    router.get(RouteConstants.EP_RBAC_ROLE_LIST).handler(this::listRoles);
     router.put(RouteConstants.EP_RBAC_ROLE_ASSIGN).handler(this::assignRole);
     router.put(RouteConstants.EP_RBAC_ROLE_REVOKE).handler(this::revokeRole);
+    router.post(RouteConstants.EP_RBAC_PERMISSION_CREATE).handler(this::createPermission);
+    router.get(RouteConstants.EP_RBAC_PERMISSION_GET).handler(this::getPermission);
+    router.put(RouteConstants.EP_RBAC_PERMISSION_UPDATE).handler(this::updatePermission);
+    router.delete(RouteConstants.EP_RBAC_PERMISSION_DELETE).handler(this::deletePermission);
     router.get(RouteConstants.EP_RBAC_PERMISSION_LIST).handler(this::listPermissions);
   }
 
@@ -113,6 +117,49 @@ public class RouteRbacConfigurator implements RouteConfigurator {
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
   }
 
+  private void createPermission(RoutingContext routingContext) {
+    DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+        .setSendTimeout(mbusTimeout * 1000)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_PERMISSION_CREATE);
+    eb.send(MessagebusEndpoints.MBEP_RBAC,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+  }
+  
+  private void getPermission(RoutingContext routingContext) {
+    String permissionId = routingContext.request().getParam(RouteConstants.ID_PERMISSION);
+    DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+        .setSendTimeout(mbusTimeout * 1000)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_PERMISSION_GET)
+        .addHeader(RouteConstants.ID_PERMISSION, permissionId);
+    eb.send(MessagebusEndpoints.MBEP_RBAC,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+  }
+  
+  private void updatePermission(RoutingContext routingContext) {
+    String permissionId = routingContext.request().getParam(RouteConstants.ID_PERMISSION);
+    DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+        .setSendTimeout(mbusTimeout * 1000)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_PERMISSION_UPDATE)
+        .addHeader(RouteConstants.ID_PERMISSION, permissionId);
+    eb.send(MessagebusEndpoints.MBEP_RBAC,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+  }
+  
+  private void deletePermission(RoutingContext routingContext) {
+    String permissionId = routingContext.request().getParam(RouteConstants.ID_PERMISSION);
+    DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+        .setSendTimeout(mbusTimeout * 1000)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_PERMISSION_DELETE)
+        .addHeader(RouteConstants.ID_PERMISSION, permissionId);
+    eb.send(MessagebusEndpoints.MBEP_RBAC,
+        new RouteRequestUtility().getBodyForMessage(routingContext), options,
+        reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+  }
+  
+  
   private void listPermissions(RoutingContext routingContext) {
     DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
         .setSendTimeout(mbusTimeout * 1000)
