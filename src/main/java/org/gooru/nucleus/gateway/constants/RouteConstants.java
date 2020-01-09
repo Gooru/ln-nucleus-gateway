@@ -124,7 +124,7 @@ public final class RouteConstants {
   private static final String ENTITY_BOOKMARK = "bookmarks";
   private static final String ENTITY_TX_FRAMEWORKS = "frameworks";
   private static final String ENTITY_LIBRARIES = "libraries";
-  private static final String ENTITY_CLASS_CONTENTS_USERS = "users";
+  private static final String ENTITY_USERS = "users";
   private static final String ENTITY_TX_CLASSIFICATIONS = "classifications";
   private static final String MASTERY_ACCRUAL = "mastery-accrual";
   private static final String COMPLETE = "complete";
@@ -674,10 +674,10 @@ public final class RouteConstants {
       API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE;
   public static final String EP_RBAC_ROLE_DELETE =
       API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE;
-  public static final String EP_RBAC_ROLE_ASSIGN =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE + SEP + OP_ASSIGN;
-  public static final String EP_RBAC_ROLE_REVOKE =
-      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE + SEP + OP_REVOKE;
+  public static final String EP_RBAC_ROLE_ASSIGN_TO_USER =
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE + SEP  + ENTITY_USERS + SEP + OP_ASSIGN;
+  public static final String EP_RBAC_ROLE_REVOKE_FROM_USER =
+      API_BASE_RBAC_ROUTE + SEP + ENTITY_ROLES + SEP + COLON + ID_ROLE + SEP + ENTITY_USERS + SEP + OP_REVOKE;
   public static final String EP_RBAC_PERMISSION_LIST =
       API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS;
   public static final String EP_RBAC_PERMISSION_CREATE = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS;
@@ -759,10 +759,10 @@ public final class RouteConstants {
       + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT;
   public static final String EP_CLASS_CONTENT_USERS_ADD =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
-          + COLON + ID_CONTENT + SEP + ENTITY_CLASS_CONTENTS_USERS;
+          + COLON + ID_CONTENT + SEP + ENTITY_USERS;
   public static final String EP_CLASS_CONTENT_USERS_LIST =
       API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP
-          + COLON + ID_CONTENT + SEP + ENTITY_CLASS_CONTENTS_USERS;
+          + COLON + ID_CONTENT + SEP + ENTITY_USERS;
   // Update class content mastery accrual =
   // /api/nucleus/{version}/classes/{class-id}/contents/{content-id}/mastery-accrual
   public static final String EP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE =

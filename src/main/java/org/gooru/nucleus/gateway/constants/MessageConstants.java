@@ -242,8 +242,8 @@ public final class MessageConstants {
   public static final String MSG_OP_RBAC_ROLE_LIST = "rbac.role.list";
   public static final String MSG_OP_RBAC_ROLE_GET = "rbac.role.get";
   public static final String MSG_OP_RBAC_ROLE_DELETE = "rbac.role.delete";
-  public static final String MSG_OP_RBAC_ROLE_ASSIGN = "rbac.role.assign";
-  public static final String MSG_OP_RBAC_ROLE_REVOKE = "rbac.role.revoke";
+  public static final String MSG_OP_RBAC_ROLE_ASSIGN_TO_USER = "rbac.role.assign.to.user";
+  public static final String MSG_OP_RBAC_ROLE_REVOKE_FROM_USER = "rbac.role.revoke.from.user";
   public static final String MSG_OP_RBAC_PERMISSION_LIST = "rbac.permission.list";
   public static final String MSG_OP_RBAC_PERMISSION_CREATE = "rbac.permission.create";
   public static final String MSG_OP_RBAC_PERMISSION_GET = "rbac.permission.get";

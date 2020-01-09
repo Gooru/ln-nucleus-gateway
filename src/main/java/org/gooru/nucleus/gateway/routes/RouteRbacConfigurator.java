@@ -35,8 +35,8 @@ public class RouteRbacConfigurator implements RouteConfigurator {
     router.get(RouteConstants.EP_RBAC_ROLE_GET).handler(this::getRole);
     router.delete(RouteConstants.EP_RBAC_ROLE_DELETE).handler(this::deleteRole);
     router.get(RouteConstants.EP_RBAC_ROLE_LIST).handler(this::listRoles);
-    router.put(RouteConstants.EP_RBAC_ROLE_ASSIGN).handler(this::assignRole);
-    router.put(RouteConstants.EP_RBAC_ROLE_REVOKE).handler(this::revokeRole);
+    router.put(RouteConstants.EP_RBAC_ROLE_ASSIGN_TO_USER).handler(this::assignRoleToUser);
+    router.put(RouteConstants.EP_RBAC_ROLE_REVOKE_FROM_USER).handler(this::revokeRoleFromUser);
     router.post(RouteConstants.EP_RBAC_PERMISSION_CREATE).handler(this::createPermission);
     router.get(RouteConstants.EP_RBAC_PERMISSION_GET).handler(this::getPermission);
     router.put(RouteConstants.EP_RBAC_PERMISSION_UPDATE).handler(this::updatePermission);
@@ -95,22 +95,22 @@ public class RouteRbacConfigurator implements RouteConfigurator {
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
   }
 
-  private void assignRole(RoutingContext routingContext) {
+  private void assignRoleToUser(RoutingContext routingContext) {
     String roleId = routingContext.request().getParam(RouteConstants.ID_ROLE);
     DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
         .setSendTimeout(mbusTimeout * 1000)
-        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_ROLE_ASSIGN)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_ROLE_ASSIGN_TO_USER)
         .addHeader(RouteConstants.ID_ROLE, roleId);
     eb.send(MessagebusEndpoints.MBEP_RBAC,
         new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
   }
 
-  private void revokeRole(RoutingContext routingContext) {
+  private void revokeRoleFromUser(RoutingContext routingContext) {
     String roleId = routingContext.request().getParam(RouteConstants.ID_ROLE);
     DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
         .setSendTimeout(mbusTimeout * 1000)
-        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_ROLE_REVOKE)
+        .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_RBAC_ROLE_REVOKE_FROM_USER)
         .addHeader(RouteConstants.ID_ROLE, roleId);
     eb.send(MessagebusEndpoints.MBEP_RBAC,
         new RouteRequestUtility().getBodyForMessage(routingContext), options,
