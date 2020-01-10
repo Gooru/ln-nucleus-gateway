@@ -684,6 +684,7 @@ public final class RouteConstants {
   public static final String EP_RBAC_PERMISSION_UPDATE = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS + SEP + COLON + ID_PERMISSION;
   public static final String EP_RBAC_PERMISSION_GET = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS + SEP + COLON + ID_PERMISSION;
   public static final String EP_RBAC_PERMISSION_DELETE = API_BASE_RBAC_ROUTE + SEP + ENTITY_PERMISSIONS + SEP + COLON + ID_PERMISSION;
+  public static final String EP_RBAC_USER_ROLE_LIST = API_BASE_RBAC_ROUTE + SEP + ENTITY_USERS + SEP + ENTITY_ROLES;
   
 
   public static final String EP_INTERNAL_BANNER = "/api/internal/v1/banner";
