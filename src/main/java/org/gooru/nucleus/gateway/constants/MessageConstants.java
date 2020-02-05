@@ -46,6 +46,7 @@ public final class MessageConstants {
   public static final String MSG_OP_LKUP_LICENSES = "licenses";
   public static final String MSG_OP_LKUP_LANGUAGES = "languages";
   public static final String MSG_OP_LKUP_APIKEY_CONFIG = "apikey.config";
+  public static final String MSG_OP_LKUP_FEEDBACK_CATEGORIES = "feedback.categories";
 
 
   // Assessment Operations
@@ -122,6 +123,9 @@ public final class MessageConstants {
   public static final String MSG_OP_LESSON_CONTENT_REORDER = "lesson.content.reorder";
   public static final String MSG_OP_LESSON_MOVE_COLLECTION = "lesson.move.collection";
   public static final String MSG_OP_LESSON_REMOVE_COLLECTION = "lesson.remove.collection";
+  public static final String MSG_OP_LESSON_PLAN_CREATE = "lesson.plan.create";
+  public static final String MSG_OP_LESSON_PLAN_UPDATE = "lesson.plan.update";
+  public static final String MSG_OP_LESSON_PLAN_DELETE = "lesson.plan.delete";
 
   // Taxonomy Lookup Operations
 
@@ -137,6 +141,7 @@ public final class MessageConstants {
   public static final String MSG_OP_TAXONOMY_FRAMEWORKS_GET = "taxonomy.frameworks.get";
   public static final String MSG_OP_TAXONOMY_SUBJECT_CLASSIFICATIONS_GET = "taxonomy.subject.classifications.get";
   public static final String MSG_OP_TAXONOMY_FRAMEWORKS_SUBJECTS_LIST = "taxonomy.frameworks.subjects.list";
+  public static final String MSG_OP_TAXONOMY_FRAMEWORK_SUBJECT_COMPETENCY_CROSSWALK = "taxonomy.framework.subject.competency.crosswalk";
 
   // Class operations
   public static final String MSG_OP_CLASS_CREATE = "class.create";
@@ -163,6 +168,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_PREFERENCE_UPDATE = "class.preference.update";
   public static final String MSG_OP_CLASS_LANGUAGE_UPDATE = "class.language.update";
   public static final String MSG_OP_CLASS_STUDENTS_ADD = "class.students.add";
+  public static final String MSG_OP_CLASS_SECONDARY_CLASSES_FIND = "class.secondary.classes.find";
 
   // Copier Operations
   public static final String MSG_OP_RESOURCE_COPY = "resource.copy";
@@ -206,6 +212,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_CONTENT_LIST_OFFLINE_COMPLETED = "class.content.list.offline.completed";
   public static final String MSG_OP_CLASS_CONTENT_LIST_OFFLINE_ACTIVE = "class.content.list.offline.active";
   public static final String MSG_OP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED = "class.content.list.online.scheduled";
+  public static final String MSG_OP_CLASS_CONTENT_LIST_SCHEDULED = "class.content.list.scheduled";
   public static final String MSG_OP_CLASS_CONTENT_ENABLE = "class.content.enable";
   public static final String MSG_OP_CLASS_CONTENT_SCHEDULE = "class.content.schedule";
   public static final String MSG_OP_CLASS_CONTENT_DELETE = "class.content.delete";
