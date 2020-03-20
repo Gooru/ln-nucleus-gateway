@@ -106,6 +106,7 @@ public final class RouteConstants {
   private static final String ENTITY_LESSONS = "lessons";
   private static final String ENTITY_LESSON_PLANS = "lesson-plans";
   private static final String ENTITY_CLASSES = "classes";
+  private static final String ENTITY_DETAILS = "details";
   private static final String ENTITY_COLLABORATORS = "collaborators";
   private static final String ENTITY_TAXONOMY = "taxonomy";
   private static final String ENTITY_TX_SUBJECT = "subjects";
@@ -512,6 +513,8 @@ public final class RouteConstants {
   /*
    * CLASSES
    */
+  // Get the given class details = /api/nucleus/{version}/classes/details
+  public static final String EP_CLASS_DETAILS = API_BASE_ROUTE + ENTITY_CLASSES + SEP + ENTITY_DETAILS;
   // Create a class = /api/nucleus/{version}/classes
   public static final String EP_CLASS_CREATE = API_BASE_ROUTE + ENTITY_CLASSES;
   // Delete a Class = /api/nucleus/{version}/classes/{class-id}
