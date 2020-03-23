@@ -351,6 +351,17 @@ class RouteClassConfigurator implements RouteConfigurator {
           options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
+    
+    router.post(RouteConstants.EP_CLASS_DETAILS).handler(routingContext -> {
+      DeliveryOptions options =
+          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+              .setSendTimeout(mbusTimeout * 1000)
+              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_DETAILS);
+      eb.send(MessagebusEndpoints.MBEP_CLASS,
+          new RouteRequestUtility().getBodyForMessage(routingContext),
+          options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
 
     router.get(RouteConstants.EP_CLASS_LIST).handler(routingContext -> {
       DeliveryOptions options =
