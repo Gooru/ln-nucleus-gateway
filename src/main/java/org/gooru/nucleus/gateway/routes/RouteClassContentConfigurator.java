@@ -30,125 +30,104 @@ class RouteClassContentConfigurator implements RouteConfigurator {
     router.put(RouteConstants.EP_CLASS_CONTENT_USERS_ADD).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String classContentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_CLASS_CONTENT_USERS_ADD)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(CLASS_CONTENT_ID, classContentId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_CLASS_CONTENT_USERS_ADD)
+          .addHeader(RouteConstants.ID_CLASS, classId).addHeader(CLASS_CONTENT_ID, classContentId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.get(RouteConstants.EP_CLASS_CONTENT_USERS_LIST).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String classContentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_CLASS_CONTENT_USERS_LIST)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(CLASS_CONTENT_ID, classContentId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_CLASS_CONTENT_USERS_LIST)
+          .addHeader(RouteConstants.ID_CLASS, classId).addHeader(CLASS_CONTENT_ID, classContentId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.put(RouteConstants.EP_CLASS_CONTENT_ENABLE).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String contentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_CLASS_CONTENT_ENABLE)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(RouteConstants.ID_CONTENT, contentId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_ENABLE)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_CONTENT, contentId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.put(RouteConstants.EP_CLASS_CONTENT_SCHEDULE).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String contentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_CLASS_CONTENT_SCHEDULE)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(RouteConstants.ID_CONTENT, contentId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_SCHEDULE)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_CONTENT, contentId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.delete(RouteConstants.EP_CLASS_CONTENT_DELETE).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String contentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_CLASS_CONTENT_DELETE)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(RouteConstants.ID_CONTENT, contentId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_DELETE)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_CONTENT, contentId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.put(RouteConstants.EP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String contentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(RouteConstants.ID_CONTENT, contentId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_CONTENT, contentId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.put(RouteConstants.EP_CLASS_CONTENT_COMPLETION).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
       String contentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP,
-                  MessageConstants.MSG_OP_CLASS_CONTENT_COMPLETION)
-              .addHeader(RouteConstants.ID_CLASS, classId)
-              .addHeader(RouteConstants.ID_CONTENT, contentId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_CLASS_CONTENT_COMPLETION)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_CONTENT, contentId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
     router.post(RouteConstants.EP_CLASS_CONTENT_CREATE).handler(routingContext -> {
       String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
-      DeliveryOptions options =
-          DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
-              .setSendTimeout(mbusTimeout * 1000)
-              .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_ADD)
-              .addHeader(RouteConstants.ID_CLASS, classId);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_CLASS_CONTENT_ADD)
+          .addHeader(RouteConstants.ID_CLASS, classId);
       eb.send(MessagebusEndpoints.MBEP_CLASS,
-          new RouteRequestUtility().getBodyForMessage(routingContext),
-          options,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
           reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
     });
 
@@ -169,13 +148,27 @@ class RouteClassContentConfigurator implements RouteConfigurator {
             MessageConstants.MSG_OP_CLASS_CONTENT_LIST_ONLINE_SCHEDULED));
 
     router.get(RouteConstants.EP_CLASS_CONTENT_LIST_SCHEDULED)
-    .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
-        MessageConstants.MSG_OP_CLASS_CONTENT_LIST_SCHEDULED));
+        .handler(routingContext -> this.listRoutingContextHandler(routingContext, eb, mbusTimeout,
+            MessageConstants.MSG_OP_CLASS_CONTENT_LIST_SCHEDULED));
+
+    router.put(RouteConstants.EP_CLASS_CONTENT_MEETING_SETUP).handler(routingContext -> {
+      String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
+      String contentId = routingContext.request().getParam(RouteConstants.ID_CONTENT);
+      DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
+          .setSendTimeout(mbusTimeout * 1000)
+          .addHeader(MessageConstants.MSG_HEADER_OP,
+              MessageConstants.MSG_OP_CLASS_CONTENT_SETUP_MEETING)
+          .addHeader(RouteConstants.ID_CLASS, classId)
+          .addHeader(RouteConstants.ID_CONTENT, contentId);
+      eb.send(MessagebusEndpoints.MBEP_CLASS,
+          new RouteRequestUtility().getBodyForMessage(routingContext), options,
+          reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
+    });
 
   }
 
-  private void listRoutingContextHandler(RoutingContext routingContext,
-      EventBus eb, long mbusTimeout, String msgOp) {
+  private void listRoutingContextHandler(RoutingContext routingContext, EventBus eb,
+      long mbusTimeout, String msgOp) {
     String classId = routingContext.request().getParam(RouteConstants.ID_CLASS);
     DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext)
         .setSendTimeout(mbusTimeout * 1000).addHeader(MessageConstants.MSG_HEADER_OP, msgOp)
@@ -184,4 +177,5 @@ class RouteClassContentConfigurator implements RouteConfigurator {
         new RouteRequestUtility().getBodyForMessage(routingContext), options,
         reply -> new RouteResponseUtility().responseHandler(routingContext, reply, LOGGER));
   }
+
 }
