@@ -85,6 +85,7 @@ public final class RouteConstants {
   private static final String RES_ENABLE = "enable";
   private static final String RES_SCHEDULE = "schedule";
   private static final String RES_FEEDBACK_CATEGORIES = "feedback-categories";
+  private static final String RES_MEETING = "meeting";
 
   // Helper constants
   public static final String API_VERSION = "version";
@@ -769,6 +770,8 @@ public final class RouteConstants {
   // /api/nucleus/:version/classes/:classId/contents/:contentId/complete
   public static final String EP_CLASS_CONTENT_COMPLETION = API_BASE_ROUTE + ENTITY_CLASSES + SEP
       + COLON + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT + SEP + COMPLETE;
+  public static final String EP_CLASS_CONTENT_MEETING_SETUP = API_BASE_ROUTE + ENTITY_CLASSES + SEP + COLON
+      + ID_CLASS + SEP + ENTITY_CLASS_CONTENT + SEP + COLON + ID_CONTENT + SEP + RES_MEETING;
 
 
   public static final String EP_BOOKMARK_LIST = API_BASE_ROUTE + ENTITY_BOOKMARK;
