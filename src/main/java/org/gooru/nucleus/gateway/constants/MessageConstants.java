@@ -222,6 +222,7 @@ public final class MessageConstants {
   public static final String MSG_OP_CLASS_CONTENT_MASTERY_ACCRUAL_UPDATE = "class.content.mastery.accrual.update";
   public static final String MSG_OP_CLASS_CONTENT_COMPLETION = "class.content.completion";
   public static final String MSG_OP_CLASS_CONTENT_SETUP_MEETING = "class.content.setup.meeting";
+  public static final String MSG_OP_CLASS_CONTENT_CANCEL_MEETING = "class.content.cancel.meeting";
   
 
   // Event Operations
